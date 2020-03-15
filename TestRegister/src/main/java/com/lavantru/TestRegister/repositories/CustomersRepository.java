@@ -5,5 +5,5 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface CustomersRepository extends MongoRepository<Customers, String> {
-Customers findBy_id(ObjectId _id);
+Customers findById(ObjectId id);
 }

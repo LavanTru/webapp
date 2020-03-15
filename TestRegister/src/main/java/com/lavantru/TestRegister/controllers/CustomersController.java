@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,12 +18,18 @@ public class CustomersController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Customers> getAllCustomers() {
+//        testing the connector
+//        Customers testCustomer = new Customers("John","Doe");
+//        List<Customers> testList = new ArrayList<>();
+//        testList.add(testCustomer);
+//        return testList;
+
         return repository.findAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Customers getPetById(@PathVariable("id") ObjectId id) {
-        return repository.findBy_id(id);
+        return repository.findById(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -40,7 +47,7 @@ public class CustomersController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteCustomer(@PathVariable ObjectId id) {
-        repository.delete(repository.findBy_id(id));
+        repository.delete(repository.findById(id));
     }
 
 }
