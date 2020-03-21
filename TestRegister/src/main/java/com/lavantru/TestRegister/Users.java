@@ -1,20 +1,23 @@
 package com.lavantru.TestRegister;
 
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
-public class Washee {
+public class Users {
     @Id
-    public String id;
+    public ObjectId id;
 
-
+    @BsonProperty(value = "first_name")
     public String firstName;
+    @BsonProperty(value = "last_name")
     public String lastName;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -35,10 +38,10 @@ public class Washee {
     }
 
 
-    public Washee() {
+    public Users() {
     }
 
-    public Washee(String firstName, String lastName) {
+    public Users(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -46,7 +49,7 @@ public class Washee {
     @Override
     public String toString() {
         return String.format(
-                "Washee[id=%s, firstName='%s', lastName='%s']",
+                "User [id=%s, firstName='%s', lastName='%s']",
                 id, firstName, lastName);
     }
 }
