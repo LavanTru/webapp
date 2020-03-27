@@ -1,6 +1,6 @@
-package com.lavantru.TestRegister.dao;
+package com.lavantru.LaundryJob.dao;
 
-import com.lavantru.TestRegister.model.LaundryJob;
+import com.lavantru.LaundryJob.model.LaundryJob;
 
 import java.util.UUID;
 

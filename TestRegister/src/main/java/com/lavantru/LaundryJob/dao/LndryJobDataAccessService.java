@@ -1,4 +1,4 @@
-package com.lavantru.TestRegister.dao;
+package com.lavantru.LaundryJob.dao;
 
 public class LndryJobDataAccessService {
 }

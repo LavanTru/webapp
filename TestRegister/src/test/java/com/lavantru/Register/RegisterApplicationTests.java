@@ -1,10 +1,10 @@
-package com.lavantru.TestRegister;
+package com.lavantru.Register;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TestRegisterApplicationTests {
+class RegisterApplicationTests {
 
 	@Test
 	void contextLoads() {

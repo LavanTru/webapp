@@ -1,4 +1,4 @@
-package com.lavantru.TestRegister.model;
+package com.lavantru.LaundryJob.model;
 
 import java.util.UUID;
 

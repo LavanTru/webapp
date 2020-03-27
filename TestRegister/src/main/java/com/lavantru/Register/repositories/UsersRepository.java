@@ -1,6 +1,6 @@
-package com.lavantru.TestRegister.repositories;
+package com.lavantru.Register.repositories;
 
-import com.lavantru.TestRegister.Users;
+import com.lavantru.Register.Users;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
