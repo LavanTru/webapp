@@ -1,7 +1,7 @@
-package com.lavantru.TestRegister.controllers;
+package com.lavantru.Register.controllers;
 
-import com.lavantru.TestRegister.Users;
-import com.lavantru.TestRegister.repositories.UsersRepository;
+import com.lavantru.Register.Users;
+import com.lavantru.Register.repositories.UsersRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
