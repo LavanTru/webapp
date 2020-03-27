@@ -1,6 +1,6 @@
-package com.lavantru.LaundryJob.repositories;
+package com.lavantru.LndryJob.repositories;
 
-import com.lavantru.LaundryJob.model.LndryJob;
+import com.lavantru.LndryJob.model.LndryJob;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.UUID;

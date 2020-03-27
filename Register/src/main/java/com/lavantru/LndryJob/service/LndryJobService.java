@@ -1,7 +1,7 @@
-package com.lavantru.LaundryJob.service;
+package com.lavantru.LndryJob.service;
 
-import com.lavantru.LaundryJob.dao.LndryJobDao;
-import com.lavantru.LaundryJob.model.LndryJob;
+import com.lavantru.LndryJob.dao.LndryJobDao;
+import com.lavantru.LndryJob.model.LndryJob;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

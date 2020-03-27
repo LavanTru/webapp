@@ -1,4 +1,4 @@
-package com.lavantru.LaundryJob.model;
+package com.lavantru.LndryJob.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
