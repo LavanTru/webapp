@@ -1,15 +1,27 @@
 package com.lavantru.TestRegister.dao;
 
-import com.lavantru.TestRegister.model.LaundryJob;
+import com.lavantru.TestRegister.model.LndryJob;
+import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
-public interface LaundryJobDao {
+public interface LndryJobDao {
 
-    int insertService(UUID id, LaundryJob laundryJob);
+    int insertJob(UUID id, LndryJob lndryJob);
 
-    default int insertService(LaundryJob laundryJob){
+    default int insertJob(LndryJob lndryJob){
         UUID id = UUID.randomUUID();
-        return  insertService(id, laundryJob);
+        return  insertJob(id, lndryJob);
     }
+
+    List<LndryJob> selectAllJobs();
+
+    Optional<LndryJob> selectJobById(UUID id);
+
+    int deleteJobById(UUID id);
+
+    int updateJobById(UUID id, LndryJob lndryJob);
 }
