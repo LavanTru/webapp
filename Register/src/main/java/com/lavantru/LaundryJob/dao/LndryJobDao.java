@@ -1,6 +1,6 @@
 package com.lavantru.LaundryJob.dao;
 
-import com.lavantru.LaundryJob.model.LaundryJob;
+import com.lavantru.LaundryJob.model.LndryJob;
 
 import java.util.List;
 import java.util.Optional;

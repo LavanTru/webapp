@@ -1,9 +1,8 @@
 package com.lavantru.LaundryJob.dao;
 
-import com.lavantru.TestRegister.model.LndryJob;
-import com.lavantru.TestRegister.repositories.LndryJobRepository;
+import com.lavantru.LaundryJob.model.LndryJob;
+import com.lavantru.LaundryJob.repositories.LndryJobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

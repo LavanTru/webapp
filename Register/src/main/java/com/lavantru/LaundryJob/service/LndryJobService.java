@@ -15,7 +15,7 @@ public class LndryJobService {
     private LndryJobDao lndryJobDao;
 
     @Autowired
-    public LndryJobService (@Qualifier("fakeDao") LndryJobDao lndryJobDao){
+    public LndryJobService(@Qualifier("fakeDao") LndryJobDao lndryJobDao){
         this.lndryJobDao = lndryJobDao;
     }
 
