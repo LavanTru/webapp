@@ -1,4 +1,4 @@
-package com.lavantru.TestRegister.dao;
+package com.lavantru.LaundryJob.dao;
 
 import com.lavantru.TestRegister.model.LndryJob;
 import com.lavantru.TestRegister.repositories.LndryJobRepository;

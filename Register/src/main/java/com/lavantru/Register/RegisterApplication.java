@@ -1,14 +1,14 @@
-package com.lavantru.TestRegister;
+package com.lavantru.Register;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestRegisterApplication {
+public class RegisterApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(TestRegisterApplication.class, args);
+		SpringApplication.run(RegisterApplication.class, args);
 	}
 
 }

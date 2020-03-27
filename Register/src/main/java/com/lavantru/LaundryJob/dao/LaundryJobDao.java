@@ -1,8 +1,6 @@
-package com.lavantru.TestRegister.dao;
+package com.lavantru.LaundryJob.dao;
 
-import com.lavantru.TestRegister.model.LndryJob;
-import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
-import org.springframework.stereotype.Repository;
+import com.lavantru.LaundryJob.model.LaundryJob;
 
 import java.util.List;
 import java.util.Optional;

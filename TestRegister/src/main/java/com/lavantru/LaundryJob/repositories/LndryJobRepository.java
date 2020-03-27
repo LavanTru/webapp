@@ -1,6 +1,6 @@
-package com.lavantru.TestRegister.repositories;
+package com.lavantru.Register.repositories;
 
-import com.lavantru.TestRegister.model.LndryJob;
+import com.lavantru.Register.model.LndryJob;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.UUID;
