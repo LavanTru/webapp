@@ -1,4 +1,4 @@
-package com.lavantru.TestRegister;
+package com.lavantru.Register;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
