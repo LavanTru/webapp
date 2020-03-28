@@ -2,15 +2,25 @@
 package com.lavantru.Register;
 
 import java.util.List;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class Users {
 
     @Id
     private String id;
+    @NotNull
+    @NotEmpty
     private String firstName;
+    @NotNull
+    @NotEmpty
     private String lastName;
+    @NotNull
+    @NotEmpty
     private String email;
     private String phoneNo;
     private String phoneCountryCode;
@@ -22,10 +32,16 @@ public class Users {
     private List<Address> addresses = null;
     private List<PaymentMethod> paymentMethods = null;
 
+    @NotNull
+    @NotEmpty
+    private String password;
+    private String matchingPassword;
+
+
     public Users() {
     }
 
-    public Users(String id, String firstName, String lastName, String email, String phoneNo, String phoneCountryCode, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses,List<PaymentMethod> paymentMethods) {
+    public Users(String id, String firstName, String lastName, String email, String phoneNo, String phoneCountryCode, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses, List<PaymentMethod> paymentMethods) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -146,9 +162,25 @@ public class Users {
         this.paymentMethods = paymentMethods;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getMatchingPassword() {
+        return matchingPassword;
+    }
+
+    public void setMatchingPassword(String matchingPassword) {
+        this.matchingPassword = matchingPassword;
+    }
+
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("id", id).append("firstName", firstName).append("lastName", lastName).append("email", email).append("phoneNo",phoneNo).append("phoneCountryCode",phoneCountryCode).append("accountType", accountType).append("userType", userType).append("acceptsMarketingEmails", acceptsMarketingEmails).append("payoutBankDetails", payoutBankDetails).append("addresses", addresses).append("paymentMethods",paymentMethods).toString();
+        return new ToStringBuilder(this).append("id", id).append("firstName", firstName).append("lastName", lastName).append("email", email).append("phoneNo", phoneNo).append("phoneCountryCode", phoneCountryCode).append("accountType", accountType).append("userType", userType).append("acceptsMarketingEmails", acceptsMarketingEmails).append("payoutBankDetails", payoutBankDetails).append("addresses", addresses).append("paymentMethods", paymentMethods).toString();
     }
 
 }
