@@ -1,4 +1,4 @@
-package com.lavantru.Register;
+package com.lavantru.Register.model;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 

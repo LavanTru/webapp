@@ -1,4 +1,4 @@
-package com.lavantru.Register.service;
+package com.lavantru.Register.services;
 
 import com.lavantru.Register.dao.LndryJobDao;
 import com.lavantru.Register.model.LndryJob;

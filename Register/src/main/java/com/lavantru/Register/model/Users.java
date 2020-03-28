@@ -1,15 +1,10 @@
 
-package com.lavantru.Register;
+package com.lavantru.Register.model;
 
-import com.lavantru.Register.validation.PasswordMatches;
-import com.lavantru.Register.validation.ValidEmail;
 import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 
 public class Users {

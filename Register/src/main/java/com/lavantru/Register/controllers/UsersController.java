@@ -1,6 +1,6 @@
 package com.lavantru.Register.controllers;
 
-import com.lavantru.Register.Users;
+import com.lavantru.Register.model.Users;
 import com.lavantru.Register.dto.UsersDto;
 import com.lavantru.Register.repositories.UsersRepository;
 import com.lavantru.Register.services.IUsersService;
