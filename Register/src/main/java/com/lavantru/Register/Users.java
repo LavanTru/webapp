@@ -1,9 +1,16 @@
 
 package com.lavantru.Register;
 
+import com.lavantru.Register.validation.PasswordMatches;
+import com.lavantru.Register.validation.ValidEmail;
 import java.util.List;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 public class Users {
 
@@ -21,11 +28,13 @@ public class Users {
     private List<String> payoutBankDetails = null;
     private List<Address> addresses = null;
     private List<PaymentMethod> paymentMethods = null;
+    private String password;
+
 
     public Users() {
     }
 
-    public Users(String id, String firstName, String lastName, String email, String phoneNo, String phoneCountryCode, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses,List<PaymentMethod> paymentMethods) {
+    public Users(String id, String firstName, String lastName, String email, String phoneNo, String phoneCountryCode, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses, List<PaymentMethod> paymentMethods) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -146,9 +155,18 @@ public class Users {
         this.paymentMethods = paymentMethods;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("id", id).append("firstName", firstName).append("lastName", lastName).append("email", email).append("phoneNo",phoneNo).append("phoneCountryCode",phoneCountryCode).append("accountType", accountType).append("userType", userType).append("acceptsMarketingEmails", acceptsMarketingEmails).append("payoutBankDetails", payoutBankDetails).append("addresses", addresses).append("paymentMethods",paymentMethods).toString();
+        return new ToStringBuilder(this).append("id", id).append("firstName", firstName).append("lastName", lastName).append("email", email).append("phoneNo", phoneNo).append("phoneCountryCode", phoneCountryCode).append("accountType", accountType).append("userType", userType).append("acceptsMarketingEmails", acceptsMarketingEmails).append("payoutBankDetails", payoutBankDetails).append("addresses", addresses).append("paymentMethods", paymentMethods).toString();
     }
 
 }
