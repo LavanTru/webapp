@@ -1,6 +1,6 @@
-package com.lavantru.LndryJob.repositories;
+package com.lavantru.Register.repositories;
 
-import com.lavantru.LndryJob.model.LndryJob;
+import com.lavantru.Register.model.LndryJob;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.UUID;

@@ -1,6 +1,6 @@
-package com.lavantru.LndryJob.dao;
+package com.lavantru.Register.dao;
 
-import com.lavantru.LndryJob.model.LndryJob;
+import com.lavantru.Register.model.LndryJob;
 
 import java.util.List;
 import java.util.Optional;

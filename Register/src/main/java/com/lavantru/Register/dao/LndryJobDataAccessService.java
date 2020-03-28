@@ -1,7 +1,7 @@
-package com.lavantru.LndryJob.dao;
+package com.lavantru.Register.dao;
 
-import com.lavantru.LndryJob.model.LndryJob;
-import com.lavantru.LndryJob.repositories.LndryJobRepository;
+import com.lavantru.Register.model.LndryJob;
+import com.lavantru.Register.repositories.LndryJobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

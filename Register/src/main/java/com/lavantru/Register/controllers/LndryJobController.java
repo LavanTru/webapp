@@ -1,7 +1,7 @@
-package com.lavantru.LndryJob.controllers;
+package com.lavantru.Register.controllers;
 
-import com.lavantru.LndryJob.model.LndryJob;
-import com.lavantru.LndryJob.service.LndryJobService;
+import com.lavantru.Register.model.LndryJob;
+import com.lavantru.Register.service.LndryJobService;
 import com.mongodb.lang.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
