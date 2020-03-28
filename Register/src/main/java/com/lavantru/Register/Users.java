@@ -1,6 +1,8 @@
 
 package com.lavantru.Register;
 
+import com.lavantru.Register.validation.PasswordMatches;
+import com.lavantru.Register.validation.ValidEmail;
 import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -9,18 +11,13 @@ import org.springframework.data.annotation.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+
 public class Users {
 
     @Id
     private String id;
-    @NotNull
-    @NotEmpty
     private String firstName;
-    @NotNull
-    @NotEmpty
     private String lastName;
-    @NotNull
-    @NotEmpty
     private String email;
     private String phoneNo;
     private String phoneCountryCode;
@@ -31,11 +28,7 @@ public class Users {
     private List<String> payoutBankDetails = null;
     private List<Address> addresses = null;
     private List<PaymentMethod> paymentMethods = null;
-
-    @NotNull
-    @NotEmpty
     private String password;
-    private String matchingPassword;
 
 
     public Users() {
@@ -170,13 +163,6 @@ public class Users {
         this.password = password;
     }
 
-    public String getMatchingPassword() {
-        return matchingPassword;
-    }
-
-    public void setMatchingPassword(String matchingPassword) {
-        this.matchingPassword = matchingPassword;
-    }
 
     @Override
     public String toString() {

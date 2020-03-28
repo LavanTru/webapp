@@ -1,7 +1,9 @@
 package com.lavantru.Register.controllers;
 
 import com.lavantru.Register.Users;
+import com.lavantru.Register.dto.UsersDto;
 import com.lavantru.Register.repositories.UsersRepository;
+import com.lavantru.Register.services.IUsersService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,9 @@ import java.util.Map;
 @RequestMapping("/api/users")
 public class UsersController {
     @Autowired
+    private IUsersService usersService;
+
+    @Autowired
     private UsersRepository repository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -26,7 +31,7 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Users getPetById(@PathVariable("id") ObjectId id) {
+    public Users getUserById(@PathVariable("id") ObjectId id) {
         return repository.findById(id);
     }
 
@@ -37,11 +42,12 @@ public class UsersController {
         repository.save(user);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Users createUser(@Valid @RequestBody Users user) {
-        user.setId(new ObjectId().toString());
-        repository.save(user);
-        return user;
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public Users createUser(@Valid @RequestBody UsersDto usersDto) {
+        final Users newUser = usersService.registerNewUser(usersDto);
+//        user.setId(new ObjectId().toString());
+//        repository.save(user);
+        return newUser;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
