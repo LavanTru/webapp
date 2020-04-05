@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lavantru</groupId>
-	<artifactId>TestRegister</artifactId>
+	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>TestRegister</name>
-	<description>Registration API with Spring Boot</description>
+	<name>backend</name>
+	<description>APIs with Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
