@@ -30,9 +30,18 @@ public class UsersService implements IUsersService {
     user.setEmail(accountDto.getEmail());
     return repository.save(user);
   }
+
   private boolean emailExists(String email) {
     Users user = repository.findByEmail(email);
     if (user != null) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean passwordMatches(String email, String password){
+    Users user = repository.findByEmail(email);
+    if (user.getPassword().equals(password)){
       return true;
     }
     return false;
