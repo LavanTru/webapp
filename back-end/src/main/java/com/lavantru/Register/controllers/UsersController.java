@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//CrossOrigin allows front-end to make the call to back-end as they are running separately.
+@CrossOrigin
 @RestController
 @RequestMapping("/api/users")
 public class UsersController {
