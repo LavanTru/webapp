@@ -29,4 +29,18 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     final GenericResponse bodyOfResponse = new GenericResponse(messages.getMessage("message.regError", null, request.getLocale()), "UserAlreadyExist",HttpStatus.CONFLICT);
     return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.CONFLICT, request);
   }
+  // 404
+  @ExceptionHandler({ UserNotFoundException.class })
+  public ResponseEntity<Object> handleUserNotFound(final RuntimeException ex, final WebRequest request) {
+    logger.error("404 Status Code", ex);
+    final GenericResponse bodyOfResponse = new GenericResponse(messages.getMessage("message.userNotFound", null, request.getLocale()), "UserNotFound", HttpStatus.NOT_FOUND);
+    return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+  }
+  // 401
+  @ExceptionHandler({ PasswordNotMatchingException.class })
+  public ResponseEntity<Object> handlePasswordNotMatching(final RuntimeException ex, final WebRequest request) {
+    logger.error("401 Status Code", ex);
+    final GenericResponse bodyOfResponse = new GenericResponse(messages.getMessage("message.unauth", null, request.getLocale()), "UserNotFound", HttpStatus.UNAUTHORIZED);
+    return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.UNAUTHORIZED, request);
+  }
 }

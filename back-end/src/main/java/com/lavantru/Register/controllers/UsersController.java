@@ -7,6 +7,7 @@ import com.lavantru.Register.services.IUsersService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,11 @@ public class UsersController {
         return repository.findById(id);
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<?> loginUser(@RequestBody UsersDto usersDto){
+        return usersService.login(usersDto);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void modifyUserById(@PathVariable("id") String id, @Valid
     @RequestBody Users user) {
@@ -44,10 +50,7 @@ public class UsersController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public Users createUser(@Valid @RequestBody UsersDto usersDto) {
-        final Users newUser = usersService.registerNewUser(usersDto);
-//        user.setId(new ObjectId().toString());
-//        repository.save(user);
-        return newUser;
+        return usersService.registerNewUser(usersDto);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
