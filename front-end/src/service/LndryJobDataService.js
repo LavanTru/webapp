@@ -8,6 +8,10 @@ class LndryJobDataService {
     retrieveAllLndryJobs() {
         return axios.get(`${LNDRY_JOBS_API_URL}`);
     }
+
+    deleteLndryJob(id){
+        return axios.delete(`${LNDRY_JOBS_API_URL}/${id}`);
+    }
 }
 
 export default new LndryJobDataService()
