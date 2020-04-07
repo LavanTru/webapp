@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RequestMapping("api/laundryJob")
+@CrossOrigin(origins = { "http://localhost:3000" })
 @RestController
 public class LndryJobController {
 
