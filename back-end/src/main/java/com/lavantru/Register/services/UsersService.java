@@ -7,6 +7,7 @@ import com.lavantru.Register.dto.UsersDto;
 import com.lavantru.Register.errors.UserAlreadyExistException;
 import com.lavantru.Register.repositories.UsersRepository;
 import com.lavantru.Register.validation.PasswordMatches;
+import org.apache.catalina.User;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +51,12 @@ public class UsersService implements IUsersService {
     else{
       return ResponseEntity.badRequest().build();
     }
+  }
+  public Users getUserByEmail(String email) throws UserNotFoundException {
+    if (!emailExists(email)) {
+      throw new UserNotFoundException("There is no account with that email address: " + email);
+    }
+    return repository.findByEmail(email);
   }
 
   private boolean emailExists(String email) {

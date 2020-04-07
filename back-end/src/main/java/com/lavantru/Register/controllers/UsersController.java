@@ -43,6 +43,12 @@ public class UsersController {
         return usersService.login(usersDto);
     }
 
+//    Should this be as POST with email as body?
+    @RequestMapping(method = RequestMethod.GET)
+    public Users getUserByEmail(@RequestParam("email") String email){
+        return usersService.getUserByEmail(email);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void modifyUserById(@PathVariable("id") String id, @Valid
     @RequestBody Users user) {
