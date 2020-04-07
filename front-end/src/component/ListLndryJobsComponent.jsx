@@ -1,6 +1,29 @@
 import React, { Component }  from 'react';
+import LndryJobDataService from '../service/LndryJobDataService'
 
 class ListLndryJobsComponent extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            lndryJobs: [],
+            message: null
+        }
+        this.refreshLndryJobs.bind(this)
+    }
+
+    componentDidMount() {
+        this.refreshLndryJobs();
+    }
+
+    refreshLndryJobs() {
+        LndryJobDataService.retrieveAllLndryJobs()//HARDCODED
+            .then(
+                response => {
+                    this.setState({lndryJobs: response.data});
+                }
+            )
+    }
 
     render() {
         return (
@@ -15,10 +38,15 @@ class ListLndryJobsComponent extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Hard Coded Laundry Job</td>
-                            </tr>
+                            {
+                                this.state.lndryJobs.map(
+                                    lndryJob =>
+                                   <tr>
+                                        <td>{lndryJob.id}</td>
+                                        <td>{lndryJob.job}</td>
+                                    </tr>
+                                )
+                            }
                         </tbody>
                     </table>
                 </div>
