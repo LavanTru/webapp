@@ -4,25 +4,25 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Login from './Login';
 import Register from './Register';
 class Loginscreen extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      email:'',
-      password:'',
-      loginscreen:[],
-      loginmessage:'',
-      buttonLabel:'Register',
-      isLogin:true
+    this.state = {
+      email: '',
+      password: '',
+      loginscreen: [],
+      loginmessage: '',
+      buttonLabel: 'Register',
+      isLogin: true
     }
   }
-  componentWillMount(){
-    var loginscreen=[];
-    loginscreen.push(<Login parentContext={this} appContext={this.props.parentContext}/>);
+  componentWillMount() {
+    var loginscreen = [];
+    loginscreen.push(<Login parentContext={this} appContext={this.props.parentContext} />);
     var loginmessage = "Not registered yet, register now";
     this.setState({
-                  loginscreen:loginscreen,
-                  loginmessage:loginmessage
-                    })
+      loginscreen: loginscreen,
+      loginmessage: loginmessage
+    })
   }
   render() {
     return (
@@ -32,40 +32,93 @@ class Loginscreen extends Component {
           {this.state.loginmessage}
           <MuiThemeProvider>
             <div>
-               <RaisedButton label={this.state.buttonLabel} primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-           </div>
+              <RaisedButton label={this.state.buttonLabel} primary={true} style={style} onClick={(event) => this.handleClick(event)} />
+            </div>
           </MuiThemeProvider>
         </div>
+        {/* start google part */}
+        <button className="loginBtn loginBtn--google" ref="googleLoginBtn">
+          Login with Google
+        </button>
+        {/* end google part */}
       </div>
     );
   }
 
-  handleClick(event){
+  componentDidMount(){
+    this.googleSDK();
+  }
+
+  handleClick(event) {
     // console.log("event",event);
     var loginmessage;
-    if(this.state.isLogin){
-      var loginscreen=[];
-      loginscreen.push(<Register parentContext={this}/>);
+    if (this.state.isLogin) {
+      var loginscreen = [];
+      loginscreen.push(<Register parentContext={this} />);
       loginmessage = "Already registered. Go to login";
       this.setState({
-                     loginscreen:loginscreen,
-                     loginmessage:loginmessage,
-                     buttonLabel:"Login",
-                     isLogin:false
-                   })
+        loginscreen: loginscreen,
+        loginmessage: loginmessage,
+        buttonLabel: "Login",
+        isLogin: false
+      })
     }
-    else{
-      var loginscreen=[];
-      loginscreen.push(<Login parentContext={this}/>);
+    else {
+      var loginscreen = [];
+      loginscreen.push(<Login parentContext={this} />);
       loginmessage = "Not registered yet. Go to registration";
       this.setState({
-                     loginscreen:loginscreen,
-                     loginmessage:loginmessage,
-                     buttonLabel:"Register",
-                     isLogin:true
-                   })
+        loginscreen: loginscreen,
+        loginmessage: loginmessage,
+        buttonLabel: "Register",
+        isLogin: true
+      })
     }
   }
+
+  googleSDK() {
+ 
+    window['googleSDKLoaded'] = () => {
+      window['gapi'].load('auth2', () => {
+        this.auth2 = window['gapi'].auth2.init({
+          client_id: '146948454027-q6953hbqb8ksh01n4nse0dc2uvo9n7n0.apps.googleusercontent.com',
+          cookiepolicy: 'single_host_origin',
+          scope: 'profile email'
+        });
+        this.prepareGoogleLoginButton();
+      });
+    }
+   
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "https://apis.google.com/js/platform.js?onload=googleSDKLoaded";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'google-jssdk'));
+  }
+
+  prepareGoogleLoginButton = () => {
+ 
+    console.log(this.refs.googleLoginBtn);
+     
+    this.auth2.attachClickHandler(this.refs.googleLoginBtn, {},
+        (googleUser) => {
+     
+        let profile = googleUser.getBasicProfile();
+        console.log('Token || ' + googleUser.getAuthResponse().id_token);
+        console.log('ID: ' + profile.getId());
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+        //YOUR CODE HERE
+     
+     
+        }, (error) => {
+        alert(JSON.stringify(error, undefined, 2));
+        });
+     
+    }
 }
 const style = {
   margin: 15,
