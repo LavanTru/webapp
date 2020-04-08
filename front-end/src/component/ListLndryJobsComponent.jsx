@@ -9,8 +9,10 @@ class ListLndryJobsComponent extends Component {
             lndryJobs: [],
             message: null
         }
-        this.refreshLndryJobs.bind(this)
-        this.deleteLndryJobClicked.bind(this)
+        this.refreshLndryJobs.bind = this.refreshLndryJobs.bind(this)
+        this.deleteLndryJobClicked.bind = this.deleteLndryJobClicked.bind(this)
+        this.updateLndryJobClicked.bind = this.updateLndryJobClicked.bind(this)
+        this.addLndryJobClicked.bind = this.addLndryJobClicked.bind(this)
     }
 
     componentDidMount() {
@@ -18,13 +20,23 @@ class ListLndryJobsComponent extends Component {
     }
 
     refreshLndryJobs() {
-        LndryJobDataService.retrieveAllLndryJobs()//HARDCODED
+        LndryJobDataService.retrieveAllLndryJobs()
             .then(
                 response => {
                     console.log(response);
                     this.setState({lndryJobs: response.data});
                 }
             )
+    }
+
+    //Need to fix this method
+    addLndryJobClicked() {
+        this.props.history.push(`/`)
+    }
+
+    updateLndryJobClicked(id) {
+        console.log('update ' + id)
+        this.props.history.push(`${id}`)
     }
 
     deleteLndryJobClicked(id) {
@@ -48,7 +60,8 @@ class ListLndryJobsComponent extends Component {
                             <tr>
                                 <th>Id</th>
                                 <th>Laundry Job</th>
-                                <th>Action</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,12 +71,16 @@ class ListLndryJobsComponent extends Component {
                                    <tr>
                                         <td>{lndryJob.id}</td>
                                         <td>{lndryJob.job}</td>
+                                        <td><button className="btn btn-success" onClick={() => this.updateLndryJobClicked(lndryJob.id)}>Update</button></td>
                                         <td><button className="btn btn-warning" onClick={() => this.deleteLndryJobClicked(lndryJob.id)}>Delete</button></td>
                                     </tr>
                                 )
                             }
                         </tbody>
                     </table>
+                    <div className="row">
+                        <button className="btn btn-success" onClick={this.addLndryJobClicked}>Add</button>
+                    </div>
                 </div>
             </div>
         )
