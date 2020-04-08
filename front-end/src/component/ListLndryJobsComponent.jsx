@@ -9,10 +9,10 @@ class ListLndryJobsComponent extends Component {
             lndryJobs: [],
             message: null
         }
-        this.refreshLndryJobs.bind(this)
-        this.deleteLndryJobClicked.bind(this)
-        this.updateLndryJobClicked.bind(this)
-        this.addLndryJobClicked.bind(this)
+        this.refreshLndryJobs.bind = this.refreshLndryJobs.bind(this)
+        this.deleteLndryJobClicked.bind = this.deleteLndryJobClicked.bind(this)
+        this.updateLndryJobClicked.bind = this.updateLndryJobClicked.bind(this)
+        this.addLndryJobClicked.bind = this.addLndryJobClicked.bind(this)
     }
 
     componentDidMount() {
@@ -20,7 +20,7 @@ class ListLndryJobsComponent extends Component {
     }
 
     refreshLndryJobs() {
-        LndryJobDataService.retrieveAllLndryJobs()//HARDCODED
+        LndryJobDataService.retrieveAllLndryJobs()
             .then(
                 response => {
                     console.log(response);
@@ -29,13 +29,14 @@ class ListLndryJobsComponent extends Component {
             )
     }
 
+    //Need to fix this method
     addLndryJobClicked() {
-        this.props.history.push(`/laundryJobs/-1`)
+        this.props.history.push(`/`)
     }
 
     updateLndryJobClicked(id) {
         console.log('update ' + id)
-        this.props.history.push(`/laundryJobs/${id}`)
+        this.props.history.push(`${id}`)
     }
 
     deleteLndryJobClicked(id) {

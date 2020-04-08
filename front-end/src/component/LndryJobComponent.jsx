@@ -15,8 +15,7 @@ class LndryJobComponent extends Component {
                     <h1>Laundry Job</h1>
                     <Switch>
                         <Route path="/" exact component={ListLndryJobsComponent} />
-                        <Route path="/laundryJobs" exact component={ListLndryJobsComponent} />
-                        <Route path="/laundryJobs/:id" component={LndryJobDetailsComponent} />
+                        <Route path="/:id" component={LndryJobDetailsComponent} />
                     </Switch>
                 </>
             </Router>
