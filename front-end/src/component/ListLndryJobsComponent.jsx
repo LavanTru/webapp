@@ -11,6 +11,8 @@ class ListLndryJobsComponent extends Component {
         }
         this.refreshLndryJobs.bind(this)
         this.deleteLndryJobClicked.bind(this)
+        this.updateLndryJobClicked.bind(this)
+        this.addLndryJobClicked.bind(this)
     }
 
     componentDidMount() {
@@ -25,6 +27,15 @@ class ListLndryJobsComponent extends Component {
                     this.setState({lndryJobs: response.data});
                 }
             )
+    }
+
+    addLndryJobClicked() {
+        this.props.history.push(`/laundryJobs/-1`)
+    }
+
+    updateLndryJobClicked(id) {
+        console.log('update ' + id)
+        this.props.history.push(`/laundryJobs/${id}`)
     }
 
     deleteLndryJobClicked(id) {
@@ -48,7 +59,8 @@ class ListLndryJobsComponent extends Component {
                             <tr>
                                 <th>Id</th>
                                 <th>Laundry Job</th>
-                                <th>Action</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,12 +70,16 @@ class ListLndryJobsComponent extends Component {
                                    <tr>
                                         <td>{lndryJob.id}</td>
                                         <td>{lndryJob.job}</td>
+                                        <td><button className="btn btn-success" onClick={() => this.updateLndryJobClicked(lndryJob.id)}>Update</button></td>
                                         <td><button className="btn btn-warning" onClick={() => this.deleteLndryJobClicked(lndryJob.id)}>Delete</button></td>
                                     </tr>
                                 )
                             }
                         </tbody>
                     </table>
+                    <div className="row">
+                        <button className="btn btn-success" onClick={this.addLndryJobClicked}>Add</button>
+                    </div>
                 </div>
             </div>
         )
