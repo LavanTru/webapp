@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import LndryJobComponent from './component/LndryJobComponent';
+import LoginScreen from './LoginScreen';
 
-function App() {
-  return (
-    <div className="container">
-        <LndryJobComponent />
+
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      loginPage:[],
+      uploadScreen:[]
+    }
+  }
+  componentWillMount(){
+    var loginPage =[];
+    loginPage.push(<LoginScreen parentContext={this}/>);
+    this.setState({
+                  loginPage:loginPage
+                    })
+  }
+  render() {
+    return (
+      <div className="App">
+        {this.state.loginPage}
+        {this.state.uploadScreen}
       </div>
-  );
+    );
+  }
 }
-
+const style = {
+  margin: 15,
+};
 export default App;
