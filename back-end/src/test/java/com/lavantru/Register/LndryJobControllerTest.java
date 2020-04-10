@@ -12,13 +12,14 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
-import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -39,7 +40,7 @@ public class LndryJobControllerTest {
     @Test
     public void getAllJobs() throws Exception {
         UUID id = new UUID(4, 1);
-        LndryJob lndryJob = new LndryJob(id, "Laundry Master");
+        LndryJob lndryJob = new LndryJob(id, "Laundry");
         List<LndryJob> allLndryJobs = Arrays.asList(lndryJob);
 
         given(lndryJobService.getAllJobs()).willReturn(allLndryJobs);
@@ -51,7 +52,19 @@ public class LndryJobControllerTest {
                 .andExpect(jsonPath("$[*].id").isNotEmpty());
     }
 
+    @Test
+    public void getJobById() throws Exception
+    {
+        UUID id = new UUID(1234,64);
+        LndryJob lndryJob = new LndryJob(id, "Laundry");
+        Optional<LndryJob> op = Optional.of(lndryJob);
 
+        given(lndryJobService.getJobById(id)).willReturn(op);
 
-
+        mockMvc.perform(MockMvcRequestBuilders
+                .get("http://localhost:8080/api/laundryJob/{id}", id)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.job").value("Laundry"));
+    }
 }
