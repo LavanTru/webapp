@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import LoginScreen from './LoginScreen';
-
+import LavantruApp from './component/LavantruApp'
 
 class App extends Component {
   constructor(props){
@@ -21,8 +21,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.loginPage}
-        {this.state.uploadScreen}
+        <LavantruApp/>
       </div>
     );
   }
