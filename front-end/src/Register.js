@@ -52,7 +52,7 @@ class Register extends Component {
              />
            <br/>
            <TextField
-             type = "matchingPassword"
+             type = "password"
              hintText="Repeat your password"
              floatingLabelText="Repeat your password"
              onChange = {(event,newValue) => this.setState({matchingPassword:newValue})}
