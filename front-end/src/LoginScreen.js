@@ -4,7 +4,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Login from './Login';
 import Register from './Register';
 import Axios from 'axios';
-import Default from './Default';
 
 
 class Loginscreen extends Component {
@@ -13,25 +12,27 @@ class Loginscreen extends Component {
     this.state = {
       email: '',
       password: '',
-      loginscreen: [],
-      loginmessage: '',
+      loginmessage: "Not registered yet?",
       buttonLabel: 'Register',
-      isLogin: true
-    }
+      isRegistered: true,
+      loginscreen: ''
+    };
+    this.handleClick = this.handleClick.bind(this);
+    this.prepareGoogleLoginButton = this.prepareGoogleLoginButton.bind(this);
   }
-  componentWillMount() {
-    var loginscreen = [];
-    loginscreen.push(<Login parentContext={this} appContext={this.props.parentContext} />);
-    var loginmessage = "Not registered yet, register now";
-    this.setState({
-      loginscreen: loginscreen,
-      loginmessage: loginmessage
-    })
-  }
+
   render() {
+    console.log("render");
+    console.log(this);
+    let loginScreen;
+    this.state.isRegistered ? (
+      loginScreen = <Login handleLogin={this.props.handleLogin} />
+    ) : (
+        loginScreen = <Register handleClick={this.handleClick} />);
+
     return (
       <div className="loginscreen">
-        {this.state.loginscreen}
+        {loginScreen}
         <div>
           {this.state.loginmessage}
           <MuiThemeProvider>
@@ -40,11 +41,9 @@ class Loginscreen extends Component {
             </div>
           </MuiThemeProvider>
         </div>
-        {/* start google part */}
         <button className="loginBtn loginBtn--google" ref="googleLoginBtn">
           Login with Google
         </button>
-        {/* end google part */}
       </div>
     );
   }
@@ -54,34 +53,22 @@ class Loginscreen extends Component {
   }
 
   handleClick(event) {
-    // console.log("event",event);
-    var loginmessage;
-    if (this.state.isLogin) {
-      var loginscreen = [];
-      loginscreen.push(<Register parentContext={this} />);
-      loginmessage = "Already registered. Go to login";
+    if (this.state.isRegistered) {
       this.setState({
-        loginscreen: loginscreen,
-        loginmessage: loginmessage,
+        loginmessage: "Already registered? Go to login",
         buttonLabel: "Login",
-        isLogin: false
-      })
-    }
-    else {
-      var loginscreen = [];
-      loginscreen.push(<Login parentContext={this} />);
-      loginmessage = "Not registered yet. Go to registration";
+        isRegistered: false
+      });
+    } else {
       this.setState({
-        loginscreen: loginscreen,
-        loginmessage: loginmessage,
+        loginmessage: "Not registered yet?",
         buttonLabel: "Register",
-        isLogin: true
-      })
+        isRegistered: true
+      });
     }
   }
 
   googleSDK() {
-
     window['googleSDKLoaded'] = () => {
       window['gapi'].load('auth2', () => {
         this.auth2 = window['gapi'].auth2.init({
@@ -125,32 +112,22 @@ class Loginscreen extends Component {
             email: profile.getEmail()
           }
         })
-          .then(function (response) {
+          .then((response)=> {
             console.log(response);
             if (response.status == 200) {
               console.log("Login successfull");
-              var uploadScreen = [];
-              uploadScreen.push(<Default
-                appContext={self.props.appContext}
-              />)
-              self.props.parentContext.setState({
-                loginPage: [],
-                uploadScreen: uploadScreen
-              })
+              this.props.handleLogin();
             }
           })
-          .catch(function (error) {
+          .catch((error)=> {
             console.log(error);
-            if (error.response.status == 404){
+            if (error.response.status == 404) {
+              console.log(this);
               console.log("Username does not exists");
-              // alert("Username does not exist");
-              var uploadScreen = [];
-              uploadScreen.push(<Register
-                appContext={self.props.appContext}
-              />)
-              self.props.parentContext.setState({
-                loginPage: [],
-                uploadScreen: uploadScreen
+              this.setState({
+                loginmessage: "Already registered? Go to login",
+                buttonLabel: "Login",
+                isRegistered: false
               })
             }
             else {
