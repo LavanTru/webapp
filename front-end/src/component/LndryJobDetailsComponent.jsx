@@ -9,7 +9,8 @@ class LndryJobDetailsComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            job: ''
+            job: '',
+            message: null
         }
 
         this.onSubmit = this.onSubmit.bind(this)
@@ -43,6 +44,11 @@ class LndryJobDetailsComponent extends Component {
         } else {
             LndryJobDataService.updateLndryJob(this.state.id, job)
                 .then(() => this.props.history.push())
+                .then(
+                    response => {
+                        this.setState({ message: `Laundry job updated successfully` })
+                    }
+                )
         }
 
         console.log(values);
@@ -65,6 +71,7 @@ class LndryJobDetailsComponent extends Component {
         return (
                 <div>
                 <h3>Laundry Job</h3>
+                {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
                 <div className="container">
                     <Formik
                         initialValues={{ id, job }}
