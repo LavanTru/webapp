@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
-import Default from './Default';
 
 
 class Login extends Component {
@@ -14,15 +12,13 @@ class Login extends Component {
       email: '',
       password: ''
     }
+    this.handleClick = this.handleClick.bind(this);
   }
   render() {
     return (
       <div>
         <MuiThemeProvider>
           <div>
-            <AppBar
-              title="Login"
-            />
             <TextField
               hintText="Enter your email"
               floatingLabelText="Email"
@@ -51,18 +47,10 @@ class Login extends Component {
       "password": this.state.password
     }
     axios.post(apiBaseUrl + '/login', payload)
-      .then(function (response) {
-        console.log(response);
+      .then((response)=> {
         if (response.status == 200) {
-          console.log("Login successfull");
-          var uploadScreen = [];
-          uploadScreen.push(<Default
-            appContext={self.props.appContext}
-          />)
-          self.props.appContext.setState({
-            loginPage: [],
-            uploadScreen: uploadScreen
-          })
+          console.log("Login successful");
+          this.props.handleLogin();
         }
       })
       .catch(function (error) {

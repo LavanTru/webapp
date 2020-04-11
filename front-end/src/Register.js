@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
-import Login from './Login';
 
 
 class Register extends Component {
@@ -14,7 +12,8 @@ class Register extends Component {
       firstName:'',
       lastName:'',
       email:'',
-      password:''
+      password:'',
+      matchingPassword:''
     }
   }
   render() {
@@ -22,9 +21,6 @@ class Register extends Component {
       <div>
         <MuiThemeProvider>
           <div>
-          <AppBar
-             title="Register"
-           />
            <TextField
              hintText="Enter your first name"
              floatingLabelText="First name"
@@ -78,18 +74,12 @@ class Register extends Component {
     "matchingPassword":this.state.matchingPassword
     }
     axios.post(apiBaseUrl+'/register', payload)
-   .then(function (response) {
+   .then((response)=> {
      console.log(response);
      if(response.status == 200){
       //  console.log("registration successfull");
-       var loginscreen=[];
-       loginscreen.push(<Login parentContext={this}/>);
-       var loginmessage = "Not Registered yet. Go to registration";
-       self.props.parentContext.setState({loginscreen:loginscreen,
-       loginmessage:loginmessage,
-       buttonLabel:"Register",
-       isLogin:true
-        });
+      console.log(this);
+      this.props.handleClick();
      }
    })
    .catch(function (error) {
