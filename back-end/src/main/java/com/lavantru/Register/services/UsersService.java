@@ -6,13 +6,14 @@ import com.lavantru.Register.model.Users;
 import com.lavantru.Register.dto.UsersDto;
 import com.lavantru.Register.errors.UserAlreadyExistException;
 import com.lavantru.Register.repositories.UsersRepository;
-import com.lavantru.Register.validation.PasswordMatches;
-import org.apache.catalina.User;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UsersService implements IUsersService {
@@ -33,6 +34,7 @@ public class UsersService implements IUsersService {
     user.setLastName(accountDto.getLastName());
     user.setPassword(accountDto.getPassword());
     user.setEmail(accountDto.getEmail());
+    user.setUserType(accountDto.getUserType());
     return repository.save(user);
   }
 
@@ -58,6 +60,14 @@ public class UsersService implements IUsersService {
     }
     return repository.findByEmail(email);
   }
+
+  public List<Users> getUsersByType(String userType){
+    List<Users> userTypeList = new ArrayList<>();
+    repository.findByUserType(userType)
+    .forEach(userTypeList::add);
+    return userTypeList;
+    }
+
 
   private boolean emailExists(String email) {
     Users user = repository.findByEmail(email);
