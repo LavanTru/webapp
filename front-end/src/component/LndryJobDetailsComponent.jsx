@@ -19,9 +19,6 @@ class LndryJobDetailsComponent extends Component {
 
     componentDidMount() {
 
-        console.log(this.state.id)
-
-        // eslint-disable-next-line
         if (this.state.id == -1) {
             return
         }
@@ -33,16 +30,23 @@ class LndryJobDetailsComponent extends Component {
     }
 
     onSubmit(values) {
-        let job = {
+        let jobJson = {
             id: this.state.id,
             job: values.job
         }
 
-        if (this.state.id === -1) {
-            LndryJobDataService.createLndryJob(job)
+        let jobJsonWithoutId = {job : values.job}
+
+        if (this.state.id === "-1") {
+            LndryJobDataService.createLndryJob(jobJsonWithoutId)
                 .then(() => this.props.history.push())
+                .then(
+                    response => {
+                        this.setState({ message: `Laundry job added successfully` })
+                    }
+                )
         } else {
-            LndryJobDataService.updateLndryJob(this.state.id, job)
+            LndryJobDataService.updateLndryJob(this.state.id, jobJson)
                 .then(() => this.props.history.push())
                 .then(
                     response => {
@@ -51,7 +55,6 @@ class LndryJobDetailsComponent extends Component {
                 )
         }
 
-        console.log(values);
     }
 
     validate(values) {
