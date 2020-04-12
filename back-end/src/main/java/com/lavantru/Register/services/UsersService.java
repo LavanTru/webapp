@@ -7,6 +7,7 @@ import com.lavantru.Register.dto.UsersDto;
 import com.lavantru.Register.errors.UserAlreadyExistException;
 import com.lavantru.Register.repositories.UsersRepository;
 import com.lavantru.Register.validation.PasswordMatches;
+import java.util.List;
 import org.apache.catalina.User;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class UsersService implements IUsersService {
   @Autowired
   private UsersRepository repository;
+
+  @Override
+  public List<Users> getAllUsers(){
+    return repository.findAll();
+  }
 
   @Transactional
   @Override
@@ -36,6 +42,7 @@ public class UsersService implements IUsersService {
     return repository.save(user);
   }
 
+  @Override
   public ResponseEntity<?> login(UsersDto accountDto){
     String email = accountDto.getEmail();
     if (emailExists(email) && passwordMatches(email,accountDto.getPassword())){
@@ -52,6 +59,7 @@ public class UsersService implements IUsersService {
       return ResponseEntity.badRequest().build();
     }
   }
+  @Override
   public Users getUserByEmail(String email) throws UserNotFoundException {
     if (!emailExists(email)) {
       throw new UserNotFoundException("There is no account with that email address: " + email);
@@ -59,7 +67,7 @@ public class UsersService implements IUsersService {
     return repository.findByEmail(email);
   }
 
-  private boolean emailExists(String email) {
+  public boolean emailExists(String email) {
     Users user = repository.findByEmail(email);
     if (user != null) {
       return true;
@@ -67,7 +75,7 @@ public class UsersService implements IUsersService {
     return false;
   }
 
-  private boolean passwordMatches(String email, String password){
+  public boolean passwordMatches(String email, String password){
     Users user = repository.findByEmail(email);
     if (user.getPassword().equals(password)){
       return true;

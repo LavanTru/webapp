@@ -30,7 +30,7 @@ public class UsersController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Users> getAllUsers() {
-        return repository.findAll();
+        return usersService.getAllUsers();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
