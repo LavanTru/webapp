@@ -1,5 +1,6 @@
 package com.lavantru.Register;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lavantru.Register.controllers.LndryJobController;
 import com.lavantru.Register.model.LndryJob;
 import com.lavantru.Register.services.LndryJobService;
@@ -12,7 +13,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
@@ -26,7 +29,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-
 @RunWith(SpringRunner.class)
 @WebMvcTest(LndryJobController.class)
 public class LndryJobControllerTest {
@@ -37,15 +39,18 @@ public class LndryJobControllerTest {
     @MockBean
     private LndryJobService lndryJobService;
 
+    private UUID id = new UUID(1234567890, 987654321);
+    private String jobMocked = "Laundry";
+    private LndryJob lndryJob = new LndryJob(id, jobMocked);
+    private String lndryJobApiURL = "http://localhost:8080/api/laundryJob/";
+
     @Test
-    public void getAllJobs() throws Exception {
-        UUID id = new UUID(4, 1);
-        LndryJob lndryJob = new LndryJob(id, "Laundry");
+    public void getAllLndryJobsTest() throws Exception {
         List<LndryJob> allLndryJobs = Arrays.asList(lndryJob);
 
         given(lndryJobService.getAllJobs()).willReturn(allLndryJobs);
 
-        mockMvc.perform(get("http://localhost:8080/api/laundryJob/")
+        mockMvc.perform(get(lndryJobApiURL)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -53,18 +58,56 @@ public class LndryJobControllerTest {
     }
 
     @Test
-    public void getJobById() throws Exception
+    public void getLndryJobByIdTest() throws Exception
     {
-        UUID id = new UUID(1234,64);
-        LndryJob lndryJob = new LndryJob(id, "Laundry");
-        Optional<LndryJob> op = Optional.of(lndryJob);
+        Optional<LndryJob> lndryJob = Optional.of(this.lndryJob);
 
-        given(lndryJobService.getJobById(id)).willReturn(op);
+        given(lndryJobService.getJobById(id)).willReturn(lndryJob);
 
         mockMvc.perform(MockMvcRequestBuilders
-                .get("http://localhost:8080/api/laundryJob/{id}", id)
+                .get(lndryJobApiURL+"{id}", id)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.job").value("Laundry"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.job").value(jobMocked));
+    }
+
+    @Test
+    public void addLndryJobTest() throws Exception
+    {
+        mockMvc.perform(MockMvcRequestBuilders
+                .post(lndryJobApiURL)
+                .content(asJsonString(lndryJob))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void updateLndryJobByIdTest() throws Exception
+    {
+        MockHttpServletRequestBuilder builder =
+                MockMvcRequestBuilders.put(lndryJobApiURL + "{id}", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .content((asJsonString(lndryJob)));
+
+        mockMvc.perform(builder)
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void deleteLndryJobByIdTest() throws Exception
+    {
+        mockMvc.perform(MockMvcRequestBuilders
+                .delete(lndryJobApiURL+"{id}", id))
+                .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
+    }
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
