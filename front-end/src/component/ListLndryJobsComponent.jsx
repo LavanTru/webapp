@@ -9,10 +9,10 @@ class ListLndryJobsComponent extends Component {
             lndryJobs: [],
             message: null
         }
-        this.refreshLndryJobs.bind = this.refreshLndryJobs.bind(this)
-        this.deleteLndryJobClicked.bind = this.deleteLndryJobClicked.bind(this)
-        this.updateLndryJobClicked.bind = this.updateLndryJobClicked.bind(this)
-        this.addLndryJobClicked.bind = this.addLndryJobClicked.bind(this)
+        this.refreshLndryJobs = this.refreshLndryJobs.bind(this)
+        this.deleteLndryJobClicked = this.deleteLndryJobClicked.bind(this)
+        this.updateLndryJobClicked = this.updateLndryJobClicked.bind(this)
+        this.addLndryJobClicked = this.addLndryJobClicked.bind(this)
     }
 
     componentDidMount() {
@@ -29,9 +29,8 @@ class ListLndryJobsComponent extends Component {
             )
     }
 
-    //Need to fix this method
     addLndryJobClicked() {
-        this.props.history.push(`/`)
+        this.props.history.push(`-1`)
     }
 
     updateLndryJobClicked(id) {
@@ -53,7 +52,7 @@ class ListLndryJobsComponent extends Component {
         return (
             <div className="container">
                 <h3>All Laundry Jobs</h3>
-                {this.state.message && <div class="alert alert-success">{this.state.message}</div>}
+                {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
                 <div className="container">
                     <table className="table">
                         <thead>
