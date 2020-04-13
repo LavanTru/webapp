@@ -38,8 +38,9 @@ public class UsersController {
         return repository.findById(id);
     }
 
-    @RequestMapping(value = "/{userType}", method = RequestMethod.GET)
+    @RequestMapping(value = "/filter/{userType}", method = RequestMethod.GET)
     public List<Users> getUsersByType(@PathVariable("userType") String userType){
+
         return usersService.getUsersByType(userType);
     }
 
