@@ -1,5 +1,7 @@
 package com.lavantru.Register.controllers;
 
+import com.lavantru.Register.errors.UserInvalidUserTypeException;
+import com.lavantru.Register.model.LndryJob;
 import com.lavantru.Register.model.Users;
 import com.lavantru.Register.dto.UsersDto;
 import com.lavantru.Register.repositories.UsersRepository;
@@ -64,6 +66,13 @@ public class UsersController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable ObjectId id) {
         repository.delete(repository.findById(id));
+    }
+
+    @RequestMapping(value = "/addWasherCapabilities/{id}", method = RequestMethod.PUT)
+    public void updateWasherLndryJobCapabilities(
+            @PathVariable ObjectId id,
+            @RequestBody List<LndryJob> washerLndryJobCapabilities) {
+        usersService.updateWasherLndryJobCapabilities(id, washerLndryJobCapabilities);
     }
 
 //    Handling the error if created user does not correspond with the annotation requirements. Outputs the field errors in a clear way
