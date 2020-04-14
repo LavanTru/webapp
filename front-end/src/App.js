@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DefaultReactPage from './DefaultReactPage';
-import AppBar from 'material-ui/AppBar';
+import NavBar from './component/NavBar';
 import LoginScreen from './LoginScreen';
 import ListLndryJobsComponent from './component/ListLndryJobsComponent';
 import LndryJobDetailsComponent from './component/LndryJobDetailsComponent';
@@ -36,13 +34,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <>
-            <h1>LavanTru App</h1>
-            <MuiThemeProvider>
-
-              <AppBar
-                title="Login"
-              />
-            </MuiThemeProvider>
+              <NavBar/>
             {this.state.mainContent}
             
             <Switch>
@@ -55,7 +47,5 @@ class App extends Component {
     );
   }
 }
-const style = {
-  margin: 15,
-};
+
 export default App;

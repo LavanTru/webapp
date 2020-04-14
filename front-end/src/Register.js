@@ -65,7 +65,6 @@ class Register extends Component {
     var apiBaseUrl = "http://localhost:8080/api/users";
     console.log("values",this.state.firstName,this.state.lastName,this.state.email,this.state.password,this.state.matchingPassword);
     //To be done:check for empty values before hitting submit
-    var self = this;
     var payload={
     "firstName": this.state.firstName,
     "lastName":this.state.lastName,
@@ -76,7 +75,7 @@ class Register extends Component {
     axios.post(apiBaseUrl+'/register', payload)
    .then((response)=> {
      console.log(response);
-     if(response.status == 200){
+     if(response.status === 200){
       //  console.log("registration successfull");
       console.log(this);
       this.props.handleClick();

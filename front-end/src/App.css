@@ -37,3 +37,12 @@
     transform: rotate(360deg);
   }
 }
+
+/* NavBar */
+.navbar{
+  /* background-color: #b8627d; */
+  /* background-color: #0f7d80;*/
+  background-color: #ffe6de; 
+  padding: 15px;
+  font-size: larger;
+}

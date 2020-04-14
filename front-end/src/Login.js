@@ -41,25 +41,24 @@ class Login extends Component {
 
   handleClick(event) {
     var apiBaseUrl = "http://localhost:8080/api/users";
-    var self = this;
     var payload = {
       "email": this.state.username,
       "password": this.state.password
     }
     axios.post(apiBaseUrl + '/login', payload)
       .then((response)=> {
-        if (response.status == 200) {
+        if (response.status === 200) {
           console.log("Login successful");
           this.props.handleLogin();
         }
       })
       .catch(function (error) {
         console.log(error);
-        if (error.response.status == 401) {
+        if (error.response.status === 401) {
           console.log("Username and password do not match");
           alert("Username and password do not match");
         }
-        else if (error.response.status == 404){
+        else if (error.response.status === 404){
           console.log("Username does not exists");
           alert("Username does not exist");
         }

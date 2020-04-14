@@ -22,8 +22,6 @@ class Loginscreen extends Component {
   }
 
   render() {
-    console.log("render");
-    console.log(this);
     let loginScreen;
     this.state.isRegistered ? (
       loginScreen = <Login handleLogin={this.props.handleLogin} />
@@ -105,7 +103,6 @@ class Loginscreen extends Component {
         //YOUR CODE HERE
 
         var apiBaseUrl = "http://localhost:8080/api/users";
-        var self = this;
 
         Axios.get(apiBaseUrl, {
           params: {
@@ -114,14 +111,14 @@ class Loginscreen extends Component {
         })
           .then((response)=> {
             console.log(response);
-            if (response.status == 200) {
+            if (response.status === 200) {
               console.log("Login successfull");
               this.props.handleLogin();
             }
           })
           .catch((error)=> {
             console.log(error);
-            if (error.response.status == 404) {
+            if (error.response.status === 404) {
               console.log(this);
               console.log("Username does not exists");
               this.setState({
