@@ -1,11 +1,33 @@
 import React, { Component } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import LoginModal from "./LoginModal";
 
 // import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
 
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loginModalShow: false
+        };
+        this.handleLoginModalShow2 = this.handleLoginModalShow2.bind(this);
+    }
+    handleLoginModalShow2(){
+            console.log("loginmodalshow"); 
+            this.setState({ loginModalShow: true }); 
+        };
 
     render() {
+        let handleLoginModalClose = () => {
+            console.log("loginmodalclose");
+            this.setState({ loginModalShow: false });
+        };
+        // let handleLoginModalShow = () => { 
+        //     console.log("loginmodalshow"); 
+        //     this.setState({ loginModalShow: true }); 
+        // };
+
+
         return (
             <Navbar className="navbar" expand="lg">
                 <Navbar.Brand href="#home">LavanTru</Navbar.Brand>
@@ -23,8 +45,17 @@ class NavBar extends Component {
                         </NavDropdown>
                     </Nav>
                     <Nav className="ml-auto">
-                    <Nav.Link className="font-weight-bold" href="#log_in">Log in</Nav.Link>
-                    <Nav.Link href="#sign_up">Sign up</Nav.Link>
+                        <Nav.Link className="font-weight-bold" 
+                        // href="#log_in" 
+                        onClick={this.handleLoginModalShow2}>
+                            Log in
+                        <LoginModal
+                                show={this.state.loginModalShow}
+                                onHide={handleLoginModalClose}
+                            />
+
+                        </Nav.Link>
+                        <Nav.Link href="#sign_up">Sign up</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
