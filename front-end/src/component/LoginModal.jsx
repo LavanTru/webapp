@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Modal, Button, Row, Col, Form } from "react-bootstrap";
+import Login from "./Login";
 
 class LoginModal extends Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         return (
             <>
@@ -12,7 +14,7 @@ class LoginModal extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title>Log in</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                    <Modal.Body><Login /></Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.props.onHide}>
                             Close

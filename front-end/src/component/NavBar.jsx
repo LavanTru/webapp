@@ -10,24 +10,16 @@ class NavBar extends Component {
         this.state = {
             loginModalShow: false
         };
-        this.handleLoginModalShow2 = this.handleLoginModalShow2.bind(this);
+        this.handleLoginModal = this.handleLoginModal.bind(this);
+
     }
-    handleLoginModalShow2(){
-            console.log("loginmodalshow"); 
-            this.setState({ loginModalShow: true }); 
-        };
+
+    handleLoginModal() {
+        this.setState({ loginModalShow: !this.state.loginModalShow });
+    };
+
 
     render() {
-        let handleLoginModalClose = () => {
-            console.log("loginmodalclose");
-            this.setState({ loginModalShow: false });
-        };
-        // let handleLoginModalShow = () => { 
-        //     console.log("loginmodalshow"); 
-        //     this.setState({ loginModalShow: true }); 
-        // };
-
-
         return (
             <Navbar className="navbar" expand="lg">
                 <Navbar.Brand href="#home">LavanTru</Navbar.Brand>
@@ -45,16 +37,16 @@ class NavBar extends Component {
                         </NavDropdown>
                     </Nav>
                     <Nav className="ml-auto">
-                        <Nav.Link className="font-weight-bold" 
-                        // href="#log_in" 
-                        onClick={this.handleLoginModalShow2}>
+                        <Nav.Link className="font-weight-bold"
+                            // href="#log_in" 
+                            onClick={this.handleLoginModal}>
                             Log in
+                        </Nav.Link>
                         <LoginModal
                                 show={this.state.loginModalShow}
-                                onHide={handleLoginModalClose}
+                                onHide={this.handleLoginModal}
+                                backdrop="static"
                             />
-
-                        </Nav.Link>
                         <Nav.Link href="#sign_up">Sign up</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
