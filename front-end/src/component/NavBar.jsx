@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import LoginModal from "./LoginModal";
 
-// import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
-
 class NavBar extends Component {
     constructor(props) {
         super(props);
@@ -41,12 +39,14 @@ class NavBar extends Component {
                             // href="#log_in" 
                             onClick={this.handleLoginModal}>
                             Log in
+
                         </Nav.Link>
                         <LoginModal
-                                show={this.state.loginModalShow}
-                                onHide={this.handleLoginModal}
-                                backdrop="static"
-                            />
+                            // show={this.state.loginModalShow}
+                            show={true}
+                            onHide={this.handleLoginModal}
+                            backdrop="static"
+                        />
                         <Nav.Link href="#sign_up">Sign up</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

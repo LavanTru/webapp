@@ -28,8 +28,15 @@ class Login extends Component {
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
 
-        <Button variant="primary" type="submit" onClick = {this.handleClick}>
-          Submit
+        <Button 
+        // variant="primary" 
+        // type="submit" 
+        className = "button-green"
+        onClick = {this.handleClick}
+        block
+
+        >
+          Log in
         </Button>
       </Form>
     );

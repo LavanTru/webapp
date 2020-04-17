@@ -18,7 +18,7 @@ class Loginscreen extends Component {
       loginscreen: ''
     };
     this.handleClick = this.handleClick.bind(this);
-    this.prepareGoogleLoginButton = this.prepareGoogleLoginButton.bind(this);
+    // this.prepareGoogleLoginButton = this.prepareGoogleLoginButton.bind(this);
   }
 
   render() {
@@ -39,16 +39,16 @@ class Loginscreen extends Component {
             </div>
           </MuiThemeProvider>
         </div>
-        <button className="loginBtn loginBtn--google" ref="googleLoginBtn">
+        {/* <button className="loginBtn loginBtn--google" ref="googleLoginBtn">
           Login with Google
-        </button>
+        </button> */}
       </div>
     );
   }
 
-  componentDidMount() {
-    this.googleSDK();
-  }
+  // componentDidMount() {
+  //   this.googleSDK();
+  // }
 
   handleClick(event) {
     if (this.state.isRegistered) {
@@ -66,78 +66,78 @@ class Loginscreen extends Component {
     }
   }
 
-  googleSDK() {
-    window['googleSDKLoaded'] = () => {
-      window['gapi'].load('auth2', () => {
-        this.auth2 = window['gapi'].auth2.init({
-          client_id: '146948454027-q6953hbqb8ksh01n4nse0dc2uvo9n7n0.apps.googleusercontent.com',
-          cookiepolicy: 'single_host_origin',
-          scope: 'profile email'
-        });
-        this.prepareGoogleLoginButton();
-      });
-    }
+  // googleSDK() {
+  //   window['googleSDKLoaded'] = () => {
+  //     window['gapi'].load('auth2', () => {
+  //       this.auth2 = window['gapi'].auth2.init({
+  //         client_id: '146948454027-q6953hbqb8ksh01n4nse0dc2uvo9n7n0.apps.googleusercontent.com',
+  //         cookiepolicy: 'single_host_origin',
+  //         scope: 'profile email'
+  //       });
+  //       this.prepareGoogleLoginButton();
+  //     });
+  //   }
 
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) { return; }
-      js = d.createElement(s); js.id = id;
-      js.src = "https://apis.google.com/js/platform.js?onload=googleSDKLoaded";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'google-jssdk'));
-  }
+  //   (function (d, s, id) {
+  //     var js, fjs = d.getElementsByTagName(s)[0];
+  //     if (d.getElementById(id)) { return; }
+  //     js = d.createElement(s); js.id = id;
+  //     js.src = "https://apis.google.com/js/platform.js?onload=googleSDKLoaded";
+  //     fjs.parentNode.insertBefore(js, fjs);
+  //   }(document, 'script', 'google-jssdk'));
+  // }
 
-  prepareGoogleLoginButton = () => {
+  // prepareGoogleLoginButton = () => {
 
-    console.log(this.refs.googleLoginBtn);
+  //   console.log(this.refs.googleLoginBtn);
 
-    this.auth2.attachClickHandler(this.refs.googleLoginBtn, {},
-      (googleUser) => {
+  //   this.auth2.attachClickHandler(this.refs.googleLoginBtn, {},
+  //     (googleUser) => {
 
-        let profile = googleUser.getBasicProfile();
-        console.log('Token || ' + googleUser.getAuthResponse().id_token);
-        console.log('ID: ' + profile.getId());
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail());
-        //YOUR CODE HERE
+  //       let profile = googleUser.getBasicProfile();
+  //       console.log('Token || ' + googleUser.getAuthResponse().id_token);
+  //       console.log('ID: ' + profile.getId());
+  //       console.log('Name: ' + profile.getName());
+  //       console.log('Image URL: ' + profile.getImageUrl());
+  //       console.log('Email: ' + profile.getEmail());
+  //       //YOUR CODE HERE
 
-        var apiBaseUrl = "http://localhost:8080/api/users";
+  //       var apiBaseUrl = "http://localhost:8080/api/users";
 
-        Axios.get(apiBaseUrl, {
-          params: {
-            email: profile.getEmail()
-          }
-        })
-          .then((response)=> {
-            console.log(response);
-            if (response.status === 200) {
-              console.log("Login successfull");
-              this.props.handleLogin();
-            }
-          })
-          .catch((error)=> {
-            console.log(error);
-            if (error.response.status === 404) {
-              console.log(this);
-              console.log("Username does not exists");
-              this.setState({
-                loginmessage: "Already registered? Go to login",
-                buttonLabel: "Login",
-                isRegistered: false
-              })
-            }
-            else {
-              console.log("Unknown error response status");
-              alert("Something went wrong");
-            }
-          })
-          ;
-      }, (error) => {
-        alert(JSON.stringify(error, undefined, 2));
-      });
+  //       Axios.get(apiBaseUrl, {
+  //         params: {
+  //           email: profile.getEmail()
+  //         }
+  //       })
+  //         .then((response)=> {
+  //           console.log(response);
+  //           if (response.status === 200) {
+  //             console.log("Login successfull");
+  //             this.props.handleLogin();
+  //           }
+  //         })
+  //         .catch((error)=> {
+  //           console.log(error);
+  //           if (error.response.status === 404) {
+  //             console.log(this);
+  //             console.log("Username does not exists");
+  //             this.setState({
+  //               loginmessage: "Already registered? Go to login",
+  //               buttonLabel: "Login",
+  //               isRegistered: false
+  //             })
+  //           }
+  //           else {
+  //             console.log("Unknown error response status");
+  //             alert("Something went wrong");
+  //           }
+  //         })
+  //         ;
+  //     }, (error) => {
+  //       alert(JSON.stringify(error, undefined, 2));
+  //     });
 
-  }
+  // }
 }
 const style = {
   margin: 15,

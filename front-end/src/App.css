@@ -46,3 +46,47 @@
   padding: 15px;
   font-size: larger;
 }
+
+/* Currently used at login */
+.button-green{
+  background-color: #0f7d80;
+  border: none;
+}
+.button-green:hover{
+  background-color: #0f7d80;
+  border: none;
+}
+
+/* Google button START */
+#customGoogleBtn {
+  display: inline-block;
+  background: white;
+  color: #444;
+  width: 100%;
+  border-radius: 5px;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+}
+#customGoogleBtn:hover {
+  cursor: pointer;
+}
+span.googleIcon {
+  background: url('./asset/btn_google_light_normal_ios.svg') transparent no-repeat;
+  /* background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat; */
+  display: inline-block;
+  vertical-align: middle;
+  width: 42px;
+  height: 42px;
+}
+span.googleButtonText {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 42px;
+  padding-right: 42px;
+  font-size: 14px;
+  font-weight: bold;
+  /* Use the Roboto font that is loaded in the <head> */
+  font-family: 'Roboto', sans-serif;
+}
+/* Google button END */
