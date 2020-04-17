@@ -8,14 +8,16 @@ import java.util.UUID;
 
 public class LndryJob {
     @Id
-    public UUID id;
+    private UUID id;
     @NotBlank
-    public String job;
+    private String job;
+    private boolean isActive;
 
     public LndryJob(@JsonProperty("id") UUID id,
                     @JsonProperty("job") String job) {
         this.id = id;
         this.job = job;
+        this.isActive = true;
     }
 
     public UUID getId() {
@@ -32,5 +34,13 @@ public class LndryJob {
 
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

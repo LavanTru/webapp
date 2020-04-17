@@ -9,6 +9,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import WasherLndryJobCapabilitiesComponent from './component/WasherLndryJobCapabilitiesComponent';
 
 
 /**React Component representing the high-level structure of the application. 
@@ -38,8 +39,9 @@ class App extends Component {
             {this.state.mainContent}
             
             <Switch>
-              <Route path="/" exact component={ListLndryJobsComponent} />
-              <Route path="/:id" component={LndryJobDetailsComponent} />
+              <Route path="/jobs" exact component={ListLndryJobsComponent} />
+              <Route path="/jobs/:id" component={LndryJobDetailsComponent} />
+              <Route path="/washerjobs" exact component={WasherLndryJobCapabilitiesComponent} />
             </Switch>
           </>
         </Router>
