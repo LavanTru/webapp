@@ -15,6 +15,7 @@ class Register extends Component {
       password:'',
       matchingPassword:''
     }
+
   }
   render() {
     return (

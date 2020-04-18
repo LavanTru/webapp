@@ -1,37 +1,71 @@
 import React, { Component } from "react";
-import { Modal, Button, Row, Col, Form } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import Login from "./Login";
+import Register from "./Register";
 import Axios from 'axios';
-import GoogleButton from 'react-google-button';
+import UserDataService from "../service/UserDataService";
 
 class LoginModal extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            loginMessage: "Don't have an account?",
+            headerLabel: "Log in",
+            buttonLabel: 'Sign up',
+            isRegistered: true
+        }
+        this.handleClick = this.handleClick.bind(this);
     }
 
     render() {
+        console.log("modal rendered");
+        let loginScreen;
+        this.state.isRegistered ? (
+            loginScreen = <Login />
+        ) : (
+                loginScreen = <Register handleClick={this.handleClick} />);
         return (
             <>
                 <Modal {...this.props}>
                     <Modal.Header closeButton>
-                        <Modal.Title className="w-100 text-center" >Log in</Modal.Title>
+                        <Modal.Title className="w-100 text-center" >{this.state.headerLabel}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body><Login /></Modal.Body>
+                    <Modal.Body>{loginScreen}</Modal.Body>
                     <Modal.Footer className="mx-auto">
                         <div id="customGoogleBtn">
                             <span class="googleIcon"></span>
-                            <span class="googleButtonText">Sign in with Google</span>
+                            <span class="googleButtonText">Continue with Google</span>
                         </div>
                     </Modal.Footer>
                     <Modal.Footer className="mx-auto">
-                        Don't have an account? Sign up
+                        {this.state.loginMessage}
+                        <div className="loginLink" onClick={this.handleClick}>{this.state.buttonLabel}</div>
                     </Modal.Footer>
                 </Modal>
             </>
         );
     }
 
-    componentDidMount() {
+    handleClick() {
+        if (this.state.isRegistered) {
+            this.setState({
+                loginMessage: "Already registered?",
+                buttonLabel: "Log in",
+                headerLabel: "Sign up",
+                isRegistered: false
+            });
+        } else {
+            this.setState({
+                loginMessage: "Don't have an account?",
+                buttonLabel: "Sign up",
+                headerLabel: "Log in",
+                isRegistered: true
+            });
+        }
+    }
+
+
+    componentDidUpdate() {
         this.googleSDK();
     }
 
@@ -57,9 +91,6 @@ class LoginModal extends Component {
     }
 
     prepareGoogleLoginButton = () => {
-
-        console.log(document.getElementById("customGoogleBtn"));
-
         this.auth2.attachClickHandler(document.getElementById("customGoogleBtn"), {},
             (googleUser) => {
 
@@ -69,31 +100,26 @@ class LoginModal extends Component {
                 console.log('Name: ' + profile.getName());
                 console.log('Image URL: ' + profile.getImageUrl());
                 console.log('Email: ' + profile.getEmail());
-                //YOUR CODE HERE
+
 
                 var apiBaseUrl = "http://localhost:8080/api/users";
 
-                Axios.get(apiBaseUrl, {
-                    params: {
-                        email: profile.getEmail()
-                    }
-                })
+                UserDataService.getUserByEmail(profile.getEmail)
                     .then((response) => {
                         console.log(response);
                         if (response.status === 200) {
                             console.log("Login successfull");
-                            this.props.handleLogin();
+                            // TODO save user and close modal
                         }
                     })
                     .catch((error) => {
                         console.log(error);
                         if (error.response.status === 404) {
-                            console.log(this);
+                            // console.log(this);
                             console.log("Username does not exists");
                             this.setState({
-                                loginmessage: "Already registered? Go to login",
-                                buttonLabel: "Login",
-                                isRegistered: false
+                                // TODO forward to registration flow
+                               
                             })
                         }
                         else {

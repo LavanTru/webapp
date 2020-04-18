@@ -42,8 +42,8 @@ class NavBar extends Component {
 
                         </Nav.Link>
                         <LoginModal
-                            // show={this.state.loginModalShow}
-                            show={true}
+                            show={this.state.loginModalShow}
+                            // show={true}
                             onHide={this.handleLoginModal}
                             backdrop="static"
                         />

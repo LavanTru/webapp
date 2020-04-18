@@ -48,13 +48,15 @@
 }
 
 /* Currently used at login */
-.button-green{
-  background-color: #0f7d80;
-  border: none;
-}
-.button-green:hover{
-  background-color: #0f7d80;
-  border: none;
+.button-green,
+.button-green:hover,
+.button-green:active,
+.button-green:focus,
+.button-green:active:focus
+{
+  background-color: #0f7d80 !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Google button START */
@@ -90,3 +92,14 @@ span.googleButtonText {
   font-family: 'Roboto', sans-serif;
 }
 /* Google button END */
+
+.loginLink{
+  text-decoration: underline;
+  font-weight: bold;
+}
+.loginLink:hover{
+  cursor: pointer;
+}
+.redError{
+  color: red;
+}
