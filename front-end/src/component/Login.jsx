@@ -16,7 +16,7 @@ class Login extends Component {
   }
   render() {
     return (
-      <Form>
+      <Form className ="m-4" >
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.handleChange} />

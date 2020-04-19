@@ -38,10 +38,15 @@
   }
 }
 
+.lavantruPink{
+  color:#b8627d  
+}
+.lavantruGreen{
+  color:#0f7d80  
+}
+
 /* NavBar */
 .navbar{
-  /* background-color: #b8627d; */
-  /* background-color: #0f7d80;*/
   background-color: #ffe6de; 
   padding: 15px;
   font-size: larger;
@@ -55,6 +60,17 @@
 .button-green:active:focus
 {
   background-color: #0f7d80 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.button-pink,
+.button-pink:hover,
+.button-pink:active,
+.button-pink:focus,
+.button-pink:active:focus
+{
+  background-color: #b8627d !important;
   border: none !important;
   box-shadow: none !important;
 }

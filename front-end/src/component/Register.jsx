@@ -19,7 +19,7 @@ class Register extends Component {
     }
     render() {
         return (
-            <Form onChange={this.handleChange}>
+            <Form className ="m-4" onChange={this.handleChange}>
                 <Form.Group controlId="formFirstName">
                     <Form.Label>First name</Form.Label>
                     <Form.Control name="firstName" placeholder="First name" />

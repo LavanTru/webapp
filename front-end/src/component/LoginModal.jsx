@@ -89,9 +89,6 @@ class LoginModal extends Component {
                 console.log('Image URL: ' + profile.getImageUrl());
                 console.log('Email: ' + profile.getEmail());
 
-
-                var apiBaseUrl = "http://localhost:8080/api/users";
-
                 UserDataService.getUserByEmail(profile.getEmail)
                     .then((response) => {
                         console.log(response);
