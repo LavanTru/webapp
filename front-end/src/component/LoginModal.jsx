@@ -2,33 +2,39 @@ import React, { Component } from "react";
 import { Modal } from "react-bootstrap";
 import Login from "./Login";
 import Register from "./Register";
-import Axios from 'axios';
 import UserDataService from "../service/UserDataService";
 
 class LoginModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loginMessage: "Don't have an account?",
-            headerLabel: "Log in",
-            buttonLabel: 'Sign up',
             isRegistered: true
         }
-        this.handleClick = this.handleClick.bind(this);
     }
 
     render() {
-        console.log("modal rendered");
         let loginScreen;
-        this.state.isRegistered ? (
-            loginScreen = <Login />
-        ) : (
-                loginScreen = <Register handleClick={this.handleClick} />);
+        let headerLabel;
+        let loginMessage;
+        let buttonLabel;
+
+        if (this.props.isRegistered) {
+            loginScreen = <Login />;
+            headerLabel = "Log in";
+            loginMessage = "Don't have an account?";
+            buttonLabel = "Sign up";
+           
+        } else {
+            loginScreen = <Register />
+            headerLabel = "Sign up";
+            loginMessage = "Already registered?";
+            buttonLabel = "Log in";
+        };
         return (
             <>
                 <Modal {...this.props}>
                     <Modal.Header closeButton>
-                        <Modal.Title className="w-100 text-center" >{this.state.headerLabel}</Modal.Title>
+                        <Modal.Title className="w-100 text-center" >{headerLabel}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>{loginScreen}</Modal.Body>
                     <Modal.Footer className="mx-auto">
@@ -38,30 +44,12 @@ class LoginModal extends Component {
                         </div>
                     </Modal.Footer>
                     <Modal.Footer className="mx-auto">
-                        {this.state.loginMessage}
-                        <div className="loginLink" onClick={this.handleClick}>{this.state.buttonLabel}</div>
+                        {loginMessage}
+                        <div className="loginLink" onClick={this.props.handleChangeIsRegistered}>{buttonLabel}</div>
                     </Modal.Footer>
                 </Modal>
             </>
         );
-    }
-
-    handleClick() {
-        if (this.state.isRegistered) {
-            this.setState({
-                loginMessage: "Already registered?",
-                buttonLabel: "Log in",
-                headerLabel: "Sign up",
-                isRegistered: false
-            });
-        } else {
-            this.setState({
-                loginMessage: "Don't have an account?",
-                buttonLabel: "Sign up",
-                headerLabel: "Log in",
-                isRegistered: true
-            });
-        }
     }
 
 
@@ -119,7 +107,7 @@ class LoginModal extends Component {
                             console.log("Username does not exists");
                             this.setState({
                                 // TODO forward to registration flow
-                               
+
                             })
                         }
                         else {

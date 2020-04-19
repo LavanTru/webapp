@@ -6,9 +6,11 @@ class NavBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loginModalShow: false
+            loginModalShow: false,
+            isRegistered:true
         };
         this.handleLoginModal = this.handleLoginModal.bind(this);
+        this.handleChangeIsRegistered = this.handleChangeIsRegistered.bind(this);
 
     }
 
@@ -16,6 +18,9 @@ class NavBar extends Component {
         this.setState({ loginModalShow: !this.state.loginModalShow });
     };
 
+    handleChangeIsRegistered() {
+        this.setState({isRegistered: !this.state.isRegistered});
+    };
 
     render() {
         return (
@@ -45,14 +50,23 @@ class NavBar extends Component {
                             show={this.state.loginModalShow}
                             // show={true}
                             onHide={this.handleLoginModal}
-                            backdrop="static"
+                            isRegistered={this.state.isRegistered}
+                            handleChangeIsRegistered={this.handleChangeIsRegistered}
+                            // backdrop="static"
                         />
-                        <Nav.Link href="#sign_up">Sign up</Nav.Link>
+                        <Nav.Link 
+                        // href="#sign_up"
+                        onClick= {()=>{this.handleChangeIsRegistered();this.handleLoginModal();}}
+                        
+                        >Sign up</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
         );
     }
+
+   
+
 }
 
 export default NavBar;
