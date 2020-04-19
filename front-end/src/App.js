@@ -10,6 +10,7 @@ import {
   Route
 } from "react-router-dom";
 import RegisterWasherOrWashee from './component/RegisterWasherOrWashee';
+import RegisterWasher from './component/RegisterWasher';
 
 
 /**React Component representing the high-level structure of the application. 
@@ -39,9 +40,12 @@ class App extends Component {
             {/* {this.state.mainContent} */}
             
             <Switch>
-              <Route path="/register" exact component={RegisterWasherOrWashee} />
+            <Route exact path="/register"  component={RegisterWasherOrWashee} />
+            <Route exact path="/register/washer"  component={RegisterWasher} />
+
               <Route path="/" exact component={ListLndryJobsComponent} />
               <Route path="/:id" component={LndryJobDetailsComponent} />
+
             </Switch>
           </>
         </Router>
