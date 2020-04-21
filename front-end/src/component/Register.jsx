@@ -55,7 +55,7 @@ class Register extends Component {
             </Form>
         );
     }
-
+// Method to record the changes in the form in a component state variable
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value

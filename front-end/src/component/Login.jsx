@@ -7,8 +7,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errorMessage: ""
     }
     this.handleClick = this.handleClick.bind(this);
@@ -41,6 +41,7 @@ class Login extends Component {
       </Form>
     );
   }
+  // Method to record the changes in the form in a component state variable
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
