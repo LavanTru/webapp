@@ -81,16 +81,6 @@ public class UsersService implements IUsersService {
     return false;
   }
 
-  @Override
-  public void updateWasherLndryJobCapabilities(ObjectId id, List<LndryJob> washerLndryJobCapabilities) throws UserInvalidUserTypeException {
-    Users washer = getUserById(id);
-    if (!washer.getUserType().equalsIgnoreCase("washer")){
-      throw new UserInvalidUserTypeException("Only Washers users can add Laundry Jobs.");
-    }
-    washer.setWasherLndryJobCapabilities(washerLndryJobCapabilities);
-    repository.save(washer);
-  }
-
   public boolean passwordMatches(String email, String password){
     Users user = repository.findByEmail(email);
     if (user.getPassword().equals(password)){

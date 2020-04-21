@@ -68,13 +68,6 @@ public class UsersController {
         repository.delete(repository.findById(id));
     }
 
-    @RequestMapping(value = "/addWasherCapabilities/{id}", method = RequestMethod.PUT)
-    public void updateWasherLndryJobCapabilities(
-            @PathVariable ObjectId id,
-            @RequestBody List<LndryJob> washerLndryJobCapabilities) {
-        usersService.updateWasherLndryJobCapabilities(id, washerLndryJobCapabilities);
-    }
-
 //    Handling the error if created user does not correspond with the annotation requirements. Outputs the field errors in a clear way
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)

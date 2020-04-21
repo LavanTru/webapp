@@ -19,5 +19,4 @@ public interface IUsersService {
   Users getUserByEmail(String email) throws UserNotFoundException;
   boolean passwordMatches(String email, String password);
   boolean emailExists(String email);
-  void updateWasherLndryJobCapabilities(ObjectId id, List<LndryJob> washerLndryJobCapabilities) throws UserInvalidUserTypeException;
 }
