@@ -36,7 +36,7 @@ public class WasherController {
         //return repository.findById(id);
     }
 
-    @PostMapping(path = "/setup")
+    @PostMapping(path = "/register")
     public void registerWasher(@Valid @NonNull @RequestBody Washer washer){
         washerService.insertWasher(washer);
     }
