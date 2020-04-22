@@ -19,7 +19,6 @@ public class Users {
     private String accountType;
     private String companyName;
     private String userType;
-    private List<LndryJob> washerLndryJobCapabilities = null;
     private Boolean acceptsMarketingEmails;
     private List<String> payoutBankDetails = null;
     private List<Address> addresses = null;
@@ -159,14 +158,6 @@ public class Users {
         this.password = password;
     }
 
-    public List<LndryJob> getWasherLndryJobCapabilities() {
-        return washerLndryJobCapabilities;
-    }
-
-    public void setWasherLndryJobCapabilities(List<LndryJob> washerLndryJobCapabilities) {
-        this.washerLndryJobCapabilities = washerLndryJobCapabilities;
-    }
-
     @Override
     public String toString() {
         return new ToStringBuilder(this)
@@ -178,7 +169,6 @@ public class Users {
                 .append("phoneCountryCode", phoneCountryCode)
                 .append("accountType", accountType)
                 .append("userType", userType)
-                .append("washerLndryJobCapabilities", washerLndryJobCapabilities)
                 .append("acceptsMarketingEmails", acceptsMarketingEmails)
                 .append("payoutBankDetails", payoutBankDetails)
                 .append("addresses", addresses)
