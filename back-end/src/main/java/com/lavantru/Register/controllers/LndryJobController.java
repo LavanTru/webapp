@@ -1,7 +1,7 @@
 package com.lavantru.Register.controllers;
 
-import com.lavantru.Register.model.LndryJob;
-import com.lavantru.Register.services.LndryJobService;
+import com.lavantru.Register.model.Job;
+import com.lavantru.Register.services.JobService;
 import com.mongodb.lang.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,35 +15,35 @@ import java.util.UUID;
 @RestController
 public class LndryJobController {
 
-    private LndryJobService lndryJobService;
+    private JobService jobService;
 
     @Autowired
-    public LndryJobController(LndryJobService lndryJobService) {
-        this.lndryJobService = lndryJobService;
+    public LndryJobController(JobService jobService) {
+        this.jobService = jobService;
     }
 
     @PostMapping
-    public void addJob(@Valid @NonNull @RequestBody LndryJob lndryJob){
-        lndryJobService.addLndryJob(lndryJob);
+    public void addJob(@Valid @NonNull @RequestBody Job job){
+        jobService.addLndryJob(job);
     }
 
     @GetMapping
-    public List<LndryJob> getAllJobs(){
-        return  lndryJobService.getAllJobs();
+    public List<Job> getAllJobs(){
+        return  jobService.getAllJobs();
     }
 
     @GetMapping(path = "/{id}")
-    public LndryJob getJobById(@PathVariable("id") UUID id){
-        return lndryJobService.getJobById(id).orElse(null);
+    public Job getJobById(@PathVariable("id") UUID id){
+        return jobService.getJobById(id).orElse(null);
     }
 
     @DeleteMapping(path = "/{id}")
     public void deleteLndryJobById(@PathVariable("id") UUID id){
-        lndryJobService.deleteLndryJob(id);
+        jobService.deleteLndryJob(id);
     }
 
     @PutMapping(path = "/{id}")
-    public void updateLndryJobById(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody LndryJob lndryJob){
-        lndryJobService.updateLndryJob(id, lndryJob);
+    public void updateLndryJobById(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Job job){
+        jobService.updateLndryJob(id, job);
     }
 }

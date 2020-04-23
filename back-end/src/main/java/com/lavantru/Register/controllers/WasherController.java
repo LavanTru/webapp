@@ -1,7 +1,6 @@
 package com.lavantru.Register.controllers;
 
-import com.lavantru.Register.model.LndryJob;
-import com.lavantru.Register.model.Users;
+import com.lavantru.Register.model.Job;
 import com.lavantru.Register.model.Washer;
 import com.lavantru.Register.services.WasherService;
 import com.mongodb.lang.NonNull;
@@ -44,7 +43,7 @@ public class WasherController {
     @PutMapping(path = "/laundryCapabilities/{id}")
     public void updateLndryJobCapabilities(
             @PathVariable ObjectId id,
-            @RequestBody List<LndryJob> washerLndryJobCapabilities) {
-        washerService.updateLndryJobCapabilities(id, washerLndryJobCapabilities);
+            @RequestBody List<Job> washerJobCapabilities) {
+        washerService.updateLndryJobCapabilities(id, washerJobCapabilities);
     }
 }

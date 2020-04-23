@@ -6,15 +6,15 @@ import org.springframework.data.annotation.Id;
 import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
-public class LndryJob {
+public class Job {
     @Id
     private UUID id;
     @NotBlank
     private String job;
     private boolean isActive;
 
-    public LndryJob(@JsonProperty("id") UUID id,
-                    @JsonProperty("job") String job) {
+    public Job(@JsonProperty("id") UUID id,
+               @JsonProperty("job") String job) {
         this.id = id;
         this.job = job;
         this.isActive = true;

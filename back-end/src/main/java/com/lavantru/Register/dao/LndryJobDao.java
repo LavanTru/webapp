@@ -1,6 +1,6 @@
 package com.lavantru.Register.dao;
 
-import com.lavantru.Register.model.LndryJob;
+import com.lavantru.Register.model.Job;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,18 +8,18 @@ import java.util.UUID;
 
 public interface LndryJobDao {
 
-    int insertJob(UUID id, LndryJob lndryJob);
+    int insertJob(UUID id, Job job);
 
-    default int insertJob(LndryJob lndryJob){
+    default int insertJob(Job job){
         UUID id = UUID.randomUUID();
-        return  insertJob(id, lndryJob);
+        return  insertJob(id, job);
     }
 
-    List<LndryJob> selectAllJobs();
+    List<Job> selectAllJobs();
 
-    Optional<LndryJob> selectJobById(UUID id);
+    Optional<Job> selectJobById(UUID id);
 
     int deleteJobById(UUID id);
 
-    int updateJobById(UUID id, LndryJob lndryJob);
+    int updateJobById(UUID id, Job job);
 }
