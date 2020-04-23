@@ -9,6 +9,6 @@ import java.util.UUID;
 
 public interface WasherRepository extends MongoRepository<Washer, String> {
     //  declaration of custom find
-    Users findById(ObjectId _id);
-    Users findByEmail(String email);
+    Washer findById(ObjectId _id);
+    Washer findByEmail(String email);
 }

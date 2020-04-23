@@ -32,7 +32,6 @@ public class WasherController {
     @GetMapping(path = "/{id}")
     public Washer getWasherById(@PathVariable("id") ObjectId id) {
         return washerService.getWasherById(id);
-        //return repository.findById(id);
     }
 
     @PostMapping(path = "/register")

@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
-import LndryJobDataService from '../service/LndryJobDataService'
+import JobDataService from '../service/JobDataService'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-class LndryJobDetailsComponent extends Component {
+class JobDetailsComponent extends Component {
 
     constructor(props) {
         super(props)
@@ -23,7 +23,7 @@ class LndryJobDetailsComponent extends Component {
             return
         }
 
-        LndryJobDataService.retrieveLndryJob(this.state.id)
+        JobDataService.retrieveJob(this.state.id)
             .then(response => this.setState({
                 job: response.data.job
             }))
@@ -38,7 +38,7 @@ class LndryJobDetailsComponent extends Component {
         let jobJsonWithoutId = {job : values.job}
 
         if (this.state.id === "-1") {
-            LndryJobDataService.createLndryJob(jobJsonWithoutId)
+            JobDataService.createJob(jobJsonWithoutId)
                 .then(() => this.props.history.push())
                 .then(
                     response => {
@@ -46,7 +46,7 @@ class LndryJobDetailsComponent extends Component {
                     }
                 )
         } else {
-            LndryJobDataService.updateLndryJob(this.state.id, jobJson)
+            JobDataService.updateJob(this.state.id, jobJson)
                 .then(() => this.props.history.push())
                 .then(
                     response => {
@@ -109,4 +109,4 @@ class LndryJobDetailsComponent extends Component {
 
 }
 
-export default LndryJobDetailsComponent
+export default JobDetailsComponent

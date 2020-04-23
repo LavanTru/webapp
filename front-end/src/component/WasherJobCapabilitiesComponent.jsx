@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import WasherDataService from '../service/WasherDataService';
 
-class WasherLndryJobCapabilitiesComponent extends Component{
+class WasherJobCapabilitiesComponent extends Component{
 
     constructor(props){
         super(props)
         this.state = {
-            washerId : '5e763798a4929f3d509d93b9', // id must be consumed from the user session 
+            washerId : '5ea1d1552cea5c7ddc865ded', // id must be consumed from the user session 
             washerCapabilities: [],
             message: null
         }
 
         this.refreshWasherJobCapabilities = this.refreshWasherJobCapabilities.bind(this);
         this.handleChecked = this.handleChecked.bind(this); 
-        this.updateWasherLndryJobCapabilitiesClicked = this.updateWasherLndryJobCapabilitiesClicked.bind(this);
+        this.updateWasherJobCapabilitiesClicked = this.updateWasherJobCapabilitiesClicked.bind(this);
     }
 
     componentDidMount() {
@@ -21,10 +21,10 @@ class WasherLndryJobCapabilitiesComponent extends Component{
     }
 
     refreshWasherJobCapabilities(){
-        WasherDataService.retrieveUser(this.state.washerId)
+        WasherDataService.retrieveWasher(this.state.washerId)
         .then(
             response => {
-                this.setState({washerCapabilities: response.data.washerLndryJobCapabilities})
+                this.setState({washerCapabilities: response.data.jobCapabilities})
                 console.log(this.state.washerCapabilities)
             }
         )
@@ -46,9 +46,9 @@ class WasherLndryJobCapabilitiesComponent extends Component{
         console.log(this.state.washerCapabilities);
     }
 
-    updateWasherLndryJobCapabilitiesClicked(){
+    updateWasherJobCapabilitiesClicked(){
         console.log(this.state.washerCapabilities);
-        WasherDataService.updateWasherLndryJobCapabilities(this.state.washerId, this.state.washerCapabilities)
+        WasherDataService.updateWasherJobCapabilities(this.state.washerId, this.state.washerCapabilities)
             .then(
                 response => {
                     if(response.status === 200){
@@ -64,14 +64,14 @@ class WasherLndryJobCapabilitiesComponent extends Component{
     render(){
         return (
             <div className="container">
-            <h3>Your laundry jobs</h3>
+            <h3>Your offered jobs</h3>
             {
             this.state.message && <div className="alert alert-success">{this.state.message}</div>}
-            <p>Select the laundry jobs you offer to your clients:</p>
-            <table class="table" >
+            <p>Select the jobs you offer to your clients:</p>
+            <table className="table" >
                 <thead>
                     <tr>
-                        <th>Laundry Job</th>
+                        <th>Job</th>
                         <th>Select</th>
                     </tr>
                 </thead>
@@ -94,11 +94,11 @@ class WasherLndryJobCapabilitiesComponent extends Component{
                 </tbody>
             </table>
             <div className="row">
-                <button className="btn btn-success" onClick={this.updateWasherLndryJobCapabilitiesClicked}>Save</button>
+                <button className="btn btn-success" onClick={this.updateWasherJobCapabilitiesClicked}>Save</button>
             </div>
             </div>  
         )
     }
 }
 
-export default WasherLndryJobCapabilitiesComponent
+export default WasherJobCapabilitiesComponent

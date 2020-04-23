@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import DefaultReactPage from './DefaultReactPage';
 import NavBar from './component/NavBar';
 import LoginScreen from './LoginScreen';
-import ListLndryJobsComponent from './component/ListLndryJobsComponent';
-import LndryJobDetailsComponent from './component/LndryJobDetailsComponent';
+import ListJobsComponent from './component/ListJobsComponent';
+import JobDetailsComponent from './component/JobDetailsComponent';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
-import WasherLndryJobCapabilitiesComponent from './component/WasherLndryJobCapabilitiesComponent';
+import WasherJobCapabilitiesComponent from './component/WasherJobCapabilitiesComponent';
 
 
 /**React Component representing the high-level structure of the application. 
@@ -39,9 +39,9 @@ class App extends Component {
             {this.state.mainContent}
             
             <Switch>
-              <Route path="/jobs" exact component={ListLndryJobsComponent} />
-              <Route path="/jobs/:id" component={LndryJobDetailsComponent} />
-              <Route path="/washerjobs" exact component={WasherLndryJobCapabilitiesComponent} />
+              <Route path="/jobs" exact component={ListJobsComponent} />
+              <Route path="/jobs/:id" component={JobDetailsComponent} />
+              <Route path="/washerjobs" exact component={WasherJobCapabilitiesComponent} />
             </Switch>
           </>
         </Router>

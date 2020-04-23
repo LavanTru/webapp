@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
-import LndryJobDataService from '../service/LndryJobDataService'
+import JobDataService from '../service/JobDataService'
 
-class ListLndryJobsComponent extends Component {
+class ListJobsComponent extends Component {
 
     constructor(props) {
         super(props)
@@ -20,7 +20,7 @@ class ListLndryJobsComponent extends Component {
     }
 
     refreshLndryJobs() {
-        LndryJobDataService.retrieveAllLndryJobs()
+        JobDataService.retrieveAllJobs()
             .then(
                 response => {
                     console.log(response);
@@ -39,7 +39,7 @@ class ListLndryJobsComponent extends Component {
     }
 
     deleteLndryJobClicked(id) {
-        LndryJobDataService.deleteLndryJob(id)
+        JobDataService.deleteJob(id)
             .then(
                 response => {
                     this.setState({ message: `Laundry job with id: "${id}" deleted successfully` })
@@ -86,4 +86,4 @@ class ListLndryJobsComponent extends Component {
     }
 }
 
-export default ListLndryJobsComponent
+export default ListJobsComponent
