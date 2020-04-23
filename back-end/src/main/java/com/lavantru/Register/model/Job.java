@@ -11,6 +11,7 @@ public class Job {
     private UUID id;
     @NotBlank
     private String job;
+    private String speed;
     private boolean isActive;
 
     public Job(@JsonProperty("id") UUID id,
@@ -42,5 +43,13 @@ public class Job {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public String getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(String speed) {
+        this.speed = speed;
     }
 }
