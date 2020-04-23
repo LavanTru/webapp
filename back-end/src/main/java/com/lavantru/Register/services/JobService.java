@@ -19,7 +19,7 @@ public class JobService {
         this.lndryJobDao = lndryJobDao;
     }
 
-    public int addLndryJob(Job job){
+    public int addJob(Job job){
         return lndryJobDao.insertJob(job);
     }
 
@@ -31,11 +31,11 @@ public class JobService {
         return lndryJobDao.selectJobById(id);
     }
 
-    public int deleteLndryJob(UUID id){
+    public int deleteJob(UUID id){
         return lndryJobDao.deleteJobById(id);
     }
 
-    public int updateLndryJob(UUID id, Job newJob){
+    public int updateJob(UUID id, Job newJob){
         return lndryJobDao.updateJobById(id, newJob);
     }
 }

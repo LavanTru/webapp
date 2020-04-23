@@ -10,21 +10,21 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
-@RequestMapping("api/laundryJob")
+@RequestMapping("api/job")
 @CrossOrigin(origins = { "http://localhost:3000" })
 @RestController
-public class LndryJobController {
+public class JobController {
 
     private JobService jobService;
 
     @Autowired
-    public LndryJobController(JobService jobService) {
+    public JobController(JobService jobService) {
         this.jobService = jobService;
     }
 
     @PostMapping
     public void addJob(@Valid @NonNull @RequestBody Job job){
-        jobService.addLndryJob(job);
+        jobService.addJob(job);
     }
 
     @GetMapping
@@ -38,12 +38,12 @@ public class LndryJobController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public void deleteLndryJobById(@PathVariable("id") UUID id){
-        jobService.deleteLndryJob(id);
+    public void deleteJobById(@PathVariable("id") UUID id){
+        jobService.deleteJob(id);
     }
 
     @PutMapping(path = "/{id}")
-    public void updateLndryJobById(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Job job){
-        jobService.updateLndryJob(id, job);
+    public void updateJobById(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Job job){
+        jobService.updateJob(id, job);
     }
 }

@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(LndryJobController.class)
+@WebMvcTest(JobController.class)
 public class JobControllerTest {
 
     @Autowired
@@ -41,7 +41,7 @@ public class JobControllerTest {
     private UUID id = new UUID(1234567890, 987654321);
     private String jobMocked = "Laundry";
     private Job job = new Job(id, jobMocked);
-    private String lndryJobApiURL = "http://localhost:8080/api/laundryJob/";
+    private String jobApiURL = "http://localhost:8080/api/job/";
 
     @Test
     public void getAllJobsTest() throws Exception {
@@ -49,7 +49,7 @@ public class JobControllerTest {
 
         given(jobService.getAllJobs()).willReturn(allJobs);
 
-        mockMvc.perform(get(lndryJobApiURL)
+        mockMvc.perform(get(jobApiURL)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -59,12 +59,12 @@ public class JobControllerTest {
     @Test
     public void getJobByIdTest() throws Exception
     {
-        Optional<Job> lndryJob = Optional.of(this.job);
+        Optional<Job> job = Optional.of(this.job);
 
-        given(jobService.getJobById(id)).willReturn(lndryJob);
+        given(jobService.getJobById(id)).willReturn(job);
 
         mockMvc.perform(MockMvcRequestBuilders
-                .get(lndryJobApiURL+"{id}", id)
+                .get(jobApiURL +"{id}", id)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.job").value(jobMocked));
@@ -74,7 +74,7 @@ public class JobControllerTest {
     public void addJobTest() throws Exception
     {
         mockMvc.perform(MockMvcRequestBuilders
-                .post(lndryJobApiURL)
+                .post(jobApiURL)
                 .content(asJsonString(job))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -85,7 +85,7 @@ public class JobControllerTest {
     public void updateJobByIdTest() throws Exception
     {
         MockHttpServletRequestBuilder builder =
-                MockMvcRequestBuilders.put(lndryJobApiURL + "{id}", id)
+                MockMvcRequestBuilders.put(jobApiURL + "{id}", id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .content((asJsonString(job)));
@@ -98,7 +98,7 @@ public class JobControllerTest {
     public void deleteJobByIdTest() throws Exception
     {
         mockMvc.perform(MockMvcRequestBuilders
-                .delete(lndryJobApiURL+"{id}", id))
+                .delete(jobApiURL +"{id}", id))
                 .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
     }
 

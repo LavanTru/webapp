@@ -40,7 +40,7 @@ public class WasherController {
         washerService.insertWasher(washer);
     }
 
-    @PutMapping(path = "/laundryCapabilities/{id}")
+    @PutMapping(path = "/services/{id}")
     public void updateLndryJobCapabilities(
             @PathVariable ObjectId id,
             @RequestBody List<Job> washerJobCapabilities) {
