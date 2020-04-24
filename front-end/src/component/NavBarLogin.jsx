@@ -10,7 +10,7 @@ const NavBarLogin = (props) => {
             <Nav>
                 <Navbar.Text>
                     {/* option 1 for reading Context session: */}
-                    <div>Signed in as {session}</div>
+                    <div>Signed in as {session.email}</div>
 
                     {/* option 2 for reading Context session: */}
                     {/* <SessionContext.Consumer>

@@ -54,7 +54,13 @@ class Login extends Component {
       .then((response) => {
         if (response.status === 200) {
           console.log("Login successful");
-          setSessionCookie(this.state.email);
+          const user = {
+            // "firstName": firstName,
+            // "lastName": lastName,
+            "email": this.state.email,
+            "password": this.state.password
+        };
+          setSessionCookie(user);
           this.props.onHide();
           // TODO change where user will be redirected after login
           window.location.reload(false);

@@ -8,7 +8,7 @@ export const setSessionCookie = (session) => {
   
   export const getSessionCookie = () => {
     const sessionCookie = Cookies.get("session");
-    return sessionCookie;
+    return JSON.parse(sessionCookie);
 
     // below version is supposed to make handling the empty session better, but did not work
     // if (sessionCookie === undefined) {
