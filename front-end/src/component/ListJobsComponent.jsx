@@ -71,7 +71,7 @@ class ListJobsComponent extends Component {
                                         <td>{lndryJob.id}</td>
                                         <td>{lndryJob.job}</td>
                                         <td><button className="btn btn-success" onClick={() => this.updateLndryJobClicked(lndryJob.id)}>Update</button></td>
-                                        <td><button className="btn btn-warning" onClick={() => this.deleteLndryJobClicked(lndryJob.id)}>Delete</button></td>
+                                        <td><button className="btn btn-outline-danger" onClick={() => this.deleteLndryJobClicked(lndryJob.id)}>Delete</button></td>
                                     </tr>
                                 )
                             }

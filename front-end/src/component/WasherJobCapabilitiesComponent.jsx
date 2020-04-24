@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Switch from "react-switch";
 import WasherDataService from '../service/WasherDataService';
 
 class WasherJobCapabilitiesComponent extends Component{
@@ -30,9 +31,9 @@ class WasherJobCapabilitiesComponent extends Component{
         )
     }
 
-    handleChecked (event) {
-        const washerJobId = event.target.id;
-        const isChecked = event.target.checked;
+    handleChecked (checked, event, id) {
+        const washerJobId = id;
+        const isChecked = checked;
         
         function changeActive(job){
             if(job.id === washerJobId){
@@ -64,35 +65,57 @@ class WasherJobCapabilitiesComponent extends Component{
     render(){
         return (
             <div className="container">
-            <h3>Your offered jobs</h3>
+            <h3>My jobs</h3>
             {
             this.state.message && <div className="alert alert-success">{this.state.message}</div>}
-            <p>Select the jobs you offer to your clients:</p>
-            <table className="table" >
-                <thead>
-                    <tr>
-                        <th>Job</th>
-                        <th>Select</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                    this.state.washerCapabilities.map(
-                        washerJob =>
-                        <tr>
-                            <td>{washerJob.job}</td>
-                            <td>
-                                <div className="custom-control custom-switch"> 
-                                    <input align="right" type="checkbox" className="custom-control-input" name={washerJob.id} id={washerJob.id} defaultChecked={washerJob.active} onChange={this.handleChecked} />
-                                    <label className="custom-control-label" for={washerJob.id}></label>
-                                </div>
-                            </td>
-                        </tr>
-                         
+            <p>Select the jobs you offer to your washees:</p>
+            <div className="row">
+                <div className="col">
+                    <h6>My job</h6>
+                </div>
+                <div className="col">
+                    <h6>Off/On</h6>
+                </div>
+                <div className="col">
+                    <h6>My best speed</h6>
+                </div>
+            </div>
+                {
+                this.state.washerCapabilities.map(
+                    washerJob =>
+                    <div className="row">
+                        <div className="col">
+                            <label for={washerJob.id}>{washerJob.job}</label>
+                        </div>
+                        <div className="col">
+                            <label className="switch">
+                                    <Switch
+                                        id={washerJob.id}
+                                        onChange={this.handleChecked}
+                                        checked={washerJob.active}
+                                        className="react-switch"
+                                        onColor="#ffe6de"
+                                        onHandleColor="#b8627d"
+                                        handleDiameter={30}
+                                        uncheckedIcon={false}
+                                        checkedIcon={false}
+                                        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                                        activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                                        height={20}
+                                        width={48}
+                                    />                      
+                            </label>
+                        </div>
+                        <div className="col">
+                            <input type="text" className="form-control" 
+                            for={washerJob.id} id={washerJob.id} name={washerJob.id} 
+                            value= {(washerJob.active) ? (washerJob.speed) : ""}
+                            disabled = {(!washerJob.active)}
+                              />
+                        </div>
+                    </div>
                     )
-                    }
-                </tbody>
-            </table>
+                }   
             <div className="row">
                 <button className="btn btn-success" onClick={this.updateWasherJobCapabilitiesClicked}>Save</button>
             </div>

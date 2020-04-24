@@ -46,3 +46,28 @@
   padding: 15px;
   font-size: larger;
 }
+
+/* bootstrap success button */
+.btn-success{
+  background-color: #208487;
+  border-color: #208487;
+}
+.btn-success:hover{
+  background-color: #62dfe3;
+  border-color: #62dfe3;
+}
+
+/* bootstrap danger button */
+.btn-outline-danger{
+  color: #b8627d;
+  border-color: #b8627d;
+}
+.btn-outline-danger:hover{
+  background-color: #b8627d;
+  border-color: #b8627d;
+}
+
+/* bootstrap div container */
+.container{
+  text-align: left;
+}
