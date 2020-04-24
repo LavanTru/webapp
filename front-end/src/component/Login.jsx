@@ -13,7 +13,6 @@ class Login extends Component {
       errorMessage: ""
     }
     this.handleClick = this.handleClick.bind(this);
-    // this.showError = this.showError.bind(this);
   }
   render() {
     return (
@@ -30,7 +29,7 @@ class Login extends Component {
 
         <p className="redError">
           {this.state.errorMessage}
-          {/* Error */}
+          
         </p>
         <Button
           className="button-green"
@@ -55,8 +54,10 @@ class Login extends Component {
       .then((response) => {
         if (response.status === 200) {
           console.log("Login successful");
-          // TODO close modal and save user
           setSessionCookie(this.state.email);
+          this.props.onHide();
+          // TODO change where user will be redirected after login
+          window.location.reload(false);
         }
       })
       .catch((error) => {

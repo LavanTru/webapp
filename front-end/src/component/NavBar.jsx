@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import LoginModal from "./LoginModal";
-import { SessionContext } from "../Session";
+import NavBarLogin from "./NavBarLogin";
+
 
 class NavBar extends Component {
     constructor(props) {
@@ -22,6 +23,7 @@ class NavBar extends Component {
     handleChangeIsRegistered() {
         this.setState({ isRegistered: !this.state.isRegistered });
     };
+
 
     render() {
         // Import session data from the Context
@@ -45,21 +47,7 @@ class NavBar extends Component {
 
                     </Nav>
                     <Nav className="ml-auto">
-                    <Navbar.Text>
-                            <SessionContext.Consumer>
-                                {props => (
-                                    <div> Signed in as {props}</div>
-                                )}
-
-                            </SessionContext.Consumer>
-
-                        </Navbar.Text>
-                        <Nav.Link className="font-weight-bold"
-                            // href="#log_in" 
-                            onClick={this.handleLoginModal}>
-                            Log in
-
-                        </Nav.Link>
+                        <NavBarLogin handleChangeIsRegistered={this.handleChangeIsRegistered} handleLoginModal={this.handleLoginModal}/>
                         <LoginModal
                             show={this.state.loginModalShow}
                             // show={true}
@@ -68,11 +56,6 @@ class NavBar extends Component {
                             handleChangeIsRegistered={this.handleChangeIsRegistered}
                         // backdrop="static"
                         />
-                        <Nav.Link
-                            // href="#sign_up"
-                            onClick={() => { this.handleChangeIsRegistered(); this.handleLoginModal(); }}
-
-                        >Sign up</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

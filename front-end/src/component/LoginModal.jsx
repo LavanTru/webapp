@@ -19,13 +19,13 @@ class LoginModal extends Component {
         let buttonLabel;
 
         if (this.props.isRegistered) {
-            loginScreen = <Login />;
+            loginScreen = <Login onHide={this.props.onHide}/>;
             headerLabel = "Log in";
             loginMessage = "Don't have an account?";
             buttonLabel = "Sign up";
            
         } else {
-            loginScreen = <Register />
+            loginScreen = <Register handleChangeIsRegistered={this.props.handleChangeIsRegistered}/>
             headerLabel = "Sign up";
             loginMessage = "Already registered?";
             buttonLabel = "Log in";

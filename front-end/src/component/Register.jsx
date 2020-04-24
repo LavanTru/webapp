@@ -66,9 +66,9 @@ class Register extends Component {
             .then((response) => {
                 console.log(response);
                 if (response.status === 200) {
-                     console.log("registration successfull");
+                     console.log("Registration successfull");
                     
-                //    TODO forward to login flow
+                this.props.handleChangeIsRegistered();
                 }
             })
             .catch(function (error) {
