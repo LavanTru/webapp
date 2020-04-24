@@ -11,44 +11,57 @@ import {
 } from "react-router-dom";
 import RegisterWasherOrWashee from './component/RegisterWasherOrWashee';
 import RegisterWasher from './component/RegisterWasher';
+import {SessionContext, getSessionCookie} from "./Session";
 
 
 /**React Component representing the high-level structure of the application. 
  * Routing is defined in this file.**/
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
-    this.state={
-      mainContent:<LoginScreen handleLogin = {this.handleLogin} />
+    this.state = {
+      mainContent: <LoginScreen handleLogin={this.handleLogin} />
     }
-    
+
   }
 
   handleLogin() {
-   const mainContent = <DefaultReactPage/>;
-    this.setState({mainContent:mainContent});
+    const mainContent = <DefaultReactPage />;
+    this.setState({ mainContent: mainContent });
   }
 
   render() {
+    // Hooks to track changes to the session
+    // const [session, setSession] = useState(getSessionCookie());
+    // useEffect(
+    //   () => {
+    //     setSession(getSessionCookie());
+    //   },
+    //   [session]
+    // );
+    const session = getSessionCookie();
+
     return (
       <div className="App">
-        <Router>
-          <>
-              <NavBar/>
-            {/* {this.state.mainContent} */}
-            
-            <Switch>
-            <Route exact path="/register"  component={RegisterWasherOrWashee} />
-            <Route exact path="/register/washer"  component={RegisterWasher} />
+        <SessionContext.Provider value={session}>
+          <Router>
+            <>
+              <NavBar />
+              {/* {this.state.mainContent} */}
 
-              <Route path="/" exact component={ListLndryJobsComponent} />
-              <Route path="/:id" component={LndryJobDetailsComponent} />
+              <Switch>
+                <Route exact path="/register" component={RegisterWasherOrWashee} />
+                <Route exact path="/register/washer" component={RegisterWasher} />
 
-            </Switch>
-          </>
-        </Router>
+                <Route path="/" exact component={ListLndryJobsComponent} />
+                <Route path="/:id" component={LndryJobDetailsComponent} />
+
+              </Switch>
+            </>
+          </Router>
+        </SessionContext.Provider>
       </div>
     );
   }

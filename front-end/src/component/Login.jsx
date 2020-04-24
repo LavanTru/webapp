@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import UserDataService from '../service/UserDataService';
+import { setSessionCookie } from "../Session.js";
 
 
 class Login extends Component {
@@ -16,7 +17,7 @@ class Login extends Component {
   }
   render() {
     return (
-      <Form className ="m-4" >
+      <Form className="m-4" >
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.handleChange} />
@@ -55,11 +56,15 @@ class Login extends Component {
         if (response.status === 200) {
           console.log("Login successful");
           // TODO close modal and save user
+          setSessionCookie(this.state.email);
         }
       })
       .catch((error) => {
         console.log(error);
-        if (error.response.status === 401) {
+        if (!error.response) {
+          console.log(error);
+        }
+        else if (error.response.status === 401) {
           // console.log("Username and password do not match");
           // alert("Username and password do not match");
           this.setState({

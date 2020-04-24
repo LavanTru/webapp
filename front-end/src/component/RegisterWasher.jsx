@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Col, Button, InputGroup, Container } from "react-bootstrap";
+import { Form, Col, Button, Container } from "react-bootstrap";
 
 class RegisterWasher extends Component {
     constructor(props) {
