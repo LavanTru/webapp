@@ -8,14 +8,14 @@ export const setSessionCookie = (session) => {
   
   export const getSessionCookie = () => {
     const sessionCookie = Cookies.get("session");
-    return JSON.parse(sessionCookie);
+    // return JSON.parse(sessionCookie);
 
     // below version is supposed to make handling the empty session better, but did not work
-    // if (sessionCookie === undefined) {
-    //   return {};
-    // } else {
-    //   // return JSON.parse(sessionCookie);
-    // }
+    if (sessionCookie === undefined) {
+      return undefined;
+    } else {
+      return JSON.parse(sessionCookie);
+    }
   };
   export const removeSessionCookie = () =>{
     Cookies.remove("session");

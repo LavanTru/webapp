@@ -55,10 +55,11 @@ class Login extends Component {
         if (response.status === 200) {
           console.log("Login successful");
           const user = {
-            // "firstName": firstName,
-            // "lastName": lastName,
-            "email": this.state.email,
-            "password": this.state.password
+            // Add here more attributes to be stored in the cookies if needed
+            "firstName": response.data.firstName,
+            "lastName": response.data.lastName,
+            "email": this.state.email
+
         };
           setSessionCookie(user);
           this.props.onHide();
