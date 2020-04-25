@@ -1,7 +1,5 @@
 package com.lavantru.Register.controllers;
 
-import com.lavantru.Register.errors.UserInvalidUserTypeException;
-import com.lavantru.Register.model.LndryJob;
 import com.lavantru.Register.model.Users;
 import com.lavantru.Register.dto.UsersDto;
 import com.lavantru.Register.repositories.UsersRepository;

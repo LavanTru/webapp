@@ -1,11 +1,10 @@
 package com.lavantru.Register.dao;
 
-import com.lavantru.Register.model.LndryJob;
+import com.lavantru.Register.model.Job;
 import com.lavantru.Register.repositories.LndryJobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -17,18 +16,18 @@ public class LndryJobDataAccessService implements LndryJobDao {
     private LndryJobRepository repository;
 
     @Override
-    public int insertJob(UUID id, LndryJob lndryJob) {
-        repository.save(new LndryJob(id, lndryJob.getJob()));
+    public int insertJob(UUID id, Job job) {
+        repository.save(new Job(id, job.getJob()));
         return 1;
     }
 
     @Override
-    public List<LndryJob> selectAllJobs() {
+    public List<Job> selectAllJobs() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<LndryJob> selectJobById(UUID id) {
+    public Optional<Job> selectJobById(UUID id) {
         return repository.findById(id);
     }
 
@@ -39,9 +38,9 @@ public class LndryJobDataAccessService implements LndryJobDao {
     }
 
     @Override
-    public int updateJobById(UUID id, LndryJob lndryJob) {
-        lndryJob.setId(id);
-        repository.save(lndryJob);
+    public int updateJobById(UUID id, Job job) {
+        job.setId(id);
+        repository.save(job);
         return 1;
     }
 }

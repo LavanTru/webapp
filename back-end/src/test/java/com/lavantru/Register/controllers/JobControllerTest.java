@@ -1,9 +1,8 @@
 package com.lavantru.Register.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lavantru.Register.controllers.LndryJobController;
-import com.lavantru.Register.model.LndryJob;
-import com.lavantru.Register.services.LndryJobService;
+import com.lavantru.Register.model.Job;
+import com.lavantru.Register.services.JobService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,27 +29,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(LndryJobController.class)
-public class LndryJobControllerTest {
+@WebMvcTest(JobController.class)
+public class JobControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private LndryJobService lndryJobService;
+    private JobService jobService;
 
     private UUID id = new UUID(1234567890, 987654321);
     private String jobMocked = "Laundry";
-    private LndryJob lndryJob = new LndryJob(id, jobMocked);
-    private String lndryJobApiURL = "http://localhost:8080/api/laundryJob/";
+    private Job job = new Job(id, jobMocked);
+    private String jobApiURL = "http://localhost:8080/api/job/";
 
     @Test
-    public void getAllLndryJobsTest() throws Exception {
-        List<LndryJob> allLndryJobs = Arrays.asList(lndryJob);
+    public void getAllJobsTest() throws Exception {
+        List<Job> allJobs = Arrays.asList(job);
 
-        given(lndryJobService.getAllJobs()).willReturn(allLndryJobs);
+        given(jobService.getAllJobs()).willReturn(allJobs);
 
-        mockMvc.perform(get(lndryJobApiURL)
+        mockMvc.perform(get(jobApiURL)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -58,48 +57,48 @@ public class LndryJobControllerTest {
     }
 
     @Test
-    public void getLndryJobByIdTest() throws Exception
+    public void getJobByIdTest() throws Exception
     {
-        Optional<LndryJob> lndryJob = Optional.of(this.lndryJob);
+        Optional<Job> job = Optional.of(this.job);
 
-        given(lndryJobService.getJobById(id)).willReturn(lndryJob);
+        given(jobService.getJobById(id)).willReturn(job);
 
         mockMvc.perform(MockMvcRequestBuilders
-                .get(lndryJobApiURL+"{id}", id)
+                .get(jobApiURL +"{id}", id)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.job").value(jobMocked));
     }
 
     @Test
-    public void addLndryJobTest() throws Exception
+    public void addJobTest() throws Exception
     {
         mockMvc.perform(MockMvcRequestBuilders
-                .post(lndryJobApiURL)
-                .content(asJsonString(lndryJob))
+                .post(jobApiURL)
+                .content(asJsonString(job))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void updateLndryJobByIdTest() throws Exception
+    public void updateJobByIdTest() throws Exception
     {
         MockHttpServletRequestBuilder builder =
-                MockMvcRequestBuilders.put(lndryJobApiURL + "{id}", id)
+                MockMvcRequestBuilders.put(jobApiURL + "{id}", id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
-                        .content((asJsonString(lndryJob)));
+                        .content((asJsonString(job)));
 
         mockMvc.perform(builder)
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void deleteLndryJobByIdTest() throws Exception
+    public void deleteJobByIdTest() throws Exception
     {
         mockMvc.perform(MockMvcRequestBuilders
-                .delete(lndryJobApiURL+"{id}", id))
+                .delete(jobApiURL +"{id}", id))
                 .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
     }
 

@@ -2,9 +2,7 @@ package com.lavantru.Register.services;
 
 import com.lavantru.Register.dao.WasherDao;
 import com.lavantru.Register.errors.UserAlreadyExistException;
-import com.lavantru.Register.errors.UserInvalidUserTypeException;
-import com.lavantru.Register.model.LndryJob;
-import com.lavantru.Register.model.Users;
+import com.lavantru.Register.model.Job;
 import com.lavantru.Register.model.Washer;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +37,9 @@ public class WasherService {
         return false;
     }
 
-    public void updateLndryJobCapabilities(ObjectId id, List<LndryJob> washerLndryJobCapabilities) {
+    public void updateLndryJobCapabilities(ObjectId id, List<Job> washerJobCapabilities) {
         Washer washer = getUserById(id);
-        washer.setLndryJobCapabilities(washerLndryJobCapabilities);
+        washer.setJobCapabilities(washerJobCapabilities);
         washerDao.insertWasher(washer);
     }
 
