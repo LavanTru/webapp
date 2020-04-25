@@ -35,7 +35,7 @@ class ListLndryJobsComponent extends Component {
 
     updateLndryJobClicked(id) {
         console.log('update ' + id)
-        this.props.history.push(`${id}`)
+        this.props.history.push(`jobs/${id}`)
     }
 
     deleteLndryJobClicked(id) {

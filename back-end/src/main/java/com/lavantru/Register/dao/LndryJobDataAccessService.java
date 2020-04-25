@@ -13,7 +13,6 @@ import java.util.UUID;
 @Repository("fakeDao")
 public class LndryJobDataAccessService implements LndryJobDao {
 
-    private static List<LndryJob> DB = new ArrayList<>();
     @Autowired
     private LndryJobRepository repository;
 
@@ -44,15 +43,5 @@ public class LndryJobDataAccessService implements LndryJobDao {
         lndryJob.setId(id);
         repository.save(lndryJob);
         return 1;
-//        return selectJobById(id)
-//                .map(lj -> {
-//                    int indexOfJobToUpdate = DB.indexOf(lj);
-//                    if (indexOfJobToUpdate >= 0){
-//                        DB.set(indexOfJobToUpdate, new LndryJob(id, lndryJob.getJob()));
-//                        return 1;
-//                    }
-//                    return 0;
-//                })
-//                .orElse(0);
     }
 }

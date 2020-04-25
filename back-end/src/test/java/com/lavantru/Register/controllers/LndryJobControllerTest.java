@@ -1,4 +1,4 @@
-package com.lavantru.Register;
+package com.lavantru.Register.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lavantru.Register.controllers.LndryJobController;

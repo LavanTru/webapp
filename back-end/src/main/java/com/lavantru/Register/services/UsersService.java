@@ -1,14 +1,16 @@
 package com.lavantru.Register.services;
 
 import com.lavantru.Register.errors.PasswordNotMatchingException;
+import com.lavantru.Register.errors.UserInvalidUserTypeException;
 import com.lavantru.Register.errors.UserNotFoundException;
+import com.lavantru.Register.model.LndryJob;
 import com.lavantru.Register.model.Users;
 import com.lavantru.Register.dto.UsersDto;
 import com.lavantru.Register.errors.UserAlreadyExistException;
 import com.lavantru.Register.repositories.UsersRepository;
-import com.lavantru.Register.validation.PasswordMatches;
+
 import java.util.List;
-import org.apache.catalina.User;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -65,6 +67,10 @@ public class UsersService implements IUsersService {
       throw new UserNotFoundException("There is no account with that email address: " + email);
     }
     return repository.findByEmail(email);
+  }
+
+  public Users getUserById(ObjectId id){
+    return  repository.findById(id);
   }
 
   public boolean emailExists(String email) {

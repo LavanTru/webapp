@@ -19,7 +19,7 @@ class LndryJobDetailsComponent extends Component {
 
     componentDidMount() {
 
-        if (this.state.id == -1) {
+        if (this.state.id === -1) {
             return
         }
 

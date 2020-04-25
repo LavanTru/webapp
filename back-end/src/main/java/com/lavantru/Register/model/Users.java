@@ -158,10 +158,22 @@ public class Users {
         this.password = password;
     }
 
-
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("id", id).append("firstName", firstName).append("lastName", lastName).append("email", email).append("phoneNo", phoneNo).append("phoneCountryCode", phoneCountryCode).append("accountType", accountType).append("userType", userType).append("acceptsMarketingEmails", acceptsMarketingEmails).append("payoutBankDetails", payoutBankDetails).append("addresses", addresses).append("paymentMethods", paymentMethods).toString();
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("firstName", firstName)
+                .append("lastName", lastName)
+                .append("email", email)
+                .append("phoneNo", phoneNo)
+                .append("phoneCountryCode", phoneCountryCode)
+                .append("accountType", accountType)
+                .append("userType", userType)
+                .append("acceptsMarketingEmails", acceptsMarketingEmails)
+                .append("payoutBankDetails", payoutBankDetails)
+                .append("addresses", addresses)
+                .append("paymentMethods", paymentMethods)
+                .toString();
     }
 
 }
