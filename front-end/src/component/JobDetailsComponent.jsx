@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
-import JobDataService from '../service/JobDataService'
+import JobDataService from '../service/JobDataService';
+import { Alert } from 'reactstrap';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 class JobDetailsComponent extends Component {
@@ -10,7 +11,8 @@ class JobDetailsComponent extends Component {
         this.state = {
             id: this.props.match.params.id,
             job: '',
-            message: null
+            message: null,
+            visible : false
         }
 
         this.onSubmit = this.onSubmit.bind(this)
@@ -55,6 +57,7 @@ class JobDetailsComponent extends Component {
                 )
         }
 
+        this.onShowAlert()
     }
 
     validate(values) {
@@ -68,13 +71,21 @@ class JobDetailsComponent extends Component {
         return errors
     }
 
+    onShowAlert = ()=>{
+        this.setState({visible:true},()=>{
+            window.setTimeout(()=>{
+            this.setState({visible:false})
+            },3000)
+        });
+    }
+
     render() {
 
         let { job, id } = this.state
         return (
                 <div>
                 <h3>Laundry Job</h3>
-                {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
+                {this.state.message && <Alert color="success" isOpen={this.state.visible} >{this.state.message}</Alert>}
                 <div className="container">
                     <Formik
                         initialValues={{ id, job }}

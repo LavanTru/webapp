@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Switch from "react-switch";
+import { Alert } from 'reactstrap';
 import WasherDataService from '../service/WasherDataService';
 
 class WasherJobCapabilitiesComponent extends Component{
@@ -9,7 +10,8 @@ class WasherJobCapabilitiesComponent extends Component{
         this.state = {
             washerId : '5ea1d1552cea5c7ddc865ded', // id must be consumed from the user session 
             washerCapabilities: [],
-            message: null
+            message: null,
+            visible : false
         }
 
         this.refreshWasherJobCapabilities = this.refreshWasherJobCapabilities.bind(this);
@@ -32,23 +34,29 @@ class WasherJobCapabilitiesComponent extends Component{
     }
 
     handleChecked (checked, event, id) {
-        const washerJobId = id;
-        const isChecked = checked;
-        
         function changeActive(job){
-            if(job.id === washerJobId){
-                job.active = isChecked
+            if(job.id === id){
+                job.active = checked
             }
             return job
         }
 
         let updatedWasherCapabilities = this.state.washerCapabilities.map(changeActive)
         this.setState({washerCapabilities: updatedWasherCapabilities})   
-        console.log(this.state.washerCapabilities);
     }
 
+    handleChange = event => {
+        function changeSpeed(job){
+            if(job.id === event.target.id){
+                job.speed = event.target.value
+            }
+            return job
+        }
+        let updatedWasherCapabilities = this.state.washerCapabilities.map(changeSpeed)
+        this.setState({washerCapabilities: updatedWasherCapabilities})   
+    };
+
     updateWasherJobCapabilitiesClicked(){
-        console.log(this.state.washerCapabilities);
         WasherDataService.updateWasherJobCapabilities(this.state.washerId, this.state.washerCapabilities)
             .then(
                 response => {
@@ -57,9 +65,17 @@ class WasherJobCapabilitiesComponent extends Component{
                     }else{
                         this.setState({ message: `Unable to save your jobs. Try again later.` })
                     }
-                    
+                    this.onShowAlert()
                 }
             )
+    }
+
+    onShowAlert = ()=>{
+        this.setState({visible:true},()=>{
+            window.setTimeout(()=>{
+            this.setState({visible:false})
+            },3000)
+        });
     }
 
     render(){
@@ -67,7 +83,8 @@ class WasherJobCapabilitiesComponent extends Component{
             <div className="container">
             <h3>My jobs</h3>
             {
-            this.state.message && <div className="alert alert-success">{this.state.message}</div>}
+                this.state.message && <Alert color="success" isOpen={this.state.visible} >{this.state.message}</Alert>
+            }
             <p>Select the jobs you offer to your washees:</p>
             <div className="row">
                 <div className="col">
@@ -85,32 +102,32 @@ class WasherJobCapabilitiesComponent extends Component{
                     washerJob =>
                     <div className="row">
                         <div className="col">
-                            <label for={washerJob.id}>{washerJob.job}</label>
+                            <label htmlFor={washerJob.id}>{washerJob.job}</label>
                         </div>
                         <div className="col">
                             <label className="switch">
                                     <Switch
-                                        id={washerJob.id}
-                                        onChange={this.handleChecked}
-                                        checked={washerJob.active}
-                                        className="react-switch"
-                                        onColor="#ffe6de"
-                                        onHandleColor="#b8627d"
-                                        handleDiameter={30}
-                                        uncheckedIcon={false}
-                                        checkedIcon={false}
-                                        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                                        activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                                        height={20}
-                                        width={48}
+                                    id={washerJob.id}
+                                    onChange={this.handleChecked}
+                                    checked={washerJob.active}
+                                    className="react-switch"
+                                    onColor="#ffe6de"
+                                    onHandleColor="#b8627d"
+                                    handleDiameter={30}
+                                    uncheckedIcon={false}
+                                    checkedIcon={false}
+                                    boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                                    activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                                    height={20}
+                                    width={48}
                                     />                      
                             </label>
                         </div>
                         <div className="col">
                             <input type="text" className="form-control" 
-                            for={washerJob.id} id={washerJob.id} name={washerJob.id} 
-                            value= {(washerJob.active) ? (washerJob.speed) : ""}
-                            disabled = {(!washerJob.active)}
+                            htmlFor={washerJob.id} id={washerJob.id} name={washerJob.id} 
+                            value= {(washerJob.active) ? (washerJob.speed) : ''}
+                            disabled = {(!washerJob.active)} onChange={this.handleChange}
                               />
                         </div>
                     </div>
