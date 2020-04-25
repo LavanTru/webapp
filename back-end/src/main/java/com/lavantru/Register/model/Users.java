@@ -15,35 +15,29 @@ public class Users {
     private String lastName;
     private String email;
     private String phoneNo;
-    private String phoneCountryCode;
     private String accountType;
     private String companyName;
     private String userType;
     private Boolean acceptsMarketingEmails;
-    private List<String> payoutBankDetails = null;
     private List<Address> addresses = null;
-    private List<PaymentMethod> paymentMethods = null;
     private String password;
 
 
     public Users() {
     }
 
-    public Users(String id, String firstName, String lastName, String email, String phoneNo, String phoneCountryCode, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses, List<PaymentMethod> paymentMethods) {
+    public Users(String id, String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<Address> addresses) {
         super();
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNo = phoneNo;
-        this.phoneCountryCode = phoneCountryCode;
         this.accountType = accountType;
         this.companyName = companyName;
         this.userType = userType;
         this.acceptsMarketingEmails = acceptsMarketingEmails;
-        this.payoutBankDetails = payoutBankDetails;
         this.addresses = addresses;
-        this.paymentMethods = paymentMethods;
     }
 
     public String getId() {
@@ -86,14 +80,6 @@ public class Users {
         this.phoneNo = phoneNo;
     }
 
-    public String getPhoneCountryCode() {
-        return phoneCountryCode;
-    }
-
-    public void setPhoneCountryCode(String phoneCountryCode) {
-        this.phoneCountryCode = phoneCountryCode;
-    }
-
     public String getAccountType() {
         return accountType;
     }
@@ -126,28 +112,12 @@ public class Users {
         this.acceptsMarketingEmails = acceptsMarketingEmails;
     }
 
-    public List<String> getPayoutBankDetails() {
-        return payoutBankDetails;
-    }
-
-    public void setPayoutBankDetails(List<String> payoutBankDetails) {
-        this.payoutBankDetails = payoutBankDetails;
-    }
-
     public List<Address> getAddresses() {
         return addresses;
     }
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
-    }
-
-    public List<PaymentMethod> getPaymentMethods() {
-        return paymentMethods;
-    }
-
-    public void setPaymentMethods(List<PaymentMethod> paymentMethods) {
-        this.paymentMethods = paymentMethods;
     }
 
     public String getPassword() {
@@ -166,13 +136,10 @@ public class Users {
                 .append("lastName", lastName)
                 .append("email", email)
                 .append("phoneNo", phoneNo)
-                .append("phoneCountryCode", phoneCountryCode)
                 .append("accountType", accountType)
                 .append("userType", userType)
                 .append("acceptsMarketingEmails", acceptsMarketingEmails)
-                .append("payoutBankDetails", payoutBankDetails)
                 .append("addresses", addresses)
-                .append("paymentMethods", paymentMethods)
                 .toString();
     }
 
