@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './component/NavBar';
-import ListLndryJobsComponent from './component/ListLndryJobsComponent';
-import LndryJobDetailsComponent from './component/LndryJobDetailsComponent';
+import ListJobsComponent from './component/ListJobsComponent';
+import JobDetailsComponent from './component/JobDetailsComponent';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,7 +11,7 @@ import WasherJobCapabilitiesComponent from './component/WasherJobCapabilitiesCom
 import RegisterWasherOrWashee from './component/RegisterWasherOrWashee';
 import RegisterWasher from './component/RegisterWasher';
 import { SessionContext, getSessionCookie } from "./Session";
-import WasherLndryJobCapabilitiesComponent from './component/WasherLndryJobCapabilitiesComponent';
+import WasherJobCapabilitiesComponent from './component/WasherJobCapabilitiesComponent';
 
 
 /**React Component representing the high-level structure of the application. 
