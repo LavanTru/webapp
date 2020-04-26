@@ -1,4 +1,4 @@
-import React, { Component, useContext } from "react";
+import React, { Component } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import LoginModal from "./LoginModal";
 import NavBarLogin from "./NavBarLogin";

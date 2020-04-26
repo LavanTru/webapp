@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DefaultReactPage from './DefaultReactPage';
 import NavBar from './component/NavBar';
 import ListLndryJobsComponent from './component/ListLndryJobsComponent';
 import LndryJobDetailsComponent from './component/LndryJobDetailsComponent';
@@ -18,11 +17,7 @@ import WasherLndryJobCapabilitiesComponent from './component/WasherLndryJobCapab
  * Routing is defined in this file.**/
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-
+  
   render() {
     // Hooks to track changes to the session
     // const [session, setSession] = useState(getSessionCookie());
