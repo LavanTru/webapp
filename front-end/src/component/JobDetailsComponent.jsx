@@ -1,8 +1,9 @@
 import React, { Component }  from 'react';
-import LndryJobDataService from '../service/LndryJobDataService'
+import JobDataService from '../service/JobDataService';
+import { Alert } from 'reactstrap';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-class LndryJobDetailsComponent extends Component {
+class JobDetailsComponent extends Component {
 
     constructor(props) {
         super(props)
@@ -10,7 +11,8 @@ class LndryJobDetailsComponent extends Component {
         this.state = {
             id: this.props.match.params.id,
             job: '',
-            message: null
+            message: null,
+            visible : false
         }
 
         this.onSubmit = this.onSubmit.bind(this)
@@ -23,7 +25,7 @@ class LndryJobDetailsComponent extends Component {
             return
         }
 
-        LndryJobDataService.retrieveLndryJob(this.state.id)
+        JobDataService.retrieveJob(this.state.id)
             .then(response => this.setState({
                 job: response.data.job
             }))
@@ -38,7 +40,7 @@ class LndryJobDetailsComponent extends Component {
         let jobJsonWithoutId = {job : values.job}
 
         if (this.state.id === "-1") {
-            LndryJobDataService.createLndryJob(jobJsonWithoutId)
+            JobDataService.createJob(jobJsonWithoutId)
                 .then(() => this.props.history.push())
                 .then(
                     response => {
@@ -46,7 +48,7 @@ class LndryJobDetailsComponent extends Component {
                     }
                 )
         } else {
-            LndryJobDataService.updateLndryJob(this.state.id, jobJson)
+            JobDataService.updateJob(this.state.id, jobJson)
                 .then(() => this.props.history.push())
                 .then(
                     response => {
@@ -55,6 +57,7 @@ class LndryJobDetailsComponent extends Component {
                 )
         }
 
+        this.onShowAlert()
     }
 
     validate(values) {
@@ -68,13 +71,21 @@ class LndryJobDetailsComponent extends Component {
         return errors
     }
 
+    onShowAlert = ()=>{
+        this.setState({visible:true},()=>{
+            window.setTimeout(()=>{
+            this.setState({visible:false})
+            },3000)
+        });
+    }
+
     render() {
 
         let { job, id } = this.state
         return (
                 <div>
                 <h3>Laundry Job</h3>
-                {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
+                {this.state.message && <Alert color="success" isOpen={this.state.visible} >{this.state.message}</Alert>}
                 <div className="container">
                     <Formik
                         initialValues={{ id, job }}
@@ -109,4 +120,4 @@ class LndryJobDetailsComponent extends Component {
 
 }
 
-export default LndryJobDetailsComponent
+export default JobDetailsComponent
