@@ -89,7 +89,6 @@ class RegisterWasher extends Component {
         });
     }
     handleSignUp() {
-        console.log("handlesignup");
         const parentState = this.props.location.state;
         const address = {
             streetName: this.state.streetName,

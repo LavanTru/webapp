@@ -64,28 +64,18 @@ class Register extends Component {
         });
     }
     handleClick() {
-        // let history = useHistory();
-        // history.push("/register");
-        // history.goBack();
+
+        if (this.state.password === this.state.matchingPassword)
+        {
         this.props.handleChangeIsRegistered();
         this.props.history.push({
             pathname:"/register",
             state:{...this.state}
     });
-        this.props.onHide();
-        // UserDataService.register(this.state.firstName, this.state.lastName, this.state.email, this.state.password, this.state.matchingPassword)
-        //     .then((response) => {
-        //         console.log(response);
-        //         if (response.status === 200) {
-        //              console.log("Registration successfull");
-                    
-        //         this.props.handleChangeIsRegistered();
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
-        // return <Redirect to='/register'  />;
+        this.props.onHide();}
+        else {
+            // TODO: show error for non-matching passwords
+        }
     }
 
 }
