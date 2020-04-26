@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import DefaultReactPage from './DefaultReactPage';
 import NavBar from './component/NavBar';
-import LoginScreen from './LoginScreen';
 import ListLndryJobsComponent from './component/ListLndryJobsComponent';
 import LndryJobDetailsComponent from './component/LndryJobDetailsComponent';
 import {
@@ -21,17 +20,8 @@ import WasherLndryJobCapabilitiesComponent from './component/WasherLndryJobCapab
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.state = {
-      mainContent: <LoginScreen handleLogin={this.handleLogin} />
-    }
-
   }
 
-  handleLogin() {
-    const mainContent = <DefaultReactPage />;
-    this.setState({ mainContent: mainContent });
-  }
 
   render() {
     // Hooks to track changes to the session
@@ -50,7 +40,6 @@ class App extends Component {
           <Router>
             <>
             <NavBar  />
-              {/* {this.state.mainContent} */}
 
               <Switch>
                 <Route exact path="/register" component={RegisterWasherOrWashee} />
