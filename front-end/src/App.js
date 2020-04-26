@@ -11,7 +11,6 @@ import WasherJobCapabilitiesComponent from './component/WasherJobCapabilitiesCom
 import RegisterWasherOrWashee from './component/RegisterWasherOrWashee';
 import RegisterWasher from './component/RegisterWasher';
 import { SessionContext, getSessionCookie } from "./Session";
-import WasherJobCapabilitiesComponent from './component/WasherJobCapabilitiesComponent';
 
 
 /**React Component representing the high-level structure of the application. 
