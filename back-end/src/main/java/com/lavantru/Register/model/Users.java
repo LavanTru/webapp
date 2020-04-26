@@ -21,12 +21,13 @@ public class Users {
     private Boolean acceptsMarketingEmails;
     private List<Address> addresses = null;
     private String password;
+    private String aboutMe;
 
 
     public Users() {
     }
 
-    public Users(String id, String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<Address> addresses) {
+    public Users(String id, String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<Address> addresses,String aboutMe) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -38,6 +39,7 @@ public class Users {
         this.userType = userType;
         this.acceptsMarketingEmails = acceptsMarketingEmails;
         this.addresses = addresses;
+        this.aboutMe = aboutMe;
     }
 
     public String getId() {
@@ -126,6 +128,14 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
     }
 
     @Override

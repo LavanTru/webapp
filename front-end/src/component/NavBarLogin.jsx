@@ -5,7 +5,6 @@ import { Navbar, Nav } from "react-bootstrap";
 // This method checks if the user info is saved into session and returns either user info and log out option. Returns log in/sign up options if no session
 const NavBarLogin = (props) => {
     const session = useContext(SessionContext);
-    console.log(session);
     if (session) {
         return (
             <Nav>
@@ -34,7 +33,6 @@ const NavBarLogin = (props) => {
         return (
             <Nav>
                 <Nav.Link className="font-weight-bold"
-                    // href="#log_in" 
                     onClick={props.handleLoginModal}>
                     Log in
                     </Nav.Link>

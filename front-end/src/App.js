@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 import RegisterWasherOrWashee from './component/RegisterWasherOrWashee';
 import RegisterWasher from './component/RegisterWasher';
-import {SessionContext, getSessionCookie} from "./Session";
+import { SessionContext, getSessionCookie } from "./Session";
 import WasherLndryJobCapabilitiesComponent from './component/WasherLndryJobCapabilitiesComponent';
 
 
@@ -25,7 +25,7 @@ class App extends Component {
     this.state = {
       mainContent: <LoginScreen handleLogin={this.handleLogin} />
     }
-    
+
   }
 
   handleLogin() {
@@ -49,16 +49,16 @@ class App extends Component {
         <SessionContext.Provider value={session}>
           <Router>
             <>
-              <NavBar />
+            <NavBar  />
               {/* {this.state.mainContent} */}
 
               <Switch>
                 <Route exact path="/register" component={RegisterWasherOrWashee} />
                 <Route exact path="/register/washer" component={RegisterWasher} />
 
-    <Route path="/jobs" exact component={ListLndryJobsComponent} />
-    <Route path="/jobs/:id" component={LndryJobDetailsComponent} />
-    <Route path="/washerjobs" exact component={WasherLndryJobCapabilitiesComponent} />
+                <Route path="/jobs" exact component={ListLndryJobsComponent} />
+                <Route path="/jobs/:id" component={LndryJobDetailsComponent} />
+                <Route path="/washerjobs" exact component={WasherLndryJobCapabilitiesComponent} />
 
               </Switch>
             </>

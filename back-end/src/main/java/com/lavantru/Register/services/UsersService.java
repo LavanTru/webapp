@@ -55,7 +55,7 @@ public class UsersService implements IUsersService {
       throw new UserNotFoundException("Account not found with that email address:" + email);
     }
     else if (!passwordMatches(email,accountDto.getPassword())){
-      throw new PasswordNotMatchingException("Password does not match  for that email address:" + email);
+      throw new PasswordNotMatchingException("Password does not match for that email address:" + email);
     }
     else{
       return ResponseEntity.badRequest().build();

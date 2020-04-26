@@ -13,16 +13,7 @@ class UserDataService {
           return Axios.post(USER_API_URL + '/login', payload);
     }
 
-    register(firstName,lastName,email,password,matchingPassword){
-        var payload = {
-            "firstName": firstName,
-            "lastName": lastName,
-            "email": email,
-            "password": password,
-            "matchingPassword": matchingPassword
-        };
-        return Axios.post(USER_API_URL + '/register', payload);
-    }
+
     getUserByEmail(email){
         return Axios.get(USER_API_URL, {
             params: {

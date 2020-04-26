@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
-import UserDataService from '../service/UserDataService';
+import { withRouter } from 'react-router-dom';
+
+
 
 // TODO add error messages for field validations
 
@@ -62,20 +64,30 @@ class Register extends Component {
         });
     }
     handleClick() {
-        UserDataService.register(this.state.firstName, this.state.lastName, this.state.email, this.state.password, this.state.matchingPassword)
-            .then((response) => {
-                console.log(response);
-                if (response.status === 200) {
-                     console.log("Registration successfull");
+        // let history = useHistory();
+        // history.push("/register");
+        // history.goBack();
+        this.props.handleChangeIsRegistered();
+        this.props.history.push({
+            pathname:"/register",
+            state:{...this.state}
+    });
+        this.props.onHide();
+        // UserDataService.register(this.state.firstName, this.state.lastName, this.state.email, this.state.password, this.state.matchingPassword)
+        //     .then((response) => {
+        //         console.log(response);
+        //         if (response.status === 200) {
+        //              console.log("Registration successfull");
                     
-                this.props.handleChangeIsRegistered();
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        //         this.props.handleChangeIsRegistered();
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
+        // return <Redirect to='/register'  />;
     }
 
 }
 
-export default Register;
+export default withRouter(Register);

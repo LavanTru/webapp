@@ -25,7 +25,7 @@ class LoginModal extends Component {
             buttonLabel = "Sign up";
            
         } else {
-            loginScreen = <Register handleChangeIsRegistered={this.props.handleChangeIsRegistered}/>
+            loginScreen = <Register onHide={this.props.onHide} handleChangeIsRegistered={this.props.handleChangeIsRegistered}/>
             headerLabel = "Sign up";
             loginMessage = "Already registered?";
             buttonLabel = "Log in";
@@ -39,8 +39,8 @@ class LoginModal extends Component {
                     <Modal.Body>{loginScreen}</Modal.Body>
                     <Modal.Footer className="mx-auto">
                         <div id="customGoogleBtn">
-                            <span class="googleIcon"></span>
-                            <span class="googleButtonText">Continue with Google</span>
+                            <span className="googleIcon"></span>
+                            <span className="googleButtonText">Continue with Google</span>
                         </div>
                     </Modal.Footer>
                     <Modal.Footer className="mx-auto">
