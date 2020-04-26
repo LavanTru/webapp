@@ -1,10 +1,14 @@
 package com.lavantru.Register.model;
 
 import java.util.List;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.bson.types.ObjectId;
 
 public class Washer extends Users {
 
     private List<Job> jobCapabilities = null;
+    private List<String> payoutBankDetails = null;
+    private List<Job> JobCapabilities = null;
 
     public Washer(){}
 
@@ -12,8 +16,10 @@ public class Washer extends Users {
         this.jobCapabilities = jobCapabilities;
     }
 
-    public Washer(String id, String firstName, String lastName, String email, String phoneNo, String phoneCountryCode, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses, List<PaymentMethod> paymentMethods, List<Job> jobCapabilities) {
-        super(id, firstName, lastName, email, phoneNo, phoneCountryCode, accountType, companyName, userType, acceptsMarketingEmails, payoutBankDetails, addresses, paymentMethods);
+    public Washer(String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses, List<Job> jobCapabilities,String aboutMe) {
+//        ID of the user is generated at construction
+        super(new ObjectId().toString(), firstName, lastName, email, phoneNo, accountType, companyName, "WASHER", acceptsMarketingEmails, addresses,aboutMe);
+        this.payoutBankDetails = payoutBankDetails;
         this.jobCapabilities = jobCapabilities;
     }
 
@@ -25,8 +31,20 @@ public class Washer extends Users {
         this.jobCapabilities = jobCapabilities;
     }
 
+    public List<String> getPayoutBankDetails() {
+        return payoutBankDetails;
+    }
+
+    public void setPayoutBankDetails(List<String> payoutBankDetails) {
+        this.payoutBankDetails = payoutBankDetails;
+    }
+
     @Override
     public String toString() {
-        return super.toString();
+        return new ToStringBuilder(this)
+            .append(super.toString())
+            .append("payoutBankDetails", payoutBankDetails)
+            .append("lndryJobCapabilities", jobCapabilities)
+            .toString();
     }
 }
