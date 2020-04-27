@@ -7,12 +7,14 @@ class RegisterWasher extends Component {
         super(props);
         this.state = {
             phoneNo: "",
+            payoutBankDetails:"",
             streetName: "",
             buildingNo: "",
             apartmentNo: "",
             postCode: "",
             city: "",
-            aboutMe: ""
+            aboutMe: "",
+            acceptsMarketingEmails:false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSignUp = this.handleSignUp.bind(this);
@@ -30,6 +32,13 @@ class RegisterWasher extends Component {
                             <Form.Group as={Col} md={6} controlId="formGridPhone">
                                 <Form.Label>Phone number</Form.Label>
                                 <Form.Control name="phoneNo" placeholder="+34 555 55 55 55" />
+                            </Form.Group>
+                        </Form.Row>
+
+                        <Form.Row>
+                            <Form.Group as={Col} md={6} controlId="formGridAccountNo">
+                                <Form.Label>Account no</Form.Label>
+                                <Form.Control name="payoutBankDetails" placeholder="ES91 2100 0418 4502 0005 1332" />
                             </Form.Group>
                         </Form.Row>
 
@@ -69,6 +78,11 @@ class RegisterWasher extends Component {
                             </Form.Group>
                         </Form.Row>
 
+                        <Form.Row>
+                        <Form.Group controlId="formMarketingCheckbox">
+                            <Form.Check name="acceptsMarketingEmails" type="checkbox" label="I want to receive occasional marketing emails from LavanTru" />
+                        </Form.Group>
+                        </Form.Row>
 
                         <Col sm={{ span: 4, offset: 4 }} >
                             <Button className="button-green mt-5" size="lg" block onClick={this.handleSignUp} >
@@ -82,12 +96,14 @@ class RegisterWasher extends Component {
         );
     }
 
-    // Method to record the changes in the form in a component state variable
+    // Method to record the changes in the form in a component state variable. Need to have special case for checkbox as value cannot be read from checkbox.
     handleChange(event) {
+        let value = event.target.name === "acceptsMarketingEmails"? event.target.checked:event.target.value;
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: value
         });
     }
+
     handleSignUp() {
         const parentState = this.props.location.state;
         const address = {
@@ -106,8 +122,8 @@ class RegisterWasher extends Component {
             this.state.phoneNo,
             "PERSONAL",
             null,
-            true, //ask consent
-            ["123"], //ask details
+            this.state.acceptsMarketingEmails, 
+            [this.state.payoutBankDetails],
             [address])
             .then((response) => {
                 console.log(response);
