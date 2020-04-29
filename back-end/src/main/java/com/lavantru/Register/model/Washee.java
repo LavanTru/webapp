@@ -10,9 +10,9 @@ public class Washee extends Users {
         this.paymentMethods = paymentMethods;
     }
 
-    public Washee(String id, String firstName, String lastName, String email, String phoneNo, String phoneCountryCode, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses, List<PaymentMethod> paymentMethods, List<PaymentMethod> paymentMethods1) {
-        super(id, firstName, lastName, email, phoneNo, phoneCountryCode, accountType, companyName, userType, acceptsMarketingEmails, payoutBankDetails, addresses, paymentMethods);
-        this.paymentMethods = paymentMethods1;
+    public Washee(String id, String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, Boolean acceptsMarketingEmails, List<Address> addresses, List<PaymentMethod> paymentMethods,String aboutMe) {
+        super(id, firstName, lastName, email, phoneNo, accountType, companyName, "WASHEE", acceptsMarketingEmails, addresses,aboutMe);
+        this.paymentMethods = paymentMethods;
     }
 
     public List<PaymentMethod> getPaymentMethods() {

@@ -38,10 +38,15 @@
   }
 }
 
+.lavantruPink{
+  color:#b8627d
+}
+.lavantruGreen{
+  color:#0f7d80
+}
+
 /* NavBar */
 .navbar{
-  /* background-color: #b8627d; */
-  /* background-color: #0f7d80;*/
   background-color: #ffe6de; 
   padding: 15px;
   font-size: larger;
@@ -70,4 +75,139 @@
 /* bootstrap div container */
 .container{
   text-align: left;
+}
+
+/* Currently used at login */
+.button-green,
+.button-green:hover,
+.button-green:active,
+.button-green:focus,
+.button-green:active:focus
+{
+  background-color: #0f7d80 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.button-pink,
+.button-pink:hover,
+.button-pink:active,
+.button-pink:focus,
+.button-pink:active:focus
+{
+  background-color: #b8627d !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Google button START */
+#customGoogleBtn {
+  display: inline-block;
+  background: white;
+  color: #444;
+  width: 100%;
+  border-radius: 5px;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+}
+#customGoogleBtn:hover {
+  cursor: pointer;
+}
+span.googleIcon {
+  background: url('./asset/btn_google_light_normal_ios.svg') transparent no-repeat;
+  /* background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat; */
+  display: inline-block;
+  vertical-align: middle;
+  width: 42px;
+  height: 42px;
+}
+span.googleButtonText {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 42px;
+  padding-right: 42px;
+  font-size: 14px;
+  font-weight: bold;
+  /* Use the Roboto font that is loaded in the <head> */
+  font-family: 'Roboto', sans-serif;
+}
+/* Google button END */
+
+.loginLink{
+  text-decoration: underline;
+  font-weight: bold;
+}
+.loginLink:hover{
+  cursor: pointer;
+}
+.redError{
+  color: red;
+}
+/* Currently used at login */
+.button-green,
+.button-green:hover,
+.button-green:active,
+.button-green:focus,
+.button-green:active:focus
+{
+  background-color: #0f7d80 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.button-pink,
+.button-pink:hover,
+.button-pink:active,
+.button-pink:focus,
+.button-pink:active:focus
+{
+  background-color: #b8627d !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Google button START */
+#customGoogleBtn {
+  display: inline-block;
+  background: white;
+  color: #444;
+  width: 100%;
+  border-radius: 5px;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+}
+#customGoogleBtn:hover {
+  cursor: pointer;
+}
+span.googleIcon {
+  background: url('./asset/btn_google_light_normal_ios.svg') transparent no-repeat;
+  /* background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat; */
+  display: inline-block;
+  vertical-align: middle;
+  width: 42px;
+  height: 42px;
+}
+span.googleButtonText {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 42px;
+  padding-right: 42px;
+  font-size: 14px;
+  font-weight: bold;
+  /* Use the Roboto font that is loaded in the <head> */
+  font-family: 'Roboto', sans-serif;
+}
+/* Google button END */
+
+.loginLink{
+  text-decoration: underline;
+  font-weight: bold;
+}
+.loginLink:hover{
+  cursor: pointer;
+}
+.redError{
+  color: red;
 }

@@ -1,11 +1,34 @@
 import React, { Component } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import LoginModal from "./LoginModal";
+import NavBarLogin from "./NavBarLogin";
 
-// import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
 
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loginModalShow: false,
+            isRegistered: true
+        };
+        this.handleLoginModal = this.handleLoginModal.bind(this);
+        this.handleChangeIsRegistered = this.handleChangeIsRegistered.bind(this);
+
+    }
+
+    handleLoginModal() {
+        this.setState({ loginModalShow: !this.state.loginModalShow });
+    };
+
+    handleChangeIsRegistered() {
+        this.setState({ isRegistered: !this.state.isRegistered });
+    };
+
 
     render() {
+        // Import session data from the Context
+        // const session = useContext(SessionContext);
+
         return (
             <Navbar className="navbar" expand="lg">
                 <Navbar.Brand href="#home">LavanTru</Navbar.Brand>
@@ -21,15 +44,26 @@ class NavBar extends Component {
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown>
+
                     </Nav>
                     <Nav className="ml-auto">
-                    <Nav.Link className="font-weight-bold" href="#log_in">Log in</Nav.Link>
-                    <Nav.Link href="#sign_up">Sign up</Nav.Link>
+                        <NavBarLogin handleChangeIsRegistered={this.handleChangeIsRegistered} handleLoginModal={this.handleLoginModal}/>
+                        <LoginModal
+                            show={this.state.loginModalShow}
+                            // show={true}
+                            onHide={this.handleLoginModal}
+                            isRegistered={this.state.isRegistered}
+                            handleChangeIsRegistered={this.handleChangeIsRegistered}
+                        // backdrop="static"
+                        />
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
         );
     }
+
+
+
 }
 
 export default NavBar;
