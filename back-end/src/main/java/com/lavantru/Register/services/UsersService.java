@@ -15,6 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UsersService implements IUsersService {
   @Autowired
@@ -39,6 +42,7 @@ public class UsersService implements IUsersService {
     user.setLastName(accountDto.getLastName());
     user.setPassword(accountDto.getPassword());
     user.setEmail(accountDto.getEmail());
+    user.setUserType(accountDto.getUserType());
     return repository.save(user);
   }
 
@@ -70,6 +74,15 @@ public class UsersService implements IUsersService {
   public Users getUserById(ObjectId id){
     return  repository.findById(id);
   }
+
+
+  public List<Users> getUsersByType(String userType){
+    List<Users> userTypeList = new ArrayList<>();
+    repository.findByUserType(userType)
+    .forEach(userTypeList::add);
+    return userTypeList;
+    }
+
 
   public boolean emailExists(String email) {
     Users user = repository.findByEmail(email);
