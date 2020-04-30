@@ -1,16 +1,17 @@
 package com.lavantru.Register.dao;
 
-import com.lavantru.Register.model.Job;
 import com.lavantru.Register.model.Order;
+import org.bson.types.ObjectId;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface OrderDao {
 
     int createOrder(Order order);
 
-//    default int createOrder(Order order){
-//        UUID id = UUID.randomUUID();
-//        return  createOrder(id, order);
-//    }
+    Optional<Order> getOrderById(UUID id);
+
+    List<Order> getAllOrders();
 }
