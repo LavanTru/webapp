@@ -211,3 +211,21 @@ span.googleButtonText {
 .redError{
   color: red;
 }
+
+.profile{
+  color: #0f7d80;
+}
+.profile .image {
+ border-radius: 50%;
+ height: 150px;
+ width: 150px;
+ border: 5px solid #0f7d80;
+ object-fit: cover;
+ margin: 10px;
+}
+.profile .header{
+  background-color: #ffe6de;
+  border-radius: 4px;
+  overflow: overlay;
+}
+
