@@ -41,7 +41,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/register" component={RegisterWasherOrWashee} />
                 <Route exact path="/register/washer" component={RegisterWasher} />
-                <Route exact path="/profile" component={WasherProfile} />
+                <Route exact path="/profile/:id" component={WasherProfile} />
 
                 <Route path="/jobs" exact component={ListJobsComponent} />
                 <Route path="/jobs/:id" component={JobDetailsComponent} />

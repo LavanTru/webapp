@@ -7,15 +7,30 @@ class WasherProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            washerId: '5ea1d1552cea5c7ddc865ded', // id must be consumed from the user session, 
-            firstName: "Gertrud",
-            aboutMe: "I don't like untidy environment and household. I work has a quality and very high presentation.I take pride in my work and love cleaning and tidying leaving the environment spotless, fragrant and looking like brand new restored place. The level of my work is very professional and high quality in line with required standards and specific ways of doing things. I have an experience of many years.          Many thanks and best wishes and looking forward to hear from you.",
-            washerCapabilities: []
+            washerId: this.props.match.params.id,
+            // '5ea1d1552cea5c7ddc865ded', // sample ID
+            washerDetails: {
+                jobCapabilities: [],
+            },
+            // washerDetails: {
+            //     firstName: "Gertrud",
+            //     aboutMe: "I don't like untidy environment and household. I work has a quality and very high presentation.I take pride in my work and love cleaning and tidying leaving the environment spotless, fragrant and looking like brand new restored place. The level of my work is very professional and high quality in line with required standards and specific ways of doing things. I have an experience of many years.          Many thanks and best wishes and looking forward to hear from you.",
+            //     jobCapabilities: [],
+            //     firstName: "Gertrud",
+            //     streetName: "Monec",
+            //     buildingNo: "16",
+            //     apartmentNo: "3-1",
+            //     postCode: "08003",
+            //     city: "Barcelona",
+            //     phoneNo: "+34654253847",
+            //     image:"https://image.shutterstock.com/image-photo/cook-pleasure-waist-cheerful-senior-260nw-757384063.jpg"
+            // }
         }
     }
 
     componentDidMount() {
         this.refreshWasherJobCapabilities();
+        this.refreshWasherDetails(); //turn on to use non-hardcoded attribute values
     }
 
     render() {
@@ -26,45 +41,42 @@ class WasherProfile extends Component {
                         <Col md={8}>
                             <div >
                                 <div className="header">
-                                    <img className="image float-left" src="https://image.shutterstock.com/image-photo/cook-pleasure-waist-cheerful-senior-260nw-757384063.jpg" alt="" />
+                                    <img className="image float-left" src={this.state.washerDetails.image} />
                                     <div className="text-center my-5">
-                                        <h1>{this.state.firstName}</h1>
+                                        <h1>{this.state.washerDetails.firstName}</h1>
                                         <p>10 washes </p>
                                     </div>
                                 </div>
                                 <p>
                                     <h2 className="mt-3">About me</h2>
-                                    <p>{this.state.aboutMe}</p>
+                                    <p>{this.state.washerDetails.aboutMe}</p>
                                     <h2 className="mt-3">My services</h2>
                                     <Row>
-                                                    <Col>
-                                                    </Col>
-                                                    <Col>
-                                                    <b>Speed</b>
-                                                    </Col>
-                                                </Row>
-                                
-                                <div className="container">
+                                        <Col>
+                                        </Col>
+                                        <Col>
+                                            <b>Speed</b>
+                                        </Col>
+                                    </Row>
                                     {
-                                        this.state.washerCapabilities.map(
+                                        this.state.washerDetails.jobCapabilities.map(
                                             washerJob =>
                                                 <Row>
                                                     <Col>
-                                                        <h5>{(washerJob.active) ?  (washerJob.job):""}</h5>
+                                                        <h5>{(washerJob.active) ? (washerJob.job) : ""}</h5>
                                                     </Col>
                                                     <Col>
-                                                    {(washerJob.active) ? (washerJob.speed) : ''}
+                                                        {(washerJob.active) ? (washerJob.speed) : ''}
                                                     </Col>
                                                 </Row>
                                         )
                                     }
-                                </div>
 
                                 </p>
                             </div>
                         </Col>
                         <Col >
-                            <ContactCard />
+                            <ContactCard washerDetails={this.state.washerDetails} />
                         </Col>
                     </Row>
                 </Col>
@@ -76,10 +88,23 @@ class WasherProfile extends Component {
         WasherDataService.retrieveWasher(this.state.washerId)
             .then(
                 response => {
-                    this.setState({ washerCapabilities: response.data.jobCapabilities })
-                    console.log(this.state.washerCapabilities)
+                    this.setState({
+                        washerDetails: {
+                            ...this.state.washerDetails,
+                            jobCapabilities: response.data.jobCapabilities
+                        }
+                    })
                 }
             )
+    }
+    refreshWasherDetails() {
+        WasherDataService.retrieveWasher(this.state.washerId)
+            .then(
+                response => {
+                    this.setState({ washerDetails: response.data })
+                }
+            )
+        console.log(this.state.washerDetails)
     }
 }
 
