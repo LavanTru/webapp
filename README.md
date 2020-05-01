@@ -15,11 +15,13 @@ With the purpose to have a better control of the source code and since this is a
 * **hotfix**: these branches will be created to quickly patch production fixes. 
 * **release**: these branches will be used once develop branch has enough features to be released to production.
 
+This README does not list each contributor and their impact. Different branches, their owners and their impact to the repository can be seen in Git.
+
 ## Technology deck
 As of now, the frameworks used in LavanTru are React.js for the front-end and Spring Boot for back-end with cloud MongoDB. While making the decision of what technologies to use, among other reasons, these have been chosen because of learning purposes of the team members. 
 
 ### Font-end
-LavanTru's front-end is the responsible of the presentation layer. React.js is used to build a responsive web application that comprehends different reusable components that will display and capture information to the user. Besides react.js library there are a bunch of several libraries used that can be found in the ***package.json*** file.
+LavanTru's front-end is responsible for the presentation layer. React.js is used to build a responsive web application that comprehends different reusable components that will display and capture information to the user. In addition to UI components, services are used to manage accessing the back-end APIs. Besides react.js library there are a bunch of several libraries used that can be found in the ***package.json*** file.
 
 ### Back-end
 Business logic is performed in the back-end. Spring boot is the framework used because it allows to build fast API applications in Java with minimal configuration. Also, Spring Boot comes with Tomcat HTTP web server embedded to host the application.
