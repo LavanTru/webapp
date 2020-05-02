@@ -14,6 +14,10 @@ class WasherDataService {
         return axios.put(`${WASHER_API_URL}/services/${id}`, washerCapabilities);
     }
 
+    getActiveJobs(id) {
+        return axios.get(`${WASHER_API_URL}/active-services/${id}`);
+    }
+
     register(firstName, lastName, email, password,phoneNo,accountType,companyName,acceptsMarketingEmails,payoutBankDetails,addresses) {
         var payload = {
             "firstName": firstName,
