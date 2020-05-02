@@ -1,6 +1,6 @@
 # LavanTru
 
-LavanTru is a P2P laundry platform to help those that hate doing laundry by connecting them with those that are happy to wash their clothes at home for a fee. 
+LavanTru is a P2P laundry platform to help those that hate doing laundry by connecting them with those that are happy to wash their clothes at home for a fee. Here are described the VCS and branching model used, the technologies used to build the digital solution, as well some examples of SOLID principles and Clean Code best practices applied during development.   
 
 
 ## Version Control System  
@@ -15,18 +15,20 @@ With the purpose to have a better control of the source code and since this is a
 * **hotfix**: these branches will be created to quickly patch production fixes. 
 * **release**: these branches will be used once develop branch has enough features to be released to production.
 
+This README does not list each contributor and their impact. Different branches, their owners and their impact to the repository can be seen in Git.
+
 ## Technology deck
-As of now, the frameworks used in LavanTru are React.js for the front-end, Spring Boot for back-end with MongoDB cloud. While making the decision of what technologies to use, among other reasons, these have been chosen because of learning purposes of the team members.   
+As of now, the frameworks used in LavanTru are React.js for the front-end and Spring Boot for back-end with cloud MongoDB. While making the decision of what technologies to use, among other reasons, these have been chosen because of learning purposes of the team members. 
 
 ### Font-end
-LavanTru's front-end is the responsible of the presentation layer. React.js is used to build a responsive web application that comprehends different reusable components that will display and capture information to the user, among other tasks. Besides react.js library there are a bunch of several libraries used that can be found in the ***package.json*** file.
+LavanTru's front-end is responsible for the presentation layer. React.js is used to build a responsive web application that comprehends different reusable components that will display and capture information to the user. In addition to UI components, services are used to manage accessing the back-end APIs. Besides react.js library there are a bunch of several libraries used that can be found in the ***package.json*** file.
 
 ### Back-end
 Business logic is performed in the back-end. Spring boot is the framework used because it allows to build fast API applications in Java with minimal configuration. Also, Spring Boot comes with Tomcat HTTP web server embedded to host the application.
 
-Maven is the build tool used in the back-end solution to manage the dependencies which can be found in the ***pom.xml*** file.
+Maven is the building tool used in the back-end solution to manage the dependencies which can be found in the ***pom.xml*** file.
 
-MongoDB Cloud is the chosen database management system for multiple reasons. The first one, as already said before, is for learning purposes, the second is a document-oriented database with flexible schema, which makes the development easier and keeps the consistency of the data with the model POJOs and the API's requests and responses Json files.
+MongoDB Cloud is the chosen database management system for multiple reasons. The first one, as already said before, is for learning purposes, the second is a document-oriented database with flexible schema which makes the development easier and keeps the consistency between the data with the model POJOs and the API's JSON requests and responses.
 
 ## Clean Code
 In the development process SOLID principles and coding best practices are followed to standardize the code. The classes and methods names are clear and meaningful.
