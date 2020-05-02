@@ -45,4 +45,9 @@ public class WasherController {
             @RequestBody List<Job> washerJobCapabilities) {
         washerService.updateLndryJobCapabilities(id, washerJobCapabilities);
     }
+
+    @GetMapping(path = "/active-services/{id}")
+    public List<Job> getWasherActiveJobs(@PathVariable("id") ObjectId id) {
+        return washerService.getWasherActiveJobs(id);
+    }
 }
