@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import WasherDataService from '../service/WasherDataService';
+import { Container, Col, Row } from "react-bootstrap";
+import QuantityControl from './QuantityControl';
 
 class OrderComponent extends Component{
 
@@ -37,46 +39,70 @@ class OrderComponent extends Component{
 
     render(){
         return(
-        <div className='container'>
-            <div className='row'>
+        <Container>
+            <Row>
                 <h3>{this.state.washer.firstName} {this.state.washer.lastName}</h3>
-            </div>
-            <div className='row'>
+            </Row>
+            <Row>
                 <p>{this.state.washer.aboutMe}</p>
-            </div> 
+            </Row> 
 
-            <div className="col-md-6">
-                <div className="card w-100" >
-                    <div className="card-header">
-                        Select from my services
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        {this.state.jobs.map(jobItem => 
-                            <li className="list-group-item" key={jobItem.id}>
-                            
-                            <div className="card w-100">
+            <Col>
+                <Row className="mt-2">
+                    <Col md={6}>
+                        <div className="card w-100" >
+                            <div className="card-header">
+                                Select from {this.state.washer.firstName}'s services
+                            </div>
+                            <ul className="list-group list-group-flush">
+                                {this.state.jobs.map(jobItem => 
+                                    <li className="list-group-item" key={jobItem.id}>
+                                        <div className="card w-100">
+                                        <div className="card-body">
+                                            <h5 className="card-title">{jobItem.job}</h5>
+                                            <p className="card-text">{jobItem.speed}</p>
+                                           
+                                            <QuantityControl name={jobItem.job}/>
+
+
+                                            <a href="#" className="btn btn-success">Add</a>
+                                        </div>
+                                        </div>
+                                    </li>)
+                                }
+                            </ul>
+                        </div>
+                    </Col>
+                    <Col>
+                        
+                        <div className="card w-100" >
+                            <div className="card-header">
+                                Your bag summary
+                            </div>
                             <div className="card-body">
-                                <h5 className="card-title">{jobItem.job}</h5>
-                                <p className="card-text">{jobItem.speed}</p>
-                                <a href="#" className="btn btn-success">Add</a>
+                                Body
+                                <div className="form-group mt-5">
+                                    <label htmlFor="exampleFormControlTextarea2">Any special indications?</label>
+                                    <textarea className="form-control" id="exampleFormControlTextarea2" rows="3" maxLength="100"></textarea>
+                                </div>
                             </div>
+                            <div className="card-footer text-muted">
+                                <button className="btn btn-success">Checkout your bag</button>
                             </div>
+                        </div>
+                        
+                    </Col>
+                </Row>
+            </Col>
+            
 
-                                
-                            </li>)
-                        }
-                    </ul>
-                </div>
-            </div>
+            
 
-            <div className="form-group">
-                <label htmlFor="exampleFormControlTextarea2">Any special indications?</label>
-                <textarea className="form-control" id="exampleFormControlTextarea2" rows="3" maxLength="100"></textarea>
-            </div>
+                
             <div className="row">
-                <button className="btn btn-success">Add to my bag</button>
+               
             </div>
-        </div>
+        </Container>
         );
     }
 
