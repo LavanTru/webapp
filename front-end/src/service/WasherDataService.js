@@ -10,6 +10,10 @@ class WasherDataService {
         return axios.get(`${WASHER_API_URL}/${id}`);
     }
 
+    retrieveAllWashers() {
+        return axios.get(`${WASHER_API_URL}`);
+    }
+
     updateWasherJobCapabilities(id, washerCapabilities){
         return axios.put(`${WASHER_API_URL}/services/${id}`, washerCapabilities);
     }
