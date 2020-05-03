@@ -58,7 +58,7 @@ class UsersControllerTest {
 
   List<PaymentMethod> testPaymentMethodList = Arrays.asList(testPaymentMethod);
   Users testUser = new Users("5e763c3ea65eaf400c234e7a", "Dave", "Dev", "davedev@gmail.com",
-      "222222222", "BUSINESS", "Prodevelopment LTD", "WASHEE", false, null,"hello world!");
+      "222222222", "BUSINESS", "Prodevelopment LTD", "WASHEE", false, null,"hello world!","image");
   List<Users> testUserList = Arrays.asList(testUser);
   UsersDto testUserDto = new UsersDto("Dave", "Dev", "davedev@gmail.com","Password123","WASHEE","Password123");
 
