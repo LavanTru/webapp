@@ -18,7 +18,7 @@ class WasherDataService {
         return axios.get(`${WASHER_API_URL}/active-services/${id}`);
     }
 
-    register(firstName, lastName, email, password,phoneNo,accountType,companyName,acceptsMarketingEmails,payoutBankDetails,addresses) {
+    register(firstName, lastName, email, password,phoneNo,accountType,companyName,acceptsMarketingEmails,payoutBankDetails,addresses,aboutMe) {
         var payload = {
             "firstName": firstName,
             "lastName": lastName,
@@ -30,7 +30,8 @@ class WasherDataService {
             "companyName": companyName,
             "acceptsMarketingEmails": acceptsMarketingEmails,
             "payoutBankDetails": payoutBankDetails,
-            "addresses": addresses
+            "addresses": addresses,
+            "aboutMe":aboutMe
         };
         console.log(payload);
         return axios.post(WASHER_API_URL + '/register', payload);

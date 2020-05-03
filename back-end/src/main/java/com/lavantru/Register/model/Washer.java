@@ -16,9 +16,9 @@ public class Washer extends Users {
         this.jobCapabilities = jobCapabilities;
     }
 
-    public Washer(String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses, List<Job> jobCapabilities,String aboutMe) {
+    public Washer(String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, Boolean acceptsMarketingEmails, List<String> payoutBankDetails, List<Address> addresses, List<Job> jobCapabilities,String aboutMe,String image) {
 //        ID of the user is generated at construction
-        super(new ObjectId().toString(), firstName, lastName, email, phoneNo, accountType, companyName, "WASHER", acceptsMarketingEmails, addresses,aboutMe);
+        super(new ObjectId().toString(), firstName, lastName, email, phoneNo, accountType, companyName, "WASHER", acceptsMarketingEmails, addresses,aboutMe,image);
         this.payoutBankDetails = payoutBankDetails;
         this.jobCapabilities = jobCapabilities;
     }

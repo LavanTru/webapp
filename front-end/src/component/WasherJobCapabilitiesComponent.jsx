@@ -8,7 +8,7 @@ class WasherJobCapabilitiesComponent extends Component{
     constructor(props){
         super(props)
         this.state = {
-            washerId : '5ea1d1552cea5c7ddc865ded', // id must be consumed from the user session 
+            washerId : '5eaec6a2aba8b71ff7b280c6', // id must be consumed from the user session 
             washerCapabilities: [],
             message: null,
             visible : false

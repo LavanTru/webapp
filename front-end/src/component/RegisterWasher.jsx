@@ -124,7 +124,8 @@ class RegisterWasher extends Component {
             null,
             this.state.acceptsMarketingEmails, 
             [this.state.payoutBankDetails],
-            [address])
+            [address],
+            this.state.aboutMe)
             .then((response) => {
                 console.log(response);
                 if (response.status === 200) {
