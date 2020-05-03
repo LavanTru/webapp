@@ -12,7 +12,7 @@ import RegisterWasherOrWashee from './component/RegisterWasherOrWashee';
 import RegisterWasher from './component/RegisterWasher';
 import { SessionContext, getSessionCookie } from "./Session";
 import WasherListComponent from './component/WasherListComponent';
-import WasherListItemComponent from './WasherListItemComponent';
+import WasherListItemComponent from './component/WasherListItemComponent';
 
 /**React Component representing the high-level structure of the application. 
  * Routing is defined in this file.**/

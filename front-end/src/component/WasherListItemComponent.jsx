@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { Container, Col, Row,} from "react-bootstrap";
 import WasherDataService from '../service/WasherDataService';
-import WasherJobCapabilitiesComponent from '../component/WasherJobCapabilitiesComponent'
+
 
 class WasherListItemComponent extends Component{
         constructor(props){
             super(props)
             this.state = {
-                washerId: this.props.match.param.id,
-                washerImage: '',
                 washerName: '',
                 washerCity: '',
                 jobCapabilities: []
@@ -21,7 +19,7 @@ class WasherListItemComponent extends Component{
         }
 
         refreshWasherDetails() {
-            WasherDataService.retrieveWasher(this.state.washerId)
+            WasherDataService.retrieveWasher(this.props.washerId)
                 .then(
                     response => {
                         console.log(response.data)
@@ -33,15 +31,18 @@ class WasherListItemComponent extends Component{
         }
 
         refreshWasherJobCapabilities() {
-            WasherDataService.retrieveWasher(this.state.washerId)
+            WasherDataService.retrieveWasher(this.props.washerId)
                 .then(
                     response => {
-                        this.setState({
+                        console.log("My response", response.data);
+                    
+                        this.setState({ 
                             washerName: response.data.firstName,
-                            washerCity: response.data.city,
-                            jobCapabilities: response.data.jobCapabilities
+                            washerCity: response.data.addresses[0].city,
+                            jobCapabilities: response.data.jobCapabilities,
                             
                         })
+                        console.log("State", this.state)
                     }
                 )
         }
@@ -49,18 +50,16 @@ class WasherListItemComponent extends Component{
         render(){
             return(
                 <Container className="washerListUnit">
-                    //two columns with the second having a set of 3 rows, last of which having 3 columns
                      <Row className="unitDisplay">
                         <Col>
                             <div>
-                                <img className="washerListImage" src={this.state.washerImage} />
+                                <img className="washerListImage" src="http://www.freedigitalphotos.net/images/previews/sand-dunes-and-grass-vegetation-background-100379140.jpg" />
                             </div>
                         </Col>
-                        <Col xs={6}>
+                        <Col >
                             <Row>
                             <div className="washerListName">
-                                    <h3>{this.state.washerName}</h3>
-                                    
+                                <h3>{this.state.washerName}</h3>    
                             </div>
                             </Row>
                             <Row>
@@ -71,13 +70,18 @@ class WasherListItemComponent extends Component{
                             <Row>
                                 {
                                     this.state.jobCapabilities.map(
-                                        washerJob => <Col><h5>{(washerJob.active) ? (washerJob.job) : ""}</h5></Col>
+                                        washerJob => 
+                                        <Col>
+                                        <p3>{(washerJob.active) ? (washerJob.job) : ""}</p3>
+                                        </Col>
                                     )
                                 }
+                                
                             </Row>
 
                         </Col>
                      </Row>
+                     <tr/>
                 </Container>
             )
         }

@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-
+import { Container, Col, Row,} from "react-bootstrap";
 import WasherListItemComponent from '../component/WasherListItemComponent'
 import WasherDataService from '../service/WasherDataService'
 
@@ -14,11 +14,11 @@ class WasherListComponent extends Component{
     }
 
     componentDidMount() {
-            this.refreshWasherDetails();
+            this.refreshAllWashers();
     }
 
     refreshAllWashers() {
-        WasherDataService.retrieveAllWasher()
+        WasherDataService.retrieveAllWashers()
             .then(
                 response => {
                     console.log(response);
@@ -29,20 +29,20 @@ class WasherListComponent extends Component{
 
     render(){
         return(
-            <div>
+            <Container className = "washerList">
                 {
-                    this.state.washers.map(function(washer, index){
-                        return (
-                            <li key={index}>
-                                {washer.washerName}
-                            </li>
-                        )
-                    }
-                    )
+                    this.state.washers.map(
+                        washer =>
+                        <Row>
+    
+                            
 
+                            <WasherListItemComponent key={washer.id} washerId={washer.id} />
+                        </Row>
+                    )
+                    
                 }
-                
-            </div>
+            </Container>
         )
     }
 
