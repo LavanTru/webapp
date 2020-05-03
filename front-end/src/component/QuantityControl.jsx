@@ -11,10 +11,20 @@ class QuantityControl extends Component {
 
     decrease = () => {
         this.setState({ value: this.state.value - 1 });
+        console.log("decrease", this.state.value)
+        this.sendData();
     }
 
     increase = () => {
         this.setState({ value: parseInt(this.state.value, 10) + 1 });
+        console.log("increase", this.state.value)
+        this.sendData();
+    }
+
+    // for some reason the call back sends an wrong value to the parent component. Need to revisit and fix this
+    sendData = (quantity) => {
+        this.props.parentCallback(this.state.value);
+        console.log("child", this.state.value)
     }
 
     render() {
@@ -28,10 +38,9 @@ class QuantityControl extends Component {
                     value={this.state.value} 
                     onChange={() => this.setState({value: document.getElementById(this.props.name).value})}
                     type="number"
-                    min="0"
                     />
             <button onClick={this.increase} className="plus"></button>
-            </div>
+            </div> 
         );
     }
 }

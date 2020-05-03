@@ -8,10 +8,11 @@ class OrderComponent extends Component{
     constructor(){
         super()
         this.state = {
-            washerId : '5eac72ed6cf88c6bc3b2631a',
+            washerId : '5eaec46daba8b71ff7b280c4',
             washer : [],
             jobs : [],
-            order : []
+            order : [],
+            test: 0
         }
 
     }
@@ -35,6 +36,10 @@ class OrderComponent extends Component{
                 console.log(this.state.jobs)
             }
         )
+    }
+
+    didplayTest = () => {
+        console.log("Test data", this.state.test)
     }
 
     render(){
@@ -61,11 +66,8 @@ class OrderComponent extends Component{
                                         <div className="card-body">
                                             <h5 className="card-title">{jobItem.job}</h5>
                                             <p className="card-text">{jobItem.speed}</p>
-                                           
-                                            <QuantityControl name={jobItem.job}/>
-
-
-                                            <a href="#" className="btn btn-success">Add</a>
+                                            <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({test: value})}}/>
+                                            <a href="#" className="btn btn-success" onClick={this.didplayTest} >Add</a>
                                         </div>
                                         </div>
                                     </li>)
