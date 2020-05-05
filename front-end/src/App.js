@@ -13,6 +13,7 @@ import RegisterWasher from './component/RegisterWasher';
 import { SessionContext, getSessionCookie } from "./Session";
 import OrderComponent from './component/OrderComponent';
 import WasherProfile from './component/WasherProfile';
+import WasherRequestConfirm from "./component/WasherRequestConfirm";
 
 
 /**React Component representing the high-level structure of the application. 
