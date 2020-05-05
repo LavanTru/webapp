@@ -11,6 +11,7 @@ import WasherJobCapabilitiesComponent from './component/WasherJobCapabilitiesCom
 import RegisterWasherOrWashee from './component/RegisterWasherOrWashee';
 import RegisterWasher from './component/RegisterWasher';
 import { SessionContext, getSessionCookie } from "./Session";
+import WasherProfile from './component/WasherProfile';
 
 
 /**React Component representing the high-level structure of the application. 
@@ -32,22 +33,23 @@ class App extends Component {
     return (
       <div className="App">
         <SessionContext.Provider value={session}>
-        <Router>
-        <>
-        <NavBar  />
+          <Router>
+            <>
+              <NavBar />
 
-        <Switch>
-        <Route exact path="/register" component={RegisterWasherOrWashee} />
-    <Route exact path="/register/washer" component={RegisterWasher} />
+              <Switch>
+                <Route exact path="/register" component={RegisterWasherOrWashee} />
+                <Route exact path="/register/washer" component={RegisterWasher} />
+                <Route exact path="/profile/:id" component={WasherProfile} />
 
-    <Route path="/jobs" exact component={ListJobsComponent} />
-    <Route path="/jobs/:id" component={JobDetailsComponent} />
-    <Route path="/washerjobs" exact component={WasherJobCapabilitiesComponent} />
+                <Route path="/jobs" exact component={ListJobsComponent} />
+                <Route path="/jobs/:id" component={JobDetailsComponent} />
+                <Route path="/washerjobs" exact component={WasherJobCapabilitiesComponent} />
 
-    </Switch>
-    </>
-    </Router>
-    </SessionContext.Provider>
+              </Switch>
+            </>
+          </Router>
+        </SessionContext.Provider>
 
       </div>
     );

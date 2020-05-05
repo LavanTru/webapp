@@ -22,12 +22,13 @@ public class Users {
     private List<Address> addresses = null;
     private String password;
     private String aboutMe;
+    private String image;
 
 
     public Users() {
     }
 
-    public Users(String id, String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<Address> addresses,String aboutMe) {
+    public Users(String id, String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<Address> addresses,String aboutMe, String image) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -40,6 +41,7 @@ public class Users {
         this.acceptsMarketingEmails = acceptsMarketingEmails;
         this.addresses = addresses;
         this.aboutMe = aboutMe;
+        this.image = image;
     }
 
     public String getId() {
@@ -136,6 +138,14 @@ public class Users {
 
     public void setAboutMe(String aboutMe) {
         this.aboutMe = aboutMe;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

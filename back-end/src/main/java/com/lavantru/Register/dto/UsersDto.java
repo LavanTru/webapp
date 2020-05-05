@@ -26,17 +26,23 @@ public class UsersDto {
   private String password;
   private String matchingPassword;
 
+  @NotNull
+  @NotEmpty
+  private String userType;
+
   public UsersDto(
       @NotNull @NotEmpty String firstName,
       @NotNull @NotEmpty String lastName,
       @NotNull @NotEmpty String email,
       @NotNull @NotEmpty String password,
+      @NotNull @NotEmpty String userType,
       String matchingPassword) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.password = password;
     this.matchingPassword = matchingPassword;
+    this.userType = userType;
   }
 
   public UsersDto() {
@@ -82,6 +88,10 @@ public class UsersDto {
     this.matchingPassword = matchingPassword;
   }
 
+  public String getUserType() { return userType; }
+
+  public void setUserType(String userType) { this.userType = userType; }
+
   @Override
   public String toString() {
     return "UsersDto{" +
@@ -90,6 +100,7 @@ public class UsersDto {
         ", email='" + email + '\'' +
         ", password='" + password + '\'' +
         ", matchingPassword='" + matchingPassword + '\'' +
+        ", userType='" + userType + '\'' +
         '}';
   }
 }

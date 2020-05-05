@@ -56,10 +56,18 @@ class NavBar extends Component {
                             handleChangeIsRegistered={this.handleChangeIsRegistered}
                         // backdrop="static"
                         />
+                        {this.myMethod}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
         );
+    }
+
+    myMethod (){
+        if (this.state.magic)
+        {
+            return <div>magic</div>
+        }
     }
 
 

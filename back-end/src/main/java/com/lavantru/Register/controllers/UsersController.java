@@ -38,6 +38,12 @@ public class UsersController {
         return repository.findById(id);
     }
 
+    @RequestMapping(value = "/filter/{userType}", method = RequestMethod.GET)
+    public List<Users> getUsersByType(@PathVariable("userType") String userType){
+
+        return usersService.getUsersByType(userType);
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> loginUser(@RequestBody UsersDto usersDto){
         return usersService.login(usersDto);
