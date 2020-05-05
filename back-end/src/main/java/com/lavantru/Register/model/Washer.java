@@ -8,7 +8,6 @@ public class Washer extends Users {
 
     private List<Job> jobCapabilities = null;
     private List<String> payoutBankDetails = null;
-    private List<Job> JobCapabilities = null;
 
     public Washer(){}
 
