@@ -34,9 +34,6 @@ class WasherListComponent extends Component{
                     this.state.washers.map(
                         washer =>
                         <Row>
-    
-                            
-
                             <WasherListItemComponent key={washer.id} washerId={washer.id} />
                         </Row>
                     )

@@ -211,3 +211,43 @@ span.googleButtonText {
 .redError{
   color: red;
 }
+
+.washerList{
+  color: #0f7d80;
+}
+.washerList .unitImage {
+ 
+ border-radius: 50%;
+ height: 140px;
+ width: 140px;
+ border: 5px solid #0f7d80;
+ object-fit: cover;
+ margin: 5px;
+ 
+ 
+}
+
+/* .washerList .unitName {
+
+}
+
+.washerList .unitCity {
+
+} */
+
+.washerList .unitLaundryJobNull{
+  background-color: white;
+  color: white;
+}
+
+.washerList .unitLaundryJobs {
+  border-radius: 10px;
+  border: 1px solid #b8617c;
+  background-color: #b8617c;
+  font-size: small;
+  color: #ffe6de;
+  margin: 5px;
+  white-space: nowrap;
+  column-width: auto;
+  margin: 2px;
+}
