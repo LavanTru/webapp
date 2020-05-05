@@ -47,6 +47,7 @@ class App extends Component {
                 <Route path="/jobs/:id" component={JobDetailsComponent} />
                 <Route exact path="/washerjobs" component={WasherJobCapabilitiesComponent} />
                 <Route exact path="/order" component={OrderComponent} />
+                <Route exact path="/requests/:id" component={WasherRequestConfirm} />
               </Switch>
             </>
           </Router>
