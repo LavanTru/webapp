@@ -1,4 +1,5 @@
 import axios from 'axios'
+import JobDataService from "../service/JobDataService";
 
 const LAVANTRU_API_URL = 'http://localhost:8080'
 
