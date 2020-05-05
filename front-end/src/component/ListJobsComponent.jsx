@@ -30,7 +30,7 @@ class ListJobsComponent extends Component {
     }
 
     addLndryJobClicked() {
-        this.props.history.push(`-1`)
+        this.props.history.push(`jobs/-1`)
     }
 
     updateLndryJobClicked(id) {

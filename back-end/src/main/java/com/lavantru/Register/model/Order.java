@@ -20,8 +20,8 @@ public class Order {
     private LocalDateTime dateCreated;
     private LocalDateTime dateCompleted;
     private LocalDateTime dateClosed;
-    private Washee washee;
-    private Washer washer;
+    private String washeeId;
+    private String washerId;
     @NotNull @NotEmpty
     private List<Item> items;
 
@@ -29,14 +29,14 @@ public class Order {
             UUID id,
             @NotNull @NotEmpty String status,
             LocalDateTime dateCreated,
-                    Washee washee,
-                    Washer washer,
+                    String washeeId,
+                    String washerId,
             @NotNull @NotEmpty List<Item> items) {
         this.id = id;
         this.status = status;
         this.dateCreated = dateCreated;
-        this.washee = washee;
-        this.washer = washer;
+        this.washeeId = washeeId;
+        this.washerId = washerId;
         this.items = items;
     }
 }
