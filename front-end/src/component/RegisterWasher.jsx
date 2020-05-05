@@ -127,7 +127,6 @@ class RegisterWasher extends Component {
             [address],
             this.state.aboutMe)
             .then((response) => {
-                console.log(response);
                 if (response.status === 200) {
                     console.log("Registration successfull");
                     // TODO change redirect to some default page and log in
