@@ -1,5 +1,6 @@
 package com.lavantru.Register.dao;
 
+import com.lavantru.Register.model.Job;
 import com.lavantru.Register.model.Washer;
 import com.lavantru.Register.repositories.WasherRepository;
 import org.bson.types.ObjectId;

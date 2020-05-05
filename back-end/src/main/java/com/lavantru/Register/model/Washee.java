@@ -6,6 +6,8 @@ public class Washee extends Users {
 
     private List<PaymentMethod> paymentMethods = null;
 
+    public Washee(){}
+
     public Washee(List<PaymentMethod> paymentMethods) {
         this.paymentMethods = paymentMethods;
     }

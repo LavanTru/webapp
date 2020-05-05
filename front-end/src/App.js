@@ -11,6 +11,7 @@ import WasherJobCapabilitiesComponent from './component/WasherJobCapabilitiesCom
 import RegisterWasherOrWashee from './component/RegisterWasherOrWashee';
 import RegisterWasher from './component/RegisterWasher';
 import { SessionContext, getSessionCookie } from "./Session";
+import OrderComponent from './component/OrderComponent';
 import WasherProfile from './component/WasherProfile';
 
 
@@ -42,10 +43,10 @@ class App extends Component {
                 <Route exact path="/register/washer" component={RegisterWasher} />
                 <Route exact path="/profile/:id" component={WasherProfile} />
 
-                <Route path="/jobs" exact component={ListJobsComponent} />
+                <Route exact path="/jobs" component={ListJobsComponent} />
                 <Route path="/jobs/:id" component={JobDetailsComponent} />
-                <Route path="/washerjobs" exact component={WasherJobCapabilitiesComponent} />
-
+                <Route exact path="/washerjobs" component={WasherJobCapabilitiesComponent} />
+                <Route exact path="/order" component={OrderComponent} />
               </Switch>
             </>
           </Router>

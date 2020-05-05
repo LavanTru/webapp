@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -53,5 +54,16 @@ public class WasherService {
 
     public Washer getWasherById(ObjectId id) {
         return washerDao.getWasherById(id);
+    }
+
+    public List<Job> getWasherActiveJobs(ObjectId id) {
+        Washer washer = getWasherById(id);
+        List<Job> activeJobs = new ArrayList<>();
+        for (Job job : washer.getJobCapabilities()){
+            if (job.isActive())
+                activeJobs.add(job);
+        }
+
+        return activeJobs;
     }
 }
