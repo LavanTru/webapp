@@ -45,6 +45,7 @@ public class OrderService implements IOrderService {
     public Order confirmOrder(UUID id) {
         Order order = orderDao.getOrderById(id).get();
         order.setStatus("CONFIRMED");
+        order.setDateConfirmed(LocalDateTime.now());
         return orderDao.updateOrder(order);
     }
 
@@ -52,6 +53,7 @@ public class OrderService implements IOrderService {
     public Order rejectOrder(UUID id) {
         Order order = orderDao.getOrderById(id).get();
         order.setStatus("REJECTED");
+        order.setDateRejected(LocalDateTime.now());
         return orderDao.updateOrder(order);
     }
 }
