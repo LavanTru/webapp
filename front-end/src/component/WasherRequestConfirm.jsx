@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Card,Button } from "react-bootstrap";
+import OrderDataService from "../service/OrderDataService"
 
 class WasherRequestConfirm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            orderId: this.props.match.params.id,
+        }
+        this.handleConfirmButton = this.handleConfirmButton.bind(this);
+        this.handleRejectButton = this.handleRejectButton.bind(this);
+    }
+
     render() {
         return (
             <Container>
@@ -22,11 +32,11 @@ class WasherRequestConfirm extends Component {
     }
 
     handleConfirmButton(){
-
+        OrderDataService.confirmOrder(this.state.orderId);
     }
 
     handleRejectButton(){
-        
+        OrderDataService.rejectOrder(this.state.orderId);
     }
 }
 

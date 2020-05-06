@@ -3,7 +3,7 @@ import axios from 'axios'
 const LAVANTRU_API_URL = 'http://localhost:8080'
 const JOBS_API_URL = `${LAVANTRU_API_URL}/api/order`
 
-class JobDataService {
+class OrderDataService {
 
     getAllOrders() {
         return axios.get(`${JOBS_API_URL}`);
@@ -24,4 +24,4 @@ class JobDataService {
     }
 }
 
-export default new JobDataService()
+export default new OrderDataService()
