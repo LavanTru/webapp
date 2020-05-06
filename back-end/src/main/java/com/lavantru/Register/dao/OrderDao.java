@@ -14,4 +14,6 @@ public interface OrderDao {
     Optional<Order> getOrderById(UUID id);
 
     List<Order> getAllOrders();
+
+    Order  updateOrder(Order order);
 }

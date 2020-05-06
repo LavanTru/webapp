@@ -31,4 +31,9 @@ public class OrderDataAccessService implements OrderDao {
     public List<Order> getAllOrders() {
         return repository.findAll();
     }
+
+    @Override
+    public Order  updateOrder(Order order) {
+        return repository.save(order);
+    }
 }

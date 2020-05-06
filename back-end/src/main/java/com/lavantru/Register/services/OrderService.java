@@ -40,4 +40,9 @@ public class OrderService implements IOrderService {
     public List<Order> getAllOrders() {
         return orderDao.getAllOrders();
     }
+
+    @Override
+    public Order updateOrder(Order newOrder) {
+        return orderDao.updateOrder(newOrder);
+    }
 }

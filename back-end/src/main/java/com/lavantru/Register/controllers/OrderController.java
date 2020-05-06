@@ -28,6 +28,10 @@ public class OrderController {
     public void createOrder(@Valid @NonNull @RequestBody Order order){
         orderService.createOrder(order);
     }
+    @PutMapping()
+    public Order updateOrder(@Valid @NonNull @RequestBody Order order){
+        return orderService.updateOrder(order);
+    }
 
     @GetMapping()
     public List<Order> getAllOrders(){
