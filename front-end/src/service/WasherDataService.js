@@ -1,4 +1,5 @@
 import axios from 'axios'
+import JobDataService from "../service/JobDataService";
 
 const LAVANTRU_API_URL = 'http://localhost:8080'
 
@@ -18,7 +19,13 @@ class WasherDataService {
         return axios.get(`${WASHER_API_URL}/active-services/${id}`);
     }
 
-    register(firstName, lastName, email, password,phoneNo,accountType,companyName,acceptsMarketingEmails,payoutBankDetails,addresses,aboutMe) {
+    async register(firstName, lastName, email, password, phoneNo, accountType, companyName, acceptsMarketingEmails, payoutBankDetails, addresses, aboutMe) {
+        let jobCapabilities;
+        const response = await JobDataService.retrieveAllJobs();
+        jobCapabilities = response.data;
+        jobCapabilities.map(washerJob => {
+            washerJob.active = false;
+        });
         var payload = {
             "firstName": firstName,
             "lastName": lastName,
@@ -31,7 +38,8 @@ class WasherDataService {
             "acceptsMarketingEmails": acceptsMarketingEmails,
             "payoutBankDetails": payoutBankDetails,
             "addresses": addresses,
-            "aboutMe":aboutMe
+            "aboutMe": aboutMe,
+            "jobCapabilities": jobCapabilities
         };
         console.log(payload);
         return axios.post(WASHER_API_URL + '/register', payload);

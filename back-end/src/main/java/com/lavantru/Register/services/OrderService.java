@@ -41,4 +41,20 @@ public class OrderService implements IOrderService {
     public List<Order> getAllOrders() {
         return orderDao.getAllOrders();
     }
+
+    @Override
+    public Order confirmOrder(UUID id) {
+        Order order = orderDao.getOrderById(id).get();
+        order.setStatus("CONFIRMED");
+        order.setDateConfirmed(LocalDateTime.now());
+        return orderDao.updateOrder(order);
+    }
+
+    @Override
+    public Order rejectOrder(UUID id) {
+        Order order = orderDao.getOrderById(id).get();
+        order.setStatus("REJECTED");
+        order.setDateRejected(LocalDateTime.now());
+        return orderDao.updateOrder(order);
+    }
 }
