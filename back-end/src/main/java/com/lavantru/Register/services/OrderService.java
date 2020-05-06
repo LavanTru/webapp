@@ -47,7 +47,7 @@ public class OrderService implements IOrderService {
         order.setStatus("CONFIRMED");
         return orderDao.updateOrder(order);
     }
-    
+
     @Override
     public Order rejectOrder(UUID id) {
         Order order = orderDao.getOrderById(id).get();
