@@ -7,6 +7,7 @@ class WasherListItemComponent extends Component{
         constructor(props){
             super(props)
             this.state = {
+                washerPicture:'',
                 washerName: '',
                 washerCity: '',
                 jobCapabilities: []
@@ -37,6 +38,7 @@ class WasherListItemComponent extends Component{
                         console.log("My response", response.data);
                     
                         this.setState({ 
+                            washerPicture: response.data.image,
                             washerName: response.data.firstName,
                             washerCity: response.data.addresses[0].city,
                             jobCapabilities: response.data.jobCapabilities,
@@ -49,64 +51,45 @@ class WasherListItemComponent extends Component{
 
         render(){
             return(
-                <Container className="washerList">
+                <Container>
                      <Row>
-                        <Col class="col-sm-auto">
+                        <Col md={4}>
                             <div>
-                                <img className="unitImage" src="http://www.freedigitalphotos.net/images/previews/sand-dunes-and-grass-vegetation-background-100379140.jpg" />
+                                <img className="unitImage" src={this.state.washerPicture} />
                             </div>
                         </Col>
-                        <Col>
-                            <Row>
-                                <Col className = "unitName">
-                                    <div>
-                                        <h3>{this.state.washerName}</h3>    
+                        <Col md={6} className="align-details">
+                            <Row className="align-name">
+                                <Col >
+                                    <div > 
+                                        {this.state.washerName}  
                                     </div>
-                    
-                                    <Row>
-                                        <Col>
-                                            <div className="unitCity">
-                                                <p>{this.state.washerCity}</p>
-                                            </div>
-                                            <Row >
-                                                {
-                                                    this.state.jobCapabilities.map(
-                                                        washerJob => 
-                                                            <WasherListJobs key={washerJob.id} washerJob={washerJob} />
-                                                        )
-                                                        
-                                                        // {this.unitLaundryJobs(washerJob)}
-                                                        // washerJob =>{
-                                                        //     <Col className="unitLaundryJobs">
-                                                        //         {(washerJob.active) ? (washerJob.job) : null}
-                                                        //     </Col>
-                                                        // }
-                                                    // )
-                                                
-                                                }
-                                            </Row>
-                                        </Col>
-                                    </Row>
                                 </Col>
                             </Row>
+                            <Row className="align-city">
+                                <Col>
+                                    <div >
+                                        <p>{this.state.washerCity}</p>
+                                    </div>
+                                </Col>
+                            </Row>
+                            <Row className="align-jobs">
+                                {
+                                    this.state.jobCapabilities.map(
+                                        washerJob => 
+                                            <WasherListJobs key={washerJob.id} washerJob={washerJob} />
+                                        )
+                                }
+                            </Row>
+                                        
+                                    
+                                
+                            
                         </Col>
                     </Row>
                      
                 </Container>
             )
         }
-
-        // unitLaundryJobs(washerJob){
-        //    console.log("jobInput", washerJob)
-        //    if(washerJob.active){
-        //         console.log("Positive if")
-        //         return(<Col>{(washerJob.job)}</Col>)
-                
-        //     }
-        //     else{
-        //         console.log("Negative if")
-        //     }
-        // }
-
 }
 export default WasherListItemComponent

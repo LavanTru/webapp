@@ -29,12 +29,13 @@ class WasherListComponent extends Component{
 
     render(){
         return(
-            <Container className = "washerList">
+            <Container className="washerList">
                 {
                     this.state.washers.map(
                         washer =>
-                        <Row>
+                        <Row className="washerListItem">
                             <WasherListItemComponent key={washer.id} washerId={washer.id} />
+                            
                         </Row>
                     )
                     
