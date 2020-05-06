@@ -56,6 +56,7 @@ class JobDetailsComponent extends Component {
                 )
         } else {
             JobDataService.updateJob(this.state.id, jobJson)
+            console.log(jobJson)
                 .then(() => this.props.history.push())
                 .then(
                     response => {

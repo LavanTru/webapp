@@ -3,13 +3,13 @@ package com.lavantru.Register.model;
 public class Item {
 
     private String jobId;
-    private String description;
+    private String job;
     private int amount;
     private double totalPrice;
 
-    public Item(String jobId, String description, int amount, double totalPrice) {
+    public Item(String jobId, String job, int amount, double totalPrice) {
         this.jobId = jobId;
-        this.description = description;
+        this.job = job;
         this.amount = amount;
         this.totalPrice = totalPrice;
     }
@@ -18,7 +18,7 @@ public class Item {
     public String toString() {
         return "Item{" +
                 "jobId='" + jobId + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + job + '\'' +
                 ", amount=" + amount +
                 ", totalPrice=" + totalPrice +
                 '}';

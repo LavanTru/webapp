@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import WasherDataService from '../service/WasherDataService';
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Card, Button, ListGroup, Form} from "react-bootstrap";
 import QuantityControl from './QuantityControl';
+import OrderDataService from '../service/OrderDataService';
+import { Alert } from 'reactstrap';
 
 class OrderComponent extends Component{
 
@@ -13,12 +15,13 @@ class OrderComponent extends Component{
             washer : [],
             jobs : [],
             items : [],
-            order : [],
+            notes: 'Add some notes...',
             amount : 0,
             totalAmount : 0,
             orderTotal : 0
         }
         this.addItem = this.addItem.bind(this);
+        this.createOrder = this.createOrder.bind(this);
     }
 
     componentDidMount() {
@@ -42,16 +45,37 @@ class OrderComponent extends Component{
         )
     }
 
-    addItem(jobId, job, price) {
+    addItem(jobId, job, price, value) {
         return (event) => { 
+            this.setState({amount: value})
             let totalPrice = this.state.amount * price
-            let myArray = [...this.state.items, {jobId: jobId, job: job, amount: this.state.amount, totalPrice: totalPrice}]
-            this.setState({items: myArray})
+            let addedItem = [...this.state.items, {jobId: jobId, job: job, amount: this.state.amount, totalPrice: totalPrice}]
+            this.setState({items: addedItem})
             this.setState({totalAmount : (this.state.totalAmount + this.state.amount)})
-            this.setState({orderTotal : (this.state.orderTotal + totalPrice)})
-            console.log(this.state)
+            this.setState({orderTotal : (this.state.orderTotal + totalPrice)}) 
         }
 
+    }
+
+    handleChange = (event) => {
+        this.setState({notes: event.target.value}, () => console.log(this.state))
+        console.log(this.state.notes)
+    };
+
+    createOrder(){
+        let order = {
+            washeeId: this.state.washeeId,
+            washerId: this.state.washerId,
+            notes: this.state.notes,
+            items: this.state.items
+        }
+        OrderDataService.createOrder(order)
+            .then(
+                response => {
+                    if (response.status === 200){
+                        this.setState({ message: `Your order has been sent.` })
+                    }
+                })
     }
 
     render(){
@@ -65,40 +89,43 @@ class OrderComponent extends Component{
         return(
         <Container>
             <Row>
-               <Col><h3>{this.state.washer.firstName} {this.state.washer.lastName}</h3></Col> 
+               <Col className='orderHeader'><h3>{this.state.washer.firstName} {this.state.washer.lastName}</h3></Col> 
             </Row>
             <Row>
-                <Col> <p>{this.state.washer.aboutMe}</p></Col>
+                <Col className='orderHeader'> <p>{this.state.washer.aboutMe}</p></Col>
             </Row>
             <Col>
                 <Row className="mt-2">
                     <Col md={6}>
-                        <div className="card w-100" >
-                            <div className="card-header">
+                        <Card className="card w-100" >
+                            <Card.Header>
                                 Select from {this.state.washer.firstName}'s services
-                            </div>
-                            <ul className="list-group list-group-flush">
+                            </Card.Header>
+                            <ListGroup variant="flush">
                                 {this.state.jobs.map(jobItem => 
-                                    <li className="list-group-item" key={jobItem.id}>
-                                        <div className="card w-100">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{jobItem.job}</h5>                      
-                                            <p className="card-text">{jobItem.speed} for €{jobItem.price}</p>
+                                    <ListGroup.Item className="list-group-item" key={jobItem.id}>
+                                        <Card className="w-100">
+                                        <Card.Body>
+                                            <Row>
+                                                <Col><h5 className="card-title">{jobItem.job}</h5></Col>
+                                                <Col className="priceCol">€{jobItem.price}</Col>
+                                            </Row>                  
+                                            <p className="card-text">{jobItem.speed}</p>
                                             <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}
-                                            <button className="btn btn-success" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price)} >Add</button>
-                                        </div>
-                                        </div>
-                                    </li>)
+                                            <Button variant="success" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
+                                        </Card.Body>
+                                        </Card>
+                                    </ListGroup.Item>)
                                 }
-                            </ul>
-                        </div>
+                            </ListGroup>
+                        </Card>
                     </Col>
                     <Col> 
-                        <div className="card w-100" >
-                            <div className="card-header">
+                        <Card className="card w-100" >
+                            <Card.Header className="card-header">
                                 Your bag summary
-                            </div>
-                            <div className="card-body">
+                            </Card.Header>
+                            <Card.Body>
                                 <div>
                                 {bag}
                                 <Row className="mt-2">
@@ -107,16 +134,16 @@ class OrderComponent extends Component{
                                     <Col><b>€{this.state.orderTotal}</b></Col>
                                 </Row>
                                 </div>
-                                <div className="form-group mt-5">
-                                    <label htmlFor="exampleFormControlTextarea2">Any special indications?</label>
-                                    <textarea className="form-control" id="exampleFormControlTextarea2" rows="3" maxLength="100"></textarea>
-                                </div>
-                            </div>
-                            <div className="card-footer text-muted">
-                                <button className="btn btn-success">Checkout your bag</button>
-                            </div>
-                        </div>
-                        
+                                <Form.Group className="mt-5">
+                                    <Form.Label htmlFor="textAreaNotes">Any special indications?</Form.Label>
+                                    <Form.Control as="textarea" rows="3" id="textAreaNotes" placeholder={this.state.notes} maxLength="100" onChange={this.handleChange}></Form.Control>
+                                </Form.Group>
+                            </Card.Body>
+                            <Card.Footer className="text-muted">
+                                <Button variant="success" className="btn btn-success" onClick={this.createOrder}>Checkout your bag</Button>
+                            </Card.Footer>
+                        </Card>
+                        {this.state.message && <Alert color="success" >{this.state.message}</Alert>}
                     </Col>
                 </Row>
             </Col>

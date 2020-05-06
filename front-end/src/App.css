@@ -229,3 +229,12 @@ span.googleButtonText {
   overflow: overlay;
 }
 
+.orderHeader{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.priceCol{
+  text-align: right;
+  font-size: 1.3em;
+}
