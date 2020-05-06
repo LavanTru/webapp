@@ -14,4 +14,8 @@ public interface IOrderService {
     public Optional<Order> getOrderBy(UUID id);
 
     public List<Order> getAllOrders();
+
+    public Order confirmOrder(UUID id);
+
+    public Order rejectOrder(UUID id);
 }
