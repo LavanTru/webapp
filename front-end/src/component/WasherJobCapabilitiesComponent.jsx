@@ -91,6 +91,9 @@ class WasherJobCapabilitiesComponent extends Component{
                     <h6>My job</h6>
                 </div>
                 <div className="col">
+                    <h6>Price</h6>
+                </div>
+                <div className="col">
                     <h6>Off/On</h6>
                 </div>
                 <div className="col">
@@ -103,6 +106,9 @@ class WasherJobCapabilitiesComponent extends Component{
                     <div className="row">
                         <div className="col">
                             <label htmlFor={washerJob.id}>{washerJob.job}</label>
+                        </div>
+                        <div className="col">
+                            <label htmlFor={washerJob.id}>{washerJob.price}</label>
                         </div>
                         <div className="col">
                             <SwitchComponent 

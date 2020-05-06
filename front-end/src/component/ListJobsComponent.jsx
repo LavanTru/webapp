@@ -30,7 +30,7 @@ class ListJobsComponent extends Component {
     }
 
     addLndryJobClicked() {
-        this.props.history.push(`-1`)
+        this.props.history.push(`jobs/-1`)
     }
 
     updateLndryJobClicked(id) {
@@ -56,9 +56,9 @@ class ListJobsComponent extends Component {
                 <div className="container">
                     <table className="table">
                         <thead>
-                            <tr>
-                                <th>Id</th>
+                            <tr>    
                                 <th>Laundry Job</th>
+                                <th>Price</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -68,8 +68,8 @@ class ListJobsComponent extends Component {
                                 this.state.lndryJobs.map(
                                     lndryJob =>
                                    <tr>
-                                        <td>{lndryJob.id}</td>
                                         <td>{lndryJob.job}</td>
+                                        <td>{lndryJob.price}</td>
                                         <td><button className="btn btn-success" onClick={() => this.updateLndryJobClicked(lndryJob.id)}>Update</button></td>
                                         <td><button className="btn btn-outline-danger" onClick={() => this.deleteLndryJobClicked(lndryJob.id)}>Delete</button></td>
                                     </tr>

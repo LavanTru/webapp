@@ -8,13 +8,17 @@ class OrderComponent extends Component{
     constructor(){
         super()
         this.state = {
+            washeeId : '5e763c3ea65eaf400c234e7a',
             washerId : '5eaec46daba8b71ff7b280c4',
             washer : [],
             jobs : [],
+            items : [],
             order : [],
-            test: 0
+            amount : 0,
+            totalAmount : 0,
+            orderTotal : 0
         }
-
+        this.addItem = this.addItem.bind(this);
     }
 
     componentDidMount() {
@@ -38,20 +42,34 @@ class OrderComponent extends Component{
         )
     }
 
-    didplayTest = () => {
-        console.log("Test data", this.state.test)
+    addItem(jobId, job, price) {
+        return (event) => { 
+            let totalPrice = this.state.amount * price
+            let myArray = [...this.state.items, {jobId: jobId, job: job, amount: this.state.amount, totalPrice: totalPrice}]
+            this.setState({items: myArray})
+            this.setState({totalAmount : (this.state.totalAmount + this.state.amount)})
+            this.setState({orderTotal : (this.state.orderTotal + totalPrice)})
+            console.log(this.state)
+        }
+
     }
 
     render(){
+        const bag = this.state.items.map(item => (
+            <Row key={item.job+item.id}>
+                <Col>{item.job}</Col> 
+                <Col>{item.amount}</Col>
+                <Col>€{item.totalPrice}</Col>
+            </Row>
+        ))
         return(
         <Container>
             <Row>
-                <h3>{this.state.washer.firstName} {this.state.washer.lastName}</h3>
+               <Col><h3>{this.state.washer.firstName} {this.state.washer.lastName}</h3></Col> 
             </Row>
             <Row>
-                <p>{this.state.washer.aboutMe}</p>
-            </Row> 
-
+                <Col> <p>{this.state.washer.aboutMe}</p></Col>
+            </Row>
             <Col>
                 <Row className="mt-2">
                     <Col md={6}>
@@ -64,10 +82,10 @@ class OrderComponent extends Component{
                                     <li className="list-group-item" key={jobItem.id}>
                                         <div className="card w-100">
                                         <div className="card-body">
-                                            <h5 className="card-title">{jobItem.job}</h5>
-                                            <p className="card-text">{jobItem.speed}</p>
-                                            <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({test: value})}}/>
-                                            <a href="#" className="btn btn-success" onClick={this.didplayTest} >Add</a>
+                                            <h5 className="card-title">{jobItem.job}</h5>                      
+                                            <p className="card-text">{jobItem.speed} for €{jobItem.price}</p>
+                                            <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}
+                                            <button className="btn btn-success" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price)} >Add</button>
                                         </div>
                                         </div>
                                     </li>)
@@ -75,14 +93,20 @@ class OrderComponent extends Component{
                             </ul>
                         </div>
                     </Col>
-                    <Col>
-                        
+                    <Col> 
                         <div className="card w-100" >
                             <div className="card-header">
                                 Your bag summary
                             </div>
                             <div className="card-body">
-                                Body
+                                <div>
+                                {bag}
+                                <Row className="mt-2">
+                                    <Col><b>Total</b></Col> 
+                                    <Col><b>{this.state.totalAmount}</b></Col>
+                                    <Col><b>€{this.state.orderTotal}</b></Col>
+                                </Row>
+                                </div>
                                 <div className="form-group mt-5">
                                     <label htmlFor="exampleFormControlTextarea2">Any special indications?</label>
                                     <textarea className="form-control" id="exampleFormControlTextarea2" rows="3" maxLength="100"></textarea>
@@ -96,14 +120,6 @@ class OrderComponent extends Component{
                     </Col>
                 </Row>
             </Col>
-            
-
-            
-
-                
-            <div className="row">
-               
-            </div>
         </Container>
         );
     }
