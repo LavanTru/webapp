@@ -42,7 +42,16 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Order updateOrder(Order newOrder) {
-        return orderDao.updateOrder(newOrder);
+    public Order confirmOrder(UUID id) {
+        Order order = orderDao.getOrderById(id).get();
+        order.setStatus("CONFIRMED");
+        return orderDao.updateOrder(order);
+    }
+    
+    @Override
+    public Order rejectOrder(UUID id) {
+        Order order = orderDao.getOrderById(id).get();
+        order.setStatus("REJECTED");
+        return orderDao.updateOrder(order);
     }
 }

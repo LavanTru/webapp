@@ -28,9 +28,13 @@ public class OrderController {
     public void createOrder(@Valid @NonNull @RequestBody Order order){
         orderService.createOrder(order);
     }
-    @PutMapping()
-    public Order updateOrder(@Valid @NonNull @RequestBody Order order){
-        return orderService.updateOrder(order);
+    @PutMapping(path = "/confirm/{id}")
+    public Order confirmOrder(@PathVariable("id") UUID id){
+        return orderService.confirmOrder(id);
+    }
+    @PutMapping(path = "/reject/{id}")
+    public Order rejectOrder(@PathVariable("id") UUID id){
+        return orderService.rejectOrder(id);
     }
 
     @GetMapping()

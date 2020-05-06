@@ -15,5 +15,5 @@ public interface OrderDao {
 
     List<Order> getAllOrders();
 
-    Order  updateOrder(Order order);
+    Order updateOrder(Order order);
 }

@@ -33,7 +33,7 @@ public class OrderDataAccessService implements OrderDao {
     }
 
     @Override
-    public Order  updateOrder(Order order) {
+    public Order updateOrder(Order order) {
         return repository.save(order);
     }
 }

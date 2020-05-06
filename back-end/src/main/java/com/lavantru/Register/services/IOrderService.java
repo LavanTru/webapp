@@ -15,5 +15,7 @@ public interface IOrderService {
 
     public List<Order> getAllOrders();
 
-    public Order updateOrder(Order order);
+    public Order confirmOrder(UUID id);
+
+    public Order rejectOrder(UUID id);
 }
