@@ -11,6 +11,7 @@ class JobDetailsComponent extends Component {
         this.state = {
             id: this.props.match.params.id,
             job: '',
+            price: 0,
             message: null,
             visible : false
         }
@@ -27,17 +28,23 @@ class JobDetailsComponent extends Component {
 
         JobDataService.retrieveJob(this.state.id)
             .then(response => this.setState({
-                job: response.data.job
+                job: response.data.job,
+                price: response.data.price
             }))
     }
 
     onSubmit(values) {
+        console.log("values ",values)
         let jobJson = {
             id: this.state.id,
-            job: values.job
+            job: values.job,
+            price: values.price
         }
 
-        let jobJsonWithoutId = {job : values.job}
+        let jobJsonWithoutId = {
+            job : values.job,
+            price : values.price
+        }
 
         if (this.state.id === "-1") {
             JobDataService.createJob(jobJsonWithoutId)
@@ -49,6 +56,7 @@ class JobDetailsComponent extends Component {
                 )
         } else {
             JobDataService.updateJob(this.state.id, jobJson)
+            console.log(jobJson)
                 .then(() => this.props.history.push())
                 .then(
                     response => {
@@ -81,14 +89,14 @@ class JobDetailsComponent extends Component {
 
     render() {
 
-        let { job, id } = this.state
+        let { job, id, price } = this.state
         return (
                 <div>
                 <h3>Laundry Job</h3>
                 {this.state.message && <Alert color="success" isOpen={this.state.visible} >{this.state.message}</Alert>}
                 <div className="container">
                     <Formik
-                        initialValues={{ id, job }}
+                        initialValues={{ id, job, price }}
                         onSubmit={this.onSubmit}
                         validateOnChange={false}
                         validateOnBlur={false}
@@ -106,6 +114,10 @@ class JobDetailsComponent extends Component {
                                     <fieldset className="form-group">
                                         <label>Laundry Job</label>
                                         <Field className="form-control" type="text" name="job" />
+                                    </fieldset>
+                                    <fieldset className="form-group">
+                                        <label>Price</label>
+                                        <Field className="form-control" type="number" name="price" />
                                     </fieldset>
                                     <button className="btn btn-success" type="submit">Save</button>
                                 </Form>

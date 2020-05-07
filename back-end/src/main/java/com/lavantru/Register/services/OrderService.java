@@ -1,6 +1,7 @@
 package com.lavantru.Register.services;
 
 import com.lavantru.Register.dao.OrderDao;
+import com.lavantru.Register.model.Item;
 import com.lavantru.Register.model.Order;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class OrderService implements IOrderService {
     public int createOrder(Order order) {
         UUID id = UUID.randomUUID();
         order.setId(id);
+        order.setStatus("NEW");
         order.setDateCreated(LocalDateTime.now());
         System.out.println(order.toString());
         return orderDao.createOrder(order);
