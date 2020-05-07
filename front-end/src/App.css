@@ -229,3 +229,79 @@ span.googleButtonText {
   overflow: overlay;
 }
 
+
+
+.washerList{
+  width: max-content;
+}
+
+.washerList .washerListItem{
+  border-bottom: 0.5px solid grey;
+  margin-top: 10px;
+  padding-bottom: 35px;
+  color: #0f7d80;
+}
+
+.washerListItem .unitImage {
+ float: left;
+ border-radius: 50%;
+ height: 140px;
+ width: 140px;
+ border: 5px solid #0f7d80;
+ object-fit: cover;
+ margin-top: 15px;
+ margin-right: 2px;
+ margin-left: 10px;
+
+
+}
+
+.washerListItem .align-details{
+
+  text-align: left;
+
+
+}
+
+.washerListItem .align-name{
+  font-size: x-large;
+  font-weight: 500;
+  margin-top: 15px;
+
+}
+
+.washerListItem .align-city {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  padding-left: 0.5%;
+}
+
+.washerListItem .align-jobs
+{
+  margin-left: inherit;
+  height: auto;
+  width: fit-content;
+  padding-left: 0.2%;
+  margin-top: 3px;
+  white-space: nowrap;
+
+}
+
+
+
+
+.washerListItem .unitLaundryJobs {
+
+  text-align: left;
+  border-radius: 10px;
+  /* border: 1px solid #b8617c; */
+  background-color: #b8617c;
+  font-size: small;
+  color: #ffe6de;
+  white-space: nowrap;
+  width: fit-content;
+  margin-left: 0px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  /* margin: 2px; */
+}
