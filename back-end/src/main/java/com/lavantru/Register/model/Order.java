@@ -17,8 +17,9 @@ public class Order {
     private String status;
     private String notes;
     private LocalDateTime dateCreated;
-    private LocalDateTime dateConfirmed;
+    private LocalDateTime dateCompleted;
     private LocalDateTime dateRejected;
+    private LocalDateTime dateConfirmed;
     private String washeeId;
     private String washerId;
     @NotNull @NotEmpty
@@ -38,4 +39,5 @@ public class Order {
         this.washerId = washerId;
         this.items = items;
     }
+
 }
