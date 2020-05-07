@@ -19,7 +19,8 @@ public class Order {
     private String notes;
     private LocalDateTime dateCreated;
     private LocalDateTime dateCompleted;
-    private LocalDateTime dateClosed;
+    private LocalDateTime dateRejected;
+    private LocalDateTime dateConfirmed;
     //@NotNull @NotEmpty
     private Washee washee;
     //@NotNull @NotEmpty
@@ -84,12 +85,8 @@ public class Order {
         this.dateCompleted = dateCompleted;
     }
 
-    public LocalDateTime getDateClosed() {
-        return dateClosed;
-    }
-
-    public void setDateClosed(LocalDateTime dateClosed) {
-        this.dateClosed = dateClosed;
+    public LocalDateTime getDateRejected() {
+        return dateRejected;
     }
 
     public Washee getWashee() {
@@ -114,5 +111,17 @@ public class Order {
 
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
+    }
+
+    public void setDateRejected(LocalDateTime dateRejected) {
+        this.dateRejected = dateRejected;
+    }
+
+    public LocalDateTime getDateConfirmed() {
+        return dateConfirmed;
+    }
+
+    public void setDateConfirmed(LocalDateTime dateConfirmed) {
+        this.dateConfirmed = dateConfirmed;
     }
 }
