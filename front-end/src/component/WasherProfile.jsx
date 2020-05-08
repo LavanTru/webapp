@@ -24,7 +24,7 @@ class WasherProfile extends Component {
 
     componentDidMount() {
         this.refreshWasherJobCapabilities();
-        this.refreshWasherDetails(); //turn on to use non-hardcoded attribute values'
+        this.refreshWasherDetails();
     }
 
     render() {
