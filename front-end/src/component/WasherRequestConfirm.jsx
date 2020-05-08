@@ -98,12 +98,12 @@ class WasherRequestConfirm extends Component {
 
     handleConfirmButton() {
         OrderDataService.confirmOrder(this.state.orderId);
-        this.forceUpdate();
+        this.setState({status:"CONFIRMED"});
     }
 
     handleRejectButton() {
         OrderDataService.rejectOrder(this.state.orderId);
-        this.forceUpdate();
+        this.setState({status:"REJECTED"});
     }
     calculateTotals() {
         this.state.items.map(item => (
