@@ -1,5 +1,8 @@
 package com.lavantru.Register.model;
 
+import lombok.Data;
+
+@Data
 public class Item {
 
     private String jobId;
