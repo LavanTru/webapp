@@ -50,7 +50,7 @@ class WasherRequestConfirm extends Component {
                             </Row>
                             <Card.Text className="mt-3">
                                 <img className="mr-2" src={iconExtraNotes} alt="extra notes" height="30px" width="30px" />
-                                {this.state.notes}
+                                "{this.state.notes}"
                             </Card.Text>
                             <Card.Text>
                                 <i> Request created {new Intl.DateTimeFormat("en-GB", { year: "numeric", month: "long", day: "2-digit", hour: 'numeric', minute: 'numeric' }).format(new Date(this.state.dateCreated))}</i>
