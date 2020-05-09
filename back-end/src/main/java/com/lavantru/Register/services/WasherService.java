@@ -45,7 +45,7 @@ public class WasherService {
     }
 
     public Washer getUserById(ObjectId id){
-        return  washerDao.findById(id);
+        return  washerDao.getWasherById(id);
     }
 
     public List<Washer> getAllWashers() {

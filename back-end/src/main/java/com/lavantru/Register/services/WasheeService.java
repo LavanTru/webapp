@@ -1,15 +1,15 @@
 package com.lavantru.Register.services;
 
 import com.lavantru.Register.dao.WasheeDao;
-import com.lavantru.Register.dao.WasheeDao;
 import com.lavantru.Register.errors.UserAlreadyExistException;
 import com.lavantru.Register.model.Washee;
-import com.lavantru.Register.model.Washer;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service
 public class WasheeService {
 
   private WasheeDao washeeDao;
