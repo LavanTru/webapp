@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import UserDataService from '../service/UserDataService';
 import { setSessionCookie } from "../Session.js";
-
+import {Link} from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -31,6 +31,7 @@ class Login extends Component {
           {this.state.errorMessage}
           
         </p>
+        <Link to={`/washerlist`}>
         <Button
           className="button-green"
           onClick={this.handleClick}
@@ -38,6 +39,7 @@ class Login extends Component {
         >
           Log in
         </Button>
+        </Link>
       </Form>
     );
   }

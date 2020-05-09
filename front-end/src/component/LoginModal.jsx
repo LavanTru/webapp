@@ -3,6 +3,7 @@ import { Modal } from "react-bootstrap";
 import Login from "./Login";
 import Register from "./Register";
 import UserDataService from "../service/UserDataService";
+import {Link} from "react-router-dom";
 
 class LoginModal extends Component {
     constructor(props) {

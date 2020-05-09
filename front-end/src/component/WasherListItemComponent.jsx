@@ -21,9 +21,6 @@ class WasherListItemComponent extends Component{
             this.refreshWasherDetails();
         }
 
-        // onNavigateProfile(){
-        //     Router.push("/profile" + this.props.washerId);
-        // }
 
         refreshWasherDetails() {
             WasherDataService.retrieveWasher(this.props.washerId)
