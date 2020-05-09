@@ -24,6 +24,7 @@ class WasheeDataService {
             "phoneNo": phoneNo,
             "accountType": accountType,
             "companyName": companyName,
+            "userType":"WASHEE",
             "acceptsMarketingEmails": acceptsMarketingEmails,
             "addresses": addresses,
             "aboutMe": aboutMe,

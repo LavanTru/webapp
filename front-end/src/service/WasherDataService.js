@@ -39,6 +39,7 @@ class WasherDataService {
             "phoneNo": phoneNo,
             "accountType": accountType,
             "companyName": companyName,
+            "userType":"WASHER",
             "acceptsMarketingEmails": acceptsMarketingEmails,
             "payoutBankDetails": payoutBankDetails,
             "addresses": addresses,
