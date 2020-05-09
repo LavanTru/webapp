@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card,Button } from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 // Address is stored as an array because we assume users can have many addresses in the future, but currently we allow only one so we are taking the first item in the array by default.
 class ContactCard extends Component {
@@ -15,7 +16,7 @@ class ContactCard extends Component {
                 <Card.Text> {this.props.washerDetails.phoneNo}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                <Button className="button-green" block>Set up wash</Button>
+                <Link to={`/order`}><Button className="button-green" block>Set up wash</Button></Link>
                 </Card.Footer>
 
             </Card>

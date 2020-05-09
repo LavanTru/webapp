@@ -11,7 +11,7 @@ class OrderComponent extends Component{
         super()
         this.state = {
             washeeId : '5e763c3ea65eaf400c234e7a',
-            washerId : '5eaec46daba8b71ff7b280c4',
+            washerId: '5eaec46daba8b71ff7b280c4',
             washer : [],
             jobs : [],
             items : [],
@@ -28,12 +28,16 @@ class OrderComponent extends Component{
         this.getWasherData();
     }
 
+    
+
     getWasherData(){
+        
         WasherDataService.retrieveWasher(this.state.washerId)
         .then(
             response => {
                 this.setState({washer: response.data})
                 console.log(this.state.washer)
+                
             }
         )
         WasherDataService.getActiveJobs(this.state.washerId)
