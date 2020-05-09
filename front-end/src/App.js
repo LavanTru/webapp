@@ -15,6 +15,7 @@ import OrderComponent from './component/OrderComponent';
 import WasherProfile from './component/WasherProfile';
 import WasherRequestConfirm from "./component/WasherRequestConfirm";
 import WasherListComponent from './component/WasherListComponent';
+import LandingPage from './component/LandingPage';
 
 /**React Component representing the high-level structure of the application. 
  * Routing is defined in this file.**/
@@ -38,6 +39,7 @@ class App extends Component {
           <Router>
             <>
               <NavBar />
+              <LandingPage />
 
               <Switch>
                 <Route exact path="/register" component={RegisterWasherOrWashee} />
