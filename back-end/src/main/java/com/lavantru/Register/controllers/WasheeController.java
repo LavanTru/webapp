@@ -29,8 +29,8 @@ public class WasheeController {
   }
 
   @PostMapping(path = "/register")
-  public void registerWashee(@Valid @NonNull @RequestBody Washee washee){
-    washeeService.insertWashee(washee);
+  public Washee registerWashee(@Valid @NonNull @RequestBody Washee washee){
+    return washeeService.insertWashee(washee);
   }
 
   @GetMapping

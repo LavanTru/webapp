@@ -26,7 +26,7 @@ public class WasheeService {
     return false;
   }
 
-  public int insertWashee(Washee washee) throws UserAlreadyExistException {
+  public Washee insertWashee(Washee washee) throws UserAlreadyExistException {
     if (emailExists(washee.getEmail())) {
       throw new UserAlreadyExistException("There is an account with that email address: " + washee.getEmail());
     }

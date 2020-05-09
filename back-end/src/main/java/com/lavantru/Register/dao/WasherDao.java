@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface WasherDao {
 
-    int insertWasher(Washer washer);
+    Washer insertWasher(Washer washer);
 
     Washer findByEmail(String email);
 

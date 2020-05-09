@@ -15,9 +15,8 @@ public class WasheeDataAccessService implements WasheeDao {
   private WasheeRepository repository;
 
   @Override
-  public int insertWashee(Washee washee) {
-    repository.save(washee);
-    return 1;
+  public Washee insertWashee(Washee washee) {
+    return repository.save(washee);
   }
 
   @Override

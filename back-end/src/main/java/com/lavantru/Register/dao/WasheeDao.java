@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface WasheeDao {
 
-  int insertWashee(Washee washee);
+  Washee insertWashee(Washee washee);
 
   Washee getByEmail(String email);
 

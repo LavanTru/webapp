@@ -22,7 +22,7 @@ public class WasherService {
         this.washerDao = washerDao;
     }
 
-    public int insertWasher(Washer washer) throws UserAlreadyExistException {
+    public Washer insertWasher(Washer washer) throws UserAlreadyExistException {
         if (emailExists(washer.getEmail())) {
             throw new UserAlreadyExistException("There is an account with that email address: " + washer.getEmail());
         }

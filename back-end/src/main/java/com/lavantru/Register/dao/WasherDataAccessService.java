@@ -16,9 +16,8 @@ public class WasherDataAccessService implements WasherDao {
     private WasherRepository repository;
 
     @Override
-    public int insertWasher(Washer washer) {
-        repository.save(washer);
-        return 1;
+    public Washer insertWasher(Washer washer) {
+        return repository.save(washer);
     }
 
     @Override
