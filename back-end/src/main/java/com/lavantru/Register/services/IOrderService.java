@@ -9,13 +9,15 @@ import java.util.UUID;
 
 public interface IOrderService {
 
-    public int createOrder(Order order);
+  public int createOrder(Order order);
 
-    public Optional<Order> getOrderBy(UUID id);
+  public Optional<Order> getOrderBy(UUID id);
 
-    public List<Order> getAllOrders();
+  public List<Order> getAllOrders();
 
-    public Order confirmOrder(UUID id);
+  public Order confirmOrder(UUID id);
 
-    public Order rejectOrder(UUID id);
+  public Order rejectOrder(UUID id);
+
+  public List<Order> getOrdersByWasherId(ObjectId id);
 }

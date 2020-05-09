@@ -58,4 +58,9 @@ public class OrderService implements IOrderService {
         order.setDateRejected(LocalDateTime.now());
         return orderDao.updateOrder(order);
     }
+
+    @Override
+    public List<Order> getOrdersByWasherId(ObjectId id) {
+        return orderDao.getOrdersByWasherId(id);
+    }
 }

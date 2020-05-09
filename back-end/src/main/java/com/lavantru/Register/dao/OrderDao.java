@@ -9,11 +9,13 @@ import java.util.UUID;
 
 public interface OrderDao {
 
-    int createOrder(Order order);
+  int createOrder(Order order);
 
-    Optional<Order> getOrderById(UUID id);
+  Optional<Order> getOrderById(UUID id);
 
-    List<Order> getAllOrders();
+  List<Order> getAllOrders();
 
-    Order updateOrder(Order order);
+  Order updateOrder(Order order);
+
+  List<Order> getOrdersByWasherId(ObjectId id);
 }

@@ -47,4 +47,9 @@ public class OrderController {
     public Order getOrderById(@PathVariable("id") UUID id){
         return orderService.getOrderBy(id).orElse(null);
     }
+
+    @GetMapping(path = "/washer/{id}")
+    public List<Order> getOrdersByWasherId(@PathVariable("id") ObjectId id){
+        return orderService.getOrdersByWasherId(id);
+    }
 }
