@@ -49,17 +49,18 @@ class Login extends Component {
   }
 
 
-  handleClick(event) {
+  handleClick() {
     UserDataService.login(this.state.email, this.state.password)
       .then((response) => {
         if (response.status === 200) {
           console.log("Login successful");
           const user = {
             // Add here more attributes to be stored in the cookies if needed
+            "id":response.data.id,
             "firstName": response.data.firstName,
             "lastName": response.data.lastName,
-            "email": this.state.email
-
+            "email": response.data.email,
+            "userType":response.data.userType
         };
           setSessionCookie(user);
           this.props.onHide();

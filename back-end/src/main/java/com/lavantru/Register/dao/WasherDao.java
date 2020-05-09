@@ -10,7 +10,7 @@ public interface WasherDao {
 
     Washer insertWasher(Washer washer);
 
-    Washer findByEmail(String email);
+    Washer getByEmail(String email);
 
     List<Washer> getAllWashers();
 

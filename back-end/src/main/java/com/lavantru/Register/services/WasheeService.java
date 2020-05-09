@@ -2,6 +2,7 @@ package com.lavantru.Register.services;
 
 import com.lavantru.Register.dao.WasheeDao;
 import com.lavantru.Register.errors.UserAlreadyExistException;
+import com.lavantru.Register.model.Users;
 import com.lavantru.Register.model.Washee;
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -18,9 +19,17 @@ public class WasheeService {
   public WasheeService(@Qualifier("WasheeDao") WasheeDao washeeDao) {
     this.washeeDao = washeeDao;
   }
+
   public boolean emailExists(String email) {
     Washee washee = washeeDao.getByEmail(email);
     if (washee != null) {
+      return true;
+    }
+    return false;
+  }
+  public boolean passwordMatches(String email, String password) {
+    Washee washee = washeeDao.getByEmail(email);
+    if (washee.getPassword().equals(password)) {
       return true;
     }
     return false;

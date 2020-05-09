@@ -3,6 +3,7 @@ package com.lavantru.Register.services;
 import com.lavantru.Register.dao.WasherDao;
 import com.lavantru.Register.errors.UserAlreadyExistException;
 import com.lavantru.Register.model.Job;
+import com.lavantru.Register.model.Washee;
 import com.lavantru.Register.model.Washer;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,15 @@ public class WasherService {
     }
 
     public boolean emailExists(String email) {
-        Washer washer = washerDao.findByEmail(email);
+        Washer washer = washerDao.getByEmail(email);
         if (washer != null) {
+            return true;
+        }
+        return false;
+    }
+    public boolean passwordMatches(String email, String password) {
+        Washer washer = washerDao.getByEmail(email);
+        if (washer.getPassword().equals(password)) {
             return true;
         }
         return false;
@@ -46,6 +54,10 @@ public class WasherService {
 
     public Washer getUserById(ObjectId id){
         return  washerDao.getWasherById(id);
+    }
+
+    public Washer getWasherByEmail(String email) {
+        return washerDao.getByEmail(email);
     }
 
     public List<Washer> getAllWashers() {

@@ -21,7 +21,7 @@ public class WasherDataAccessService implements WasherDao {
     }
 
     @Override
-    public Washer findByEmail(String email) {
+    public Washer getByEmail(String email) {
        return (Washer) repository.findByEmail(email);
     }
 
