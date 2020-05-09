@@ -27,11 +27,6 @@ public class WasherDataAccessService implements WasherDao {
     }
 
     @Override
-    public Washer findById(ObjectId _id) {
-        return (Washer) repository.findById(_id);
-    }
-
-    @Override
     public List<Washer> getAllWashers() {
         return repository.findAll();
     }

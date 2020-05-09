@@ -12,8 +12,6 @@ public interface WasherDao {
 
     Washer findByEmail(String email);
 
-    Washer findById(ObjectId _id);
-
     List<Washer> getAllWashers();
 
     Washer getWasherById(ObjectId id);
