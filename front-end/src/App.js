@@ -32,6 +32,12 @@ class App extends Component {
     //   [session]
     // );
     const session = getSessionCookie();
+    
+    function renderLandingPageIfSessionIsUndefined () {
+        if (!session) {
+          return <LandingPage />;
+        }
+    };
 
     return (
       <div className="App">
@@ -39,8 +45,7 @@ class App extends Component {
           <Router>
             <>
               <NavBar />
-              <LandingPage />
-
+              {renderLandingPageIfSessionIsUndefined()}
               <Switch>
                 <Route exact path="/register" component={RegisterWasherOrWashee} />
                 <Route exact path="/register/washer" component={RegisterWasher} />
