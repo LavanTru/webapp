@@ -22,6 +22,9 @@ class OrderDataService {
     rejectOrder(id){
         return axios.put(`${ORDER_API_URL}/reject/${id}`);
     }
+    getOrdersByWasherId(washerId){
+        return axios.get(`${ORDER_API_URL}/washer/${washerId}`);
+    }
 }
 
 export default new OrderDataService()
