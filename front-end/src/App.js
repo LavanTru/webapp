@@ -13,7 +13,8 @@ import RegisterWasher from './component/RegisterWasher';
 import { SessionContext, getSessionCookie } from "./Session";
 import OrderComponent from './component/OrderComponent';
 import WasherProfile from './component/WasherProfile';
-import WasherRequestConfirm from "./component/WasherRequestConfirm";
+import WasherOrderList from "./component/WasherOrderList";
+import WasherOrderConfirm from "./component/WasherOrderConfirm";
 import WasherListComponent from './component/WasherListComponent';
 
 /**React Component representing the high-level structure of the application. 
@@ -47,7 +48,8 @@ class App extends Component {
                 <Route path="/jobs/:id" component={JobDetailsComponent} />
                 <Route exact path="/washerjobs" component={WasherJobCapabilitiesComponent} />
                 <Route exact path="/order" component={OrderComponent} />
-                <Route exact path="/washerOrder/:id" component={WasherRequestConfirm} />
+                <Route exact path="/washerOrderList" component={WasherOrderList} />
+                <Route exact path="/washerOrder/:id" component={WasherOrderConfirm} />
                 <Route path="/washerlist" exact component={WasherListComponent} />
               </Switch>
             </>

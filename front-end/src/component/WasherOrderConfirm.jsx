@@ -3,7 +3,7 @@ import { Container, Col, Row, Card, Button } from "react-bootstrap";
 import OrderDataService from "../service/OrderDataService"
 import iconExtraNotes from "../asset/extra_notes.svg";
 
-class WasherRequestConfirm extends Component {
+class WasherOrderConfirm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -115,4 +115,4 @@ class WasherRequestConfirm extends Component {
     }
 }
 
-export default WasherRequestConfirm;
+export default WasherOrderConfirm;
