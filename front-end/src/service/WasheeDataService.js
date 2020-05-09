@@ -15,21 +15,20 @@ class WasheeDataService {
     }
 
 
-    register(firstName, lastName, email, password, phoneNo, accountType, companyName, acceptsMarketingEmails, payoutBankDetails, addresses, aboutMe) {
+    register(firstName, lastName, email, password, phoneNo, accountType, companyName, acceptsMarketingEmails, addresses, aboutMe, image, paymentMethods) {
         var payload = {
             "firstName": firstName,
             "lastName": lastName,
             "email": email,
             "password": password,
-            // "matchingPassword": matchingPassword,
             "phoneNo": phoneNo,
             "accountType": accountType,
             "companyName": companyName,
             "acceptsMarketingEmails": acceptsMarketingEmails,
-            "payoutBankDetails": payoutBankDetails,
             "addresses": addresses,
             "aboutMe": aboutMe,
-            "jobCapabilities": jobCapabilities
+            "image":image,
+            "paymentMethods":paymentMethods
         };
         console.log(payload);
         return axios.post(WASHEE_API_URL + '/register', payload);
