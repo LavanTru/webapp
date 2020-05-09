@@ -313,3 +313,7 @@ span.googleButtonText {
   margin-bottom: 5px;
   /* margin: 2px; */
 }
+
+  .washerListItem .align-button{
+    vertical-align: middle;
+  }

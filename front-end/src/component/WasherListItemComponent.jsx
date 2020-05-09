@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Col, Row,} from "react-bootstrap";
+import { Container, Col, Row, Button} from "react-bootstrap";
 import WasherDataService from '../service/WasherDataService';
 import WasherListJobs from '../component/WasherListJobs';
 
@@ -80,14 +80,14 @@ class WasherListItemComponent extends Component{
                                             <WasherListJobs key={washerJob.id} washerJob={washerJob} />
                                         )
                                 }
-                            </Row>
-                                        
-                                    
-                                
-                            
+                            </Row>  
                         </Col>
-                    </Row>
-                     
+                        <Col >
+                            <Row className = "align-button">
+                                <Button className="button-green">Details</Button>
+                            </Row>
+                        </Col>
+                    </Row>   
                 </Container>
             )
         }
