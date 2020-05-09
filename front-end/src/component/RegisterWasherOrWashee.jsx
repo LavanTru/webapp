@@ -59,6 +59,7 @@ constructor(props){
                     
                     const user = {
                         // Add here more attributes to be stored in the cookies if needed
+                        "id":response.data.id,
                         "firstName": response.data.firstName,
                         "lastName": response.data.lastName,
                         "email": response.data.email,
@@ -68,6 +69,7 @@ constructor(props){
                     
                     // TODO change redirect to some default page and log in
                     this.props.history.push("/");
+                    window.location.reload(false);
                 }
             })
             .catch(function (error) {

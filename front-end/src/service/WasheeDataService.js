@@ -31,7 +31,7 @@ class WasheeDataService {
             "image":image,
             "paymentMethods":paymentMethods
         };
-        console.log(payload);
+        // console.log(payload);
         return axios.post(WASHEE_API_URL + '/register', payload);
     }
 }
