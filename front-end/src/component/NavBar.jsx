@@ -63,15 +63,6 @@ class NavBar extends Component {
         );
     }
 
-    myMethod (){
-        if (this.state.magic)
-        {
-            return <div>magic</div>
-        }
-    }
-
-
-
 }
 
 export default NavBar;
