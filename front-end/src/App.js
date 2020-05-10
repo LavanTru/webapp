@@ -47,9 +47,8 @@ class App extends Component {
           <Router>
             <>
               <NavBar />
-              {/* {renderLandingPageIfSessionIsUndefined()} */}
+              {renderLandingPageIfSessionIsUndefined()}
               <Switch>
-              <Route exact path="/home" component={LandingPage} />
                 <Route exact path="/register" component={RegisterWasherOrWashee} />
                 <Route exact path="/register/washer" component={RegisterWasher} />
                 <Route exact path="/profile/:id" component={WasherProfile} />

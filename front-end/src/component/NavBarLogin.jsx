@@ -21,7 +21,7 @@ const NavBarLogin = (props) => {
                 </SessionContext.Consumer> */}
                 </Navbar.Text>
                 <Nav.Link className="font-weight-bold"
-                    // href="#log_in" 
+                     href="/"
                     onClick={() => {
                         removeSessionCookie(); window.location.reload(false);
                     }}>
@@ -38,7 +38,6 @@ const NavBarLogin = (props) => {
                     Log in
                     </Nav.Link>
                 <Nav.Link
-                    // href="#sign_up"
                     onClick={() => { props.handleChangeIsRegistered(); props.handleLoginModal(); }}
                 >Sign up
                     </Nav.Link>
