@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Col, Button, Container } from "react-bootstrap";
 import WasherDataService from "../service/WasherDataService";
 import {Link} from "react-router-dom";
+import { setSessionCookie } from "../Session.js";
 
 class RegisterWasher extends Component {
     constructor(props) {
@@ -132,8 +133,19 @@ class RegisterWasher extends Component {
             .then((response) => {
                 if (response.status === 200) {
                     console.log("Registration successfull");
-                    // TODO change redirect to some default page and log in
-                    this.props.history.push("/");
+                    const user = {
+                        // Add here more attributes to be stored in the cookies if needed
+                        "id":response.data.id,
+                        "firstName": response.data.firstName,
+                        "lastName": response.data.lastName,
+                        "email": response.data.email,
+                        "userType":response.data.userType
+                    };
+                      setSessionCookie(user);
+                      window.location.reload(false);
+
+                    // TODO change redirect to some default page
+                    this.props.history.push("/washerjobs");
                 }
             })
             .catch(function (error) {

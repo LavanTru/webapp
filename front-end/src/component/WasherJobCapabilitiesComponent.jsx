@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import { Alert } from 'reactstrap';
 import WasherDataService from '../service/WasherDataService';
 import SwitchComponent from './SwitchComponent';
+import { SessionContext } from "../Session";
 
 class WasherJobCapabilitiesComponent extends Component{
 
     constructor(props){
         super(props)
         this.state = {
-            washerId : '5eaec6a2aba8b71ff7b280c6', // id must be consumed from the user session 
             washerCapabilities: [],
             message: null,
             visible : false
@@ -24,7 +24,7 @@ class WasherJobCapabilitiesComponent extends Component{
     }
 
     refreshWasherJobCapabilities(){
-        WasherDataService.retrieveWasher(this.state.washerId)
+        WasherDataService.retrieveWasher(this.context.id)
         .then(
             response => {
                 this.setState({washerCapabilities: response.data.jobCapabilities})
@@ -57,7 +57,7 @@ class WasherJobCapabilitiesComponent extends Component{
     };
 
     updateWasherJobCapabilitiesClicked(){
-        WasherDataService.updateWasherJobCapabilities(this.state.washerId, this.state.washerCapabilities)
+        WasherDataService.updateWasherJobCapabilities(this.context.id, this.state.washerCapabilities)
             .then(
                 response => {
                     if(response.status === 200){
@@ -134,5 +134,6 @@ class WasherJobCapabilitiesComponent extends Component{
         )
     }
 }
+WasherJobCapabilitiesComponent.contextType = SessionContext;
 
 export default WasherJobCapabilitiesComponent

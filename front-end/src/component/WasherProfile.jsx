@@ -8,7 +8,6 @@ class WasherProfile extends Component {
         super(props);
         this.state = {
             washerId: this.props.match.params.id,
-            // '5eaec46daba8b71ff7b280c4', // sample ID
             washerDetails: {
                 jobCapabilities: [ ],
                 addresses:[{

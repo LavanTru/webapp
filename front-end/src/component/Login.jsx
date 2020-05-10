@@ -29,9 +29,9 @@ class Login extends Component {
 
         <p className="redError">
           {this.state.errorMessage}
-          
+
         </p>
-        
+
         <Button
           className="button-green"
           onClick={this.handleClick}
@@ -39,7 +39,7 @@ class Login extends Component {
         >
           Log in
         </Button>
-        
+
       </Form>
     );
   }
@@ -58,24 +58,25 @@ class Login extends Component {
           console.log("Login successful");
           const user = {
             // Add here more attributes to be stored in the cookies if needed
-            "id":response.data.id,
+            "id": response.data.id,
             "firstName": response.data.firstName,
             "lastName": response.data.lastName,
             "email": response.data.email,
-            "userType":response.data.userType
-        };
+            "userType": response.data.userType
+          };
           setSessionCookie(user);
           this.props.onHide();
           // TODO change where user will be redirected after login
           window.location.reload(false);
-          console.log("Props histroy",this.props.history)
 
-          this.props.history.push({
-            
-            pathname:"/washerlist",
-            state:{...this.props.location.state}
-
-        })
+          if (response.data.userType === "WASHEE") {
+            this.props.history.push({
+              pathname: "/washerlist",
+              state: { ...this.props.location.state }
+            })
+          } else {
+            this.props.history.push("/orders")
+          }
         }
       })
       .catch((error) => {

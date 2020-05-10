@@ -4,14 +4,14 @@ import { Container, Col, Row, Card, Button, ListGroup, Form} from "react-bootstr
 import QuantityControl from './QuantityControl';
 import OrderDataService from '../service/OrderDataService';
 import { Alert } from 'reactstrap';
+import { SessionContext } from "../Session";
 
 class OrderComponent extends Component{
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
-            washeeId : '5e763c3ea65eaf400c234e7a',
-            washerId : '5eaec46daba8b71ff7b280c4',
+            washerId : this.props.location.state.id, //passed down from WasherProfile-ContactCard
             washer : [],
             jobs : [],
             items : [],
@@ -64,7 +64,7 @@ class OrderComponent extends Component{
 
     createOrder(){
         let order = {
-            washeeId: this.state.washeeId,
+            washeeId: this.context.id, //washeeId comes from the logged in user
             washerId: this.state.washerId,
             notes: this.state.notes,
             items: this.state.items
@@ -112,7 +112,7 @@ class OrderComponent extends Component{
                                             </Row>                  
                                             <p className="card-text">{jobItem.speed}</p>
                                             <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}
-                                            <Button variant="success" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
+                                            <Button className="button-pink" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
                                         </Card.Body>
                                         </Card>
                                     </ListGroup.Item>)
@@ -140,7 +140,7 @@ class OrderComponent extends Component{
                                 </Form.Group>
                             </Card.Body>
                             <Card.Footer className="text-muted">
-                                <Button variant="success" className="btn btn-success" onClick={this.createOrder}>Checkout your bag</Button>
+                                <Button className="button-pink" onClick={this.createOrder}>Checkout your bag</Button>
                             </Card.Footer>
                         </Card>
                         {this.state.message && <Alert color="success" >{this.state.message}</Alert>}
@@ -152,5 +152,6 @@ class OrderComponent extends Component{
     }
 
 }
+OrderComponent.contextType = SessionContext;
 
 export default OrderComponent;

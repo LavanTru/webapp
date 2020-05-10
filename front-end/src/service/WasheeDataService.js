@@ -30,7 +30,7 @@ class WasheeDataService {
             "aboutMe": aboutMe,
             "image":image,
             "paymentMethods":paymentMethods,
-            "image":"https://www.zeldman.com/wp-content/dc.jpg"
+            "image":"https://cdn0.iconfinder.com/data/icons/basic-ui-1-line/64/Artboard_18-512.png"
         };
         // console.log(payload);
         return axios.post(WASHEE_API_URL + '/register', payload);
