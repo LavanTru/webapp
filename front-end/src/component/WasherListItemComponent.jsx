@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Col, Row,} from "react-bootstrap";
+import { Container, Col, Row, Button} from "react-bootstrap";
 import WasherDataService from '../service/WasherDataService';
 import WasherListJobs from '../component/WasherListJobs';
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+
 
 class WasherListItemComponent extends Component{
         constructor(props){
@@ -18,6 +20,7 @@ class WasherListItemComponent extends Component{
             this.refreshWasherJobCapabilities();
             this.refreshWasherDetails();
         }
+
 
         refreshWasherDetails() {
             WasherDataService.retrieveWasher(this.props.washerId)
@@ -80,14 +83,14 @@ class WasherListItemComponent extends Component{
                                             <WasherListJobs key={washerJob.id} washerJob={washerJob} />
                                         )
                                 }
-                            </Row>
-                                        
-                                    
-                                
-                            
+                            </Row>  
                         </Col>
-                    </Row>
-                     
+                        <Col >
+                            <Row className = "align-button">
+                                <Link to={`/profile/${this.props.washerId}`}><Button className="button-green">Details</Button></Link>
+                            </Row>
+                        </Col>
+                    </Row>   
                 </Container>
             )
         }

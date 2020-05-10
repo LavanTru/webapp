@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Col, Button, Container } from "react-bootstrap";
 import WasherDataService from "../service/WasherDataService";
+import {Link} from "react-router-dom";
 
 class RegisterWasher extends Component {
     constructor(props) {
@@ -85,9 +86,11 @@ class RegisterWasher extends Component {
                         </Form.Row>
 
                         <Col sm={{ span: 4, offset: 4 }} >
+                            <Link to={`/washerjobs`}>
                             <Button className="button-green mt-5" size="lg" block onClick={this.handleSignUp} >
                                 Sign up
-                         </Button>
+                            </Button>
+                            </Link>
                         </Col>
 
                     </Form>
