@@ -12,7 +12,7 @@ public class Washee extends Users {
         this.paymentMethods = paymentMethods;
     }
 
-    public Washee(String id, String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, Boolean acceptsMarketingEmails, List<Address> addresses, List<PaymentMethod> paymentMethods,String aboutMe,String image) {
+    public Washee(String id, String firstName, String lastName, String email, String phoneNo, String accountType, String companyName, String userType, Boolean acceptsMarketingEmails, List<Address> addresses, List<PaymentMethod> paymentMethods,String aboutMe,String image) {
         super(id, firstName, lastName, email, phoneNo, accountType, companyName, "WASHEE", acceptsMarketingEmails, addresses,aboutMe,image);
         this.paymentMethods = paymentMethods;
     }

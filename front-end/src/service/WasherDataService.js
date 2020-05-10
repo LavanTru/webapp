@@ -39,11 +39,13 @@ class WasherDataService {
             "phoneNo": phoneNo,
             "accountType": accountType,
             "companyName": companyName,
+            "userType":"WASHER",
             "acceptsMarketingEmails": acceptsMarketingEmails,
             "payoutBankDetails": payoutBankDetails,
             "addresses": addresses,
             "aboutMe": aboutMe,
-            "jobCapabilities": jobCapabilities
+            "jobCapabilities": jobCapabilities,
+            "image":"https://www.zeldman.com/wp-content/dc.jpg"
         };
         console.log(payload);
         return axios.post(WASHER_API_URL + '/register', payload);

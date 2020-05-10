@@ -317,3 +317,13 @@ span.googleButtonText {
   .washerListItem .align-button{
     vertical-align: middle;
   }
+span.iconExtraNotes{
+  background: url("./asset/extra_notes.svg") transparent no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  width: 42px;
+  height: 42px;
+}
+.clickable{
+  cursor: pointer;
+}

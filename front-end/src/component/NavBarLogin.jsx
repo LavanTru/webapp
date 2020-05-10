@@ -10,7 +10,7 @@ const NavBarLogin = (props) => {
             <Nav>
                 <Navbar.Text>
                     {/* option 1 for reading Context session: */}
-                    <div>Signed in as {session.email}</div>
+                    <div>Signed in as {session.userType} {session.email}</div>
 
                     {/* option 2 for reading Context session: */}
                     {/* <SessionContext.Consumer>
@@ -22,7 +22,8 @@ const NavBarLogin = (props) => {
                 </Navbar.Text>
                 <Nav.Link className="font-weight-bold"
                     // href="#log_in" 
-                    onClick={()=>{removeSessionCookie();window.location.reload(false);
+                    onClick={() => {
+                        removeSessionCookie(); window.location.reload(false);
                     }}>
                     Log out
             </Nav.Link>

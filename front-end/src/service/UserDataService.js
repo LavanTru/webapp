@@ -13,15 +13,6 @@ class UserDataService {
           return Axios.post(USER_API_URL + '/login', payload);
     }
 
-
-    getUserByEmail(email){
-        return Axios.get(USER_API_URL, {
-            params: {
-                email: email
-            }
-        });
-    }
-
 }
 
 export default new UserDataService()
