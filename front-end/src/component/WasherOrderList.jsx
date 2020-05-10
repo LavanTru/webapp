@@ -22,9 +22,7 @@ class WasherOrderList extends Component {
 
     render() {
         const orderListStatusNew = this.state.orderList.filter(order => order.status === "NEW");
-        console.log("orderListStatusNew", orderListStatusNew);
         const orderListStatusOther = this.state.orderList.filter(order => order.status !== "NEW");
-        console.log("orderListStatusOther", orderListStatusOther);
         return (
             <div>
                 <Container className="profile" >
@@ -33,14 +31,14 @@ class WasherOrderList extends Component {
                         {
                             orderListStatusNew.map(
                                 order =>
-                                    <WasherOrderListItem order={order} />
+                                    <WasherOrderListItem order={order} onClick={()=>this.props.history.push(`/washerOrder/${order.id}`)}/>
                             )
                         }
                         <h1>Past orders:</h1>
                         {
                             orderListStatusOther.map(
                                 order =>
-                                    <WasherOrderListItem order={order} />
+                                    <WasherOrderListItem order={order} onClick={()=>this.props.history.push(`/washerOrder/${order.id}`)} />
                             )
                         }
                     </Col>
