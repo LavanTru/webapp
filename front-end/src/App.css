@@ -77,29 +77,6 @@
   text-align: left;
 }
 
-/* Currently used at login */
-.button-green,
-.button-green:hover,
-.button-green:active,
-.button-green:focus,
-.button-green:active:focus
-{
-  background-color: #0f7d80 !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.button-pink,
-.button-pink:hover,
-.button-pink:active,
-.button-pink:focus,
-.button-pink:active:focus
-{
-  background-color: #b8627d !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
 /* Google button START */
 #customGoogleBtn {
   display: inline-block;
