@@ -27,8 +27,8 @@ class WasherOrderList extends Component {
         console.log("orderListStatusOther", orderListStatusOther);
         return (
             <div>
-                <Container className="profile">
-                    <Col md={8}>
+                <Container className="profile" >
+                    <Col md={{ span: 8, offset: 2 }}>
                         <h1>New orders:</h1>
                         {
                             orderListStatusNew.map(

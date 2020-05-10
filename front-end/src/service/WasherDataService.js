@@ -44,7 +44,8 @@ class WasherDataService {
             "payoutBankDetails": payoutBankDetails,
             "addresses": addresses,
             "aboutMe": aboutMe,
-            "jobCapabilities": jobCapabilities
+            "jobCapabilities": jobCapabilities,
+            "image":"https://www.zeldman.com/wp-content/dc.jpg"
         };
         console.log(payload);
         return axios.post(WASHER_API_URL + '/register', payload);

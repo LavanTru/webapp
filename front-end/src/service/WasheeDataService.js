@@ -29,7 +29,8 @@ class WasheeDataService {
             "addresses": addresses,
             "aboutMe": aboutMe,
             "image":image,
-            "paymentMethods":paymentMethods
+            "paymentMethods":paymentMethods,
+            "image":"https://www.zeldman.com/wp-content/dc.jpg"
         };
         // console.log(payload);
         return axios.post(WASHEE_API_URL + '/register', payload);
