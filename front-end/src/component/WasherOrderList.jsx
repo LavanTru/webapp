@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import OrderDataService from "../service/OrderDataService";
 import { SessionContext } from "../Session";
+import { Container, Col, Row } from "react-bootstrap";
+import WasherOrderListItem from "./WasherOrderListItem"
 
 
 class WasherOrderList extends Component {
@@ -10,6 +12,7 @@ class WasherOrderList extends Component {
         this.state = {
             orderList: []
         }
+        this.refreshOrderList = this.refreshOrderList.bind(this);
     }
 
     componentDidMount() {
@@ -24,20 +27,25 @@ class WasherOrderList extends Component {
         console.log("orderListStatusOther", orderListStatusOther);
         return (
             <div>
-                New items:
-                {
-                    orderListStatusNew.map(
-                        order =>
-                            <div>{order.id}</div>
-                    )
-                }
-                                Other items:
-                {
-                    orderListStatusOther.map(
-                        order =>
-                            <div>{order.id}</div>
-                    )
-                }
+                <Container className="profile">
+                    <Col md={8}>
+                        <h1>New orders:</h1>
+                        {
+                            orderListStatusNew.map(
+                                order =>
+                                    <WasherOrderListItem order={order} />
+                            )
+                        }
+                        <h1>Past orders:</h1>
+                        {
+                            orderListStatusOther.map(
+                                order =>
+                                    <WasherOrderListItem order={order} />
+                            )
+                        }
+                    </Col>
+                </Container>
+
             </div>
         );
     }
