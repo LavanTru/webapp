@@ -3,6 +3,7 @@ import { Alert } from 'reactstrap';
 import WasherDataService from '../service/WasherDataService';
 import SwitchComponent from './SwitchComponent';
 import { SessionContext } from "../Session";
+import { Button } from "react-bootstrap";
 
 class WasherJobCapabilitiesComponent extends Component{
 
@@ -128,7 +129,7 @@ class WasherJobCapabilitiesComponent extends Component{
                     )
                 }   
             <div className="row">
-                <button className="btn btn-success" onClick={this.updateWasherJobCapabilitiesClicked}>Save</button>
+                <Button className="button-green" onClick={this.updateWasherJobCapabilitiesClicked}>Save</Button>
             </div>
             </div>  
         )

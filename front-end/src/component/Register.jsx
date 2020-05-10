@@ -21,7 +21,7 @@ class Register extends Component {
     }
     render() {
         return (
-            <Form className ="m-4" onChange={this.handleChange}>
+            <Form className="m-4" onChange={this.handleChange}>
                 <Form.Group controlId="formFirstName">
                     <Form.Label>First name</Form.Label>
                     <Form.Control name="firstName" placeholder="First name" />
@@ -57,7 +57,7 @@ class Register extends Component {
             </Form>
         );
     }
-// Method to record the changes in the form in a component state variable
+    // Method to record the changes in the form in a component state variable
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -65,14 +65,14 @@ class Register extends Component {
     }
     handleClick() {
 
-        if (this.state.password === this.state.matchingPassword)
-        {
-        this.props.handleChangeIsRegistered();
-        this.props.history.push({
-            pathname:"/register",
-            state:{...this.state}
-    });
-        this.props.onHide();}
+        if (this.state.password === this.state.matchingPassword) {
+            this.props.handleChangeIsRegistered();
+            this.props.history.push({
+                pathname: "/register",
+                state: { ...this.state }
+            });
+            this.props.onHide();
+        }
         else {
             // TODO: show error for non-matching passwords
         }

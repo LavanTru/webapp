@@ -69,13 +69,14 @@ class Login extends Component {
           // TODO change where user will be redirected after login
           window.location.reload(false);
 
+          console.log(response.data.userType);
           if (response.data.userType === "WASHEE") {
             this.props.history.push({
               pathname: "/washerlist",
               state: { ...this.props.location.state }
             })
           } else {
-            this.props.history.push("/orders")
+            this.props.history.push("/washerOrderList")
           }
         }
       })
