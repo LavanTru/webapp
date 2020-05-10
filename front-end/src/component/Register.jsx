@@ -76,6 +76,7 @@ class Register extends Component {
         else {
             // TODO: show error for non-matching passwords
         }
+        window.location.reload();// reload screen so landing page goes away
     }
 
 }
