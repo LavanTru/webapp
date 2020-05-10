@@ -31,7 +31,7 @@ class Login extends Component {
           {this.state.errorMessage}
           
         </p>
-        <Link to={`/washerlist`}>
+        
         <Button
           className="button-green"
           onClick={this.handleClick}
@@ -39,7 +39,7 @@ class Login extends Component {
         >
           Log in
         </Button>
-        </Link>
+        
       </Form>
     );
   }
@@ -67,6 +67,7 @@ class Login extends Component {
           this.props.onHide();
           // TODO change where user will be redirected after login
           window.location.reload(false);
+          this.props.history.push(`/washerlist`);
         }
       })
       .catch((error) => {
