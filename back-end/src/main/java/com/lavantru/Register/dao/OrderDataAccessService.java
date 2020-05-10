@@ -38,7 +38,7 @@ public class OrderDataAccessService implements OrderDao {
     }
 
     @Override
-    public List<Order> getOrdersByWasherId(ObjectId id) {
-        return repository.findByWasherId(id.toString());
+    public List<Order> getOrdersByWasherId(String id) {
+        return repository.findByWasherId(id);
     }
 }

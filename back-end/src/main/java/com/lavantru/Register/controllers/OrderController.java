@@ -1,5 +1,6 @@
 package com.lavantru.Register.controllers;
 
+import com.lavantru.Register.dto.WasherOrderListDto;
 import com.lavantru.Register.model.Item;
 import com.lavantru.Register.model.Order;
 import com.lavantru.Register.services.IOrderService;
@@ -49,7 +50,7 @@ public class OrderController {
     }
 
     @GetMapping(path = "/washer/{id}")
-    public List<Order> getOrdersByWasherId(@PathVariable("id") ObjectId id){
+    public List<WasherOrderListDto> getOrdersByWasherId(@PathVariable("id") String id){
         return orderService.getOrdersByWasherId(id);
     }
 }

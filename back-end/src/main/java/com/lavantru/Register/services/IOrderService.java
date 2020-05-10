@@ -1,5 +1,6 @@
 package com.lavantru.Register.services;
 
+import com.lavantru.Register.dto.WasherOrderListDto;
 import com.lavantru.Register.model.Order;
 import org.bson.types.ObjectId;
 
@@ -19,5 +20,5 @@ public interface IOrderService {
 
   public Order rejectOrder(UUID id);
 
-  public List<Order> getOrdersByWasherId(ObjectId id);
+  public List<WasherOrderListDto> getOrdersByWasherId(String id);
 }

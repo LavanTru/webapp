@@ -17,5 +17,5 @@ public interface OrderDao {
 
   Order updateOrder(Order order);
 
-  List<Order> getOrdersByWasherId(ObjectId id);
+  List<Order> getOrdersByWasherId(String id);
 }
