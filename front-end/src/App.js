@@ -34,8 +34,9 @@ class App extends Component {
     // );
     const session = getSessionCookie();
 
+    // display landing page if session is undefined and URL is in root path
     function renderLandingPageIfSessionIsUndefined () {
-        if (!session) {
+        if (!session && (window.location.href === "http://localhost:3000/")) {
           return <LandingPage />;
         }
     };
