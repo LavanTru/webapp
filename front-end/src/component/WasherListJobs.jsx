@@ -7,7 +7,7 @@ const WasherListJobs = (props) => {
         const washerJob = props.washerJob;
 
         if(washerJob.active){
-        return (<Col className="unitLaundryJobs"><div>{washerJob.job} €{washerJob.price}</div></Col>);
+            return (<Col className="unitLaundryJobs"><div>{washerJob.job}</div></Col>);
         }
         else{
             return null;

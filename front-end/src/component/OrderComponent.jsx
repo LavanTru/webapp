@@ -11,7 +11,7 @@ class OrderComponent extends Component{
         super()
         this.state = {
             washeeId : '5e763c3ea65eaf400c234e7a',
-            washerId: '5eaec46daba8b71ff7b280c4',
+            washerId : '5eaec46daba8b71ff7b280c4',
             washer : [],
             jobs : [],
             items : [],
@@ -28,16 +28,12 @@ class OrderComponent extends Component{
         this.getWasherData();
     }
 
-    
-
     getWasherData(){
-        
         WasherDataService.retrieveWasher(this.state.washerId)
         .then(
             response => {
                 this.setState({washer: response.data})
                 console.log(this.state.washer)
-                
             }
         )
         WasherDataService.getActiveJobs(this.state.washerId)
@@ -116,7 +112,7 @@ class OrderComponent extends Component{
                                             </Row>                  
                                             <p className="card-text">{jobItem.speed}</p>
                                             <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}
-                                            <Button className="button-green" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
+                                            <Button variant="success" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
                                         </Card.Body>
                                         </Card>
                                     </ListGroup.Item>)
@@ -144,7 +140,7 @@ class OrderComponent extends Component{
                                 </Form.Group>
                             </Card.Body>
                             <Card.Footer className="text-muted">
-                                <Button className="button-green" onClick={this.createOrder}>Checkout your bag</Button>
+                                <Button variant="success" className="btn btn-success" onClick={this.createOrder}>Checkout your bag</Button>
                             </Card.Footer>
                         </Card>
                         {this.state.message && <Alert color="success" >{this.state.message}</Alert>}

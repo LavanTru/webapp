@@ -25,51 +25,9 @@ public class UsersController {
     @Autowired
     private IUsersService usersService;
 
-    @Autowired
-    private UsersRepository repository;
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Users> getAllUsers() {
-        return usersService.getAllUsers();
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Users getUserById(@PathVariable("id") ObjectId id) {
-        return repository.findById(id);
-    }
-
-    @RequestMapping(value = "/filter/{userType}", method = RequestMethod.GET)
-    public List<Users> getUsersByType(@PathVariable("userType") String userType){
-
-        return usersService.getUsersByType(userType);
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> loginUser(@RequestBody UsersDto usersDto){
         return usersService.login(usersDto);
-    }
-
-//    Should this be as POST with email as body?
-    @RequestMapping(method = RequestMethod.GET)
-    public Users getUserByEmail(@RequestParam("email") String email){
-        return usersService.getUserByEmail(email);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void modifyUserById(@PathVariable("id") String id, @Valid
-    @RequestBody Users user) {
-        user.setId(id);
-        repository.save(user);
-    }
-
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Users createUser(@Valid @RequestBody UsersDto usersDto) {
-        return usersService.registerNewUser(usersDto);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteUser(@PathVariable ObjectId id) {
-        repository.delete(repository.findById(id));
     }
 
 //    Handling the error if created user does not correspond with the annotation requirements. Outputs the field errors in a clear way

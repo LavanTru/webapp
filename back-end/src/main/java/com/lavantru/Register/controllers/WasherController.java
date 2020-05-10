@@ -35,8 +35,8 @@ public class WasherController {
     }
 
     @PostMapping(path = "/register")
-    public void registerWasher(@Valid @NonNull @RequestBody Washer washer){
-        washerService.insertWasher(washer);
+    public Washer registerWasher(@Valid @NonNull @RequestBody Washer washer){
+       return washerService.insertWasher(washer);
     }
 
     @PutMapping(path = "/services/{id}")

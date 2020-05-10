@@ -16,19 +16,13 @@ public class WasherDataAccessService implements WasherDao {
     private WasherRepository repository;
 
     @Override
-    public int insertWasher(Washer washer) {
-        repository.save(washer);
-        return 1;
+    public Washer insertWasher(Washer washer) {
+        return repository.save(washer);
     }
 
     @Override
-    public Washer findByEmail(String email) {
+    public Washer getByEmail(String email) {
        return (Washer) repository.findByEmail(email);
-    }
-
-    @Override
-    public Washer findById(ObjectId _id) {
-        return (Washer) repository.findById(_id);
     }
 
     @Override
