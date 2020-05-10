@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import UserDataService from '../service/UserDataService';
 import { setSessionCookie } from "../Session.js";
-import {Link} from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -67,7 +67,14 @@ class Login extends Component {
           this.props.onHide();
           // TODO change where user will be redirected after login
           window.location.reload(false);
-          this.props.history.push(`/washerlist`);
+          console.log("Props histroy",this.props.history)
+
+          this.props.history.push({
+            
+            pathname:"/washerlist",
+            state:{...this.props.location.state}
+
+        })
         }
       })
       .catch((error) => {
@@ -98,4 +105,4 @@ class Login extends Component {
       });
   }
 }
-export default Login;
+export default withRouter(Login);
