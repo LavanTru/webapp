@@ -112,7 +112,7 @@ class OrderComponent extends Component{
                                             </Row>                  
                                             <p className="card-text">{jobItem.speed}</p>
                                             <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}
-                                            <Button variant="success" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
+                                            <Button className="button-green" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
                                         </Card.Body>
                                         </Card>
                                     </ListGroup.Item>)
@@ -140,7 +140,7 @@ class OrderComponent extends Component{
                                 </Form.Group>
                             </Card.Body>
                             <Card.Footer className="text-muted">
-                                <Button variant="success" className="btn btn-success" onClick={this.createOrder}>Checkout your bag</Button>
+                                <Button className="button-green" onClick={this.createOrder}>Checkout your bag</Button>
                             </Card.Footer>
                         </Card>
                         {this.state.message && <Alert color="success" >{this.state.message}</Alert>}

@@ -15,6 +15,7 @@ import OrderComponent from './component/OrderComponent';
 import WasherProfile from './component/WasherProfile';
 import WasherRequestConfirm from "./component/WasherRequestConfirm";
 import WasherListComponent from './component/WasherListComponent';
+import LandingPage from './component/LandingPage';
 
 /**React Component representing the high-level structure of the application. 
  * Routing is defined in this file.**/
@@ -31,6 +32,12 @@ class App extends Component {
     //   [session]
     // );
     const session = getSessionCookie();
+    
+    function renderLandingPageIfSessionIsUndefined () {
+        if (!session) {
+          return <LandingPage />;
+        }
+    };
 
     return (
       <div className="App">
@@ -38,7 +45,7 @@ class App extends Component {
           <Router>
             <>
               <NavBar />
-
+              {renderLandingPageIfSessionIsUndefined()}
               <Switch>
                 <Route exact path="/register" component={RegisterWasherOrWashee} />
                 <Route exact path="/register/washer" component={RegisterWasher} />
