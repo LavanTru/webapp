@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Image, ListGroup} from 'react-bootstrap';
 
 
-function ServiecItem(props){
+function ServiceItem(props){
 
     return (
         <div className="item">
@@ -14,4 +14,4 @@ function ServiecItem(props){
 
 }
 
-export default ServiecItem;
+export default ServiceItem;

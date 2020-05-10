@@ -1,12 +1,19 @@
-import React from 'react';
-import { Container, Row, Col} from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Container, Row, Col, Button} from 'react-bootstrap';
 import ServiceItem from './ServiceItem';
+import LoginModal from './LoginModal';
 import iconWashering from '../asset/icon/washer.svg';
 import iconIroning from '../asset/icon/iron.svg';
 import iconBedding from '../asset/icon/towel.svg';
 import iconDelivery from '../asset/icon/fashion.svg';
 
 function Section(){
+    const [show, setShow] = useState(false);
+    const [isRegistered, setRegisteredFlag] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const changeRegisterFlag = () => setRegisteredFlag(!isRegistered);
 
     return (
     <section className="info bg-info text-center" id="info">
@@ -41,7 +48,13 @@ function Section(){
                 </Row>
                 <Row className="rolesDesc">
                     <Col>
-                    <a href="#info" className="btn btn-outline btn-xl js-scroll-trigger mb-3">Sign up now</a>
+                        <a onClick={handleShow} className="btn btn-outline btn-xl js-scroll-trigger mb-3">Sign up now</a>
+                        <LoginModal 
+                            show={show}
+                            onHide={handleClose}
+                            isRegistered={isRegistered}
+                            handleChangeIsRegistered={changeRegisterFlag}
+                        />
                     </Col>
                 </Row>
         </Container>
