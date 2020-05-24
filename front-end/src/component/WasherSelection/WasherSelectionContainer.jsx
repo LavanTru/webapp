@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import WasherMap from "./WasherMap";
+import WasherMap from "./WasherMap/WasherMap";
 import { Container, Col, Row } from "react-bootstrap";
-import WasherDataService from '../../service/WasherDataService'
+import WasherDataService from '../../service/WasherDataService';
+import WasherList from "./WasherList/WasherListComponent";
 
 class WasherSelectionContainer extends Component {
     constructor(props) {
@@ -49,10 +50,10 @@ class WasherSelectionContainer extends Component {
         return (
             <Container>
                 <Row>
-                    <Col>
-                    hello
+                    <Col >
+                        <WasherList/>
                     </Col>
-                    <Col className = "washerMap">
+                    <Col className="washerMap">
                         <WasherMap {...this.state} onMarkerClick={this.onMarkerClick} onInfoWindowClose={this.onInfoWindowClose} />
                     </Col>
                 </Row>

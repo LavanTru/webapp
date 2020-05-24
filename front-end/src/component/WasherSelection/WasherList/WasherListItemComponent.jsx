@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Button} from "react-bootstrap";
-import WasherDataService from '../service/WasherDataService';
-import WasherListJobs from '../component/WasherListJobs';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import WasherDataService from '../../../service/WasherDataService';
+import WasherListJobs from './WasherListJobs';
+import {Link} from "react-router-dom";
 
 
 class WasherListItemComponent extends Component{

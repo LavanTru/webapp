@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
-import { Container, Col, Row,} from "react-bootstrap";
-import WasherListItemComponent from '../component/WasherListItemComponent'
-import WasherDataService from '../service/WasherDataService'
+import { Container, Row,} from "react-bootstrap";
+import WasherListItemComponent from './WasherListItemComponent'
+import WasherDataService from '../../../service/WasherDataService'
 
 
 class WasherListComponent extends Component{
