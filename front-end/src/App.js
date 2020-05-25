@@ -15,9 +15,9 @@ import OrderComponent from './component/OrderComponent';
 import WasherProfile from './component/WasherProfile';
 import WasherOrderList from "./component/WasherOrderList";
 import WasherOrderConfirm from "./component/WasherOrderConfirm";
-import WasherListComponent from './component/WasherSelection/WasherList/WasherListComponent';
 import LandingPage from './component/LandingPage';
 import WasherSelectionContainer from './component/WasherSelection/WasherSelectionContainer';
+import WasherListContainer from './component/WasherSelection/WasherList/WasherListContainer';
 
 /**React Component representing the high-level structure of the application.
  * Routing is defined in this file.**/
@@ -59,7 +59,7 @@ class App extends Component {
                 <Route exact path="/order" component={OrderComponent} />
                 <Route exact path="/washerOrderList" component={WasherOrderList} />
                 <Route exact path="/washerOrder/:id" component={WasherOrderConfirm} />
-                <Route exact path="/washerlist" component={WasherListComponent} />
+                <Route exact path="/washerlist" component={WasherListContainer} />
                 <Route exact path="/Washers" component={WasherSelectionContainer} />
               </Switch>
             </>

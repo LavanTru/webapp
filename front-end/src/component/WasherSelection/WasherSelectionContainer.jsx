@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import WasherMap from "./WasherMap/WasherMap";
 import { Container, Col, Row } from "react-bootstrap";
 import WasherDataService from '../../service/WasherDataService';
-import WasherList from "./WasherList/WasherListComponent";
+import WasherList from "./WasherList/WasherList";
 
+// WasherSelectionContainer is a component that wraps WasherMap and WasherList to a single page.
+// Washer details are refreshed in the container and passed to children as props
 class WasherSelectionContainer extends Component {
     constructor(props) {
         super(props)
@@ -51,7 +53,7 @@ class WasherSelectionContainer extends Component {
             <Container>
                 <Row>
                     <Col >
-                        <WasherList/>
+                        <WasherList {...this.state}/>
                     </Col>
                     <Col className="washerMap">
                         <WasherMap {...this.state} onMarkerClick={this.onMarkerClick} onInfoWindowClose={this.onInfoWindowClose} />
