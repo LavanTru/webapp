@@ -1,5 +1,58 @@
 @import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
 
+/* We use own font and custom h1-h6 to have standardized styles across the web*/
+*{
+  font-family: 'Quicksand', sans-serif; ;
+}
+h1{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 64px;
+  /* or 133% */
+}
+h2{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 56px;
+  /* or 140% */
+}
+h3{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  /* or 150% */
+}
+h4{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  /* or 133% */
+}
+h5{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+  /* or 140% */
+}
+h6{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 28px;
+  /* or 175% */
+}
+p{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+/* identical to box height, or 175% */
+}
 .App {
   text-align: center;
 }
