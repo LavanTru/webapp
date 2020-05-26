@@ -44,7 +44,7 @@ export class WasherMapContainer extends Component {
                     onClose={this.props.onInfoWindowClose}
                 >
                     <div>
-                        <h4>{this.props.activeMarker.name}</h4>
+                        <h4>{(this.props.activeMarker)?this.props.activeMarker.name:""}</h4>
                     </div>
                 </InfoWindow>
             </Map>
