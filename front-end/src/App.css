@@ -279,3 +279,10 @@ span.iconExtraNotes{
 .washerMap{
   height:80vh;
 }
+
+.washerOrWashee{
+  text-align: center;
+  width: 50%;
+  /* align-self: center; */
+  margin: auto;
+}

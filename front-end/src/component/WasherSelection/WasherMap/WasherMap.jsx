@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-import WasherDataService from '../../../service/WasherDataService'
 
 const mapStyles = {
     width: '100%',
