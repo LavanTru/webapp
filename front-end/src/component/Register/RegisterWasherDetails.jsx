@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Col, Button, Container } from "react-bootstrap";
-import WasherDataService from "../service/WasherDataService";
+import WasherDataService from "../../service/WasherDataService";
 import { Link } from "react-router-dom";
-import { setSessionCookie } from "../Session.js";
-import GeoCodeService from "../service/GeoCodeService";
+import { setSessionCookie } from "../../Session.js";
+import GeoCodeService from "../../service/GeoCodeService";
 
 class RegisterWasher extends Component {
     constructor(props) {

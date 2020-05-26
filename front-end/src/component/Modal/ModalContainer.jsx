@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Modal } from "react-bootstrap";
-import Login from "./Login";
-import Register from "./Register";
-import UserDataService from "../service/UserDataService";
-import {Link} from "react-router-dom";
+import LoginModal from "./LoginModal";
+import RegisterModal from "./RegisterModal";
+import UserDataService from "../../service/UserDataService";
 
-class LoginModal extends Component {
+class ModalContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,13 +19,13 @@ class LoginModal extends Component {
         let buttonLabel;
 
         if (this.props.isRegistered) {
-            loginScreen = <Login onHide={this.props.onHide}/>;
+            loginScreen = <LoginModal onHide={this.props.onHide}/>;
             headerLabel = "Log in";
             loginMessage = "Don't have an account?";
             buttonLabel = "Sign up";
            
         } else {
-            loginScreen = <Register onHide={this.props.onHide} handleChangeIsRegistered={this.props.handleChangeIsRegistered}/>
+            loginScreen = <RegisterModal onHide={this.props.onHide} handleChangeIsRegistered={this.props.handleChangeIsRegistered}/>
             headerLabel = "Sign up";
             loginMessage = "Already registered?";
             buttonLabel = "Log in";
@@ -121,4 +120,4 @@ class LoginModal extends Component {
     }
 }
 
-export default LoginModal;
+export default ModalContainer;

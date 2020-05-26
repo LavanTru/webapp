@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
-import UserDataService from '../service/UserDataService';
-import { setSessionCookie } from "../Session.js";
+import UserDataService from '../../service/UserDataService';
+import { setSessionCookie } from "../../Session.js";
 import { withRouter } from 'react-router-dom';
 
-class Login extends Component {
+class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -108,4 +108,4 @@ class Login extends Component {
       });
   }
 }
-export default withRouter(Login);
+export default withRouter(LoginModal);

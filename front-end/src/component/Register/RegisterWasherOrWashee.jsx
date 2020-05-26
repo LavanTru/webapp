@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Jumbotron } from "react-bootstrap";
-import WasheeDataService from "../service/WasheeDataService";
-import { setSessionCookie } from "../Session.js";
+import WasheeDataService from "../../service/WasheeDataService";
+import { setSessionCookie } from "../../Session.js";
 
 class RegisterWasherOrWashee extends Component {
     constructor(props) {
