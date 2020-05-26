@@ -239,7 +239,6 @@ span.googleButtonText {
 }
 .washerListItem:hover{
     background: #ffe6de ;
-    cursor: pointer;
 }
 
 .washerListItem .unitImage {
