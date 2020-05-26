@@ -26,9 +26,8 @@ class RegisterWasher extends Component {
     render() {
         return (
             <Container fluid >
-
-                <Col md={{ span: 6, offset: 3 }} >
-                    <h1 className="lavantruGreen m-5"
+                <Col md={{ span: 8, offset: 2 }} >
+                    <h1 className="my-5 lavantruGreen"
                     >Enter your profile information</h1>
                     <Form onChange={this.handleChange}>
                         <Form.Row>
