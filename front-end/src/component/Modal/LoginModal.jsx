@@ -62,7 +62,8 @@ class LoginModal extends Component {
             "firstName": response.data.firstName,
             "lastName": response.data.lastName,
             "email": response.data.email,
-            "userType": response.data.userType
+            "userType": response.data.userType,
+            "addresses":[response.data.addresses[0]]
           };
           setSessionCookie(user);
           this.props.onHide();
