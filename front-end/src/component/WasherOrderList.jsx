@@ -25,7 +25,7 @@ class WasherOrderList extends Component {
         const orderListStatusOther = this.state.orderList.filter(order => order.status !== "NEW");
         return (
             <div>
-                <Container className="profile" >
+                <Container className="profile" fluid >
                     <Col md={{ span: 8, offset: 2 }}>
                         <h1>New orders:</h1>
                         {
