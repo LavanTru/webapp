@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import {Col} from "react-bootstrap";
-
+import React from 'react';
 
 const WasherListJobs = (props) => { 
         
         const washerJob = props.washerJob;
 
         if(washerJob.active){
-            return (<Col className="unitLaundryJobs"><div>{washerJob.job}</div></Col>);
+            return (
+            <div className="unitLaundryJobs m-1">
+                <p className="mb-0">{washerJob.job}</p>
+                </div>);
         }
         else{
             return null;

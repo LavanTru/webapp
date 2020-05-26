@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import { Container, Row, } from "react-bootstrap";
-import WasherListItemComponent from './WasherListItemComponent';
+import WasherListItem from './WasherListItem';
 
 
 class WasherList extends Component {
     render() {
         return (
-            <Container className="washerList">
+            <div className="washerList">
                 {
                     this.props.washers.map(
                         washer =>
-                            <Row className="washerListItem">
-                                <WasherListItemComponent key={washer.id} washerId={washer.id} />
-                            </Row>
+                            <WasherListItem key={washer.id} washer={washer} />
                     )
                 }
-            </Container>
+            </div>
         )
     }
 

@@ -50,15 +50,17 @@ class WasherSelectionContainer extends Component {
     }
     render() {
         return (
-            <Container>
+            <Container fluid>
+                <Col className="pt-4" md={{ span: 10, offset: 1 }}>
                 <Row>
-                    <Col >
+                    <Col md={6}>
                         <WasherList {...this.state}/>
                     </Col>
-                    <Col className="washerMap">
+                    <Col className="washerMap" md={6}>
                         <WasherMap {...this.state} onMarkerClick={this.onMarkerClick} onInfoWindowClose={this.onInfoWindowClose} />
                     </Col>
                 </Row>
+                </Col>
             </Container>
         );
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WasherDataService from '../../../service/WasherDataService';
 import WasherList from "./WasherList";
+import { Container } from "react-bootstrap";
 
 // This is a parent object for WasherList, only used to refresh Washer data in the parent object and pass it to WasherList as props.
 // Used only in /washerList to show the list in a separate page from the map.
@@ -29,7 +30,9 @@ class WasherListContainer extends Component {
 
     render() {
         return (
-            <WasherList {...this.state} />
+            <Container className="mt-4">
+                <WasherList {...this.state}  />
+            </Container>
         )
     }
 
