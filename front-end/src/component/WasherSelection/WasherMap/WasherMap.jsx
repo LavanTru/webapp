@@ -13,6 +13,10 @@ export class WasherMapContainer extends Component {
             <Map
                 google={this.props.google}
                 zoom={14}
+                // options={{streetViewControl: false}}
+                streetViewControl={false}
+                fullscreenControl={false}
+                mapTypeControl={false}
                 // style={mapStyles}
                 initialCenter={{
                     // Centered to Barcelona
@@ -24,7 +28,7 @@ export class WasherMapContainer extends Component {
                     onClick={this.props.onMarkerClick}
                     name="Your address"
                     position={{ lat: this.props.washee.addresses[0].lat, lng: this.props.washee.addresses[0].lng }}
-                    icon={{url:"http://maps.google.com/mapfiles/kml/paddle/blu-stars.png"}}
+                    icon={{ url: "http://maps.google.com/mapfiles/kml/paddle/blu-stars.png" }}
                 />
                 {
                     this.props.washers.map(
@@ -44,7 +48,7 @@ export class WasherMapContainer extends Component {
                     onClose={this.props.onInfoWindowClose}
                 >
                     <div>
-                        <h4>{(this.props.activeMarker)?this.props.activeMarker.name:""}</h4>
+                        <h4>{(this.props.activeMarker) ? this.props.activeMarker.name : ""}</h4>
                     </div>
                 </InfoWindow>
             </Map>
