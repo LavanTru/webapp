@@ -20,6 +20,11 @@ export class WasherMapContainer extends Component {
                     lng: 2.1734
                 }}
             >
+                <Marker
+                    onClick={this.props.onMarkerClick}
+                    name="Your address"
+                    position={{ lat: this.props.washee.addresses[0].lat, lng: this.props.washee.addresses[0].lng }}
+                />
                 {
                     this.props.washers.map(
                         washer =>

@@ -3,6 +3,8 @@ import WasherMap from "./WasherMap/WasherMap";
 import { Container, Col, Row } from "react-bootstrap";
 import WasherDataService from '../../service/WasherDataService';
 import WasherList from "./WasherList/WasherList";
+import { SessionContext } from "../../Session";
+
 
 // WasherSelectionContainer is a component that wraps WasherMap and WasherList to a single page.
 // Washer details are refreshed in the container and passed to children as props
@@ -12,13 +14,17 @@ class WasherSelectionContainer extends Component {
         this.state = {
             showingInfoWindow: false,  //Hides or the shows the infoWindow
             activeMarker: {},          //Shows the active marker upon click
-            washers: []                 //list of Washers in the area
+            washers: [],                 //list of Washers in the area
+            washee: {}                  //washee data taken from the session
         }
         this.refreshAllWashers = this.refreshAllWashers.bind(this)
     }
 
     componentDidMount() {
         this.refreshAllWashers();
+        this.setState({
+            washee:this.context
+        })
     }
 
     refreshAllWashers() {
@@ -63,5 +69,6 @@ class WasherSelectionContainer extends Component {
         );
     }
 }
+WasherSelectionContainer.contextType = SessionContext;
 
 export default WasherSelectionContainer;
