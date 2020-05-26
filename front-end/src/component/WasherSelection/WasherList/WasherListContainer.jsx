@@ -9,7 +9,8 @@ class WasherListContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            washers: []
+            washers: [],
+            activeMarker: {}
         }
         this.refreshAllWashers = this.refreshAllWashers.bind(this)
     }

@@ -11,7 +11,7 @@ class WasherList extends Component {
                     this.props.washers.map(
                         washer =>
                             // If the Washer is selected in the WasherSelectionContainer view then pink background is used
-                            <WasherListItem key={washer.id} washer={washer} backgroundColour={(washer.id === this.props.activeMarker.washerId) ? "pinkBackground" : ""} />
+                            <WasherListItem key={washer.id} washer={washer} backgroundColour={(washer.id === (this.props.activeMarker.washerId&&true)) ? "pinkBackground" : ""} />
                     )
                 }
             </div>
