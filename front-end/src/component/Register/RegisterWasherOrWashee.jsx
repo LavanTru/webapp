@@ -31,7 +31,13 @@ class RegisterWasherOrWashee extends Component {
                 <Button
                     className="button-pink"
                     size="lg"
-                    onClick={this.handleWasheeSignUp}
+                    // onClick={this.handleWasheeSignUp}
+                    onClick={() => {
+                        this.props.history.push({
+                            pathname: "/register/washee",
+                            state: { ...this.props.location.state }
+                        })
+                    }}
                 >Yes! I'm a Washee</Button>
             </Jumbotron>
         );

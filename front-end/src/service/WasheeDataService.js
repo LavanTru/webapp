@@ -15,7 +15,7 @@ class WasheeDataService {
     }
 
 
-    register(firstName, lastName, email, password, phoneNo, accountType, companyName, acceptsMarketingEmails, addresses, aboutMe, image, paymentMethods) {
+    register(firstName, lastName, email, password, phoneNo, accountType, companyName, acceptsMarketingEmails, addresses, aboutMe, paymentMethods) {
         var payload = {
             "firstName": firstName,
             "lastName": lastName,
@@ -28,7 +28,6 @@ class WasheeDataService {
             "acceptsMarketingEmails": acceptsMarketingEmails,
             "addresses": addresses,
             "aboutMe": aboutMe,
-            "image":image,
             "paymentMethods":paymentMethods,
             "image":"https://cdn0.iconfinder.com/data/icons/basic-ui-1-line/64/Artboard_18-512.png"
         };
