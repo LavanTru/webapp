@@ -12,7 +12,6 @@ class WasherSelectionContainer extends Component {
         this.state = {
             showingInfoWindow: false,  //Hides or the shows the infoWindow
             activeMarker: {},          //Shows the active marker upon click
-            selectedPlace: {},          //Shows the infoWindow to the selected place upon a marker
             washers: []                 //list of Washers in the area
         }
         this.refreshAllWashers = this.refreshAllWashers.bind(this)
@@ -33,7 +32,6 @@ class WasherSelectionContainer extends Component {
 
     onMarkerClick = (props, marker) => {
         this.setState({
-            selectedPlace: props,
             activeMarker: marker,
             showingInfoWindow: true
         })
@@ -54,7 +52,7 @@ class WasherSelectionContainer extends Component {
                 <Col className="pt-4" md={{ span: 10, offset: 1 }}>
                 <Row>
                     <Col md={6}>
-                        <WasherList {...this.state}/>
+                        <WasherList {...this.state} onClick={this.onMarkerClick}/>
                     </Col>
                     <Col className="washerMap" md={6}>
                         <WasherMap {...this.state} onMarkerClick={this.onMarkerClick} onInfoWindowClose={this.onInfoWindowClose} />

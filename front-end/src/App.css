@@ -238,6 +238,10 @@ span.googleButtonText {
   color: #0f7d80;
   /* background: #ffe6de ; */
 }
+.washerListItem:hover{
+    background: #ffe6de ;
+    cursor: pointer;
+}
 
 .washerListItem .unitImage {
  border-radius: 50%;
@@ -258,6 +262,10 @@ span.googleButtonText {
 }
 .washerListItem .content {
 width: 100% !important ;
+ }
+
+ .pinkBackground{
+   background-color: #ffe6de;
  }
 span.iconExtraNotes{
   background: url("./asset/extra_notes.svg") transparent no-repeat;

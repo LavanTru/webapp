@@ -28,6 +28,7 @@ export class WasherMapContainer extends Component {
                                 key={washer.id}
                                 onClick={this.props.onMarkerClick}
                                 name={washer.firstName}
+                                washerId={washer.id}
                                 position={{ lat: washer.addresses[0].lat, lng: washer.addresses[0].lng }}
                             />
                     )
@@ -38,7 +39,7 @@ export class WasherMapContainer extends Component {
                     onClose={this.props.onInfoWindowClose}
                 >
                     <div>
-                        <h4>{this.props.selectedPlace.name}</h4>
+                        <h4>{this.props.activeMarker.name}</h4>
                     </div>
                 </InfoWindow>
             </Map>
