@@ -304,3 +304,27 @@ span.iconExtraNotes{
 .clickable{
   cursor: pointer;
 }
+
+.fpriceCol{
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.wash-cycle-tooltip > .tooltip-inner {
+  background-color: #ffe6de;
+  color: #0f7d80;
+  border: 1px solid #0f7d80;
+}
+  
+.wash-cycle-tooltip .arrow:before {
+  border-right-color: #0f7d80 !important;
+}
+
+.wash-cycle-p {
+  color: #0f7d80;
+  text-align: right;
+}  

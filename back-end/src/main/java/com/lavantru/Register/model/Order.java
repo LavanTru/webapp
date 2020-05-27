@@ -22,6 +22,7 @@ public class Order {
     private LocalDateTime dateConfirmed;
     private String washeeId;
     private String washerId;
+    private String washCycle;
     @NotNull @NotEmpty
     private List<Item> items;
 
