@@ -16,7 +16,7 @@ const WasherListItem = (props) => {
                         <h3>{props.washer.firstName}</h3>
                     </Col>
                     <Col xs sm="auto" className="my-2">
-                        <Link to={`/profile/${props.washer.Id}`}>
+                        <Link to={`/profile/${props.washer.id}`}>
                             <Button className="button-green">Details</Button>
                         </Link>
                     </Col>
