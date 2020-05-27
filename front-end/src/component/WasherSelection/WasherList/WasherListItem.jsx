@@ -22,7 +22,13 @@ const WasherListItem = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <p>{props.washer.addresses[0].city}</p>
+                    <Col>
+                        <p>{props.washer.addresses[0].city}</p>
+                    </Col>
+                    <Col xs sm="auto">
+                        {/* Location is received in metres, then formatted to km. The *100/100 is needed to present numbers with two decimal points */}
+                        <i>{Math.round(props.distance/1000*100)/100} km</i> 
+                    </Col>
                 </Row>
                 <Row >
                     {
