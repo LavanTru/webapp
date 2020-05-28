@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
 
-
-
 // TODO add error messages for field validations
 
-class Register extends Component {
+class RegisterModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -81,4 +79,4 @@ class Register extends Component {
 
 }
 
-export default withRouter(Register);
+export default withRouter(RegisterModal);

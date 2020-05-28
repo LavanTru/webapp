@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Container, Row, Col, Button} from 'react-bootstrap';
 import ServiceItem from './ServiceItem';
-import LoginModal from './LoginModal';
+import ModalContainer from './Modal/ModalContainer';
 import iconWashering from '../asset/icon/washer.svg';
 import iconIroning from '../asset/icon/iron.svg';
 import iconBedding from '../asset/icon/towel.svg';
@@ -49,7 +49,7 @@ function Section(){
                 <Row className="rolesDesc">
                     <Col>
                         <a onClick={handleShow} className="btn btn-outline btn-xl js-scroll-trigger mb-3">Sign up now</a>
-                        <LoginModal 
+                        <ModalContainer 
                             show={show}
                             onHide={handleClose}
                             isRegistered={isRegistered}

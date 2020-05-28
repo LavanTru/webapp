@@ -3,7 +3,7 @@ import { SessionContext, removeSessionCookie } from "../Session";
 import { Navbar, Nav } from "react-bootstrap";
 
 // This method checks if the user info is saved into session and returns either user info and log out option. Returns log in/sign up options if no session
-const NavBarLogin = (props) => {
+const NavBarLoginInfo = (props) => {
     const session = useContext(SessionContext);
     if (session) {
         return (
@@ -46,4 +46,4 @@ const NavBarLogin = (props) => {
     }
 }
 
-export default NavBarLogin;
+export default NavBarLoginInfo;

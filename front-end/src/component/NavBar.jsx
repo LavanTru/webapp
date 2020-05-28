@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import LoginModal from "./LoginModal";
-import NavBarLogin from "./NavBarLogin";
+import { Navbar, Nav } from "react-bootstrap";
+import ModalContainer from "./Modal/ModalContainer";
+import NavBarLoginInfo from "./NavBarLoginInfo";
 
 
 class NavBar extends Component {
@@ -40,8 +40,8 @@ class NavBar extends Component {
                         <Nav.Link href="/washerOrderList">Orders</Nav.Link>
                     </Nav>
                     <Nav className="ml-auto">
-                        <NavBarLogin handleChangeIsRegistered={this.handleChangeIsRegistered} handleLoginModal={this.handleLoginModal}/>
-                        <LoginModal
+                        <NavBarLoginInfo handleChangeIsRegistered={this.handleChangeIsRegistered} handleLoginModal={this.handleLoginModal}/>
+                        <ModalContainer
                             show={this.state.loginModalShow}
                             // show={true}
                             onHide={this.handleLoginModal}

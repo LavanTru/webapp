@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
 import { Button, Jumbotron } from "react-bootstrap";
-import WasheeDataService from "../service/WasheeDataService";
-import { setSessionCookie } from "../Session.js";
+import WasheeDataService from "../../service/WasheeDataService";
+import { setSessionCookie } from "../../Session.js";
 
 class RegisterWasherOrWashee extends Component {
-constructor(props){
-    super(props);
-    this.handleWasheeSignUp = this.handleWasheeSignUp.bind(this);
-}
+    constructor(props) {
+        super(props);
+        this.handleWasheeSignUp = this.handleWasheeSignUp.bind(this);
+    }
 
     render() {
         return (
-            <Jumbotron>
-                <h1
-                className = "m-5 lavantruGreen"
-                    
-                >Want to get paid doing laundry?</h1>
+            <Jumbotron className="washerOrWashee">
+                <h1 className="lavantruGreen">
+                    Want to get paid doing laundry?
+                    </h1>
                 <Button
                     className="button-pink"
                     size="lg"
-                    onClick={()=>{this.props.history.push({
-                        pathname:"/register/washer",
-                        state:{...this.props.location.state}
-                    })
+                    onClick={() => {
+                        this.props.history.push({
+                            pathname: "/register/washer",
+                            state: { ...this.props.location.state }
+                        })
                     }}
                 >Yes! I'm a Washer</Button>
 
-                <h1
-                className = "m-5 lavantruGreen"
-                >Want to never think about laundry again?  </h1>
+                <h1 className="mt-5 lavantruGreen">
+                    Want to never think about laundry again?  </h1>
                 <Button
                     className="button-pink"
                     size="lg"
-                    onClick={this.handleWasheeSignUp}
+                    // onClick={this.handleWasheeSignUp}
+                    onClick={() => {
+                        this.props.history.push({
+                            pathname: "/register/washee",
+                            state: { ...this.props.location.state }
+                        })
+                    }}
                 >Yes! I'm a Washee</Button>
             </Jumbotron>
         );
@@ -59,11 +64,11 @@ constructor(props){
 
                     const user = {
                         // Add here more attributes to be stored in the cookies if needed
-                        "id":response.data.id,
+                        "id": response.data.id,
                         "firstName": response.data.firstName,
                         "lastName": response.data.lastName,
                         "email": response.data.email,
-                        "userType":"WASHEE"
+                        "userType": "WASHEE"
                     };
                     setSessionCookie(user);
 
