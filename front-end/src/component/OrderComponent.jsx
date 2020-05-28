@@ -5,6 +5,7 @@ import QuantityControl from './QuantityControl';
 import OrderDataService from '../service/OrderDataService';
 import { Alert } from 'reactstrap';
 import { SessionContext } from "../Session";
+import WashCycle from './WashCycle';
 
 class OrderComponent extends Component{
 
@@ -18,7 +19,8 @@ class OrderComponent extends Component{
             notes: 'Add some notes...',
             amount : 0,
             totalAmount : 0,
-            orderTotal : 0
+            orderTotal : 0,
+            program: 'Up to my washer'
         }
         this.addItem = this.addItem.bind(this);
         this.createOrder = this.createOrder.bind(this);
@@ -67,15 +69,28 @@ class OrderComponent extends Component{
             washeeId: this.context.id, //washeeId comes from the logged in user
             washerId: this.state.washerId,
             notes: this.state.notes,
+            washCycle: this.state.program, 
             items: this.state.items
         }
         OrderDataService.createOrder(order)
             .then(
                 response => {
                     if (response.status === 200){
+                        console.log(order)
+                        console.log(this.state.washCycle)
                         this.setState({ message: `Your order has been sent.` })
                     }
                 })
+    }
+
+    displayWashCycle(job){
+        if (job === "Laundry" || job === "Washing")
+        return (
+            <Row>
+                <Col><p>Wash cycle program:</p></Col>
+                <Col><WashCycle parentCallback={(selectedProgram) => {this.setState({program: selectedProgram})}}/></Col>
+            </Row>
+        );
     }
 
     render(){
@@ -109,8 +124,9 @@ class OrderComponent extends Component{
                                             <Row>
                                                 <Col><h5 className="card-title">{jobItem.job}</h5></Col>
                                                 <Col className="priceCol">€{jobItem.price}</Col>
-                                            </Row>                  
+                                            </Row>
                                             <p className="card-text">{jobItem.speed}</p>
+                                            {this.displayWashCycle(jobItem.job)}
                                             <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}
                                             <Button className="button-pink" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
                                         </Card.Body>
