@@ -325,6 +325,12 @@ span.iconExtraNotes{
 }
 
 .wash-cycle-p {
+  float: right;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer; 
+  background: #ffe6de;
   color: #0f7d80;
+  padding: 6px 12px;
   text-align: right;
 }  

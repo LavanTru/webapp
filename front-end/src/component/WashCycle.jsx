@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import WashCycleService from '../service/WashCycleService';
-import { OverlayTrigger, Tooltip , ButtonGroup, Row, ListGroup, Modal, Container} from 'react-bootstrap';
+import { OverlayTrigger, Tooltip , ButtonGroup, Button, ListGroup, Modal, Container} from 'react-bootstrap';
 
 class WashCycle extends Component{
 
@@ -17,7 +17,7 @@ class WashCycle extends Component{
     componentDidMount() {
         this.getWasherData();
         if(this.state.selectedProgram === ''){
-            this.setState({selectedProgram: "Up to my washer"})
+            this.setState({selectedProgram: "Let your washer choose"})
         }
     }
 
