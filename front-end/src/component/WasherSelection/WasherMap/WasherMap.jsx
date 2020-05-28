@@ -58,5 +58,5 @@ export class WasherMapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyD9sw1K3j5GvWWpdtXoZ35v8kVacdJ1Qpc'
+    apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 })(WasherMapContainer);

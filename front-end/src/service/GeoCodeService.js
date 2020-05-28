@@ -3,7 +3,7 @@ import Geocode from "react-geocode";
 class GeoCodeService {
 
     getAddressWithLocation(address) {
-        Geocode.setApiKey("AIzaSyDf44ig3XYoWoh6uE6aUbWHYazhCiBC5EM");
+        Geocode.setApiKey(process.env.REACT_APP_GOOGLE_GEOCODE_API_KEY);
 
         const addressString = address.streetName + ", " + address.buildingNo + ", " + address.postCode + " " + address.city;
         return Geocode.fromAddress(addressString)
