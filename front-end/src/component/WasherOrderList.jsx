@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import OrderDataService from "../service/OrderDataService";
 import { SessionContext } from "../Session";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import WasherOrderListItem from "./WasherOrderListItem"
 
 
@@ -25,7 +25,7 @@ class WasherOrderList extends Component {
         const orderListStatusOther = this.state.orderList.filter(order => order.status !== "NEW");
         return (
             <div>
-                <Container className="profile" >
+                <Container className="profile" fluid >
                     <Col md={{ span: 8, offset: 2 }}>
                         <h1>New orders:</h1>
                         {

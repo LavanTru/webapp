@@ -319,7 +319,7 @@ span.iconExtraNotes{
   color: #0f7d80;
   border: 1px solid #0f7d80;
 }
-  
+
 .wash-cycle-tooltip .arrow:before {
   border-right-color: #0f7d80 !important;
 }
@@ -328,9 +328,19 @@ span.iconExtraNotes{
   float: right;
   display: inline-block;
   border-radius: 10px;
-  cursor: pointer; 
+  cursor: pointer;
   background: #ffe6de;
   color: #0f7d80;
   padding: 6px 12px;
   text-align: right;
-}  
+}
+.washerMap{
+  height:80vh;
+}
+
+.washerOrWashee{
+  text-align: center;
+  width: 50%;
+  /* align-self: center; */
+  margin: auto;
+}
