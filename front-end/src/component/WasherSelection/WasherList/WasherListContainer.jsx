@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import WasherDataService from '../../../service/WasherDataService';
 import WasherList from "./WasherList";
-import { Container } from "react-bootstrap";
+import { Container,Col } from "react-bootstrap";
+import { SessionContext } from "../../../Session";
 
 // This is a parent object for WasherList, only used to refresh Washer data in the parent object and pass it to WasherList as props.
 // Used only in /washerList to show the list in a separate page from the map.
@@ -10,13 +11,17 @@ class WasherListContainer extends Component {
         super(props)
         this.state = {
             washers: [],
-            activeMarker: {}
+            activeMarker: {},
+            washee: {}
         }
         this.refreshAllWashers = this.refreshAllWashers.bind(this)
     }
 
     componentDidMount() {
         this.refreshAllWashers();
+        this.setState({
+            washee: this.context
+        });
     }
 
     refreshAllWashers() {
@@ -31,11 +36,15 @@ class WasherListContainer extends Component {
 
     render() {
         return (
-            <Container className="mt-4">
-                <WasherList {...this.state}  />
+            <Container className="mt-4" fluid>
+                <Col md={{ span: 6, offset: 3 }}>
+                    <WasherList {...this.state} />
+                </Col>
+
             </Container>
         )
     }
 
 }
+WasherListContainer.contextType = SessionContext;
 export default WasherListContainer
