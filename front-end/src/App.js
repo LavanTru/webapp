@@ -16,7 +16,7 @@ import OrderComponent from './component/OrderComponent';
 import WasherProfile from './component/WasherProfile';
 import WasherOrderList from "./component/WasherOrderList";
 import WasherOrderConfirm from "./component/WasherOrderConfirm";
-import LandingPage from './component/LandingPage';
+import LandingPage from './component/LandingPage/LandingPage';
 import WasherSelectionContainer from './component/WasherSelection/WasherSelectionContainer';
 import WasherListContainer from './component/WasherSelection/WasherList/WasherListContainer';
 
