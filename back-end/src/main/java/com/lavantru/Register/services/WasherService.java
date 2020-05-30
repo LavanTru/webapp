@@ -5,6 +5,7 @@ import com.lavantru.Register.errors.UserAlreadyExistException;
 import com.lavantru.Register.model.Job;
 import com.lavantru.Register.model.Washee;
 import com.lavantru.Register.model.Washer;
+import java.util.Date;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -77,5 +78,11 @@ public class WasherService {
         }
 
         return activeJobs;
+    }
+
+    public void updateWasherSchedule(ObjectId id, List<Date> availableHours) {
+        Washer washer = getUserById(id);
+        washer.setAvailableHours(availableHours);
+        washerDao.insertWasher(washer);
     }
 }
