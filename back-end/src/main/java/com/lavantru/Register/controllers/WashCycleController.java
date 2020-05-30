@@ -1,6 +1,8 @@
 package com.lavantru.Register.controllers;
 
 import com.lavantru.Register.model.WashCycle;
+import com.lavantru.Register.services.IWashCycleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +15,11 @@ import java.util.List;
 @RequestMapping("/api/washcycle")
 public class WashCycleController {
 
+    @Autowired
+    private IWashCycleService washCycleService;
+
     @GetMapping()
     public List<WashCycle> getWashCycles(){
-        return WashCycle.getWashCycles();
+        return washCycleService.getAllWashCycles();
     }
 }
