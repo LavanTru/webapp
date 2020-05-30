@@ -49,6 +49,10 @@ class WasherDataService {
         };
         return axios.post(WASHER_API_URL + '/register', payload);
     }
+    updateWasherSchedule(id, availableHours){
+        return axios.put(`${WASHER_API_URL}/schedule/${id}`, availableHours);
+    }
+
 }
 
 export default new WasherDataService()
