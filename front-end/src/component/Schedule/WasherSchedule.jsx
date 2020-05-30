@@ -8,10 +8,12 @@ class WasherSchedule extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            schedule: []
+            schedule: [],
+            startDate: new Date() //Calendar loads with today's date by default
         }
-        this.updateWasherSchedule = this.updateWasherSchedule.bind(this);
+        this.handleOnClick = this.handleOnClick.bind(this);
         this.getWasherSchedule = this.getWasherSchedule.bind(this);
+        this.changeToNextWeek = this.changeToNextWeek.bind(this);
     }
 
     componentDidMount() {
@@ -20,31 +22,48 @@ class WasherSchedule extends Component {
 
     handleChange = newSchedule => {
         this.setState({ schedule: newSchedule });
-        WasherDataService.updateWasherSchedule(this.context.id,this.state.schedule);
+        WasherDataService.updateWasherSchedule(this.context.id, this.state.schedule);
     }
 
-    getWasherSchedule(){
+    getWasherSchedule() {
         WasherDataService.retrieveWasher(this.context.id)
-        .then(
-            response => {
-                this.setState({schedule: response.data.availableHours})
-            }
-        )
+            .then(
+                response => {
+                    this.setState({ schedule: response.data.availableHours })
+                }
+            )
     }
 
-    updateWasherSchedule(){
-        console.log("availableHours",this.state.schedule);
+    handleOnClick() {
+        // console.log("availableHours", this.state.schedule);
         // WasherDataService.updateWasherSchedule(this.context.id,this.state.schedule)
+        // TODO: add redirecting to a new page
     }
 
+    changeToNextWeek() {
+        this.setState({
+            startDate: this.addDays(this.state.startDate, 7)
+        })
+    }
+
+    changeToPreviousWeek() {
+        this.setState({
+            startDate: this.addDays(this.state.startDate, -7)
+        })
+    }
+
+    addDays(date, days) {
+        let newDate = new Date(date);
+        newDate.setDate(date.getDate() + days);
+        return newDate;
+    }
     render() {
         return (
-            <Container fluid>
+            <Container fluid className="lavantruGreen">
                 <Col md={{ span: 8, offset: 2 }} className="pt-4">
                     <h2>Please select your schedule</h2>
                     <p >You are your own boss in LavanTru! Select the times when you will be available to offer your service. Washees can request a wash only during the hours when you are available.</p>
-                    {/* <div class="washerSchedule"> */}
-                    <Card className ="p-3">
+                    <Card className="p-3">
                         <ScheduleSelector
                             selection={this.state.schedule}
                             numDays={5}
@@ -52,10 +71,10 @@ class WasherSchedule extends Component {
                             maxTime={22}
                             onChange={this.handleChange}
                             dateFormat={"ddd (D.MM)"}
+                            startDate={this.state.startDate}
                         />
                     </Card>
-                    {/* </div> */}
-                    <Button className ="button-green m-3 float-right" onClick = {this.updateWasherSchedule}>Confirm</Button>
+                    <Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button>
                 </Col>
             </Container>
 
