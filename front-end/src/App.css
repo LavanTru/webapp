@@ -283,6 +283,10 @@ span.iconExtraNotes{
   /* align-self: center; */
   margin: auto;
 }
-/* .washerSchedule{
-  border: thick solid black;
+/* .schedule{
+
 } */
+.schedule .box{
+  background-color: #0f7d80;
+  margin: 3px
+}
