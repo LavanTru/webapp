@@ -66,13 +66,10 @@ class OrderSchedule extends Component {
                     <p >The times when Washer is available are highlighted in green.</p>
                     <Card className="p-3">
                         <CustomScheduler
-                            selection={this.state.schedule}
+                            schedule={this.state.schedule}
                             onClick={this.handleChange}
                             dateFormat={"EEEE (d.MM)"}
                             startDate={this.state.startDate}
-                            selectedColor="#0f7d80"
-                            unselectedColor="#ffe6de"
-                            hoveredColor="#15b1b7"
                         />
                     </Card>
                     <Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button>

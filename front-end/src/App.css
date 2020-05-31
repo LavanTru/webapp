@@ -264,6 +264,9 @@ width: 100% !important ;
  .pinkBackground{
    background-color: #ffe6de;
  }
+ .greenBackground{
+  background-color: #0f7d80;
+}
 span.iconExtraNotes{
   background: url("./asset/extra_notes.svg") transparent no-repeat;
   display: inline-block;
@@ -283,10 +286,14 @@ span.iconExtraNotes{
   /* align-self: center; */
   margin: auto;
 }
-/* .schedule{
-
-} */
+.schedule{
+  text-align: center;
+}
 .schedule .box{
-  background-color: #0f7d80;
-  margin: 3px
+  /* margin:10px !important; */
+  /* border-spacing: 10px !important; */
+  border: 10px solid white;
+}
+.schedule .time{
+  text-align: center;
 }

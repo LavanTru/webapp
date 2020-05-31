@@ -1,5 +1,4 @@
 import React from 'react';
-import { Table } from "react-bootstrap";
 import { format } from "date-fns";
 
 // This component renders the scheduler for Washee to select the schedule from Washer's available schedules
@@ -8,9 +7,10 @@ const CustomScheduler = (props) => {
     const startDate = new Date(props.startDate);
     startDate.setMinutes(0);
     startDate.setSeconds(0);
+    startDate.setMilliseconds(0);
 
     const rows = [];
-    
+
     // Loop from 8AM to 22PM to generate rows for the schedule
     for (let hour = 8; hour <= 22; hour++) {
         let time = new Date(startDate);
@@ -19,32 +19,41 @@ const CustomScheduler = (props) => {
         // Loop through days to generate columns that fill the row
         const column = [];
         for (let day = 0; day <= 2; day++) {
-            let dateTime = addDays(new Date(time), day);
-            column.push(<td key={dateTime} id={dateTime} className="box m-5"></td>);
+            const dateTime = addDays(new Date(time), day);
+
+            //Check cell against the availableHours of the washer
+            const color = (props.schedule.find(item => {
+                const itemTime = new Date(item).getTime()
+                return itemTime == dateTime.getTime()
+            })) ? "greenBackground" : "pinkBackground";
+            console.log("color", color);
+            column.push(<td key={dateTime} id={dateTime} className={"box " + color}></td>);
         }
 
         rows.push(
             <tr key={time}>
-                <td>{format(time, "p")}</td>
+                {/* //"h a"formats as "8 AM" */}
+                <td className="time">{format(time, "h a")}</td>
                 {column}
             </tr>
         )
     }
 
     return (
-        <Table onClick = {props.onClick} className = "schedule" bsPrefix ="table123">
+        <table onClick={props.onClick} className="schedule">
             <thead>
                 <tr>
                     <th></th>
-                    <th>{format(addDays(startDate,0), props.dateFormat)}</th>
-                    <th>{format(addDays(startDate,1), props.dateFormat)}</th>
-                    <th>{format(addDays(startDate,2), props.dateFormat)}</th>
+                    <th>{format(addDays(startDate, 0), props.dateFormat)}</th>
+                    <th>{format(addDays(startDate, 1), props.dateFormat)}</th>
+                    <th>{format(addDays(startDate, 2), props.dateFormat)}</th>
                 </tr>
             </thead>
             <tbody>
                 {rows}
             </tbody>
-        </Table>
+
+        </table>
     );
 
 };
