@@ -68,7 +68,7 @@ class OrderSchedule extends Component {
                         <CustomScheduler
                             schedule={this.state.schedule}
                             onClick={this.handleChange}
-                            dateFormat={"EEEE (d.MM)"}
+                            dateFormat={"dd/MM"}
                             startDate={this.state.startDate}
                         />
                     </Card>

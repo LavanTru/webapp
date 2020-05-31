@@ -70,7 +70,7 @@ class WasherSchedule extends Component {
                             minTime={8}
                             maxTime={22}
                             onChange={this.handleChange}
-                            dateFormat={"ddd (D.MM)"}
+                            dateFormat={"DD/MM"}
                             startDate={this.state.startDate}
                             selectedColor="#0f7d80"
                             unselectedColor="#d1f8fa"

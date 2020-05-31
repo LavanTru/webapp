@@ -292,6 +292,8 @@ span.iconExtraNotes{
 .schedule .box{
   /* margin:10px !important; */
   /* border-spacing: 10px !important; */
+  /* min-height:; */
+  padding: 15px;
   border: 10px solid white;
 }
 .schedule .time{
