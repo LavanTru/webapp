@@ -72,6 +72,9 @@ class WasherSchedule extends Component {
                             onChange={this.handleChange}
                             dateFormat={"ddd (D.MM)"}
                             startDate={this.state.startDate}
+                            selectedColor="#0f7d80"
+                            unselectedColor="#d1f8fa"
+                            hoveredColor="#15b1b7"
                         />
                     </Card>
                     <Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button>
