@@ -346,10 +346,14 @@ span.iconExtraNotes{
 }
 
 .wash-icon{
+  cursor: pointer;
   float: right;
   margin: 5px 0.5rem;
   display: inline-block;
-  width: 2.5rem;
-  height: 3rem;
+  width: 40px;
   overflow: hidden;
+}
+
+.icon-text{
+  font-size: 200px;
 }

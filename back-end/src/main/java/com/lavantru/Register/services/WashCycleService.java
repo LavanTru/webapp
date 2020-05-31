@@ -14,7 +14,7 @@ public class WashCycleService implements IWashCycleService{
     public List<WashCycle> getAllWashCycles() {
         List<WashCycle> cycles = new ArrayList<>();
 
-        cycles.add (new WashCycle("Let your washer choose", "Let your washer choose the best cycle for your clothes."
+        cycles.add (new WashCycle("Let your washer choose", "Let your washer choose the best cycle and temperature for your clothes."
                 , getTemperature(30)));
         cycles.add (new WashCycle("Delicate / Gentle", "Ideal for garments that need extra protection. This program aims to limit the wear and tear on your clothes, plus helps to prevent shrinking and breakdown of material. It can, however, decrease the level of clean in some instances."
                 ,getTemperature(30)));

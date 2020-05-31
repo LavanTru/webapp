@@ -8,6 +8,7 @@ import { SessionContext } from "../Session";
 import WashCycle from './WashCycle';
 import iconWash from '../asset/icon/wash.svg';
 import WashCycleService from '../service/WashCycleService';
+import TemperatureIcons from './TemperatureIcons';
 
 class OrderComponent extends Component{
 
@@ -23,7 +24,8 @@ class OrderComponent extends Component{
             totalAmount : 0,
             orderTotal : 0,
             washCycles: [],
-            program: ''
+            program: '',
+            temperature: 30
         }
         this.addItem = this.addItem.bind(this);
         this.createOrder = this.createOrder.bind(this);
@@ -104,14 +106,17 @@ class OrderComponent extends Component{
             <>
             <Row>
                 <Col><p>Wash cycle program:</p></Col>
-                <Col sm={6}><WashCycle cycles={this.state.washCycles} program={this.state.program} parentCallback={(selectedProgram) => {this.setState({program: selectedProgram})}}/></Col>
+                <Col sm={6}>
+                    <WashCycle cycles={this.state.washCycles} 
+                            program={this.state.program} 
+                            parentCallback={(selectedProgram, selectedTemperature) => 
+                                {this.setState({program: selectedProgram}); this.setState({temperature: selectedTemperature})}}/>
+                </Col>
             </Row>
             <Row>
                 <Col sm={6}><p>Temperature:</p></Col>
                 <Col>
-                    <Image src={iconWash} className="wash-icon"/>
-                    <Image src={iconWash} className="wash-icon"/>
-                    <Image src={iconWash} className="wash-icon"/>
+                    <TemperatureIcons temperature={this.state.temperature}></TemperatureIcons>    
                 </Col>
             </Row>
             </>

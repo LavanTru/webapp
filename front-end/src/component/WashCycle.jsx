@@ -16,8 +16,8 @@ class WashCycle extends Component{
         this.setState({smShow: status})
     }
 
-    setProgram(program){
-        this.props.parentCallback(program);
+    setProgram(program, temperature){
+        this.props.parentCallback(program, temperature);
         this.hideSmShow(false)
     }
 
@@ -55,7 +55,7 @@ class WashCycle extends Component{
                                     </Tooltip>
                                 }
                             >
-                                <ListGroup.Item action variant="light" onClick={() => this.setProgram(washcycle.cycle)}>{washcycle.cycle}</ListGroup.Item>
+                                <ListGroup.Item action variant="light" onClick={() => this.setProgram(washcycle.cycle, washcycle.temperature.celsius)}>{washcycle.cycle}</ListGroup.Item>
                             </OverlayTrigger>
                         )
                         }
