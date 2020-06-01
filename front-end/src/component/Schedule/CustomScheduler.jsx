@@ -22,12 +22,13 @@ const CustomScheduler = (props) => {
             const dateTime = addDays(new Date(time), day);
 
             //Check cell against the availableHours of the washer
-            const color = (props.schedule.find(item => {
+            const availableCell = (props.schedule.find(item => {
                 const itemTime = new Date(item).getTime()
                 return itemTime == dateTime.getTime()
-            })) ? "greenBackground" : "pinkBackground";
-            console.log("color", color);
-            column.push(<td key={dateTime} id={dateTime} className={"box " + color}></td>);
+            })) ? true : false;
+            const color = (availableCell)? "greenBackground" : "pinkBackground";
+            // prefix "data-" allows defining custom attributes that are available on the element. For example onClick acceses it via event.target.dataset
+            column.push(<td key={dateTime} id={dateTime} className={"box " + color} data-availableCell={availableCell}></td>);
         }
 
         rows.push(
