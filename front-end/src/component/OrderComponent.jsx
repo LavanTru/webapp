@@ -14,7 +14,6 @@ import OrderDataService from '../service/OrderDataService';
 import {Alert} from 'reactstrap';
 import {SessionContext} from "../Session";
 import WashCycle from './WashCycle';
-import iconWash from '../asset/icon/wash.svg';
 import WashCycleService from '../service/WashCycleService';
 import TemperatureIcons from './TemperatureIcons';
 
@@ -23,7 +22,7 @@ class OrderComponent extends Component {
     constructor(props){
         super(props)
         this.state = {
-            washerId: this.props.location.state.id, //passed down from WasherProfile-ContactCard
+            washerId: this.props.location.state.washerId, //passed down from WasherProfile-ContactCard
             washer: [],
             jobs: [],
             items: [],
@@ -40,6 +39,7 @@ class OrderComponent extends Component {
     }
 
     componentDidMount() {
+        console.log("washerid", this.props.location.state.washerId)
         this.getWashCycleData();
         this.getWasherData();
         if(this.state.program === ''){
@@ -47,33 +47,34 @@ class OrderComponent extends Component {
         }
     }
 
-  getWasherData() {
-    WasherDataService.retrieveWasher(this.state.washerId)
-    .then(
-        response => {
-          this.setState({washer: response.data})
-          console.log(this.state.washer)
-        }
-    )
-    WasherDataService.getActiveJobs(this.state.washerId)
-    .then(
-        response => {
-          this.setState({jobs: response.data})
-          console.log(this.state.jobs)
-        }
-    )
-  }
+    getWasherData(){
+        WasherDataService.retrieveWasher(this.state.washerId)
+        .then(
+            response => {
+                this.setState({washer: response.data})
+                console.log(this.state.washer)
+            }
+        )
+        WasherDataService.getActiveJobs(this.state.washerId)
+        .then(
+            response => {
+                this.setState({jobs: response.data})
+                console.log(this.state.jobs)
+            }
+        )
+    }
 
     getWashCycleData(){
         WashCycleService.getWashCycles()
         .then(
             response => {
-                this.setState({washCycles: response.data})            }
+                this.setState({washCycles: response.data})
+            }
         )
     }
 
   addItem(jobId, job, price, value) {
-    return (event) => {
+    return () => {
       this.setState({amount: value})
       let totalPrice = this.state.amount * price
       let addedItem = [...this.state.items, {
