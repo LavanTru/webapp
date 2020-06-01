@@ -76,7 +76,7 @@ class OrderComponent extends Component {
                         this.setState({ message: `Your order has been sent.` });
                         this.props.history.push({
                             pathname: "/orderSchedule",
-                            state: { washerId: this.state.washerId }
+                            state: { washerId: this.state.washerId,order:response.data}
                         })
                     }
                 })

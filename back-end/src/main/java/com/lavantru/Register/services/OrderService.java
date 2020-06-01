@@ -33,12 +33,11 @@ public class OrderService implements IOrderService {
   }
 
     @Override
-    public int createOrder(Order order) {
+    public Order createOrder(Order order) {
         UUID id = UUID.randomUUID();
         order.setId(id);
         order.setStatus("NEW");
         order.setDateCreated(LocalDateTime.now());
-        System.out.println(order.toString());
         return orderDao.createOrder(order);
     }
 
