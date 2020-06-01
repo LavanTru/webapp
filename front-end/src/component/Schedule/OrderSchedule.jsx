@@ -26,7 +26,6 @@ class OrderSchedule extends Component {
     }
 
     handleDropOffDateChange = (event) => {
-        console.log("e", event.target.dataset.availablecell);
         if (event.target.dataset.availablecell == "true") {
             this.setState({ dropOffDate: new Date(event.target.id), alertMessage: "" });
         } else {
@@ -35,7 +34,6 @@ class OrderSchedule extends Component {
     }
 
     handlePickUpDateChange = (event) => {
-        console.log("e", event.target.dataset.availablecell);
         if (event.target.dataset.availablecell == "true") {
             this.setState({ pickUpDate: new Date(event.target.id), alertMessage: "" });
         } else {
