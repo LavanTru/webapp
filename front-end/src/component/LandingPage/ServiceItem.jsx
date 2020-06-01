@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image, ListGroup} from 'react-bootstrap';
+import {Image} from 'react-bootstrap';
 
 
 function ServiceItem(props){

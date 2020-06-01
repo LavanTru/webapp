@@ -344,3 +344,17 @@ span.iconExtraNotes{
   /* align-self: center; */
   margin: auto;
 }
+
+.wash-icon{
+  /* cursor: pointer; */
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+  width: 40px;
+  overflow: hidden;
+}
+
+.icon-text{
+  font-size: 200px;
+}

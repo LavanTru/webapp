@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import WashCycleService from '../service/WashCycleService';
 import { OverlayTrigger, Tooltip , ButtonGroup, Button, ListGroup, Modal, Container} from 'react-bootstrap';
 
 class WashCycle extends Component{
@@ -8,34 +7,17 @@ class WashCycle extends Component{
         super(props)
         this.state = {
             washCycles: [], 
-            smShow: false,
-            selectedProgram: ''
+            smShow: false
         }
 
-    }
-
-    componentDidMount() {
-        this.getWasherData();
-        if(this.state.selectedProgram === ''){
-            this.setState({selectedProgram: "Let your washer choose"})
-        }
-    }
-
-    getWasherData(){
-        WashCycleService.getWashCycles()
-        .then(
-            response => {
-                this.setState({washCycles: response.data})            }
-        )
-    }
+    }    
 
     hideSmShow(status){
         this.setState({smShow: status})
     }
 
-    setProgram(program){
-        this.props.parentCallback(program);
-        this.setState({selectedProgram: program})
+    setProgram(program, temperature){
+        this.props.parentCallback(program, temperature);
         this.hideSmShow(false)
     }
 
@@ -44,7 +26,7 @@ class WashCycle extends Component{
 
         return(
             <>
-            <p className="wash-cycle-p" onClick={() => this.hideSmShow(true)}>{this.state.selectedProgram}</p>
+            <p className="wash-cycle-p" onClick={() => this.hideSmShow(true)}>{this.props.program}</p>
             <Modal
                 size="sm"
                 show={this.state.smShow}
@@ -61,7 +43,7 @@ class WashCycle extends Component{
                     <ButtonGroup vertical>
                     <Container>
                         {
-                        this.state.washCycles.map(
+                        this.props.cycles.map(
                             washcycle =>
                             <OverlayTrigger
                                 key={`key-`+washcycle.cycle} 
@@ -73,7 +55,7 @@ class WashCycle extends Component{
                                     </Tooltip>
                                 }
                             >
-                                <ListGroup.Item action variant="light" onClick={() => this.setProgram(washcycle.cycle)}>{washcycle.cycle}</ListGroup.Item>
+                                <ListGroup.Item action variant="light" onClick={() => this.setProgram(washcycle.cycle, washcycle.temperature.celsius)}>{washcycle.cycle}</ListGroup.Item>
                             </OverlayTrigger>
                         )
                         }

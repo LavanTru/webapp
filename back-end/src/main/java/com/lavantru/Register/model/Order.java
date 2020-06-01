@@ -14,15 +14,11 @@ public class Order {
 
     @Id
     private UUID id;
-    private String status;
-    private String notes;
+    private String status, notes, washeeId, washerId, washCycle, temperature;
     private LocalDateTime dateCreated;
     private LocalDateTime dateCompleted;
     private LocalDateTime dateRejected;
     private LocalDateTime dateConfirmed;
-    private String washeeId;
-    private String washerId;
-    private String washCycle;
     @NotNull @NotEmpty
     private List<Item> items;
 

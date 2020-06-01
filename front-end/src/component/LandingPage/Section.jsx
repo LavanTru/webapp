@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Container, Row, Col, Button} from 'react-bootstrap';
-import ServiceItem from '../ServiceItem';
+import ServiceItem from './ServiceItem';
 import ModalContainer from '../Modal/ModalContainer';
 import iconWashering from '../../asset/icon/washer.svg';
 import iconIroning from '../../asset/icon/iron.svg';

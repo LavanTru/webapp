@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import WasherDataService from '../service/WasherDataService';
-import { Container, Col, Row, Card, Button, ListGroup, Form} from "react-bootstrap";
+import { Container, Col, Row, Card, Button, ListGroup, Form, Image} from "react-bootstrap";
 import QuantityControl from './QuantityControl';
 import OrderDataService from '../service/OrderDataService';
 import { Alert } from 'reactstrap';
 import { SessionContext } from "../Session";
 import WashCycle from './WashCycle';
+import iconWash from '../asset/icon/wash.svg';
+import WashCycleService from '../service/WashCycleService';
+import TemperatureIcons from './TemperatureIcons';
 
 class OrderComponent extends Component{
 
@@ -20,14 +23,20 @@ class OrderComponent extends Component{
             amount : 0,
             totalAmount : 0,
             orderTotal : 0,
-            program: 'Up to my washer'
+            washCycles: [],
+            program: '',
+            temperature: 30
         }
         this.addItem = this.addItem.bind(this);
         this.createOrder = this.createOrder.bind(this);
     }
 
     componentDidMount() {
+        this.getWashCycleData();
         this.getWasherData();
+        if(this.state.program === ''){
+            this.setState({program: "Let your washer choose"})
+        }
     }
 
     getWasherData(){
@@ -44,6 +53,14 @@ class OrderComponent extends Component{
                 this.setState({jobs: response.data})
                 console.log(this.state.jobs)
             }
+        )
+    }
+
+    getWashCycleData(){
+        WashCycleService.getWashCycles()
+        .then(
+            response => {
+                this.setState({washCycles: response.data})            }
         )
     }
 
@@ -70,7 +87,8 @@ class OrderComponent extends Component{
             washerId: this.state.washerId,
             notes: this.state.notes,
             washCycle: this.state.program, 
-            items: this.state.items
+            items: this.state.items,
+            temperature: this.state.temperature
         }
         OrderDataService.createOrder(order)
             .then(
@@ -86,9 +104,29 @@ class OrderComponent extends Component{
     displayWashCycle(job){
         if (job === "Laundry" || job === "Washing")
         return (
+            <>
             <Row>
                 <Col><p>Wash cycle program:</p></Col>
-                <Col><WashCycle parentCallback={(selectedProgram) => {this.setState({program: selectedProgram})}}/></Col>
+                <Col sm={6}>
+                    <WashCycle cycles={this.state.washCycles} 
+                            program={this.state.program} 
+                            parentCallback={(selectedProgram, selectedTemperature) => 
+                                {this.setState({program: selectedProgram}); this.setState({temperature: selectedTemperature})}}/>
+                </Col>
+            </Row>
+            {this.displayTemperature()}
+            </>
+        );
+    }
+
+    displayTemperature(){
+        if (this.state.program !== "Let your washer choose")
+        return(
+            <Row>
+                <Col sm={4}><p>Temperature:</p></Col>
+                <Col>
+                    <TemperatureIcons temperature={this.state.temperature}></TemperatureIcons>    
+                </Col>
             </Row>
         );
     }
@@ -127,7 +165,10 @@ class OrderComponent extends Component{
                                             </Row>
                                             <p className="card-text">{jobItem.speed}</p>
                                             {this.displayWashCycle(jobItem.job)}
-                                            <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}
+                                            <Row>
+                                                <Col>Quantity:</Col>
+                                                <Col><QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}</Col>
+                                            </Row>
                                             <Button className="button-pink" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
                                         </Card.Body>
                                         </Card>
