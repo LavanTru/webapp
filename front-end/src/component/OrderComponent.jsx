@@ -157,7 +157,10 @@ class OrderComponent extends Component{
                                             </Row>
                                             <p className="card-text">{jobItem.speed}</p>
                                             {this.displayWashCycle(jobItem.job)}
-                                            <QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}
+                                            <Row>
+                                                <Col>Quantity:</Col>
+                                                <Col><QuantityControl name={jobItem.job} parentCallback={(value) => {this.setState({amount: value+1})}}/> {/* patching the amount with hardcode */}</Col>
+                                            </Row>
                                             <Button className="button-pink" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
                                         </Card.Body>
                                         </Card>
