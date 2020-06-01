@@ -133,7 +133,7 @@ class RegisterWasher extends Component {
             this.state.aboutMe)
             .then((response) => {
                 if (response.status === 200) {
-                    console.log("Registration successfull");
+                    console.log("Registration successful");
                     const user = {
                         // Add here more attributes to be stored in the cookies if needed
                         "id": response.data.id,

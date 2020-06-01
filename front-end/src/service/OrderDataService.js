@@ -25,6 +25,9 @@ class OrderDataService {
     getOrdersByWasherId(washerId){
         return axios.get(`${ORDER_API_URL}/washer/${washerId}`);
     }
+    updateOrder(order) {
+        return axios.put(`${ORDER_API_URL}`,order);
+    }
 }
 
 export default new OrderDataService()

@@ -27,8 +27,8 @@ public class OrderController {
     }
 
     @PostMapping(path = "/create")
-    public void createOrder(@Valid @NonNull @RequestBody Order order){
-        orderService.createOrder(order);
+    public Order createOrder(@Valid @NonNull @RequestBody Order order){
+        return orderService.createOrder(order);
     }
     @PutMapping(path = "/confirm/{id}")
     public Order confirmOrder(@PathVariable("id") UUID id){
@@ -52,5 +52,9 @@ public class OrderController {
     @GetMapping(path = "/washer/{id}")
     public List<WasherOrderListDto> getOrdersByWasherId(@PathVariable("id") String id){
         return orderService.getOrdersByWasherId(id);
+    }
+    @PutMapping()
+    public Order updateOrder(@Valid @NonNull @RequestBody Order order){
+        return orderService.updateOrder(order);
     }
 }

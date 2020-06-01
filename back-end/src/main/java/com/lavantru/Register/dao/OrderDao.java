@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface OrderDao {
 
-  int createOrder(Order order);
+  Order createOrder(Order order);
 
   Optional<Order> getOrderById(UUID id);
 

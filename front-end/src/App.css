@@ -264,6 +264,15 @@ width: 100% !important ;
  .pinkBackground{
    background-color: #ffe6de;
  }
+ .schedule .pinkBackground:hover{
+  background-color: #b8617c;
+}
+ .greenBackground{
+  background-color: #0f7d80;
+}
+.schedule .greenBackground:hover{
+  background-color: #15b1b7;
+}
 span.iconExtraNotes{
   background: url("./asset/extra_notes.svg") transparent no-repeat;
   display: inline-block;
@@ -277,10 +286,25 @@ span.iconExtraNotes{
 .washerMap{
   height:80vh;
 }
-
 .washerOrWashee{
   text-align: center;
   width: 50%;
   /* align-self: center; */
   margin: auto;
+}
+.schedule{
+  text-align: center;
+  width: 100%;
+}
+.schedule .box{
+  /* margin:10px !important; */
+  /* border-spacing: 10px !important; */
+  /* min-height:; */
+  padding: 15px;
+  border: 10px solid white;
+}
+
+.schedule .time{
+  text-align: center;
+  width: fit-content !important;
 }

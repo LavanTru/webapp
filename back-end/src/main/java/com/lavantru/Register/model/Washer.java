@@ -1,5 +1,6 @@
 package com.lavantru.Register.model;
 
+import java.util.Date;
 import java.util.List;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.bson.types.ObjectId;
@@ -8,6 +9,7 @@ public class Washer extends Users {
 
     private List<Job> jobCapabilities = null;
     private List<String> payoutBankDetails = null;
+    private List<Date> availableHours = null;
 
     public Washer(){}
 
@@ -36,6 +38,14 @@ public class Washer extends Users {
 
     public void setPayoutBankDetails(List<String> payoutBankDetails) {
         this.payoutBankDetails = payoutBankDetails;
+    }
+
+    public List<Date> getAvailableHours() {
+        return availableHours;
+    }
+
+    public void setAvailableHours(List<Date> availableHours) {
+        this.availableHours = availableHours;
     }
 
     @Override

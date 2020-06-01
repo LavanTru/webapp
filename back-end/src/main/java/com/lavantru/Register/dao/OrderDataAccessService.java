@@ -17,9 +17,8 @@ public class OrderDataAccessService implements OrderDao {
     private OrderRepository repository;
 
     @Override
-    public int createOrder(Order order) {
-        repository.save(order);
-        return 1;
+    public Order createOrder(Order order) {
+        return repository.save(order);
     }
 
     @Override
