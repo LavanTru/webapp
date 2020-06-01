@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import { Container, Row, Col, Button} from 'react-bootstrap';
-import ServiceItem from './ServiceItem';
-import ModalContainer from './Modal/ModalContainer';
-import iconWashering from '../asset/icon/washer.svg';
-import iconIroning from '../asset/icon/iron.svg';
-import iconBedding from '../asset/icon/towel.svg';
-import iconDelivery from '../asset/icon/fashion.svg';
+import ServiceItem from '../ServiceItem';
+import ModalContainer from '../Modal/ModalContainer';
+import iconWashering from '../../asset/icon/washer.svg';
+import iconIroning from '../../asset/icon/iron.svg';
+import iconBedding from '../../asset/icon/towel.svg';
+import iconDelivery from '../../asset/icon/fashion.svg';
 
 function Section(){
     const [show, setShow] = useState(false);

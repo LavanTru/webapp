@@ -13,21 +13,21 @@ import java.util.UUID;
 @Data
 public class Order {
 
-  @Id
-  private UUID id;
-  private String status;
-  private String notes;
-  private LocalDateTime dateCreated;
-  private LocalDateTime dateCompleted;
-  private LocalDateTime dateRejected;
-  private LocalDateTime dateConfirmed;
-  private String washeeId;
-  private String washerId;
-  @NotNull
-  @NotEmpty
-  private List<Item> items;
-  private Date dropOffDate;
-  private Date pickUpDate;
+    @Id
+    private UUID id;
+    private String status;
+    private String notes;
+    private LocalDateTime dateCreated;
+    private LocalDateTime dateCompleted;
+    private LocalDateTime dateRejected;
+    private LocalDateTime dateConfirmed;
+    private String washeeId;
+    private String washerId;
+    private String washCycle;
+    @NotNull @NotEmpty
+    private List<Item> items;
+    private Date dropOffDate;
+    private Date pickUpDate;
 
   public Order(
       UUID id,

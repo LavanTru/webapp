@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import "../style/LandingPage.css";
+import "../../style/LandingPage.css";
 
 function Header(){
     return (
