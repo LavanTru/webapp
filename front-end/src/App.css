@@ -1,41 +1,57 @@
 @import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
 
-.App {
-  text-align: center;
+/* We use own font and custom h1-h6 to have standardized styles across the web*/
+*{
+  font-family: 'Quicksand', sans-serif; ;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 64px;
+  /* or 133% */
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 56px;
+  /* or 140% */
 }
-
-.App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h3{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+  /* or 150% */
 }
-
-.App-link {
-  color: #61dafb;
+h4{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  /* or 133% */
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h5{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+  /* or 140% */
+}
+h6{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 28px;
+  /* or 175% */
+}
+p{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+/* identical to box height, or 175% */
 }
 
 .lavantruPink{
@@ -198,12 +214,11 @@ span.googleButtonText {
  width: 150px;
  border: 5px solid #0f7d80;
  object-fit: cover;
- margin: 10px;
+ margin: 16px;
 }
 .profile .header{
-  background-color: #ffe6de;
-  border-radius: 4px;
-  overflow: overlay;
+  border-bottom: 1px solid grey;
+  background: #ffe6de ;
 }
 
 .orderHeader{
@@ -216,84 +231,47 @@ span.googleButtonText {
   font-size: 1.3em;
 }
 
-.washerList{
-  width: max-content;
-}
-
 .washerList .washerListItem{
-  border-bottom: 0.5px solid grey;
-  margin-top: 10px;
-  padding-bottom: 35px;
+  border-bottom: 1px solid grey;
   color: #0f7d80;
+}
+.washerListItem:hover{
+    background: #ffe6de ;
 }
 
 .washerListItem .unitImage {
- float: left;
  border-radius: 50%;
- height: 140px;
- width: 140px;
+ height: 150px;
+ width: 150px;
  border: 5px solid #0f7d80;
  object-fit: cover;
- margin-top: 15px;
- margin-right: 2px;
- margin-left: 10px;
-
-
+ margin:16px;
 }
-
-.washerListItem .align-details{
-
-  text-align: left;
-
-
-}
-
-.washerListItem .align-name{
-  font-size: x-large;
-  font-weight: 500;
-  margin-top: 15px;
-
-}
-
-.washerListItem .align-city {
-  margin-top: 15px;
-  margin-bottom: 5px;
-  padding-left: 0.5%;
-}
-
-.washerListItem .align-jobs
-{
-  margin-left: inherit;
-  height: auto;
-  width: fit-content;
-  padding-left: 0.2%;
-  margin-top: 3px;
-  white-space: nowrap;
-
-}
-
-
-
 
 .washerListItem .unitLaundryJobs {
-
-  text-align: left;
   border-radius: 10px;
-  /* border: 1px solid #b8617c; */
   background-color: #b8617c;
-  font-size: small;
   color: #ffe6de;
   white-space: nowrap;
   width: fit-content;
-  margin-left: 0px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  /* margin: 2px; */
+  padding:4px 8px;
 }
+.washerListItem .content {
+width: 100% !important ;
+ }
 
-  .washerListItem .align-button{
-    vertical-align: middle;
-  }
+ .pinkBackground{
+   background-color: #ffe6de;
+ }
+ .schedule .pinkBackground:hover{
+  background-color: #b8617c;
+}
+ .greenBackground{
+  background-color: #0f7d80;
+}
+.schedule .greenBackground:hover{
+  background-color: #15b1b7;
+}
 span.iconExtraNotes{
   background: url("./asset/extra_notes.svg") transparent no-repeat;
   display: inline-block;
@@ -337,7 +315,6 @@ span.iconExtraNotes{
 .washerMap{
   height:80vh;
 }
-
 .washerOrWashee{
   text-align: center;
   width: 50%;
@@ -357,4 +334,20 @@ span.iconExtraNotes{
 
 .icon-text{
   font-size: 200px;
+}
+.schedule{
+  text-align: center;
+  width: 100%;
+}
+.schedule .box{
+  /* margin:10px !important; */
+  /* border-spacing: 10px !important; */
+  /* min-height:; */
+  padding: 15px;
+  border: 10px solid white;
+}
+
+.schedule .time{
+  text-align: center;
+  width: fit-content !important;
 }

@@ -4,6 +4,7 @@ import com.lavantru.Register.model.Job;
 import com.lavantru.Register.model.Washer;
 import com.lavantru.Register.services.WasherService;
 import com.mongodb.lang.NonNull;
+import java.util.Date;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -49,5 +50,12 @@ public class WasherController {
     @GetMapping(path = "/active-services/{id}")
     public List<Job> getWasherActiveJobs(@PathVariable("id") ObjectId id) {
         return washerService.getWasherActiveJobs(id);
+    }
+
+    @PutMapping(path = "/schedule/{id}")
+    public void updateWasherSchedule(
+        @PathVariable ObjectId id,
+        @RequestBody List<Date> availableHours) {
+        washerService.updateWasherSchedule(id, availableHours);
     }
 }

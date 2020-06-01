@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface IOrderService {
 
-  public int createOrder(Order order);
+  public Order createOrder(Order order);
 
   public Optional<Order> getOrderBy(UUID id);
 
@@ -21,4 +21,6 @@ public interface IOrderService {
   public Order rejectOrder(UUID id);
 
   public List<WasherOrderListDto> getOrdersByWasherId(String id);
+
+  public Order updateOrder(Order order);
 }

@@ -1,28 +1,36 @@
 import React, {Component} from 'react';
 import WasherDataService from '../service/WasherDataService';
-import { Container, Col, Row, Card, Button, ListGroup, Form, Image} from "react-bootstrap";
+import {
+  Container,
+  Col,
+  Row,
+  Card,
+  Button,
+  ListGroup,
+  Form
+} from "react-bootstrap";
 import QuantityControl from './QuantityControl';
 import OrderDataService from '../service/OrderDataService';
-import { Alert } from 'reactstrap';
-import { SessionContext } from "../Session";
+import {Alert} from 'reactstrap';
+import {SessionContext} from "../Session";
 import WashCycle from './WashCycle';
 import iconWash from '../asset/icon/wash.svg';
 import WashCycleService from '../service/WashCycleService';
 import TemperatureIcons from './TemperatureIcons';
 
-class OrderComponent extends Component{
+class OrderComponent extends Component {
 
     constructor(props){
         super(props)
         this.state = {
-            washerId : this.props.location.state.id, //passed down from WasherProfile-ContactCard
-            washer : [],
-            jobs : [],
-            items : [],
+            washerId: this.props.location.state.id, //passed down from WasherProfile-ContactCard
+            washer: [],
+            jobs: [],
+            items: [],
             notes: 'Add some notes...',
-            amount : 0,
-            totalAmount : 0,
-            orderTotal : 0,
+            amount: 0,
+            totalAmount: 0,
+            orderTotal: 0,
             washCycles: [],
             program: '',
             temperature: 30
@@ -39,22 +47,22 @@ class OrderComponent extends Component{
         }
     }
 
-    getWasherData(){
-        WasherDataService.retrieveWasher(this.state.washerId)
-        .then(
-            response => {
-                this.setState({washer: response.data})
-                console.log(this.state.washer)
-            }
-        )
-        WasherDataService.getActiveJobs(this.state.washerId)
-        .then(
-            response => {
-                this.setState({jobs: response.data})
-                console.log(this.state.jobs)
-            }
-        )
-    }
+  getWasherData() {
+    WasherDataService.retrieveWasher(this.state.washerId)
+    .then(
+        response => {
+          this.setState({washer: response.data})
+          console.log(this.state.washer)
+        }
+    )
+    WasherDataService.getActiveJobs(this.state.washerId)
+    .then(
+        response => {
+          this.setState({jobs: response.data})
+          console.log(this.state.jobs)
+        }
+    )
+  }
 
     getWashCycleData(){
         WashCycleService.getWashCycles()
@@ -64,42 +72,49 @@ class OrderComponent extends Component{
         )
     }
 
-    addItem(jobId, job, price, value) {
-        return (event) => { 
-            this.setState({amount: value})
-            let totalPrice = this.state.amount * price
-            let addedItem = [...this.state.items, {jobId: jobId, job: job, amount: this.state.amount, totalPrice: totalPrice}]
-            this.setState({items: addedItem})
-            this.setState({totalAmount : (this.state.totalAmount + this.state.amount)})
-            this.setState({orderTotal : (this.state.orderTotal + totalPrice)}) 
-        }
-
+  addItem(jobId, job, price, value) {
+    return (event) => {
+      this.setState({amount: value})
+      let totalPrice = this.state.amount * price
+      let addedItem = [...this.state.items, {
+        jobId: jobId,
+        job: job,
+        amount: this.state.amount,
+        totalPrice: totalPrice
+      }]
+      this.setState({items: addedItem})
+      this.setState({totalAmount: (this.state.totalAmount + this.state.amount)})
+      this.setState({orderTotal: (this.state.orderTotal + totalPrice)})
     }
 
-    handleChange = (event) => {
-        this.setState({notes: event.target.value}, () => console.log(this.state))
-        console.log(this.state.notes)
-    };
+  }
 
-    createOrder(){
-        let order = {
-            washeeId: this.context.id, //washeeId comes from the logged in user
-            washerId: this.state.washerId,
-            notes: this.state.notes,
-            washCycle: this.state.program, 
-            items: this.state.items,
-            temperature: this.state.temperature
-        }
-        OrderDataService.createOrder(order)
-            .then(
-                response => {
-                    if (response.status === 200){
-                        console.log(order)
-                        console.log(this.state.washCycle)
-                        this.setState({ message: `Your order has been sent.` })
-                    }
-                })
+  handleChange = (event) => {
+    this.setState({notes: event.target.value}, () => console.log(this.state))
+    console.log(this.state.notes)
+  };
+
+  createOrder() {
+    let order = {
+      washeeId: this.context.id, //washeeId comes from the logged in user
+      washerId: this.state.washerId,
+      notes: this.state.notes,
+      washCycle: this.state.program,
+      items: this.state.items,
+        temperature: this.state.temperature
     }
+    OrderDataService.createOrder(order)
+    .then(
+        response => {
+          if (response.status === 200) {
+            this.setState({message: `Your order has been sent.`});
+            this.props.history.push({
+              pathname: "/orderSchedule",
+              state: {washerId: this.state.washerId, order: response.data}
+            })
+          }
+        })
+  }
 
     displayWashCycle(job){
         if (job === "Laundry" || job === "Washing")
@@ -108,9 +123,9 @@ class OrderComponent extends Component{
             <Row>
                 <Col><p>Wash cycle program:</p></Col>
                 <Col sm={6}>
-                    <WashCycle cycles={this.state.washCycles} 
-                            program={this.state.program} 
-                            parentCallback={(selectedProgram, selectedTemperature) => 
+                    <WashCycle cycles={this.state.washCycles}
+                            program={this.state.program}
+                            parentCallback={(selectedProgram, selectedTemperature) =>
                                 {this.setState({program: selectedProgram}); this.setState({temperature: selectedTemperature})}}/>
                 </Col>
             </Row>
@@ -125,37 +140,40 @@ class OrderComponent extends Component{
             <Row>
                 <Col sm={4}><p>Temperature:</p></Col>
                 <Col>
-                    <TemperatureIcons temperature={this.state.temperature}></TemperatureIcons>    
+                    <TemperatureIcons temperature={this.state.temperature}></TemperatureIcons>
                 </Col>
             </Row>
         );
     }
 
-    render(){
-        const bag = this.state.items.map(item => (
-            <Row key={item.job+item.id}>
-                <Col>{item.job}</Col> 
-                <Col>{item.amount}</Col>
-                <Col>€{item.totalPrice}</Col>
-            </Row>
-        ))
-        return(
+  render() {
+    const bag = this.state.items.map(item => (
+        <Row key={item.job + item.id}>
+          <Col>{item.job}</Col>
+          <Col>{item.amount}</Col>
+          <Col>€{item.totalPrice}</Col>
+        </Row>
+    ))
+    return (
         <Container>
-            <Row>
-               <Col className='orderHeader'><h3>{this.state.washer.firstName} {this.state.washer.lastName}</h3></Col> 
-            </Row>
-            <Row>
-                <Col className='orderHeader'> <p>{this.state.washer.aboutMe}</p></Col>
-            </Row>
-            <Col>
-                <Row className="mt-2">
-                    <Col md={6}>
-                        <Card className="card w-100" >
-                            <Card.Header>
-                                Select from {this.state.washer.firstName}'s services
-                            </Card.Header>
+          <Row>
+            <Col className='orderHeader'>
+              <h3>{this.state.washer.firstName} {this.state.washer.lastName}</h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col className='orderHeader'><p>{this.state.washer.aboutMe}</p>
+            </Col>
+          </Row>
+          <Col>
+            <Row className="mt-2">
+              <Col md={6}>
+                <Card className="card w-100">
+                  <Card.Header>
+                    Select from {this.state.washer.firstName}'s services
+                  </Card.Header>
                             <ListGroup variant="flush">
-                                {this.state.jobs.map(jobItem => 
+                                {this.state.jobs.map(jobItem =>
                                     <ListGroup.Item className="list-group-item" key={jobItem.id}>
                                         <Card className="w-100">
                                         <Card.Body>
@@ -177,38 +195,45 @@ class OrderComponent extends Component{
                             </ListGroup>
                         </Card>
                     </Col>
-                    <Col> 
+                    <Col>
                         <Card className="card w-100" >
                             <Card.Header className="card-header">
                                 Your bag summary
-                            </Card.Header>
-                            <Card.Body>
-                                <div>
-                                {bag}
-                                <Row className="mt-2">
-                                    <Col><b>Total</b></Col> 
-                                    <Col><b>{this.state.totalAmount}</b></Col>
-                                    <Col><b>€{this.state.orderTotal}</b></Col>
-                                </Row>
-                                </div>
-                                <Form.Group className="mt-5">
-                                    <Form.Label htmlFor="textAreaNotes">Any special indications?</Form.Label>
-                                    <Form.Control as="textarea" rows="3" id="textAreaNotes" placeholder={this.state.notes} maxLength="100" onChange={this.handleChange}></Form.Control>
-                                </Form.Group>
-                            </Card.Body>
-                            <Card.Footer className="text-muted">
-                                <Button className="button-pink" onClick={this.createOrder}>Checkout your bag</Button>
-                            </Card.Footer>
-                        </Card>
-                        {this.state.message && <Alert color="success" >{this.state.message}</Alert>}
-                    </Col>
-                </Row>
-            </Col>
+                  </Card.Header>
+                  <Card.Body>
+                    <div>
+                      {bag}
+                      <Row className="mt-2">
+                        <Col><b>Total</b></Col>
+                        <Col><b>{this.state.totalAmount}</b></Col>
+                        <Col><b>€{this.state.orderTotal}</b></Col>
+                      </Row>
+                    </div>
+                    <Form.Group className="mt-5">
+                      <Form.Label htmlFor="textAreaNotes">Any special
+                        indications?</Form.Label>
+                      <Form.Control as="textarea" rows="3" id="textAreaNotes"
+                                    placeholder={this.state.notes}
+                                    maxLength="100"
+                                    onChange={this.handleChange}></Form.Control>
+                    </Form.Group>
+                  </Card.Body>
+                  <Card.Footer className="text-muted">
+                    <Button className="button-pink" onClick={this.createOrder}>Checkout
+                      your bag</Button>
+                  </Card.Footer>
+                </Card>
+                {this.state.message && <Alert
+                    color="success">{this.state.message}</Alert>}
+              </Col>
+            </Row>
+          </Col>
         </Container>
-        );
-    }
+    );
+  }
 
 }
+
 OrderComponent.contextType = SessionContext;
 
 export default OrderComponent;

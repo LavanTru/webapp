@@ -19,6 +19,8 @@ import WasherOrderConfirm from "./component/WasherOrderConfirm";
 import LandingPage from './component/LandingPage/LandingPage';
 import WasherSelectionContainer from './component/WasherSelection/WasherSelectionContainer';
 import WasherListContainer from './component/WasherSelection/WasherList/WasherListContainer';
+import WasherSchedule from "./component/Schedule/WasherSchedule";
+import OrderSchedule from "./component/Schedule/OrderSchedule";
 
 /**React Component representing the high-level structure of the application.
  * Routing is defined in this file.**/
@@ -62,7 +64,9 @@ class App extends Component {
                 <Route exact path="/washerOrderList" component={WasherOrderList} />
                 <Route exact path="/washerOrder/:id" component={WasherOrderConfirm} />
                 <Route exact path="/washerlist" component={WasherListContainer} />
-                <Route exact path="/Washers" component={WasherSelectionContainer} />
+                <Route exact path="/washers" component={WasherSelectionContainer} />
+                <Route exact path="/washerSchedule" component={WasherSchedule} />
+                <Route exact path="/orderSchedule" component={OrderSchedule} />
               </Switch>
             </>
           </Router>

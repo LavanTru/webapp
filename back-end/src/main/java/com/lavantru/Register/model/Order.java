@@ -1,5 +1,6 @@
 package com.lavantru.Register.model;
 
+import java.util.Date;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
@@ -21,20 +22,26 @@ public class Order {
     private LocalDateTime dateConfirmed;
     @NotNull @NotEmpty
     private List<Item> items;
+    private Date dropOffDate;
+    private Date pickUpDate;
 
-    public Order(
-            UUID id,
-            @NotNull @NotEmpty String status,
-            LocalDateTime dateCreated,
-                    String washeeId,
-                    String washerId,
-            @NotNull @NotEmpty List<Item> items) {
-        this.id = id;
-        this.status = status;
-        this.dateCreated = dateCreated;
-        this.washeeId = washeeId;
-        this.washerId = washerId;
-        this.items = items;
-    }
+  public Order(
+      UUID id,
+      @NotNull @NotEmpty String status,
+      LocalDateTime dateCreated,
+      String washeeId,
+      String washerId,
+      @NotNull @NotEmpty List<Item> items,
+      Date dropOffDate,
+      Date pickUpDate) {
+    this.id = id;
+    this.status = status;
+    this.dateCreated = dateCreated;
+    this.washeeId = washeeId;
+    this.washerId = washerId;
+    this.items = items;
+    this.dropOffDate = dropOffDate;
+    this.pickUpDate = pickUpDate;
+  }
 
 }

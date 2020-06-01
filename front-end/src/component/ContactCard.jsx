@@ -17,9 +17,9 @@ class ContactCard extends Component {
                 </Card.Body>
                 <Card.Footer>
                     <Link to={{
-                        pathname:"/order",
-                        state:{id : this.props.washerDetails.id}
-                     }}><Button className="button-green" block >Set up wash</Button></Link>
+                        pathname: "/order",
+                        state: { washerId: this.props.washerDetails.id }
+                    }}><Button className="button-green" block >Set up wash</Button></Link>
                 </Card.Footer>
 
             </Card >
