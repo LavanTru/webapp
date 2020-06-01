@@ -21,4 +21,6 @@ public interface IOrderService {
   public Order rejectOrder(UUID id);
 
   public List<WasherOrderListDto> getOrdersByWasherId(String id);
+
+  public Order updateOrder(Order order);
 }

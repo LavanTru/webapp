@@ -32,32 +32,32 @@ public class OrderService implements IOrderService {
     this.orderDao = orderDao;
   }
 
-    @Override
-    public Order createOrder(Order order) {
-        UUID id = UUID.randomUUID();
-        order.setId(id);
-        order.setStatus("NEW");
-        order.setDateCreated(LocalDateTime.now());
-        return orderDao.createOrder(order);
-    }
+  @Override
+  public Order createOrder(Order order) {
+    UUID id = UUID.randomUUID();
+    order.setId(id);
+    order.setStatus("NEW");
+    order.setDateCreated(LocalDateTime.now());
+    return orderDao.createOrder(order);
+  }
 
-    @Override
-    public Optional<Order> getOrderBy(UUID id) {
-        return orderDao.getOrderById(id);
-    }
+  @Override
+  public Optional<Order> getOrderBy(UUID id) {
+    return orderDao.getOrderById(id);
+  }
 
-    @Override
-    public List<Order> getAllOrders() {
-        return orderDao.getAllOrders();
-    }
+  @Override
+  public List<Order> getAllOrders() {
+    return orderDao.getAllOrders();
+  }
 
-    @Override
-    public Order confirmOrder(UUID id) {
-        Order order = orderDao.getOrderById(id).get();
-        order.setStatus("CONFIRMED");
-        order.setDateConfirmed(LocalDateTime.now());
-        return orderDao.updateOrder(order);
-    }
+  @Override
+  public Order confirmOrder(UUID id) {
+    Order order = orderDao.getOrderById(id).get();
+    order.setStatus("CONFIRMED");
+    order.setDateConfirmed(LocalDateTime.now());
+    return orderDao.updateOrder(order);
+  }
 
   @Override
   public Order rejectOrder(UUID id) {
@@ -81,5 +81,10 @@ public class OrderService implements IOrderService {
       washerOrderList.add(washerOrderListDto);
     }
     return washerOrderList;
+  }
+
+  @Override
+  public Order updateOrder(Order order) {
+    return orderDao.updateOrder(order);
   }
 }

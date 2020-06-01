@@ -53,4 +53,8 @@ public class OrderController {
     public List<WasherOrderListDto> getOrdersByWasherId(@PathVariable("id") String id){
         return orderService.getOrdersByWasherId(id);
     }
+    @PutMapping()
+    public Order updateOrder(@Valid @NonNull @RequestBody Order order){
+        return orderService.updateOrder(order);
+    }
 }
