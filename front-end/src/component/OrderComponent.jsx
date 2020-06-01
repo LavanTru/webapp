@@ -87,7 +87,8 @@ class OrderComponent extends Component{
             washerId: this.state.washerId,
             notes: this.state.notes,
             washCycle: this.state.program, 
-            items: this.state.items
+            items: this.state.items,
+            temperature: this.state.temperature
         }
         OrderDataService.createOrder(order)
             .then(
@@ -113,13 +114,20 @@ class OrderComponent extends Component{
                                 {this.setState({program: selectedProgram}); this.setState({temperature: selectedTemperature})}}/>
                 </Col>
             </Row>
+            {this.displayTemperature()}
+            </>
+        );
+    }
+
+    displayTemperature(){
+        if (this.state.program !== "Let your washer choose")
+        return(
             <Row>
-                <Col sm={6}><p>Temperature:</p></Col>
+                <Col sm={4}><p>Temperature:</p></Col>
                 <Col>
                     <TemperatureIcons temperature={this.state.temperature}></TemperatureIcons>    
                 </Col>
             </Row>
-            </>
         );
     }
 
