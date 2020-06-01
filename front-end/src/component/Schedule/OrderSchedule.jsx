@@ -2,6 +2,7 @@ import CustomScheduler from './CustomScheduler';
 import React, { Component } from "react";
 import { Container, Col, Row, Card, Button, Accordion, Alert } from "react-bootstrap";
 import WasherDataService from "../../service/WasherDataService";
+import OrderDataService from "../../service/OrderDataService";
 import { SessionContext } from "../../Session";
 import { format } from "date-fns";
 
@@ -32,7 +33,7 @@ class OrderSchedule extends Component {
             this.setState({ alertMessage: "Washer is not available at the selected time" })
         }
     }
-    
+
     handlePickUpDateChange = (event) => {
         console.log("e", event.target.dataset.availablecell);
         if (event.target.dataset.availablecell == "true") {
@@ -52,9 +53,27 @@ class OrderSchedule extends Component {
     }
 
     handleOnClick() {
-        // console.log("availableHours", this.state.schedule);
-        // WasherDataService.updateWasherSchedule(this.context.id,this.state.schedule)
-        // TODO: add redirecting to a new page
+        if (this.state.pickUpDate && this.state.dropOffDate) {
+            // Update order in DB with new schedule related dates
+            let order = this.props.location.state.order;
+            order.pickUpDate = this.state.pickUpDate;
+            order.dropOffDate = this.state.dropOffDate;
+            OrderDataService.updateOrder(order)
+                .then((response) => {
+                    if (response.status === 200) {
+                        console.log("Order update successfull");
+
+                        // TODO: add redirecting to a new page
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        } else {
+            this.setState({ alertMessage: "You need to select drop off and pick up times before you can continue" })
+        }
+
+
     }
 
     changeToNextWeek() {
