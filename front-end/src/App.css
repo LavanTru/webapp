@@ -2,7 +2,7 @@
 
 /* We use own font and custom h1-h6 to have standardized styles across the web*/
 *{
-  font-family: 'Quicksand', sans-serif; ;
+  font-family: 'Quicksand', sans-serif;
 }
 h1{
   font-style: normal;
@@ -350,4 +350,17 @@ span.iconExtraNotes{
 .schedule .time{
   text-align: center;
   width: fit-content !important;
+}
+.dashboard{
+  text-align: center;
+  color: #0f7d80;
+}
+.dashboard .image{
+  height: 50px;
+  width: 50px;
+  margin: 0 10px;
+}
+.dashboard .header{
+  background-color:#0f7d80;
+  color:white;
 }
