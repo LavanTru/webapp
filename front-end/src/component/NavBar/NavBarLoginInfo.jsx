@@ -10,14 +10,13 @@ const NavBarLoginInfo = (props) => {
             <Nav>
                 <Navbar.Text>
                     {/* option 1 for reading Context session: */}
-                    <div>Signed in as {session.userType} {session.email}</div>
-
+                    <img className="image float-left" src={session.image} alt="profile_picture" />
+                    <div>Signed in as {session.userType} {session.firstName}</div>
                     {/* option 2 for reading Context session: */}
                     {/* <SessionContext.Consumer>
                     {props => (
                         <div> Signed in as {props}</div>
                     )}
-
                 </SessionContext.Consumer> */}
                 </Navbar.Text>
                 <Nav.Link className="font-weight-bold"
