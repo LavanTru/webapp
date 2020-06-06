@@ -13,4 +13,6 @@ public interface OrderRepository extends MongoRepository <Order, UUID> {
     Optional<Order> findById(UUID id);
 
     List<Order> findByWasherId(String id);
+
+    List<Order> findByWasheeId(String id);
 }
