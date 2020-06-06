@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Card } from "react-bootstrap";
 import { Bar } from 'react-chartjs-2';
+import Earnings from "../../asset/icon/earnings.svg";
+import Fashion from "../../asset/icon/fashion.svg";
+import Star from "../../asset/icon/star.svg";
+import Washer from "../../asset/icon/washer.svg";
+import User from "../../asset/icon/user.svg";
 import BadgeCompletedWash from "../../asset/icon/badge_completed_wash.svg";
 import BadgeTopWasher from "../../asset/icon/badge_top_washer.svg";
 
@@ -63,7 +68,7 @@ class WasherDashboard extends Component {
                                 <Card className="card">
                                     <Card.Header className="header">This week earnings</Card.Header>
                                     <Card.Body>
-                                        <img className="image float-left" src="https://image.flaticon.com/icons/svg/2959/2959531.svg" alt="weekly_income" />
+                                        <img className="image float-left" src={Earnings} alt="weekly_income" />
                                         <h2>50 €</h2>
                                     </Card.Body>
                                 </Card>
@@ -74,7 +79,7 @@ class WasherDashboard extends Component {
                                 <Card className="card">
                                     <Card.Header className="header">Completed washes</Card.Header>
                                     <Card.Body>
-                                        <img className="image float-left" src="https://image.flaticon.com/icons/svg/2101/2101382.svg" alt="total_washes" />
+                                        <img className="image float-left" src={Fashion} alt="total_washes" />
                                         <h2>61</h2>
                                     </Card.Body>
                                 </Card>
@@ -85,7 +90,7 @@ class WasherDashboard extends Component {
                                 <Card className="card">
                                     <Card.Header className="header">Customer satisfaction</Card.Header>
                                     <Card.Body>
-                                        <img className="image float-left" src="https://image.flaticon.com/icons/svg/2919/2919643.svg" alt="rating" />
+                                        <img className="image float-left" src={Star} alt="rating" />
                                         <h2>4.9 / 5</h2>
                                     </Card.Body>
                                 </Card>
@@ -106,7 +111,7 @@ class WasherDashboard extends Component {
                                 <Card className="card clickable">
                                     <Card.Header className="header">Service settings</Card.Header>
                                     <Card.Body>
-                                        <img className="image float-center" src="https://image.flaticon.com/icons/svg/3003/3003800.svg" alt="service_settings" />
+                                        <img className="image float-center" src={Washer} alt="service_settings" />
                                     </Card.Body>
                                 </Card>
                             </Row>
@@ -114,7 +119,7 @@ class WasherDashboard extends Component {
                                 <Card className="card clickable">
                                     <Card.Header className="header">Profile info</Card.Header>
                                     <Card.Body>
-                                        <img className="image float-center" src="https://cdn0.iconfinder.com/data/icons/basic-ui-1-line/64/Artboard_18-512.png" alt="profile_info" />
+                                        <img className="image float-center" src={User} alt="profile_info" />
                                     </Card.Body>
                                 </Card>
                             </Row>
