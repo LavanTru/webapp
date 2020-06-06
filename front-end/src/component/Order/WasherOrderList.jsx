@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import OrderDataService from "../service/OrderDataService";
-import { SessionContext } from "../Session";
+import OrderDataService from "../../service/OrderDataService";
+import { SessionContext } from "../../Session";
 import { Container, Col } from "react-bootstrap";
 import WasherOrderListItem from "./WasherOrderListItem"
 
