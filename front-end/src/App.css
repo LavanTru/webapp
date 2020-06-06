@@ -360,12 +360,12 @@ span.iconExtraNotes{
   width: 50px;
   margin: 0 10px;
 }
+.dashboard .card{
+  width: 230px;
+}
 .dashboard .header{
   background-color:#0f7d80;
   color: #ffe6de;
-}
-#profile{
-width: 152.94px;
 }
 .notifications{
   background-color: #b8627d ;
