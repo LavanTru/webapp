@@ -362,7 +362,10 @@ span.iconExtraNotes{
 }
 .dashboard .header{
   background-color:#0f7d80;
-  color:white;
+  color: #ffe6de;
+}
+#profile{
+width: 152.94px;
 }
 .notifications{
   background-color: #b8627d ;
