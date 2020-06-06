@@ -8,10 +8,10 @@ const NavBarLoginInfo = (props) => {
     if (session) {
         return (
             <Nav>
-                <Navbar.Text>
+                <img className="clickable image mr-2" src={session.image} alt="profile_picture" />
+                <Navbar.Text className="clickable">
                     {/* option 1 for reading Context session: */}
-                    <img className="image float-left" src={session.image} alt="profile_picture" />
-                    <div>Signed in as {session.userType} {session.firstName}</div>
+                    <div>{session.firstName}</div>
                     {/* option 2 for reading Context session: */}
                     {/* <SessionContext.Consumer>
                     {props => (
@@ -19,7 +19,7 @@ const NavBarLoginInfo = (props) => {
                     )}
                 </SessionContext.Consumer> */}
                 </Navbar.Text>
-                <Nav.Link className="font-weight-bold"
+                <Nav.Link className="ml-3 font-weight-bold"
                      href="/"
                     onClick={() => {
                         removeSessionCookie(); window.location.reload(false);

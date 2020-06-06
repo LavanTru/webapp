@@ -377,3 +377,11 @@ span.iconExtraNotes{
   line-height: 18px;
   margin:3px
 }
+.navbar .image{
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  border: 2px solid #0f7d80;
+  object-fit: cover;
+  /* margin:16px; */
+}
