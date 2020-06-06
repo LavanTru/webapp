@@ -28,6 +28,7 @@ class WasherDashboard extends Component {
             ]
         };
 
+        // Options for the graph
         const options = {
             scales: {
                 xAxes: [
@@ -61,6 +62,7 @@ class WasherDashboard extends Component {
         }
 
         return (
+            // Cards data should be taken from actual data
             <Container className="dashboard" fluid>
                 <Col md={{ span: 8, offset: 2 }} className="pt-5">
                     <Row >
@@ -129,11 +131,11 @@ class WasherDashboard extends Component {
                     <Row className="mt-3"><h4>Badges</h4></Row>
                     <Row>
                         <Col>
-                            <img className="" src={BadgeCompletedWash} alt="Completed wash badge" />
+                            <img src={BadgeCompletedWash} alt="Completed wash badge" />
                             <h6>Completed 50 washes</h6>
                         </Col>
                         <Col>
-                            <img className="" src={BadgeTopWasher} alt="Top washer badge" />
+                            <img src={BadgeTopWasher} alt="Top washer badge" />
                             <h6>Best rated washer</h6>
                         </Col>
                     </Row>
