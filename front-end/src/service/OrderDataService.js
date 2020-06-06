@@ -25,6 +25,9 @@ class OrderDataService {
     getOrdersByWasherId(washerId){
         return axios.get(`${ORDER_API_URL}/washer/${washerId}`);
     }
+    getOrdersByWasheeId(washeeId){
+        return axios.get(`${ORDER_API_URL}/washee/${washeeId}`);
+    }
     updateOrder(order) {
         return axios.put(`${ORDER_API_URL}`,order);
     }

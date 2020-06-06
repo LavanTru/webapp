@@ -388,3 +388,18 @@ span.iconExtraNotes{
   object-fit: cover;
   /* margin:16px; */
 }
+.washeeOrderList{
+  text-align: left;
+}
+.washeeOrderList .item{
+  border-bottom: 1px solid grey;
+  background: #ffe6de ;
+}
+.washeeOrderList .image {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: 3px solid #0f7d80;
+  object-fit: cover;
+  margin: 12px;
+ }
