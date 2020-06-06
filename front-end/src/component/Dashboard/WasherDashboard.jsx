@@ -61,7 +61,7 @@ class WasherDashboard extends Component {
 
         return (
             <Container className="dashboard" fluid>
-                <Col md={{ span: 8, offset: 2 }} className="pt-4">
+                <Col md={{ span: 8, offset: 2 }} className="pt-5">
                     <Row >
                         <Col >
                             <Row className="justify-content-md-center">
@@ -101,7 +101,7 @@ class WasherDashboard extends Component {
                         <Col>
                             <h4>Monthly earnings</h4>
                             <Bar
-                                height={100}
+                                height={150}
                                 data={data}
                                 options={options}
                             />
