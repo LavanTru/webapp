@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import ModalContainer from "./Modal/ModalContainer";
+import ModalContainer from "../Modal/ModalContainer";
 import NavBarLoginInfo from "./NavBarLoginInfo";
-
 
 class NavBar extends Component {
     constructor(props) {
@@ -26,9 +25,6 @@ class NavBar extends Component {
 
 
     render() {
-        // Import session data from the Context
-        // const session = useContext(SessionContext);
-
         return (
             <Navbar className="navbar" expand="lg">
                 <Navbar.Brand href="#home">LavanTru</Navbar.Brand>
@@ -47,7 +43,6 @@ class NavBar extends Component {
                             onHide={this.handleLoginModal}
                             isRegistered={this.state.isRegistered}
                             handleChangeIsRegistered={this.handleChangeIsRegistered}
-                        // backdrop="static"
                         />
                         {this.myMethod}
                     </Nav>

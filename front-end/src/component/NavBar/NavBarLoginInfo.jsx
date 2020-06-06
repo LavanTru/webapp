@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SessionContext, removeSessionCookie } from "../Session";
+import { SessionContext, removeSessionCookie } from "../../Session";
 import { Navbar, Nav } from "react-bootstrap";
 
 // This method checks if the user info is saved into session and returns either user info and log out option. Returns log in/sign up options if no session

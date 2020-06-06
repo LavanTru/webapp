@@ -92,9 +92,9 @@ class WasherDashboard extends Component {
                             options={options}
                         />
                     </Row>
-                    <Row className="mt-5">
+                    <Row className="my-5">
                         <Col>
-                            <Card>
+                            <Card className="clickable">
                                 <Card.Header className="header">Service settings</Card.Header>
                                 <Card.Body>
                                     <img className="image float-center" src="https://image.flaticon.com/icons/svg/3003/3003800.svg" alt="service_settings" />
@@ -102,7 +102,7 @@ class WasherDashboard extends Component {
                             </Card>
                         </Col>
                         <Col>
-                            <Card>
+                            <Card className="clickable">
                                 <Card.Header className="header">Profile info</Card.Header>
                                 <Card.Body>
                                     <img className="image float-center" src="https://cdn0.iconfinder.com/data/icons/basic-ui-1-line/64/Artboard_18-512.png" alt="profile_info" />
