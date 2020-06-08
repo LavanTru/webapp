@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Card, Button } from "react-bootstrap";
-import OrderDataService from "../service/OrderDataService"
-import iconExtraNotes from "../asset/extra_notes.svg";
+import OrderDataService from "../../service/OrderDataService"
+import iconExtraNotes from "../../asset/extra_notes.svg";
 
 class WasherOrderConfirm extends Component {
     constructor(props) {

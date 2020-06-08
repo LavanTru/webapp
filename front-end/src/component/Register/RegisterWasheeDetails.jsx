@@ -122,7 +122,8 @@ class RegisterWashee extends Component {
                         "firstName": response.data.firstName,
                         "email": response.data.email,
                         "userType": response.data.userType,
-                        "addresses":response.data.addresses
+                        "addresses":response.data.addresses,
+                        "image":response.data.image
                     };
                     setSessionCookie(user);
                     // window.location.reload(false);

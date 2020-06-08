@@ -140,7 +140,8 @@ class RegisterWasher extends Component {
                         "firstName": response.data.firstName,
                         "lastName": response.data.lastName,
                         "email": response.data.email,
-                        "userType": response.data.userType
+                        "userType": response.data.userType,
+                        "image":response.data.image
                     };
                     setSessionCookie(user);
                     window.location.reload(false);

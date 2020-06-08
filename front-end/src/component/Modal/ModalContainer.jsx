@@ -54,7 +54,8 @@ class ModalContainer extends Component {
 
 
     componentDidUpdate() {
-        this.googleSDK();
+        // Google button functionality is currently disabled because redirecting after login is not finished
+        // this.googleSDK();
     }
 
     googleSDK() {

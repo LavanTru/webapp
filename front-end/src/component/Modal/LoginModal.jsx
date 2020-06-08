@@ -63,14 +63,14 @@ class LoginModal extends Component {
             "lastName": response.data.lastName,
             "email": response.data.email,
             "userType": response.data.userType,
-            "addresses":[response.data.addresses[0]]
+            "addresses":[response.data.addresses[0]],
+            "image":response.data.image
           };
           setSessionCookie(user);
           this.props.onHide();
           // TODO change where user will be redirected after login
           window.location.reload(false);
 
-          console.log(response.data.userType);
           if (response.data.userType === "WASHEE") {
             this.props.history.push({
               pathname: "/washerlist",

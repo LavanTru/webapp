@@ -18,4 +18,6 @@ public interface OrderDao {
   Order updateOrder(Order order);
 
   List<Order> getOrdersByWasherId(String id);
+
+  List<Order> getOrdersByWasheeId(String id);
 }

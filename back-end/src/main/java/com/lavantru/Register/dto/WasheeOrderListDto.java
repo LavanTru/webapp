@@ -8,9 +8,8 @@ import java.util.UUID;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-//This DTO is used to retrieve order together with Washee details in order to reduce front-end calls to back-end for each washee.
-public class WasherOrderListDto {
-
+//This DTO is used to retrieve order together with Washer details in order to reduce front-end calls to back-end for each washer.
+public class WasheeOrderListDto {
   private UUID id;
   private String status;
   private String notes;
@@ -20,22 +19,22 @@ public class WasherOrderListDto {
   private LocalDateTime dateConfirmed;
   @NotNull
   @NotEmpty
-  private String washeeId;
-  private String washeeFirstName;
-  private String washeeImage;
+  private String washerId;
+  private String washerFirstName;
+  private String washerImage;
   @NotNull
   @NotEmpty
-  private String washerId;
+  private String washeeId;
   @NotNull
   @NotEmpty
   private List<Item> items;
 
-  public WasherOrderListDto(UUID id, String status, String notes, LocalDateTime dateCreated,
+  public WasheeOrderListDto(UUID id, String status, String notes, LocalDateTime dateCreated,
       LocalDateTime dateCompleted, LocalDateTime dateRejected, LocalDateTime dateConfirmed,
-      @NotNull @NotEmpty String washeeId,
-      String washeeFirstName,
-      String washeeImage,
       @NotNull @NotEmpty String washerId,
+      String washerFirstName,
+      String washerImage,
+      @NotNull @NotEmpty String washeeId,
       @NotNull @NotEmpty List<Item> items) {
     this.id = id;
     this.status = status;
@@ -44,13 +43,13 @@ public class WasherOrderListDto {
     this.dateCompleted = dateCompleted;
     this.dateRejected = dateRejected;
     this.dateConfirmed = dateConfirmed;
-    this.washeeId = washeeId;
-    this.washeeFirstName = washeeFirstName;
-    this.washeeImage = washeeImage;
     this.washerId = washerId;
+    this.washerFirstName = washerFirstName;
+    this.washerImage = washerImage;
+    this.washeeId = washeeId;
     this.items = items;
   }
-  public WasherOrderListDto(Order order){
+  public WasheeOrderListDto(Order order){
     this.id = order.getId();
     this.status = order.getStatus();
     this.notes = order.getNotes();
@@ -58,8 +57,8 @@ public class WasherOrderListDto {
     this.dateCompleted = order.getDateCompleted();
     this.dateRejected = order.getDateRejected();
     this.dateConfirmed = order.getDateConfirmed();
-    this.washeeId = order.getWasheeId();
     this.washerId = order.getWasherId();
+    this.washeeId = order.getWasheeId();
     this.items = order.getItems();
   }
 
@@ -119,36 +118,36 @@ public class WasherOrderListDto {
     this.dateConfirmed = dateConfirmed;
   }
 
-  public String getWasheeId() {
-    return washeeId;
-  }
-
-  public void setWasheeId(String washeeId) {
-    this.washeeId = washeeId;
-  }
-
-  public String getWasheeFirstName() {
-    return washeeFirstName;
-  }
-
-  public void setWasheeFirstName(String washeeFirstName) {
-    this.washeeFirstName = washeeFirstName;
-  }
-
-  public String getWasheeImage() {
-    return washeeImage;
-  }
-
-  public void setWasheeImage(String washeeImage) {
-    this.washeeImage = washeeImage;
-  }
-
   public String getWasherId() {
     return washerId;
   }
 
   public void setWasherId(String washerId) {
     this.washerId = washerId;
+  }
+
+  public String getWasherFirstName() {
+    return washerFirstName;
+  }
+
+  public void setWasherFirstName(String washerFirstName) {
+    this.washerFirstName = washerFirstName;
+  }
+
+  public String getWasherImage() {
+    return washerImage;
+  }
+
+  public void setWasherImage(String washerImage) {
+    this.washerImage = washerImage;
+  }
+
+  public String getWasheeId() {
+    return washeeId;
+  }
+
+  public void setWasheeId(String washeeId) {
+    this.washeeId = washeeId;
   }
 
   public List<Item> getItems() {

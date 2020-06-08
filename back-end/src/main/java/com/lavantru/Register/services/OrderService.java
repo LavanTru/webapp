@@ -1,10 +1,12 @@
 package com.lavantru.Register.services;
 
 import com.lavantru.Register.dao.OrderDao;
+import com.lavantru.Register.dto.WasheeOrderListDto;
 import com.lavantru.Register.dto.WasherOrderListDto;
 import com.lavantru.Register.model.Item;
 import com.lavantru.Register.model.Order;
 import com.lavantru.Register.model.Washee;
+import com.lavantru.Register.model.Washer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -26,6 +28,9 @@ public class OrderService implements IOrderService {
 
   @Autowired
   private WasheeService washeeService;
+
+  @Autowired
+  private WasherService washerService;
 
   @Autowired
   public OrderService(@Qualifier("OrderDao") OrderDao orderDao) {
@@ -81,6 +86,22 @@ public class OrderService implements IOrderService {
       washerOrderList.add(washerOrderListDto);
     }
     return washerOrderList;
+  }
+
+  //  Using WasheeOrderListDto to return the order together with Washer details
+  @Override
+  public List<WasheeOrderListDto> getOrdersByWasheeId(String id) {
+    List<Order> orderList = orderDao.getOrdersByWasheeId(id);
+    List<WasheeOrderListDto> washeeOrderList = new ArrayList<>();
+
+    for (Order order : orderList) {
+      WasheeOrderListDto washeeOrderListDto = new WasheeOrderListDto(order);
+      Washer washer = washerService.getWasherById(new ObjectId(order.getWasherId()));
+      washeeOrderListDto.setWasherFirstName(washer.getFirstName());
+      washeeOrderListDto.setWasherImage(washer.getImage());
+      washeeOrderList.add(washeeOrderListDto);
+    }
+    return washeeOrderList;
   }
 
   @Override

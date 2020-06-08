@@ -1,5 +1,6 @@
 package com.lavantru.Register.controllers;
 
+import com.lavantru.Register.dto.WasheeOrderListDto;
 import com.lavantru.Register.dto.WasherOrderListDto;
 import com.lavantru.Register.model.Item;
 import com.lavantru.Register.model.Order;
@@ -52,6 +53,10 @@ public class OrderController {
     @GetMapping(path = "/washer/{id}")
     public List<WasherOrderListDto> getOrdersByWasherId(@PathVariable("id") String id){
         return orderService.getOrdersByWasherId(id);
+    }
+    @GetMapping(path = "/washee/{id}")
+    public List<WasheeOrderListDto> getOrdersByWasheeId(@PathVariable("id") String id){
+        return orderService.getOrdersByWasheeId(id);
     }
     @PutMapping()
     public Order updateOrder(@Valid @NonNull @RequestBody Order order){

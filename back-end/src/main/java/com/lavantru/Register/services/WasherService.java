@@ -48,13 +48,9 @@ public class WasherService {
     }
 
     public void updateLndryJobCapabilities(ObjectId id, List<Job> washerJobCapabilities) {
-        Washer washer = getUserById(id);
+        Washer washer = getWasherById(id);
         washer.setJobCapabilities(washerJobCapabilities);
         washerDao.insertWasher(washer);
-    }
-
-    public Washer getUserById(ObjectId id){
-        return  washerDao.getWasherById(id);
     }
 
     public Washer getWasherByEmail(String email) {
@@ -81,7 +77,7 @@ public class WasherService {
     }
 
     public void updateWasherSchedule(ObjectId id, List<Date> availableHours) {
-        Washer washer = getUserById(id);
+        Washer washer = getWasherById(id);
         washer.setAvailableHours(availableHours);
         washerDao.insertWasher(washer);
     }
