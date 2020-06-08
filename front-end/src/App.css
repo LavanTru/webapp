@@ -362,6 +362,7 @@ span.iconExtraNotes{
 }
 .dashboard .card{
   width: 230px;
+  height: 145px;
 }
 .dashboard .header{
   background-color:#0f7d80;

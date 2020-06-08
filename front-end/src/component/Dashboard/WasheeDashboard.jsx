@@ -5,6 +5,8 @@ import Fashion from "../../asset/icon/fashion.svg";
 import Star from "../../asset/icon/star.svg";
 import Washer from "../../asset/icon/washer.svg";
 import User from "../../asset/icon/user.svg";
+import Map from "../../asset/icon/map_search.svg";
+import { Link } from "react-router-dom";
 
 class WasheeDashboard extends Component {
     render() {
@@ -14,13 +16,14 @@ class WasheeDashboard extends Component {
                     <Row >
                         <Col >
                             <Row className="justify-content-md-center">
-                                <Card className="card">
-                                    <Card.Header className="header">??</Card.Header>
-                                    <Card.Body>
-                                        <img className="image float-left" src={Fashion} alt="weekly_income" />
-                                        <h2>???</h2>
-                                    </Card.Body>
-                                </Card>
+                                <Link to={{pathname: "/washers"}} style={{ textDecoration: 'none' }}>
+                                    <Card className="card">
+                                        <Card.Header className="header">Start a new wash</Card.Header>
+                                        <Card.Body>
+                                            <img className="image float-center" src={Map} alt="weekly_income" />
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
                             </Row>
                         </Col>
                         <Col >

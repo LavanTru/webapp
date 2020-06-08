@@ -5,7 +5,6 @@ import WasheeDashboard from "./WasheeDashboard";
 
 const Dashboard = (props) => {
     const session = getSessionCookie();
-    console.log("session", session);
     
     if (session.userType === "WASHER") {
         return <WasherDashboard />
