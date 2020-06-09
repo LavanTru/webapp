@@ -84,7 +84,6 @@ public class WasheeService {
   public List<FavoriteDto> getWasheeFavorites(ObjectId id){
     List<Favorite> favorites = getWasheeById(id).getFavorites();
     List<FavoriteDto> favoriteDtoList = new ArrayList<>();
-    System.out.println(favorites.toString());
 
     for (Favorite favorite : favorites){
       ObjectId washerId = new ObjectId(favorite.getWasherId());
