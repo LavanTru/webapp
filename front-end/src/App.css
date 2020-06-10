@@ -297,11 +297,32 @@ span.googleButtonText {
   white-space: nowrap;
   width: fit-content;
   padding: 4px 8px;
+  font-size: 16px;
+  line-height: 28px;
+}
+ .sort-left{
+  border: 1px solid;
+  border-color: var(--lavantru-red);
+  border-radius: 10px 0px 0px 10px;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 4px 8px;
+}
+.sort-right{
+  border: 1px solid;
+  border-color: var(--lavantru-red);
+  border-radius: 0px 10px 10px 0px;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 4px 8px;
+}
+.sort-active{
+  background-color: var(--lavantru-red);
+  color: var(--lavantru-pink);
 }
 
 .pinkBackground {
   background-color: var(--lavantru-pink);
-  
 }
 
 .schedule .pinkBackground:hover {
