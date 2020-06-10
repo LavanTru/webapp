@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from './component/NavBar';
+import NavBar from './component/NavBar/NavBar';
 import ListJobsComponent from './component/ListJobsComponent';
 import JobDetailsComponent from './component/JobDetailsComponent';
 import {
@@ -14,8 +14,8 @@ import RegisterWasheeDetails from './component/Register/RegisterWasheeDetails';
 import { SessionContext, getSessionCookie } from "./Session";
 import OrderComponent from './component/OrderComponent';
 import WasherProfile from './component/WasherProfile';
-import WasherOrderList from "./component/WasherOrderList";
-import WasherOrderConfirm from "./component/WasherOrderConfirm";
+import WasherOrderList from "./component/Order/WasherOrderList";
+import WasherOrderConfirm from "./component/Order/WasherOrderConfirm";
 import LandingPage from './component/LandingPage/LandingPage';
 import WasherSelectionContainer from './component/WasherSelection/WasherSelectionContainer';
 import WasherListContainer from './component/WasherSelection/WasherList/WasherListContainer';
