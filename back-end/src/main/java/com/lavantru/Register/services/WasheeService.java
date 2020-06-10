@@ -83,10 +83,12 @@ public class WasheeService {
 
     for (Washer washer : allWashers) {
       boolean isFavorite = false;
-      for (Favorite favorite : favorites){
-        if(washer.getId().equals(favorite.getWasherId())){
-          isFavorite = true;
-          break;
+      if(favorites != null){
+        for (Favorite favorite : favorites){
+          if(washer.getId().equals(favorite.getWasherId())){
+            isFavorite = true;
+            break;
+          }
         }
       }
       FavoriteDto favorite = new FavoriteDto(washer, isFavorite);
