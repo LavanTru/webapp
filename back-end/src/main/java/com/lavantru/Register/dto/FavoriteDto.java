@@ -7,10 +7,11 @@ import lombok.Data;
 @Data
 public class FavoriteDto {
     private Washer washer;
+    private boolean isFavorite;
     private WashCycle cycle;
 
-    public FavoriteDto(Washer washer, WashCycle cycle) {
+    public FavoriteDto(Washer washer, boolean isFavorite) {
         this.washer = washer;
-        this.cycle = cycle;
+        this.isFavorite = isFavorite;
     }
 }
