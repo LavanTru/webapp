@@ -28,17 +28,12 @@ public class WasheeService {
 
   public boolean emailExists(String email) {
     Washee washee = washeeDao.getByEmail(email);
-    if (washee != null) {
-      return true;
-    }
-    return false;
+    return washee != null;
   }
+
   public boolean passwordMatches(String email, String password) {
     Washee washee = washeeDao.getByEmail(email);
-    if (washee.getPassword().equals(password)) {
-      return true;
-    }
-    return false;
+    return washee.getPassword().equals(password);
   }
 
   public Washee insertWashee(Washee washee) throws UserAlreadyExistException {
@@ -83,15 +78,21 @@ public class WasheeService {
   
   public List<FavoriteDto> getWasheeFavorites(ObjectId id){
     List<Favorite> favorites = getWasheeById(id).getFavorites();
-    List<FavoriteDto> favoriteDtoList = new ArrayList<>();
+    List<Washer> allWashers = washerService.getAllWashers();
+    List<FavoriteDto> favoriteAndNonFavoriteWashers = new ArrayList<>();
 
-    for (Favorite favorite : favorites){
-      ObjectId washerId = new ObjectId(favorite.getWasherId());
-      Washer washer = washerService.getUserById(washerId);
-      FavoriteDto favoriteDto = new FavoriteDto(washer, favorite.getWashCycle());
-      favoriteDtoList.add(favoriteDtoList.size(), favoriteDto);
+    for (Washer washer : allWashers) {
+      boolean isFavorite = false;
+      for (Favorite favorite : favorites){
+        if(washer.getId().equals(favorite.getWasherId())){
+          isFavorite = true;
+          break;
+        }
+      }
+      FavoriteDto favorite = new FavoriteDto(washer, isFavorite);
+      favoriteAndNonFavoriteWashers.add(favoriteAndNonFavoriteWashers.size(), favorite);
     }
 
-    return  favoriteDtoList;
+    return  favoriteAndNonFavoriteWashers;
   }
 }
