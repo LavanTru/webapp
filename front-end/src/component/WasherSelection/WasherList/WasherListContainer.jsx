@@ -3,6 +3,7 @@ import WasherDataService from '../../../service/WasherDataService';
 import WasherList from "./WasherList";
 import { Container,Col } from "react-bootstrap";
 import { SessionContext } from "../../../Session";
+import WasheeDataService from '../../../service/WasheeDataService';
 
 // This is a parent object for WasherList, only used to refresh Washer data in the parent object and pass it to WasherList as props.
 // Used only in /washerList to show the list in a separate page from the map.
@@ -12,7 +13,8 @@ class WasherListContainer extends Component {
         this.state = {
             washers: [],
             activeMarker: {},
-            washee: {}
+            washee: {},
+            favoritesAndOthers: []
         }
         this.refreshAllWashers = this.refreshAllWashers.bind(this)
     }
@@ -22,16 +24,17 @@ class WasherListContainer extends Component {
         this.setState({
             washee: this.context
         });
+        console.log("context: ", this.context)
+        console.log("washee: ", this.state.washee)
     }
 
     refreshAllWashers() {
-        WasherDataService.retrieveAllWashers()
-            .then(
-                response => {
-                    console.log(response);
-                    this.setState({ washers: response.data });
-                }
-            )
+        WasheeDataService.getFavorites(this.context.id).then(
+            response => {
+                this.setState({ favoritesAndOthers: response.data });
+                console.log("response: ", response.data)
+            }
+        )
     }
 
     render() {
