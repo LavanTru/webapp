@@ -1,95 +1,108 @@
 @import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
 
 /* We use own font and custom h1-h6 to have standardized styles across the web*/
-*{
+* {
   font-family: 'Quicksand', sans-serif;
+  --lavantru-pink: #ffe6de;
+  --lavantru-green: #0f7d80;
+  --lavantru-red: #b8627d;
 }
-h1{
+
+h1 {
   font-style: normal;
   font-weight: 500;
   font-size: 48px;
   line-height: 64px;
   /* or 133% */
 }
-h2{
+
+h2 {
   font-style: normal;
   font-weight: normal;
   font-size: 40px;
   line-height: 56px;
   /* or 140% */
 }
-h3{
+
+h3 {
   font-style: normal;
   font-weight: 500;
   font-size: 32px;
   line-height: 48px;
   /* or 150% */
 }
-h4{
+
+h4 {
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
   /* or 133% */
 }
-h5{
+
+h5 {
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 28px;
   /* or 140% */
 }
-h6{
+
+h6 {
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 28px;
   /* or 175% */
 }
-p{
+
+p {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 28px;
-/* identical to box height, or 175% */
+  /* identical to box height, or 175% */
 }
 
-.lavantruPink{
-  color:#b8627d
+.lavantruPink {
+  color: var(--lavantru-red)
 }
-.lavantruGreen{
-  color:#0f7d80
+
+.lavantruGreen {
+  color: var(--lavantru-green)
 }
 
 /* NavBar */
-.navbar{
-  background-color: #ffe6de; 
+.navbar {
+  background-color: var(--lavantru-pink);
   padding: 15px;
   font-size: larger;
 }
 
 /* bootstrap success button */
-.btn-success{
+.btn-success {
   background-color: #208487;
   border-color: #208487;
 }
-.btn-success:hover{
+
+.btn-success:hover {
   background-color: #62dfe3;
   border-color: #62dfe3;
 }
 
 /* bootstrap danger button */
-.btn-outline-danger{
+.btn-outline-danger {
   color: #b8627d;
   border-color: #b8627d;
 }
-.btn-outline-danger:hover{
+
+.btn-outline-danger:hover {
   background-color: #b8627d;
   border-color: #b8627d;
 }
 
 /* bootstrap div container */
-.container{
+.container {
   text-align: left;
 }
 
@@ -104,9 +117,11 @@ p{
   box-shadow: 1px 1px 1px grey;
   white-space: nowrap;
 }
+
 #customGoogleBtn:hover {
   cursor: pointer;
 }
+
 span.googleIcon {
   background: url('./asset/btn_google_light_normal_ios.svg') transparent no-repeat;
   /* background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat; */
@@ -115,6 +130,7 @@ span.googleIcon {
   width: 42px;
   height: 42px;
 }
+
 span.googleButtonText {
   display: inline-block;
   vertical-align: middle;
@@ -125,26 +141,29 @@ span.googleButtonText {
   /* Use the Roboto font that is loaded in the <head> */
   font-family: 'Roboto', sans-serif;
 }
+
 /* Google button END */
 
-.loginLink{
+.loginLink {
   text-decoration: underline;
   font-weight: bold;
 }
-.loginLink:hover{
+
+.loginLink:hover {
   cursor: pointer;
 }
-.redError{
+
+.redError {
   color: red;
 }
+
 /* Currently used at login */
 .button-green,
 .button-green:hover,
 .button-green:active,
 .button-green:focus,
-.button-green:active:focus
-{
-  background-color: #0f7d80 !important;
+.button-green:active:focus {
+  background-color: var(--lavantru-green) !important;
   border: none !important;
   box-shadow: none !important;
 }
@@ -153,9 +172,8 @@ span.googleButtonText {
 .button-pink:hover,
 .button-pink:active,
 .button-pink:focus,
-.button-pink:active:focus
-{
-  background-color: #b8627d !important;
+.button-pink:active:focus {
+  background-color: var(--lavantru-red) !important;
   border: none !important;
   box-shadow: none !important;
 }
@@ -171,9 +189,11 @@ span.googleButtonText {
   box-shadow: 1px 1px 1px grey;
   white-space: nowrap;
 }
+
 #customGoogleBtn:hover {
   cursor: pointer;
 }
+
 span.googleIcon {
   background: url('./asset/btn_google_light_normal_ios.svg') transparent no-repeat;
   /* background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat; */
@@ -182,6 +202,7 @@ span.googleIcon {
   width: 42px;
   height: 42px;
 }
+
 span.googleButtonText {
   display: inline-block;
   vertical-align: middle;
@@ -192,98 +213,122 @@ span.googleButtonText {
   /* Use the Roboto font that is loaded in the <head> */
   font-family: 'Roboto', sans-serif;
 }
+
 /* Google button END */
 
-.loginLink{
+.loginLink {
   text-decoration: underline;
   font-weight: bold;
 }
-.loginLink:hover{
+
+.loginLink:hover {
   cursor: pointer;
 }
-.redError{
+
+.redError {
   color: red;
 }
 
-.profile{
-  color: #0f7d80;
-}
-.profile .image {
- border-radius: 50%;
- height: 150px;
- width: 150px;
- border: 5px solid #0f7d80;
- object-fit: cover;
- margin: 16px;
-}
-.profile .header{
-  border-bottom: 1px solid grey;
-  background: #ffe6de ;
+.profile {
+  color: var(--lavantru-green);
 }
 
-.orderHeader{
+.profile .image {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  border: 5px solid;
+  border-color: var(--lavantru-green);
+  object-fit: cover;
+  margin: 16px;
+}
+
+.profile .header {
+  border-bottom: 1px solid grey;
+  background: var(--lavantru-pink);
+}
+
+.orderHeader {
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
-.priceCol{
+.priceCol {
   text-align: right;
   font-size: 1.3em;
 }
 
-.washerList .washerListItem{
+.washerList .washerListItem {
   border-bottom: 1px solid grey;
-  color: #0f7d80;
+  color: var(--lavantru-green);
 }
-.washerListItem:hover{
-    background: #ffe6de ;
+
+.washerListItem:hover {
+  background: var(--lavantru-pink);
 }
 
 .washerListItem .unitImage {
- border-radius: 50%;
- height: 150px;
- width: 150px;
- border: 5px solid #0f7d80;
- object-fit: cover;
- margin:16px;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  border: 5px solid ;
+  border-color: var(--lavantru-green);
+  object-fit: cover;
+  margin: 16px;
 }
 
 .washerListItem .unitLaundryJobs {
   border-radius: 10px;
   background-color: #b8617c;
-  color: #ffe6de;
+  color: var(--lavantru-pink);
   white-space: nowrap;
   width: fit-content;
-  padding:4px 8px;
+  padding: 4px 8px;
 }
-.washerListItem .content {
-width: 100% !important ;
- }
 
- .pinkBackground{
-   background-color: #ffe6de;
- }
- .schedule .pinkBackground:hover{
+.washerListItem .content {
+  width: 100% !important;
+}
+
+.washerList .filter {
+  border: 1px solid;
+  border-color: var(--lavantru-red);
+  border-radius: 10px;
+  white-space: nowrap;
+  width: fit-content;
+  padding: 4px 8px;
+}
+
+.pinkBackground {
+  background-color: var(--lavantru-pink);
+  
+}
+
+.schedule .pinkBackground:hover {
   background-color: #b8617c;
 }
- .greenBackground{
-  background-color: #0f7d80;
+
+.greenBackground {
+  background-color: var(--lavantru-green);
 }
-.schedule .greenBackground:hover{
+
+.schedule .greenBackground:hover {
   background-color: #15b1b7;
 }
-span.iconExtraNotes{
+
+span.iconExtraNotes {
   background: url("./asset/extra_notes.svg") transparent no-repeat;
   display: inline-block;
   vertical-align: middle;
   width: 42px;
   height: 42px;
 }
-.clickable{
+
+.clickable {
   cursor: pointer;
 }
 
-.fpriceCol{
+.fpriceCol {
   border: none;
   color: white;
   padding: 16px 32px;
@@ -292,7 +337,7 @@ span.iconExtraNotes{
   cursor: pointer;
 }
 
-.wash-cycle-tooltip > .tooltip-inner {
+.wash-cycle-tooltip>.tooltip-inner {
   background-color: #ffe6de;
   color: #0f7d80;
   border: 1px solid #0f7d80;
@@ -312,17 +357,19 @@ span.iconExtraNotes{
   padding: 6px 12px;
   text-align: right;
 }
-.washerMap{
-  height:80vh;
+
+.washerMap {
+  height: 80vh;
 }
-.washerOrWashee{
+
+.washerOrWashee {
   text-align: center;
   width: 50%;
   /* align-self: center; */
   margin: auto;
 }
 
-.wash-icon{
+.wash-icon {
   /* cursor: pointer; */
   float: right;
   margin-left: 20px;
@@ -332,14 +379,16 @@ span.iconExtraNotes{
   overflow: hidden;
 }
 
-.icon-text{
+.icon-text {
   font-size: 200px;
 }
-.schedule{
+
+.schedule {
   text-align: center;
   width: 100%;
 }
-.schedule .box{
+
+.schedule .box {
   /* margin:10px !important; */
   /* border-spacing: 10px !important; */
   /* min-height:; */
@@ -347,31 +396,36 @@ span.iconExtraNotes{
   border: 10px solid white;
 }
 
-.schedule .time{
+.schedule .time {
   text-align: center;
   width: fit-content !important;
 }
-.dashboard{
+
+.dashboard {
   text-align: center;
-  color: #0f7d80;
+  color: var(--lavantru-green);
 }
-.dashboard .image{
+
+.dashboard .image {
   height: 50px;
   width: 50px;
   margin: 0 10px;
 }
-.dashboard .card{
+
+.dashboard .card {
   width: 230px;
   height: 145px;
 }
-.dashboard .header{
-  background-color:#0f7d80;
-  color: #ffe6de;
+
+.dashboard .header {
+  background-color: var(--lavantru-green);
+  color: var(--lavantru-pink);
 }
-.notifications{
-  background-color: #b8627d ;
+
+.notifications {
+  background-color: var(--lavantru-red);
   border-radius: 50%;
-  color: #ffe6de;
+  color: var(--lavantru-pink);
   text-align: center;
   position: absolute;
   min-width: 18px;
@@ -379,28 +433,34 @@ span.iconExtraNotes{
   height: 22px;
   font-weight: bold;
   line-height: 18px;
-  margin:3px
+  margin: 3px
 }
-.navbar .image{
+
+.navbar .image {
   border-radius: 50%;
   height: 45px;
   width: 45px;
-  border: 2px solid #0f7d80;
+  border: 2px solid;
+  border-color: var(--lavantru-green);
   object-fit: cover;
   /* margin:16px; */
 }
-.washeeOrderList{
+
+.washeeOrderList {
   text-align: left;
 }
-.washeeOrderList .item{
+
+.washeeOrderList .item {
   border-bottom: 1px solid grey;
-  background: #ffe6de ;
+  background: var(--lavantru-pink);
 }
+
 .washeeOrderList .image {
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  border: 3px solid #0f7d80;
+  border: 3px solid;
+  border-color: var(--lavantru-green);
   object-fit: cover;
   margin: 12px;
- }
+}
