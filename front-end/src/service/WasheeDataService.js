@@ -14,6 +14,17 @@ class WasheeDataService {
         return axios.get(`${WASHEE_API_URL}`);
     }
 
+    getFavorites(id){
+        return axios.get(`${WASHEE_API_URL}/${id}/favorites`)
+    }
+
+    addFavorite(id, favorite){
+        return axios.post(`${WASHEE_API_URL}/${id}/addFavorite`, favorite)
+    }
+
+    removeFavorite(id, index){
+        return axios.post(`${WASHEE_API_URL}/${id}/${index}`)
+    }
 
     register(firstName, lastName, email, password, phoneNo, accountType, companyName, acceptsMarketingEmails, addresses, aboutMe, paymentMethods) {
         var payload = {

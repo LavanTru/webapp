@@ -332,6 +332,15 @@ span.iconExtraNotes{
   overflow: hidden;
 }
 
+.favorite-icon{
+  background-color: filter();
+  cursor: pointer;
+  float: left;
+  margin-top: 10px;
+  width: 30px;
+  overflow: hidden;
+}
+
 .icon-text{
   font-size: 200px;
 }

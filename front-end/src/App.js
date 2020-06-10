@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from './component/NavBar/NavBar';
+import NavBar from './component/NavBar';
 import ListJobsComponent from './component/ListJobsComponent';
 import JobDetailsComponent from './component/JobDetailsComponent';
 import {
@@ -14,14 +14,15 @@ import RegisterWasheeDetails from './component/Register/RegisterWasheeDetails';
 import { SessionContext, getSessionCookie } from "./Session";
 import OrderComponent from './component/OrderComponent';
 import WasherProfile from './component/WasherProfile';
-import WasherOrderList from "./component/Order/WasherOrderList";
-import WasherOrderConfirm from "./component/Order/WasherOrderConfirm";
+import WasherOrderList from "./component/WasherOrderList";
+import WasherOrderConfirm from "./component/WasherOrderConfirm";
 import LandingPage from './component/LandingPage/LandingPage';
 import WasherSelectionContainer from './component/WasherSelection/WasherSelectionContainer';
 import WasherListContainer from './component/WasherSelection/WasherList/WasherListContainer';
 import WasherSchedule from "./component/Schedule/WasherSchedule";
 import OrderSchedule from "./component/Schedule/OrderSchedule";
 import Dashboard from "./component/Dashboard/Dashboard"
+import FavoritesList from './component/FavoritesList';
 
 /**React Component representing the high-level structure of the application.
  * Routing is defined in this file.**/
@@ -69,6 +70,7 @@ class App extends Component {
                 <Route exact path="/washerSchedule" component={WasherSchedule} />
                 <Route exact path="/orderSchedule" component={OrderSchedule} />
                 <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/favorites" component={FavoritesList} />
               </Switch>
             </>
           </Router>

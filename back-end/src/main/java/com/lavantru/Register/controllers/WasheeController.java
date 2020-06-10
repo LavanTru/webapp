@@ -1,5 +1,7 @@
 package com.lavantru.Register.controllers;
 
+import com.lavantru.Register.dto.FavoriteDto;
+import com.lavantru.Register.model.Favorite;
 import com.lavantru.Register.model.Washee;
 import com.lavantru.Register.services.WasheeService;
 import com.mongodb.lang.NonNull;
@@ -41,6 +43,21 @@ public class WasheeController {
   @GetMapping(path = "/{id}")
   public Washee getWasheeById(@PathVariable("id") ObjectId id) {
     return washeeService.getWasheeById(id);
+  }
+
+  @PostMapping(path = "/{id}/addFavorite")
+  public void addFavorite(@PathVariable("id") ObjectId id, @Valid @NonNull @RequestBody Favorite favorite){
+    washeeService.addWasheeFavorite(id, favorite);
+  }
+
+  @PostMapping(path = "/{id}/{index}")
+  public void removeFavorite(@PathVariable("id") ObjectId id, @PathVariable("index") int index){
+    washeeService.removeWasheeFavorite(id, index);
+  }
+
+  @GetMapping(path = "/{id}/favorites")
+  public List<FavoriteDto> getWasheeFavorites(@PathVariable("id") ObjectId id){
+    return washeeService.getWasheeFavorites(id);
   }
 
 }

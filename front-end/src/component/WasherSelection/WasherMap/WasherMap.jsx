@@ -31,14 +31,14 @@ export class WasherMapContainer extends Component {
                     icon={{ url: "http://maps.google.com/mapfiles/kml/paddle/blu-stars.png" }}
                 />
                 {
-                    this.props.washers.map(
-                        washer =>
+                    this.props.favoritesAndOthers.map(
+                        element =>
                             <Marker
-                                key={washer.id}
+                                key={element.washer.id}
                                 onClick={this.props.onMarkerClick}
-                                name={washer.firstName}
-                                washerId={washer.id}
-                                position={{ lat: washer.addresses[0].lat, lng: washer.addresses[0].lng }}
+                                name={element.washer.firstName}
+                                washerId={element.washer.id}
+                                position={{ lat: element.washer.addresses[0].lat, lng: element.washer.addresses[0].lng }}
                             />
                     )
                 }

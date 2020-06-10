@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row, Button } from "react-bootstrap";
 import WasherListJobs from './WasherListJobs';
 import { Link } from "react-router-dom";
+import FavoriteIcon from '../../FavoriteIcon';
 
 const WasherListItem = (props) => {
     return (
@@ -14,6 +15,13 @@ const WasherListItem = (props) => {
                 <Row >
                     <Col className="text-center">
                         <h3>{props.washer.firstName}</h3>
+                    </Col>
+                    <Col>
+                        <FavoriteIcon 
+                            isFavorite={props.isFavorite}
+                            washeeId={props.washeeId}
+                            index={props.index}
+                            washerId={props.washer.id} />
                     </Col>
                     <Col xs sm="auto" className="my-2">
                         <Link to={`/profile/${props.washer.id}`}>
