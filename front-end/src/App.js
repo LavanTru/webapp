@@ -21,6 +21,7 @@ import WasherSelectionContainer from './component/WasherSelection/WasherSelectio
 import WasherListContainer from './component/WasherSelection/WasherList/WasherListContainer';
 import WasherSchedule from "./component/Schedule/WasherSchedule";
 import OrderSchedule from "./component/Schedule/OrderSchedule";
+import FavoritesList from './component/FavoritesList';
 
 /**React Component representing the high-level structure of the application.
  * Routing is defined in this file.**/
@@ -67,6 +68,7 @@ class App extends Component {
                 <Route exact path="/washers" component={WasherSelectionContainer} />
                 <Route exact path="/washerSchedule" component={WasherSchedule} />
                 <Route exact path="/orderSchedule" component={OrderSchedule} />
+                <Route exact path="/favorites" component={FavoritesList} />
               </Switch>
             </>
           </Router>
