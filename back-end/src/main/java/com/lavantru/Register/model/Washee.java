@@ -1,10 +1,14 @@
 package com.lavantru.Register.model;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class Washee extends Users {
 
     private List<PaymentMethod> paymentMethods = null;
+    private List<Favorite> favorites;
 
     public Washee(){}
 

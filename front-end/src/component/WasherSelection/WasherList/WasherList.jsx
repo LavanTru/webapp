@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import WasherListItem from './WasherListItem';
 import GeoLibService from "../../../service/GeoLibService";
 import { OverlayTrigger, Popover, Form, Col, Row } from "react-bootstrap";
+import { SessionContext } from '../../../Session';
 
 
 class WasherList extends Component {
@@ -72,13 +73,16 @@ class WasherList extends Component {
                 </Row>
 
                 {
-                    this.props.washers.map(
-                        washer =>
+                    this.props.favoritesAndOthers.map(
+                        (favorite, index) =>
                             // If the Washer is selected in the WasherSelectionContainer view then pink background is used
                             <WasherListItem
-                                key={washer.id}
-                                washer={washer}
-                                backgroundColour={(washer.id === activeWasherId) ? "pinkBackground" : ""}
+                                key={favorite.washer.id}
+                                washer={favorite.washer}
+                                isFavorite={favorite.favorite}
+                                washeeId={this.context.id}
+                                index={index}
+                                backgroundColour={(favorite.washer.id === activeWasherId) ? "pinkBackground" : ""}
                                 // Distance from the Washee is calculated for each washer and passed as props
                                 distance={GeoLibService.getDistance(
                                     {
@@ -86,8 +90,8 @@ class WasherList extends Component {
                                         lng: this.props.washee.addresses[0].lng
                                     },
                                     {
-                                        lat: washer.addresses[0].lat,
-                                        lng: washer.addresses[0].lng
+                                        lat: favorite.washer.addresses[0].lat,
+                                        lng: favorite.washer.addresses[0].lng
                                     }
                                 )} />
                     )
@@ -97,4 +101,5 @@ class WasherList extends Component {
     }
 
 }
+WasherList.contextType = SessionContext;
 export default WasherList
