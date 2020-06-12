@@ -81,27 +81,6 @@ text-shadow:0px 0px 1px black;
   border-color: var(--lavantru-green);
   object-fit: cover;
 }
-
-/* bootstrap success button */
-.btn-success{
-  background-color: #208487;
-  border-color: #208487;
-}
-.btn-success:hover{
-  background-color: #62dfe3;
-  border-color: #62dfe3;
-}
-
-/* bootstrap danger button */
-.btn-outline-danger{
-  color: #b8627d;
-  border-color: #b8627d;
-}
-.btn-outline-danger:hover{
-  background-color: #b8627d;
-  border-color: #b8627d;
-}
-
 /* bootstrap div container */
 .container{
   text-align: left;
@@ -151,7 +130,7 @@ span.googleButtonText {
 .redError{
   color: red;
 }
-/* Currently used at login */
+/* Generic button used at all pages */
 .button-green,
 .button-green:hover,
 .button-green:active,
@@ -161,7 +140,7 @@ span.googleButtonText {
   border: none !important;
   box-shadow: none !important;
 }
-
+/* Generic button used at all pages */
 .button-pink,
 .button-pink:hover,
 .button-pink:active,
@@ -201,21 +180,9 @@ span.googleButtonText {
   padding-right: 42px;
   font-size: 14px;
   font-weight: bold;
-  /* Use the Roboto font that is loaded in the <head> */
   font-family: 'Roboto', sans-serif;
 }
 /* Google button END */
-
-.loginLink{
-  text-decoration: underline;
-  font-weight: bold;
-}
-.loginLink:hover{
-  cursor: pointer;
-}
-.redError{
-  color: red;
-}
 .profile {
   color: var(--lavantru-green);
 }

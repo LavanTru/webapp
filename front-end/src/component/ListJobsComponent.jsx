@@ -70,15 +70,15 @@ class ListJobsComponent extends Component {
                                    <tr>
                                         <td>{lndryJob.job}</td>
                                         <td>{lndryJob.price}</td>
-                                        <td><button className="btn btn-success" onClick={() => this.updateLndryJobClicked(lndryJob.id)}>Update</button></td>
-                                        <td><button className="btn btn-outline-danger" onClick={() => this.deleteLndryJobClicked(lndryJob.id)}>Delete</button></td>
+                                        <td><button className="btn button-green" onClick={() => this.updateLndryJobClicked(lndryJob.id)}>Update</button></td>
+                                        <td><button className="btn button-pink" onClick={() => this.deleteLndryJobClicked(lndryJob.id)}>Delete</button></td>
                                     </tr>
                                 )
                             }
                         </tbody>
                     </table>
                     <div className="row">
-                        <button className="btn btn-success" onClick={this.addLndryJobClicked}>Add</button>
+                        <button className="btn button-green" onClick={this.addLndryJobClicked}>Add</button>
                     </div>
                 </div>
             </div>
