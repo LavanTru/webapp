@@ -58,13 +58,13 @@ class App extends Component {
                 <Route exact path="/register" component={RegisterWasherOrWashee} />
                 <Route exact path="/register/washer" component={RegisterWasherDetails} />
                 <Route exact path="/register/washee" component={RegisterWasheeDetails} />
-                <Route exact path="/profile/:id" component={WasherProfile} />
+                <Route path="/profile/:id" component={WasherProfile} />
                 <Route exact path="/jobs" component={ListJobsComponent} />
                 <Route path="/jobs/:id" component={JobDetailsComponent} />
                 <Route exact path="/washerjobs" component={WasherJobCapabilitiesComponent} />
                 <Route exact path="/order" component={OrderComponent} />
                 <Route exact path="/washerOrderList" component={WasherOrderList} />
-                <Route exact path="/washerOrder/:id" component={WasherOrderConfirm} />
+                <Route path="/washerOrder/:id" component={WasherOrderConfirm} />
                 <Route exact path="/washerlist" component={WasherListContainer} />
                 <Route exact path="/washers" component={WasherSelectionContainer} />
                 <Route exact path="/washerSchedule" component={WasherSchedule} />
