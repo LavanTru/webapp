@@ -37,7 +37,6 @@ class OrderComponent extends Component {
     this.addItem = this.addItem.bind(this);
     this.createOrder = this.createOrder.bind(this);
   }
-
   componentDidMount() {
     console.log("washerid", this.props.location.state.washerId)
     this.getWashCycleData();
@@ -46,7 +45,6 @@ class OrderComponent extends Component {
       this.setState({ program: "Let your washer choose" })
     }
   }
-
   getWasherData() {
     WasherDataService.retrieveWasher(this.state.washerId)
       .then(
@@ -63,7 +61,6 @@ class OrderComponent extends Component {
         }
       )
   }
-
   getWashCycleData() {
     WashCycleService.getWashCycles()
       .then(
@@ -72,7 +69,6 @@ class OrderComponent extends Component {
         }
       )
   }
-
   addItem(jobId, job, price, value) {
     return () => {
       this.setState({ amount: value })
@@ -89,12 +85,10 @@ class OrderComponent extends Component {
     }
 
   }
-
   handleChange = (event) => {
     this.setState({ notes: event.target.value }, () => console.log(this.state))
     console.log(this.state.notes)
   };
-
   createOrder() {
     let order = {
       washeeId: this.context.id, //washeeId comes from the logged in user
@@ -133,7 +127,6 @@ class OrderComponent extends Component {
         </>
       );
   }
-
   displayTemperature() {
     if (this.state.program !== "Let your washer choose")
       return (
@@ -145,7 +138,7 @@ class OrderComponent extends Component {
         </Row>
       );
   }
-
+  
   render() {
     const bag = this.state.items.map(item => (
       <Row key={item.job + item.id}>
