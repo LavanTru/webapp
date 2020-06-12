@@ -65,8 +65,21 @@ p{
 /* NavBar */
 .navbar {
   background-color: var(--lavantru-pink);
-  padding: 15px;
-  font-size: larger;
+  padding: 10px;
+}
+.navbar .title{
+    color: var(--lavantru-green);
+}
+.navbar .title:hover{
+text-shadow:0px 0px 1px black;
+}
+.navbar .image{
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+  border: 2px solid;
+  border-color: var(--lavantru-green);
+  object-fit: cover;
 }
 
 /* bootstrap success button */
@@ -427,15 +440,7 @@ span.iconExtraNotes{
   line-height: 18px;
   margin:3px
 }
-.navbar .image{
-  border-radius: 50%;
-  height: 45px;
-  width: 45px;
-  border: 2px solid;
-  border-color: var(--lavantru-green);
-  object-fit: cover;
-  /* margin:16px; */
-}
+
 .washeeOrderList{
   text-align: left;
 }
