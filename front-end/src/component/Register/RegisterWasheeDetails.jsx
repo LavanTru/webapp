@@ -20,11 +20,64 @@ class RegisterWashee extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSignUp = this.handleSignUp.bind(this);
     }
+    
+    // Method to record the changes in the form in a component state variable. Need to have special case for checkbox as value cannot be read from checkbox.
+    handleChange(event) {
+        let value = event.target.name === "acceptsMarketingEmails" ? event.target.checked : event.target.value;
+        this.setState({
+            [event.target.name]: value
+        });
+    }
+    async handleSignUp() {
+        const parentState = this.props.location.state;
+        const address = {
+            streetName: this.state.streetName,
+            buildingNo: this.state.buildingNo,
+            apartmentNo: this.state.apartmentNo,
+            postCode: this.state.postCode,
+            city: this.state.city,
+            defaultAddress: true
+        };
+        const addressWithLocation = await GeoCodeService.getAddressWithLocation(address);
+        WasheeDataService.register(
+            parentState.firstName,
+            parentState.lastName,
+            parentState.email,
+            parentState.password,
+            this.state.phoneNo,
+            "PERSONAL",
+            null,
+            this.state.acceptsMarketingEmails,
+            [addressWithLocation],
+            null,
+            [])
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log("Registration successfull");
+                    const user = {
+                        // Add here more attributes to be stored in the cookies if needed
+                        "id": response.data.id,
+                        "firstName": response.data.firstName,
+                        "email": response.data.email,
+                        "userType": response.data.userType,
+                        "addresses":response.data.addresses,
+                        "image":response.data.image
+                    };
+                    setSessionCookie(user);
+                    // window.location.reload(false);
 
+                    // TODO change redirect to some default page
+                    this.props.history.push("/washers");
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
     render() {
         return (
             <Container fluid >
-                <Col md={{ span: 6, offset: 3 }} >
+                <Col md={{ span: 8, offset: 2 }} >
                     <h2 className="my-5 lavantruGreen text-center"
                     >Enter your profile information</h2>
                     <Form onChange={this.handleChange}>
@@ -81,61 +134,6 @@ class RegisterWashee extends Component {
         );
     }
 
-    // Method to record the changes in the form in a component state variable. Need to have special case for checkbox as value cannot be read from checkbox.
-    handleChange(event) {
-        let value = event.target.name === "acceptsMarketingEmails" ? event.target.checked : event.target.value;
-        this.setState({
-            [event.target.name]: value
-        });
-    }
-
-    async handleSignUp() {
-        const parentState = this.props.location.state;
-        const address = {
-            streetName: this.state.streetName,
-            buildingNo: this.state.buildingNo,
-            apartmentNo: this.state.apartmentNo,
-            postCode: this.state.postCode,
-            city: this.state.city,
-            defaultAddress: true
-        };
-
-        const addressWithLocation = await GeoCodeService.getAddressWithLocation(address);
-        WasheeDataService.register(
-            parentState.firstName,
-            parentState.lastName,
-            parentState.email,
-            parentState.password,
-            this.state.phoneNo,
-            "PERSONAL",
-            null,
-            this.state.acceptsMarketingEmails,
-            [addressWithLocation],
-            null,
-            [])
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log("Registration successfull");
-                    const user = {
-                        // Add here more attributes to be stored in the cookies if needed
-                        "id": response.data.id,
-                        "firstName": response.data.firstName,
-                        "email": response.data.email,
-                        "userType": response.data.userType,
-                        "addresses":response.data.addresses,
-                        "image":response.data.image
-                    };
-                    setSessionCookie(user);
-                    // window.location.reload(false);
-
-                    // TODO change redirect to some default page
-                    this.props.history.push("/washers");
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
 }
 
 export default RegisterWashee;

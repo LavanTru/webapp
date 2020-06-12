@@ -23,10 +23,66 @@ class RegisterWasher extends Component {
         this.handleSignUp = this.handleSignUp.bind(this);
     }
 
+    // Method to record the changes in the form in a component state variable. Need to have special case for checkbox as value cannot be read from checkbox.
+    handleChange(event) {
+        let value = event.target.name === "acceptsMarketingEmails" ? event.target.checked : event.target.value;
+        this.setState({
+            [event.target.name]: value
+        });
+    }
+
+    async handleSignUp() {
+        const parentState = this.props.location.state;
+        const address = {
+            streetName: this.state.streetName,
+            buildingNo: this.state.buildingNo,
+            apartmentNo: this.state.apartmentNo,
+            postCode: this.state.postCode,
+            city: this.state.city,
+            defaultAddress: true
+        };
+
+        const addressWithLocation = await GeoCodeService.getAddressWithLocation(address);
+        WasherDataService.register(
+            this.props.location.state.firstName,
+            parentState.lastName,
+            parentState.email,
+            parentState.password,
+            this.state.phoneNo,
+            "PERSONAL",
+            null,
+            this.state.acceptsMarketingEmails,
+            [this.state.payoutBankDetails],
+            [addressWithLocation],
+            this.state.aboutMe)
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log("Registration successful");
+                    const user = {
+                        // Add here more attributes to be stored in the cookies if needed
+                        "id": response.data.id,
+                        "firstName": response.data.firstName,
+                        "lastName": response.data.lastName,
+                        "email": response.data.email,
+                        "userType": response.data.userType,
+                        "image": response.data.image
+                    };
+                    setSessionCookie(user);
+                    window.location.reload(false);
+
+                    // TODO change redirect to some default page
+                    this.props.history.push("/washerjobs");
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     render() {
         return (
             <Container fluid >
-                <Col md={{ span: 6, offset: 3 }} >
+                <Col md={{ span: 8, offset: 2 }} >
                     <h2 className="my-5 lavantruGreen text-center"
                     >Enter your profile information</h2>
                     <Form onChange={this.handleChange}>
@@ -87,9 +143,9 @@ class RegisterWasher extends Component {
                         </Form.Row>
 
                         <Col sm={{ span: 4, offset: 4 }} >
-                        <Link to={`/washerjobs`}>
-                            <Button className="button-green mt-5" size="lg" block onClick={this.handleSignUp} >
-                                Sign up
+                            <Link to={`/washerjobs`}>
+                                <Button className="button-green mt-5" size="lg" block onClick={this.handleSignUp} >
+                                    Sign up
                             </Button>
                             </Link>
                         </Col>
@@ -97,62 +153,6 @@ class RegisterWasher extends Component {
                 </Col>
             </Container>
         );
-    }
-
-    // Method to record the changes in the form in a component state variable. Need to have special case for checkbox as value cannot be read from checkbox.
-    handleChange(event) {
-        let value = event.target.name === "acceptsMarketingEmails" ? event.target.checked : event.target.value;
-        this.setState({
-            [event.target.name]: value
-        });
-    }
-
-    async handleSignUp() {
-        const parentState = this.props.location.state;
-        const address = {
-            streetName: this.state.streetName,
-            buildingNo: this.state.buildingNo,
-            apartmentNo: this.state.apartmentNo,
-            postCode: this.state.postCode,
-            city: this.state.city,
-            defaultAddress: true
-        };
-
-        const addressWithLocation = await GeoCodeService.getAddressWithLocation(address);
-        WasherDataService.register(
-            this.props.location.state.firstName,
-            parentState.lastName,
-            parentState.email,
-            parentState.password,
-            this.state.phoneNo,
-            "PERSONAL",
-            null,
-            this.state.acceptsMarketingEmails,
-            [this.state.payoutBankDetails],
-            [addressWithLocation],
-            this.state.aboutMe)
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log("Registration successful");
-                    const user = {
-                        // Add here more attributes to be stored in the cookies if needed
-                        "id": response.data.id,
-                        "firstName": response.data.firstName,
-                        "lastName": response.data.lastName,
-                        "email": response.data.email,
-                        "userType": response.data.userType,
-                        "image":response.data.image
-                    };
-                    setSessionCookie(user);
-                    window.location.reload(false);
-
-                    // TODO change redirect to some default page
-                    this.props.history.push("/washerjobs");
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
     }
 }
 
