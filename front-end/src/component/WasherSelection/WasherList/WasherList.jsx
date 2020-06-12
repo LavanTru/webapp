@@ -61,8 +61,6 @@ class WasherList extends Component {
                     <Col md="auto">
                         <div onClick={this.handleFilterByFavouritesClick} className={"clickable filter " + (this.state.filterByFavourites ? "sort-active" : "")}>Favourites</div>
                     </Col>
-                    {/* <Col className="ml-6" md="auto"> */}
-                    {/* <Col md={{ span: "auto", offset: 7 }}> */}
                     <Col className="ml-auto" md="auto">
                         <Row>
                             {/* Conditional formatting based on which sorting option is active */}
