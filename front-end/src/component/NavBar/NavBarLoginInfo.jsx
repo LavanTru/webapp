@@ -10,22 +10,15 @@ const NavBarLoginInfo = (props) => {
             <Nav>
                 <img className="clickable image mr-2" src={session.image} alt="profile_picture" />
                 <Navbar.Text className="clickable">
-                    {/* option 1 for reading Context session: */}
-                    <div>{session.firstName}</div>
-                    {/* option 2 for reading Context session: */}
-                    {/* <SessionContext.Consumer>
-                    {props => (
-                        <div> Signed in as {props}</div>
-                    )}
-                </SessionContext.Consumer> */}
+                    <h4 className="m-1 title">{session.firstName}</h4>
                 </Navbar.Text>
-                <Nav.Link className="ml-3 font-weight-bold"
-                     href="/"
+                <Nav.Link className="mx-3"
+                    href="/"
                     onClick={() => {
                         removeSessionCookie(); window.location.reload(false);
                     }}>
-                    Log out
-            </Nav.Link>
+                    <h4 className="m-1 title font-weight-bold">Log out</h4>
+                </Nav.Link>
             </Nav>
         );
     }
@@ -34,12 +27,12 @@ const NavBarLoginInfo = (props) => {
             <Nav>
                 <Nav.Link className="font-weight-bold"
                     onClick={props.handleLoginModal}>
-                    Log in
-                    </Nav.Link>
+                    <h4 className="m-1 title">Log in</h4>
+                </Nav.Link>
                 <Nav.Link
-                    onClick={() => { props.handleChangeIsRegistered(); props.handleLoginModal(); }}
-                >Sign up
-                    </Nav.Link>
+                    onClick={() => { props.handleChangeIsRegistered(); props.handleLoginModal(); }} >
+                    <h4 className="m-1 title">Sign up </h4>
+                </Nav.Link>
             </Nav>
         );
     }

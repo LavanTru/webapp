@@ -4,7 +4,9 @@ import ModalContainer from "../Modal/ModalContainer";
 import NavBarLoginInfo from "./NavBarLoginInfo";
 import OrderDataService from "../../service/OrderDataService";
 import { SessionContext } from "../../Session";
+import Logo from "../../asset/image/LavanTru_logo.jpeg"
 
+// Main component to render the NavBar. Right side of the NavBar is dynamically rendered based on login info from NavBarLoginInfo.
 class NavBar extends Component {
     constructor(props) {
         super(props);
@@ -17,19 +19,16 @@ class NavBar extends Component {
         this.handleChangeIsRegistered = this.handleChangeIsRegistered.bind(this);
         this.refreshOrderList = this.refreshOrderList.bind(this);
     }
-
     componentDidMount() {
         this.refreshOrderList();
     }
-
     handleLoginModal() {
         this.setState({ loginModalShow: !this.state.loginModalShow });
     };
-
     handleChangeIsRegistered() {
         this.setState({ isRegistered: !this.state.isRegistered });
     };
-
+    // Counts the number of active orders for washer
     refreshOrderList() {
         if (this.context && this.context.userType === "WASHER") {
             OrderDataService.getOrdersByWasherId(this.context.id)
@@ -42,17 +41,20 @@ class NavBar extends Component {
                 )
         }
     }
-
     render() {
         return (
-            <Navbar className="navbar" expand="lg" >
-                <Navbar.Brand href="#home">LavanTru</Navbar.Brand>
+            <Navbar className="navbar">
+                <Navbar.Brand href="/" className="ml-3 p-0">
+                    <img
+                        src={Logo}
+                        height="55"
+                        alt="LavanTru brand logo"
+                    />
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/washers">Washers</Nav.Link>
-                        <Nav.Link href="/washerOrderList">Orders{this.state.newOrders && < span className="notifications"> {this.state.newOrders} </span>}</Nav.Link>
+                        <Nav.Link href="/dashboard"><h4 className="m-1 title">Home</h4></Nav.Link>
                     </Nav>
                     <Nav className="ml-auto">
                         <NavBarLoginInfo handleChangeIsRegistered={this.handleChangeIsRegistered} handleLoginModal={this.handleLoginModal} />
@@ -70,5 +72,4 @@ class NavBar extends Component {
 
 }
 NavBar.contextType = SessionContext;
-
 export default NavBar;
