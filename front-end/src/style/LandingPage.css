@@ -52,7 +52,7 @@ header.masthead .header-content h1 {
 }
 
 .btn-xl {
-    font-size: 11px;
+    font-size: 15px;
     padding: 15px 45px
 }
 
@@ -95,8 +95,17 @@ section.info .icon {
     overflow: hidden;
 }
 
+.heart {
+    margin-right: 1.2rem;
+}
+
 .rolesDesc {
     text-align: center;
+}
+
+.button-container{
+    text-align: center;
+    margin-top: 3rem;
 }
 
 section.info .rolesDesc h2{
@@ -131,3 +140,30 @@ section.info .centerButton{
 section.info p{
     font-size: large;
 }
+
+.device-container {
+    max-width: 260px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-right: auto;
+    margin-left: auto
+}
+
+.device-container .screen img {
+    border-radius: 3px
+}
+
+.unitImage {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    border: 5px solid ;
+    object-fit: cover;
+    margin: 16px;
+  }
+
+  .vl {
+    margin-top: 2rem;
+    border-left: 2px solid;
+    height: 620px;
+  }
