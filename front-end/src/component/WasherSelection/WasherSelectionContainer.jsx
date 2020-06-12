@@ -20,14 +20,12 @@ class WasherSelectionContainer extends Component {
         }
         this.refreshAllWashers = this.refreshAllWashers.bind(this)
     }
-
     componentDidMount() {
         this.refreshAllWashers();
         this.setState({
             washee:this.context
         })
     }
-
     refreshAllWashers() {
         WasheeDataService.getFavorites(this.context.id)
         .then(
@@ -36,15 +34,12 @@ class WasherSelectionContainer extends Component {
             }
         )
     }
-
     onMarkerClick = (props, marker) => {
         this.setState({
             activeMarker: marker,
             showingInfoWindow: true
         })
     }
-
-
     onInfoWindowClose = () => {
         if (this.state.showingInfoWindow) {
             this.setState({
@@ -56,7 +51,7 @@ class WasherSelectionContainer extends Component {
     render() {
         return (
             <Container fluid>
-                <Col className="pt-4" md={{ span: 10, offset: 1 }}>
+                <Col className="pt-4" md={{ span: 8, offset: 2 }}>
                 <Row>
                     <Col md={6}>
                         <WasherList {...this.state} onClick={this.onMarkerClick}/>

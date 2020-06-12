@@ -13,7 +13,8 @@ class NavBar extends Component {
         this.state = {
             loginModalShow: false,
             isRegistered: true,
-            newOrders: ""
+            newOrders: "",
+            isLoggedInAsWasher: false
         };
         this.handleLoginModal = this.handleLoginModal.bind(this);
         this.handleChangeIsRegistered = this.handleChangeIsRegistered.bind(this);
@@ -31,6 +32,9 @@ class NavBar extends Component {
     // Counts the number of active orders for washer
     refreshOrderList() {
         if (this.context && this.context.userType === "WASHER") {
+            this.setState({
+                isLoggedInAsWasher: true
+            });
             OrderDataService.getOrdersByWasherId(this.context.id)
                 .then(
                     response => {
@@ -55,6 +59,10 @@ class NavBar extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="/dashboard"><h4 className="m-1 title">Home</h4></Nav.Link>
+                        {/* Orders tab is only shown to washers. If they have new orders, then notification element is shown */}
+                        {this.state.isLoggedInAsWasher && <Nav.Link href="/washerOrderList">
+                            <h4 className="m-1 title d-inline-block" >Orders</h4>{this.state.newOrders && < span className="notifications"> {this.state.newOrders} </span>}
+                        </Nav.Link>}
                     </Nav>
                     <Nav className="ml-auto">
                         <NavBarLoginInfo handleChangeIsRegistered={this.handleChangeIsRegistered} handleLoginModal={this.handleLoginModal} />

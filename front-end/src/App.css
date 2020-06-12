@@ -81,27 +81,6 @@ text-shadow:0px 0px 1px black;
   border-color: var(--lavantru-green);
   object-fit: cover;
 }
-
-/* bootstrap success button */
-.btn-success{
-  background-color: #208487;
-  border-color: #208487;
-}
-.btn-success:hover{
-  background-color: #62dfe3;
-  border-color: #62dfe3;
-}
-
-/* bootstrap danger button */
-.btn-outline-danger{
-  color: #b8627d;
-  border-color: #b8627d;
-}
-.btn-outline-danger:hover{
-  background-color: #b8627d;
-  border-color: #b8627d;
-}
-
 /* bootstrap div container */
 .container{
   text-align: left;
@@ -151,7 +130,7 @@ span.googleButtonText {
 .redError{
   color: red;
 }
-/* Currently used at login */
+/* Generic button used at all pages */
 .button-green,
 .button-green:hover,
 .button-green:active,
@@ -160,8 +139,10 @@ span.googleButtonText {
   background-color: var(--lavantru-green) !important;
   border: none !important;
   box-shadow: none !important;
+  padding: 8px 20px;
+  text-transform: none !important;
 }
-
+/* Generic button used at all pages */
 .button-pink,
 .button-pink:hover,
 .button-pink:active,
@@ -170,6 +151,8 @@ span.googleButtonText {
   background-color: var(--lavantru-red) !important;
   border: none !important;
   box-shadow: none !important;
+  padding: 8px 20px;
+  text-transform: none !important;
 }
 
 /* Google button START */
@@ -201,21 +184,9 @@ span.googleButtonText {
   padding-right: 42px;
   font-size: 14px;
   font-weight: bold;
-  /* Use the Roboto font that is loaded in the <head> */
   font-family: 'Roboto', sans-serif;
 }
 /* Google button END */
-
-.loginLink{
-  text-decoration: underline;
-  font-weight: bold;
-}
-.loginLink:hover{
-  cursor: pointer;
-}
-.redError{
-  color: red;
-}
 .profile {
   color: var(--lavantru-green);
 }
@@ -433,12 +404,12 @@ span.iconExtraNotes{
   color: var(--lavantru-pink);
   text-align: center;
   position: absolute;
-  min-width: 18px;
-  padding: 3px 6px;
+  min-width:22px;
+  padding: 3px;
   height: 22px;
   font-weight: bold;
   line-height: 18px;
-  margin:3px
+  margin:0px -3px;
 }
 
 .washeeOrderList{
