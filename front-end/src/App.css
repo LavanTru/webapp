@@ -139,6 +139,8 @@ span.googleButtonText {
   background-color: var(--lavantru-green) !important;
   border: none !important;
   box-shadow: none !important;
+  padding: 8px 20px;
+  text-transform: none !important;
 }
 /* Generic button used at all pages */
 .button-pink,
@@ -149,6 +151,8 @@ span.googleButtonText {
   background-color: var(--lavantru-red) !important;
   border: none !important;
   box-shadow: none !important;
+  padding: 8px 20px;
+  text-transform: none !important;
 }
 
 /* Google button START */
