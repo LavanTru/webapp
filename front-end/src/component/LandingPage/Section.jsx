@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Container, Row, Col, Image} from 'react-bootstrap';
+import { Container, Row, Col, Image, Button} from 'react-bootstrap';
 import ModalContainer from '../Modal/ModalContainer';
 import iconWashering from '../../asset/icon/water_30.svg';
 import iconEco from '../../asset/icon/eco.svg'
@@ -82,7 +82,7 @@ function Section(){
             </Row>
             <Row className="button-container">
                 <Col>
-                    <a onClick={handleShow} className="btn btn-outline btn-xl">Sign up now</a>
+                    <Button onClick={handleShow} className="btn btn-outline btn-xl">Sign up now</Button>
                     <ModalContainer 
                         show={show}
                         onHide={handleClose}
