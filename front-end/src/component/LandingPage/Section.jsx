@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
-import { Container, Row, Col, Button} from 'react-bootstrap';
-import ServiceItem from './ServiceItem';
+import { Container, Row, Col, Image} from 'react-bootstrap';
 import ModalContainer from '../Modal/ModalContainer';
-import iconWashering from '../../asset/icon/washer.svg';
+import iconWashering from '../../asset/icon/water_30.svg';
+import iconEco from '../../asset/icon/eco.svg'
+import iconSchedule from '../../asset/icon/schedule.svg'
 import iconIroning from '../../asset/icon/iron.svg';
-import iconBedding from '../../asset/icon/towel.svg';
+import iconDialog from '../../asset/icon/dialog.svg';
 import iconDelivery from '../../asset/icon/fashion.svg';
+import iconHeart from '../../asset/icon/heart.svg';
+import iconLike from '../../asset/icon/like.svg';
+import device from '../../asset/image/iphone5.png'
 
 function Section(){
     const [show, setShow] = useState(false);
@@ -18,45 +22,75 @@ function Section(){
     return (
     <section className="info bg-info text-center" id="info">
         <Container>
-                <Row className="rolesDesc">
-                    <Col>
-                        <h2>Free yourself from laundry as a Washee</h2>
-                        <p className="text-muted">LavanTru understands that you need time for what is important to you. As a <strong>washee</strong> you can forget doing laundry by hiring a washer services.</p>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={12}>
-                        <Container fluid>
+            <Row>
+                <Col >
+                    <Row className="rolesDesc">
+                        <Col>
+                            <h3>As a Washer</h3>
+                            <h5>Create your profile</h5>
+                            <Image src={device} className="device-container"></Image>
+                            <h5>Earn money at home on your schedule</h5>
+                        </Col>
+                    </Row>
+                </Col>
+                <div class="vl"></div>
+                <Col>
+                    <Row className="rolesDesc">
+                        <Col>
+                            <h3>As a Washee</h3>
+                            <h5>Choose your perfect wash</h5>
                             <Row>
-                                <Col lg={6}>
-                                    <ServiceItem source={iconWashering} title="Washing" desc="Choose your favorite washer's laundry service"/>
+                                <Col className="item">
+                                    <Image src={iconWashering} className="icon"/>
                                 </Col>
-                                <Col lg={6}>
-                                    <ServiceItem source={iconIroning} title="Ironing" desc="Get your clothes ironed, ready to use them"/>
+                                <Col className="item">
+                                    <Image src={iconIroning} className="icon"/>
+                                </Col>
+                                <Col className="item">
+                                    <Image src={iconEco} className="icon"/>
                                 </Col>
                             </Row>
+                            <h5>Choose pick up or delivery</h5>
                             <Row>
-                                <Col lg={6}>
-                                    <ServiceItem source={iconBedding} title="Bedding & Towels" desc="Your bedding, kitchen and bath clothes are also covered"/>
+                                <Col className="item">
+                                    <Image src={iconSchedule} className="icon"/>
                                 </Col>
-                                <Col lg={6}>
-                                    <ServiceItem source={iconDelivery} title="Pickup & Delivery" desc="Choose a washer with delivery service to get your clothes at your door"/>
+                                <Col className="item">
+                                    <Image src={iconDelivery} className="icon"/>
                                 </Col>
                             </Row>
-                        </Container>
-                    </Col>
-                </Row>
-                <Row className="rolesDesc">
-                    <Col>
-                        <a onClick={handleShow} className="btn btn-outline btn-xl js-scroll-trigger mb-3">Sign up now</a>
-                        <ModalContainer 
-                            show={show}
-                            onHide={handleClose}
-                            isRegistered={isRegistered}
-                            handleChangeIsRegistered={changeRegisterFlag}
-                        />
-                    </Col>
-                </Row>
+                            <h5>Connect with Washers you can trust!</h5>
+                            <Row>
+                                <Col>
+                                    <Image src="https://d2zp5xs5cp8zlg.cloudfront.net/image-18279-800.jpg" className="unitImage"></Image>
+                                </Col>
+                                <Col>
+                                    <Row>
+                                        <Col><Image src={iconDialog} className="icon"></Image></Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                        <Image src={iconHeart} className="icon heart"></Image>
+                                        <Image src={iconLike} className="icon like"></Image>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+            <Row className="button-container">
+                <Col>
+                    <a onClick={handleShow} className="btn btn-outline btn-xl">Sign up now</a>
+                    <ModalContainer 
+                        show={show}
+                        onHide={handleClose}
+                        isRegistered={isRegistered}
+                        handleChangeIsRegistered={changeRegisterFlag}
+                    />
+                </Col>
+            </Row>
         </Container>
     </section>
     );
