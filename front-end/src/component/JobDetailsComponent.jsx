@@ -119,7 +119,7 @@ class JobDetailsComponent extends Component {
                                         <label>Price</label>
                                         <Field className="form-control" type="number" name="price" />
                                     </fieldset>
-                                    <button className="btn btn-success" type="submit">Save</button>
+                                    <button className="btn button-green" type="submit">Save</button>
                                 </Form>
                             )
                         }
