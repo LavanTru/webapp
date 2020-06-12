@@ -64,6 +64,8 @@ function TemperatureIcons(props){
                     </TemperatureIcon>
                 </>
             );
+        default: 
+        return(<><h4>Invalid temperature</h4></>)
     }
 
 }
