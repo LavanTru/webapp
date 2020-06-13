@@ -24,7 +24,7 @@ const CustomScheduler = (props) => {
             //Check cell against the availableHours of the washer
             const availableCell = (props.schedule.find(item => {
                 const itemTime = new Date(item).getTime()
-                return itemTime == dateTime.getTime()
+                return itemTime === dateTime.getTime()
             })) ? true : false;
             const color = (availableCell)? "greenBackground" : "pinkBackground";
             // prefix "data-" allows defining custom attributes that are available on the element. For example onClick acceses it via event.target.dataset
