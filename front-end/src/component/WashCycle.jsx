@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { OverlayTrigger, Tooltip , ButtonGroup, Button, ListGroup, Modal, Container} from 'react-bootstrap';
+import { OverlayTrigger, Tooltip , ButtonGroup, ListGroup, Modal, Container} from 'react-bootstrap';
 
 class WashCycle extends Component{
 
