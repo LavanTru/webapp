@@ -364,6 +364,13 @@ span.iconExtraNotes{
   overflow: hidden;
 }
 
+.rating-icon{
+  background-color: filter();
+  float: left;
+  width: 30px;
+  overflow: hidden;
+}
+
 .icon-text{
   font-size: 200px;
 }
