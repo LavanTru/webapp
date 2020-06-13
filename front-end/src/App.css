@@ -376,10 +376,13 @@ span.iconExtraNotes{
   padding: 15px;
   border: 10px solid white;
 }
+.border{
+  background-color: #15b1b7;
+}
 
 .schedule .time{
   text-align: center;
-  width: fit-content !important;
+  width: 70px;
 }
 .dashboard{
   text-align: center;

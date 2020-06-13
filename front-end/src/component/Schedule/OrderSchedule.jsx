@@ -98,49 +98,54 @@ class OrderSchedule extends Component {
                     <h2>Please select your schedule</h2>
                     <p >The times when Washer is available are highlighted in green.</p>
                     {this.state.alertMessage && <Alert variant="danger" >{this.state.alertMessage}</Alert>}
-                    <Accordion defaultActiveKey="0">
-                        <Card>
-                            <Accordion.Toggle as={Card.Header} eventKey="0">
-                                <Row>
-                                    <Col><h4>Drop off time</h4></Col>
-                                    {/* "PPp formats time as "05/29/1453, 12:00 AM" */}
-                                    <Col><p className="float-right">{this.state.dropOffDate ? format(this.state.dropOffDate, "PPp") : "Select time slot from the calendar"}</p></Col>
-                                </Row>
-                            </Accordion.Toggle>
-                            <Accordion.Collapse eventKey="0">
-                                <Card.Body>
+                    <Row>
+                        <Col className="pl-0">
+                            <Card>
+                                <Card.Header className="py-1 my-0">
+                                    <Row>
+                                        <Col md="auto" className="p-1"><h4 className="font-weight-bold">Drop off time</h4></Col>
+                                        {/* "PPp formats time as "05/29/1453, 12:00 AM" */}
+                                        <Col className="p-1 m-1"><p className="float-right m-0">{this.state.dropOffDate ? format(this.state.pickUpDate, "PPp") : "Select slot from the calendar"}</p></Col>
+                                    </Row>
+                                </Card.Header>
+                                <Card.Body className="p-2">
                                     <CustomScheduler
                                         schedule={this.state.schedule}
                                         onClick={this.handleDropOffDateChange}
                                         dateFormat={"dd/MM"}
                                         startDate={this.state.startDate}
+                                        activeDate={this.state.dropOffDate}
                                     />
                                 </Card.Body>
-                            </Accordion.Collapse>
+                            </Card>
+                        </Col>
 
-                            <Accordion.Toggle as={Card.Header} eventKey="1">
-                                <Row>
-                                    <Col><h4>Pick up time</h4></Col>
-                                    {/* "PPp formats time as "05/29/1453, 12:00 AM" */}
-                                    <Col><p className="float-right">{this.state.pickUpDate ? format(this.state.pickUpDate, "PPp") : "Select time slot from the calendar"}</p></Col>
-                                </Row>
-                            </Accordion.Toggle>
-                            <Accordion.Collapse eventKey="1">
-                                <Card.Body>
+                        <Col className="pr-0">
+                            <Card>
+                                <Card.Header className="py-1 my-0">
+                                    <Row>
+                                        <Col md="auto" className="p-1"><h4 className="font-weight-bold">Pick up time</h4></Col>
+                                        {/* "PPp formats time as "05/29/1453, 12:00 AM" */}
+                                        <Col className="p-1 m-1"><p className="float-right m-0">{this.state.pickUpDate ? format(this.state.pickUpDate, "PPp") : "Select slot from the calendar"}</p></Col>
+                                    </Row>
+                                </Card.Header>
+                                <Card.Body className="p-2">
                                     <CustomScheduler
                                         schedule={this.state.schedule}
                                         onClick={this.handlePickUpDateChange}
                                         dateFormat={"dd/MM"}
                                         startDate={this.state.startDate}
+                                        activeDate={this.state.pickUpDate}
+
                                     />
                                 </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
+                            </Card>
+                        </Col>
+                    </Row>
 
-                    </Accordion>
                     <Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button>
                 </Col>
-            </Container>
+            </Container >
 
         )
     }
