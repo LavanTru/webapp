@@ -13,7 +13,7 @@ import RegisterWasherDetails from './component/Register/RegisterWasherDetails';
 import RegisterWasheeDetails from './component/Register/RegisterWasheeDetails';
 import { SessionContext, getSessionCookie } from "./Session";
 import OrderComponent from './component/OrderComponent';
-import WasherProfile from './component/WasherProfile';
+import WasherProfile from './component/Profile/WasherProfile'
 import WasherOrderList from "./component/Order/WasherOrderList";
 import WasherOrderConfirm from "./component/Order/WasherOrderConfirm";
 import LandingPage from './component/LandingPage/LandingPage';
