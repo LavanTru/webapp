@@ -83,25 +83,19 @@ class LoginModal extends Component {
       })
       .catch((error) => {
         console.log(error);
-        if (!error.response) {
-          console.log(error);
-        }
-        else if (error.response.status === 401) {
-          // console.log("Username and password do not match");
-          // alert("Username and password do not match");
-          this.setState({
-            errorMessage: "Incorrect email or password."
-          })
-        }
-        else if (error.response.status === 404) {
-          console.log("Username does not exists");
-          // alert("Username does not exist");
-          this.setState({
-            errorMessage: "Incorrect email or password."
-          })
+        if (error.response) {
+          if (error.response.status === 401) {
+            this.setState({
+              errorMessage: "Incorrect email or password."
+            })
+          }
+          else if (error.response.status === 404) {
+            this.setState({
+              errorMessage: "Incorrect email or password."
+            })
+          }
         }
         else {
-          // console.log("Unknown error response status");
           this.setState({
             errorMessage: "Something went wrong. Try again."
           })

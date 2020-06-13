@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Alert } from 'reactstrap';
 import WasherDataService from '../service/WasherDataService';
 import SwitchComponent from './SwitchComponent';
-import { SessionContext } from "../Session";
+// import { SessionContext } from "../Session";
 import { Container, Button, Col } from "react-bootstrap";
 
 class WasherJobCapabilitiesComponent extends Component {
@@ -25,7 +25,7 @@ class WasherJobCapabilitiesComponent extends Component {
     }
 
     refreshWasherJobCapabilities() {
-        WasherDataService.retrieveWasher(this.context.id)
+        WasherDataService.retrieveWasher(this.props.location.state.user.id)
             .then(
                 response => {
                     this.setState({ washerCapabilities: response.data.jobCapabilities })
@@ -137,6 +137,6 @@ class WasherJobCapabilitiesComponent extends Component {
         )
     }
 }
-WasherJobCapabilitiesComponent.contextType = SessionContext;
+// WasherJobCapabilitiesComponent.contextType = SessionContext;
 
 export default WasherJobCapabilitiesComponent
