@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import ModalContainer from '../Modal/ModalContainer';
 import iconWashering from '../../asset/icon/water_30.svg';
 import iconEco from '../../asset/icon/eco.svg'
 import iconSchedule from '../../asset/icon/schedule.svg'
@@ -11,15 +10,9 @@ import iconHeart from '../../asset/icon/heart.svg';
 import iconLike from '../../asset/icon/like.svg';
 import device from '../../asset/image/iphone5.png'
 
-function Section() {
-    const [show, setShow] = useState(false);
-    const [isRegistered, setRegisteredFlag] = useState(false);
-    const [registerUserType, setRegisterUserType] = useState("");
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const changeRegisterFlag = () => setRegisteredFlag(!isRegistered);
-
+// Section offers a choise of Washer vs Washee to user. Used in landing page and registration flow. 
+// As buttons action depends on the context, this component needs two onClick methods as props.
+function Section(props) {
     return (
         <section className="info bg-info text-center" id="info">
             <Container>
@@ -83,16 +76,10 @@ function Section() {
                 </Row>
                 <Row className="button-container">
                     <Col>
-                        <a onClick={() =>{handleShow();setRegisterUserType("WASHER")}} className="btn btn-outline btn-xl">Sign up as Washer</a>
-                        <ModalContainer
-                            show={show}
-                            onHide={handleClose}
-                            isRegistered={isRegistered}
-                            handleChangeIsRegistered={changeRegisterFlag}
-                            registerUserType={registerUserType}/>
+                        <a onClick={props.onClickWasher} className="btn btn-outline btn-xl">Sign up as Washer</a>
                     </Col>
                     <Col>
-                        <a onClick={() =>{handleShow();setRegisterUserType("WASHEE")}} className="btn btn-outline btn-xl">Sign up as Washee</a>
+                        <a onClick={props.onClickWashee} className="btn btn-outline btn-xl">Sign up as Washee</a>
                     </Col>
                 </Row>
             </Container>
