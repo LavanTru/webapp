@@ -200,7 +200,8 @@ span.googleButtonText {
   margin: 16px;
 }
 .profile .header{
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid;
+  border-bottom-color: var(--lavantru-red);
   background: var(--lavantru-pink);
 }
 
@@ -215,7 +216,8 @@ span.googleButtonText {
 }
 
 .washerList .washerListItem{
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid;
+  border-bottom-color: var(--lavantru-red);
   color: var(--lavantru-green);
 }
 
@@ -256,7 +258,7 @@ width: 100% !important ;
   line-height: 28px;
 }
 .washerList .border-bottom{
-  border-bottom: 1px solid grey !important;
+  border-bottom: 1px solid #b8627d !important;
 }
  .sort-left{
   border: 1px solid;
@@ -334,7 +336,7 @@ span.iconExtraNotes{
   text-align: right;
 }
 .washerMap{
-  height:80vh;
+  height:60vh;
 }
 .washerOrWashee{
   text-align: center;
@@ -419,7 +421,8 @@ span.iconExtraNotes{
   text-align: left;
 }
 .washeeOrderList .item{
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid;
+  border-bottom-color: var(--lavantru-red);
   background: var(--lavantru-pink);
 }
 .washeeOrderList .image {
@@ -431,3 +434,7 @@ span.iconExtraNotes{
   object-fit: cover;
   margin: 12px;
  }
+
+.iw-content{
+  color: var(--lavantru-green);
+}

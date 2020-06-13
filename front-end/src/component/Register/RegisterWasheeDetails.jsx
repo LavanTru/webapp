@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Col, Button, Container } from "react-bootstrap";
 import WasheeDataService from "../../service/WasheeDataService";
-import { Link } from "react-router-dom";
 import { setSessionCookie } from "../../Session.js";
 import GeoCodeService from "../../service/GeoCodeService";
 
