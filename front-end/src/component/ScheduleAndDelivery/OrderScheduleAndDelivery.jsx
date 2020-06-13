@@ -26,7 +26,7 @@ class OrderSchedule extends Component {
         this.getWasherSchedule();
     }
     handleDropOffDateChange = (event) => {
-        if (event.target.dataset.availablecell == "true") {
+        if (event.target.dataset.availablecell === "true") {
             this.setState({ dropOffDate: new Date(event.target.id), alertMessage: "" });
         } else {
             this.setState({ alertMessage: "Washer is not available at the selected time" })

@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import WasherDataService from '../service/WasherDataService';
-import {
-  Container,
-  Col,
-  Row,
-  Card,
-  Button,
-  ListGroup,
-  Form
-} from "react-bootstrap";
+import { Container, Col, Row, Card, Button, ListGroup, Form } from "react-bootstrap";
 import QuantityControl from './QuantityControl';
 import OrderDataService from '../service/OrderDataService';
 import { Alert } from 'reactstrap';
@@ -18,7 +10,6 @@ import WashCycleService from '../service/WashCycleService';
 import TemperatureIcons from './TemperatureIcons';
 
 class OrderComponent extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -38,7 +29,6 @@ class OrderComponent extends Component {
     this.createOrder = this.createOrder.bind(this);
   }
   componentDidMount() {
-    console.log("washerid", this.props.location.state.washerId)
     this.getWashCycleData();
     this.getWasherData();
     if (this.state.program === '') {
@@ -50,14 +40,12 @@ class OrderComponent extends Component {
       .then(
         response => {
           this.setState({ washer: response.data })
-          console.log(this.state.washer)
         }
       )
     WasherDataService.getActiveJobs(this.state.washerId)
       .then(
         response => {
           this.setState({ jobs: response.data })
-          console.log(this.state.jobs)
         }
       )
   }
@@ -138,8 +126,11 @@ class OrderComponent extends Component {
         </Row>
       );
   }
-  
+
   render() {
+    // We filter the list of jobs because delivery option is chosen at schedule, not order component.
+    const filteredJobs = this.state.jobs.filter(job => job.job !== "Pickup and delivery");
+
     const bag = this.state.items.map(item => (
       <Row key={item.job + item.id}>
         <Col>{item.job}</Col>
@@ -167,7 +158,8 @@ class OrderComponent extends Component {
                     Select from {this.state.washer.firstName}'s services
                   </Card.Header>
                   <ListGroup variant="flush">
-                    {this.state.jobs.map(jobItem =>
+
+                    {filteredJobs.map(jobItem =>
                       <ListGroup.Item className="list-group-item" key={jobItem.id}>
                         <Card className="w-100">
                           <Card.Body>
@@ -184,7 +176,7 @@ class OrderComponent extends Component {
                             <Button className="button-pink" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
                           </Card.Body>
                         </Card>
-                      </ListGroup.Item>)
+                    </ListGroup.Item>)
                     }
                   </ListGroup>
                 </Card>
