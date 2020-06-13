@@ -9,6 +9,7 @@ class RegisterWashee extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            errorMessage: "",
             phoneNo: "",
             streetName: "",
             buildingNo: "",
@@ -20,7 +21,7 @@ class RegisterWashee extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSignUp = this.handleSignUp.bind(this);
     }
-    
+
     // Method to record the changes in the form in a component state variable. Need to have special case for checkbox as value cannot be read from checkbox.
     handleChange(event) {
         let value = event.target.name === "acceptsMarketingEmails" ? event.target.checked : event.target.value;
@@ -60,8 +61,8 @@ class RegisterWashee extends Component {
                         "firstName": response.data.firstName,
                         "email": response.data.email,
                         "userType": response.data.userType,
-                        "addresses":response.data.addresses,
-                        "image":response.data.image
+                        "addresses": response.data.addresses,
+                        "image": response.data.image
                     };
                     setSessionCookie(user);
                     // window.location.reload(false);
@@ -70,8 +71,18 @@ class RegisterWashee extends Component {
                     this.props.history.push("/");
                 }
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
+                if (error.response && error.response.status === 409) {
+                    this.setState({
+                        errorMessage: "A user with this e-mail already exists."
+                    })
+                }
+                else {
+                    this.setState({
+                        errorMessage: "Something went wrong. Try again."
+                    })
+                }
             });
     }
     render() {
@@ -122,6 +133,10 @@ class RegisterWashee extends Component {
                                 <Form.Check name="acceptsMarketingEmails" type="checkbox" label="I want to receive occasional marketing emails from LavanTru" />
                             </Form.Group>
                         </Form.Row>
+
+                        <p className="redError">
+                            {this.state.errorMessage}
+                        </p>
 
                         <Col sm={{ span: 4, offset: 4 }} >
                             <Button className="button-green mt-5" size="lg" block onClick={this.handleSignUp} >
