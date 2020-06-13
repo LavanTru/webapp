@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import WasheeDataService from '../service/WasheeDataService';
+import WasheeDataService from '../../service/WasheeDataService';
 
 class FavoriteIcon extends Component{
     constructor(props){
