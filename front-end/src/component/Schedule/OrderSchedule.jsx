@@ -114,6 +114,7 @@ class OrderSchedule extends Component {
                                         onClick={this.handleDropOffDateChange}
                                         dateFormat={"dd/MM"}
                                         startDate={this.state.startDate}
+                                        activeDate={this.state.dropOffDate}
                                     />
                                 </Card.Body>
                             </Accordion.Collapse>
@@ -132,6 +133,8 @@ class OrderSchedule extends Component {
                                         onClick={this.handlePickUpDateChange}
                                         dateFormat={"dd/MM"}
                                         startDate={this.state.startDate}
+                                        activeDate={this.state.pickUpDate}
+
                                     />
                                 </Card.Body>
                             </Accordion.Collapse>
