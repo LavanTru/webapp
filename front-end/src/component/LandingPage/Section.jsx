@@ -10,7 +10,7 @@ import iconHeart from '../../asset/icon/heart.svg';
 import iconLike from '../../asset/icon/like.svg';
 import device from '../../asset/image/iphone5.png'
 
-// Section offers a choise of Washer vs Washee to user. Used in landing page and registration flow. 
+// Section offers a choise of Washer vs Washee to user. Used in landing page and registration flow.
 // As buttons action depends on the context, this component needs two onClick methods as props.
 function Section(props) {
     return (
@@ -76,10 +76,10 @@ function Section(props) {
                 </Row>
                 <Row className="button-container">
                     <Col>
-                        <a onClick={props.onClickWasher} className="btn btn-outline btn-xl">Sign up as Washer</a>
+                        <Button onClick={props.onClickWasher} className="btn btn-outline btn-xl">Sign up as Washer</Button>
                     </Col>
                     <Col>
-                        <a onClick={props.onClickWashee} className="btn btn-outline btn-xl">Sign up as Washee</a>
+                        <Button onClick={props.onClickWashee} className="btn btn-outline btn-xl">Sign up as Washee</Button>
                     </Col>
                 </Row>
             </Container>
