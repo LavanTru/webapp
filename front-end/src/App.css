@@ -382,7 +382,7 @@ span.iconExtraNotes{
 
 .schedule .time{
   text-align: center;
-  width: fit-content !important;
+  width: 70px;
 }
 .dashboard{
   text-align: center;
