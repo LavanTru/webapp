@@ -27,7 +27,7 @@ function Section(props) {
                             </Col>
                         </Row>
                     </Col>
-                    <div class="vl"></div>
+                    <div className="vl"></div>
                     <Col>
                         <Row className="rolesDesc">
                             <Col>

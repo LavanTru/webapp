@@ -66,8 +66,8 @@ class RegisterWashee extends Component {
                     setSessionCookie(user);
                     // window.location.reload(false);
 
-                    // TODO change redirect to some default page
-                    this.props.history.push("/washers");
+                    // Here you can change what happens after successful registration
+                    this.props.history.push("/");
                 }
             })
             .catch(function (error) {

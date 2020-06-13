@@ -70,8 +70,7 @@ class RegisterWasher extends Component {
                     };
                     setSessionCookie(user);
 
-                    // here you can change what happens after successful registration
-                    
+                    // Here you can change what happens after successful registration  
                     this.props.history.push({
                         pathname: "/washerjobs",
                         state: { user }
