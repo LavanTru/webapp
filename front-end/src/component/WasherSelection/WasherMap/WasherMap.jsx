@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 
 const mapStyles = {
-    width: '100%',
-    height: "100%"
+    border: '1px solid #b8627d'
 };
 
 export class WasherMapContainer extends Component {
@@ -13,13 +12,11 @@ export class WasherMapContainer extends Component {
             <Map
                 google={this.props.google}
                 zoom={14}
-                // options={{streetViewControl: false}}
                 streetViewControl={false}
                 fullscreenControl={false}
                 mapTypeControl={false}
-                // style={mapStyles}
+                style={mapStyles}
                 initialCenter={{
-                    // Centered to Barcelona
                     lat: 41.3851,
                     lng: 2.1734
                 }}
@@ -47,9 +44,9 @@ export class WasherMapContainer extends Component {
                     visible={this.props.showingInfoWindow}
                     onClose={this.props.onInfoWindowClose}
                 >
-                    <div>
-                        <h4>{(this.props.activeMarker) ? this.props.activeMarker.name : ""}</h4>
-                    </div>
+                    {/* <div className="iw-content"> */}
+                        <h5 className="iw-content">{(this.props.activeMarker) ? this.props.activeMarker.name : ""}</h5>
+                    {/* </div>   */}
                 </InfoWindow>
             </Map>
 
