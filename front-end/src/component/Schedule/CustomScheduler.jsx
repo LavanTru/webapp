@@ -3,6 +3,7 @@ import { format } from "date-fns";
 
 // This component renders the scheduler for Washee to select the schedule from Washer's available schedules
 const CustomScheduler = (props) => {
+    console.log("activeTime",new Date(props.activeDate));
 
     const startDate = new Date(props.startDate);
     startDate.setMinutes(0);
@@ -26,9 +27,14 @@ const CustomScheduler = (props) => {
                 const itemTime = new Date(item).getTime()
                 return itemTime === dateTime.getTime()
             })) ? true : false;
-            const color = (availableCell)? "greenBackground" : "pinkBackground";
+            //Check cell against the active selected date
+            const activeTime = new Date(props.activeDate).getTime();
+            const activeCell = (dateTime.getTime() === activeTime) ? true : false;
+
+            const color = (availableCell) ? "greenBackground" : "pinkBackground";
+            const activeBorder = (activeCell) ? "border" : "";
             // prefix "data-" allows defining custom attributes that are available on the element. For example onClick acceses it via event.target.dataset
-            column.push(<td key={dateTime} id={dateTime} className={"box " + color} data-availableCell={availableCell}></td>);
+            column.push(<td key={dateTime} id={dateTime} className={"box " + color + " " + activeBorder} data-availableCell={availableCell}></td>);
         }
 
         rows.push(
