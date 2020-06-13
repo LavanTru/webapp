@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import WasherDataService from '../../../service/WasherDataService';
 import WasherList from "./WasherList";
 import { Container,Col } from "react-bootstrap";
 import { SessionContext } from "../../../Session";
