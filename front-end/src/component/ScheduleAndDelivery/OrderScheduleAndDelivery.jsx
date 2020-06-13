@@ -2,20 +2,21 @@ import CustomScheduler from './CustomScheduler';
 import React, { Component } from "react";
 import { Container, Col, Row, Card, Button, Alert } from "react-bootstrap";
 import WasherDataService from "../../service/WasherDataService";
-import OrderDataService from "../../service/OrderDataService";
 import { SessionContext } from "../../Session";
 import { format } from "date-fns";
 
-class OrderSchedule extends Component {
+class OrderScheduleAndDelivery extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            order: this.props.location.state.order,
             schedule: [],
             startDate: new Date(), //Calendar loads with today's date by default
             dropOffDate: "",
             pickUpDate: "",
             alertMessage: "",
-            deliveryByWashee: true
+            deliveryByWashee: true,
+            deliveryPrice: 0
         }
         this.handleOnClick = this.handleOnClick.bind(this);
         this.getWasherSchedule = this.getWasherSchedule.bind(this);
@@ -40,30 +41,33 @@ class OrderSchedule extends Component {
         }
     }
     getWasherSchedule() {
-        WasherDataService.retrieveWasher(this.props.location.state.washerId)
+        WasherDataService.retrieveWasher(this.state.order.washerId)
             .then(
                 response => {
-                    this.setState({ schedule: response.data.availableHours })
+                    // Find the price of delivery from Washer data
+                    const deliveryPrice = response.data.jobCapabilities.find((job) => job.job === "Pickup and delivery").price;
+                    this.setState({
+                        schedule: response.data.availableHours,
+                        deliveryPrice: deliveryPrice
+                    });
                 }
             )
     }
     handleOnClick() {
         if (this.state.pickUpDate && this.state.dropOffDate) {
-            // Update order in DB with new schedule related dates
-            let order = this.props.location.state.order;
+            // Update order with new schedule related dates and delivery info
+            let order = this.state.order;
             order.pickUpDate = this.state.pickUpDate;
             order.dropOffDate = this.state.dropOffDate;
-            OrderDataService.updateOrder(order)
-                .then((response) => {
-                    if (response.status === 200) {
-                        console.log("Order update successfull");
-
-                        // TODO: add redirecting to a new page
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            order.deliveryByWashee = this.state.deliveryByWashee;
+            // Update order total for delivery price
+            if (!order.deliveryByWashee) {
+                order.orderTotal = order.orderTotal + this.state.deliveryPrice;
+            }
+            this.props.history.push({
+                pathname: "/orderConfirmation",
+                state: { order }
+            });
         } else {
             this.setState({ alertMessage: "You need to select drop off and pick up times before you can continue" })
         }
@@ -152,5 +156,5 @@ class OrderSchedule extends Component {
         )
     }
 }
-OrderSchedule.contextType = SessionContext;
-export default OrderSchedule;
+OrderScheduleAndDelivery.contextType = SessionContext;
+export default OrderScheduleAndDelivery;

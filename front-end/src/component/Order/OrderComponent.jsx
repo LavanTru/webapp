@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import WasherDataService from '../service/WasherDataService';
+import WasherDataService from '../../service/WasherDataService';
 import { Container, Col, Row, Card, Button, ListGroup, Form } from "react-bootstrap";
-import QuantityControl from './QuantityControl';
-import OrderDataService from '../service/OrderDataService';
+import QuantityControl from '../QuantityControl';
 import { Alert } from 'reactstrap';
-import { SessionContext } from "../Session";
-import WashCycle from './WashCycle';
-import WashCycleService from '../service/WashCycleService';
-import TemperatureIcons from './TemperatureIcons';
+import { SessionContext } from "../../Session";
+import WashCycle from '../WashCycle';
+import WashCycleService from '../../service/WashCycleService';
+import TemperatureIcons from '../TemperatureIcons';
 
 class OrderComponent extends Component {
   constructor(props) {
@@ -26,7 +25,7 @@ class OrderComponent extends Component {
       temperature: 30
     }
     this.addItem = this.addItem.bind(this);
-    this.createOrder = this.createOrder.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
     this.getWashCycleData();
@@ -71,32 +70,25 @@ class OrderComponent extends Component {
       this.setState({ totalAmount: (this.state.totalAmount + this.state.amount) })
       this.setState({ orderTotal: (this.state.orderTotal + totalPrice) })
     }
-
   }
   handleChange = (event) => {
     this.setState({ notes: event.target.value }, () => console.log(this.state))
     console.log(this.state.notes)
   };
-  createOrder() {
+  handleClick() {
     let order = {
       washeeId: this.context.id, //washeeId comes from the logged in user
       washerId: this.state.washerId,
       notes: this.state.notes,
       washCycle: this.state.program,
       items: this.state.items,
-      temperature: this.state.temperature
+      temperature: this.state.temperature,
+      orderTotal: this.state.orderTotal
     }
-    OrderDataService.createOrder(order)
-      .then(
-        response => {
-          if (response.status === 200) {
-            this.setState({ message: `Your order has been sent.` });
-            this.props.history.push({
-              pathname: "/orderSchedule",
-              state: { washerId: this.state.washerId, order: response.data }
-            })
-          }
-        })
+    this.props.history.push({
+      pathname: "/orderSchedule",
+      state: { order }
+    });
   }
 
   displayWashCycle(job) {
@@ -176,7 +168,7 @@ class OrderComponent extends Component {
                             <Button className="button-pink" onClick={this.addItem(jobItem.id, jobItem.job, jobItem.price, this.state.amount)} >Add</Button>
                           </Card.Body>
                         </Card>
-                    </ListGroup.Item>)
+                      </ListGroup.Item>)
                     }
                   </ListGroup>
                 </Card>
@@ -205,7 +197,7 @@ class OrderComponent extends Component {
                     </Form.Group>
                   </Card.Body>
                   <Card.Footer className="text-muted">
-                    <Button className="button-pink" onClick={this.createOrder}>Checkout
+                    <Button className="button-pink" onClick={this.handleClick}>Checkout
                       your bag</Button>
                   </Card.Footer>
                 </Card>
