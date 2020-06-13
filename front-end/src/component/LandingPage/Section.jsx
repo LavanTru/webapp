@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import iconWashering from '../../asset/icon/water_30.svg';
 import iconEco from '../../asset/icon/eco.svg'
 import iconSchedule from '../../asset/icon/schedule.svg'
