@@ -17,6 +17,41 @@ class RegisterModal extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
+    // Method to record the changes in the form in a component state variable
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+    handleClick() {
+        if (this.state.password === this.state.matchingPassword) {
+            this.props.handleChangeIsRegistered();
+            this.props.onHide();
+            // If user has already selected their registration type on the landing page, they don't need to select any more
+            if (this.props.registerUserType === "WASHER") {
+                this.props.history.push({
+                    pathname: "/register/washer",
+                    state: { ...this.state }
+                });
+            }
+            else if (this.props.registerUserType === "WASHEE") {
+                this.props.history.push({
+                    pathname: "/register/washee",
+                    state: { ...this.state }
+                });
+            }
+            else {
+                this.props.history.push({
+                    pathname: "/register",
+                    state: { ...this.state }
+                });
+            }
+        }
+        else {
+            // TODO: show error for non-matching passwords
+        }
+        window.location.reload();// reload screen so landing page goes away
+    }
     render() {
         return (
             <Form className="m-4" onChange={this.handleChange}>
@@ -48,35 +83,12 @@ class RegisterModal extends Component {
                 <Button
                     className="button-green"
                     onClick={this.handleClick}
-                    block
-                >
+                    block>
                     Sign up
                 </Button>
             </Form>
         );
     }
-    // Method to record the changes in the form in a component state variable
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-    handleClick() {
-
-        if (this.state.password === this.state.matchingPassword) {
-            this.props.handleChangeIsRegistered();
-            this.props.history.push({
-                pathname: "/register",
-                state: { ...this.state }
-            });
-            this.props.onHide();
-        }
-        else {
-            // TODO: show error for non-matching passwords
-        }
-        window.location.reload();// reload screen so landing page goes away
-    }
-
 }
 
 export default withRouter(RegisterModal);

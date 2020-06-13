@@ -25,7 +25,7 @@ class ModalContainer extends Component {
             buttonLabel = "Sign up";
            
         } else {
-            loginScreen = <RegisterModal onHide={this.props.onHide} handleChangeIsRegistered={this.props.handleChangeIsRegistered}/>
+            loginScreen = <RegisterModal onHide={this.props.onHide} handleChangeIsRegistered={this.props.handleChangeIsRegistered} registerUserType={this.props.registerUserType}/>
             headerLabel = "Sign up";
             loginMessage = "Already registered?";
             buttonLabel = "Log in";
@@ -101,7 +101,6 @@ class ModalContainer extends Component {
                     .catch((error) => {
                         console.log(error);
                         if (error.response.status === 404) {
-                            // console.log(this);
                             console.log("Username does not exists");
                             this.setState({
                                 // TODO forward to registration flow

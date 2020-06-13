@@ -9,6 +9,7 @@ class RegisterWasher extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            errorMessage: "",
             phoneNo: "",
             payoutBankDetails: "",
             streetName: "",
@@ -68,17 +69,29 @@ class RegisterWasher extends Component {
                         "image": response.data.image
                     };
                     setSessionCookie(user);
-                    window.location.reload(false);
 
-                    // TODO change redirect to some default page
-                    this.props.history.push("/washerjobs");
+                    // Here you can change what happens after successful registration  
+                    this.props.history.push({
+                        pathname: "/washerjobs",
+                        state: { user }
+                      })
+                      window.location.reload(false);
                 }
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
+                if (error.response && error.response.status === 409) {
+                    this.setState({
+                        errorMessage: "A user with this e-mail already exists."
+                    })
+                }
+                else {
+                    this.setState({
+                        errorMessage: "Something went wrong. Try again."
+                    })
+                }
             });
     }
-
     render() {
         return (
             <Container fluid >
@@ -141,13 +154,13 @@ class RegisterWasher extends Component {
                                 <Form.Check name="acceptsMarketingEmails" type="checkbox" label="I want to receive occasional marketing emails from LavanTru" />
                             </Form.Group>
                         </Form.Row>
-
+                        <p className="redError">
+                            {this.state.errorMessage}
+                        </p>
                         <Col sm={{ span: 4, offset: 4 }} >
-                            <Link to={`/washerjobs`}>
-                                <Button className="button-green mt-5" size="lg" block onClick={this.handleSignUp} >
-                                    Sign up
+                            <Button className="button-green mt-5" size="lg" block onClick={this.handleSignUp} >
+                                Sign up
                             </Button>
-                            </Link>
                         </Col>
                     </Form>
                 </Col>
