@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import WasherMap from "./WasherMap/WasherMap";
 import { Container, Col, Row } from "react-bootstrap";
-import WasherDataService from '../../service/WasherDataService';
 import WasherList from "./WasherList/WasherList";
 import { SessionContext } from "../../Session";
 import WasheeDataService from '../../service/WasheeDataService';
@@ -53,10 +52,10 @@ class WasherSelectionContainer extends Component {
             <Container fluid>
                 <Col className="pt-4" md={{ span: 8, offset: 2 }}>
                 <Row>
-                    <Col md={6}>
+                    <Col md={7}>
                         <WasherList {...this.state} onClick={this.onMarkerClick}/>
                     </Col>
-                    <Col className="washerMap" md={6}>
+                    <Col className="washerMap pt-5" md={5}>
                         <WasherMap {...this.state} onMarkerClick={this.onMarkerClick} onInfoWindowClose={this.onInfoWindowClose} />
                     </Col>
                 </Row>
