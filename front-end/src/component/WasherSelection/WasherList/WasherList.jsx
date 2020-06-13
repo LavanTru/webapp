@@ -17,8 +17,6 @@ class WasherList extends Component {
         this.handleFilterByServicesClick = this.handleFilterByServicesClick.bind(this);
         this.handleFilterByFavouritesClick = this.handleFilterByFavouritesClick.bind(this);
     }
-
-
     handleSortClick() {
         this.setState({
             sortByClosest: !this.state.sortByClosest

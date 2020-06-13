@@ -1,6 +1,6 @@
 import CustomScheduler from './CustomScheduler';
 import React, { Component } from "react";
-import { Container, Col, Row, Card, Button, Accordion, Alert } from "react-bootstrap";
+import { Container, Col, Row, Card, Button, Alert } from "react-bootstrap";
 import WasherDataService from "../../service/WasherDataService";
 import OrderDataService from "../../service/OrderDataService";
 import { SessionContext } from "../../Session";
@@ -14,17 +14,17 @@ class OrderSchedule extends Component {
             startDate: new Date(), //Calendar loads with today's date by default
             dropOffDate: "",
             pickUpDate: "",
-            alertMessage: ""
+            alertMessage: "",
+            deliveryByWashee: true
         }
         this.handleOnClick = this.handleOnClick.bind(this);
         this.getWasherSchedule = this.getWasherSchedule.bind(this);
         this.changeToNextWeek = this.changeToNextWeek.bind(this);
+        this.handleDropOffByWasheeClick = this.handleDropOffByWasheeClick.bind(this);
     }
-
     componentDidMount() {
         this.getWasherSchedule();
     }
-
     handleDropOffDateChange = (event) => {
         if (event.target.dataset.availablecell == "true") {
             this.setState({ dropOffDate: new Date(event.target.id), alertMessage: "" });
@@ -32,15 +32,13 @@ class OrderSchedule extends Component {
             this.setState({ alertMessage: "Washer is not available at the selected time" })
         }
     }
-
     handlePickUpDateChange = (event) => {
-        if (event.target.dataset.availablecell == "true") {
+        if (event.target.dataset.availablecell === "true") {
             this.setState({ pickUpDate: new Date(event.target.id), alertMessage: "" });
         } else {
             this.setState({ alertMessage: "Washer is not available at the selected time" })
         }
     }
-
     getWasherSchedule() {
         WasherDataService.retrieveWasher(this.props.location.state.washerId)
             .then(
@@ -49,7 +47,6 @@ class OrderSchedule extends Component {
                 }
             )
     }
-
     handleOnClick() {
         if (this.state.pickUpDate && this.state.dropOffDate) {
             // Update order in DB with new schedule related dates
@@ -70,35 +67,41 @@ class OrderSchedule extends Component {
         } else {
             this.setState({ alertMessage: "You need to select drop off and pick up times before you can continue" })
         }
-
-
     }
-
     changeToNextWeek() {
         this.setState({
             startDate: this.addDays(this.state.startDate, 7)
         })
     }
-
     changeToPreviousWeek() {
         this.setState({
             startDate: this.addDays(this.state.startDate, -7)
         })
     }
-
     addDays(date, days) {
         let newDate = new Date(date);
         newDate.setDate(date.getDate() + days);
         return newDate;
     }
+    handleDropOffByWasheeClick() {
+        this.setState({
+            deliveryByWashee: !this.state.deliveryByWashee
+        })
+    }
     render() {
         return (
             <Container fluid className="lavantruGreen">
                 <Col md={{ span: 8, offset: 2 }} className="pt-4">
-                    <h2>Please select your schedule</h2>
-                    <p >The times when Washer is available are highlighted in green.</p>
+                    <h2>Schedule and delivery</h2>
+                    <p >Please select how and when you want your order to be completed. The times when Washer is available are highlighted in green.</p>
                     {this.state.alertMessage && <Alert variant="danger" >{this.state.alertMessage}</Alert>}
-                    <Row>
+                    <Col md={{ span: 8, offset: 3 }}>
+                        <Row>
+                            <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-left " + (this.state.deliveryByWashee ? "delivery-active" : "")}>You go to Washer</div>
+                            <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-right " + (!this.state.deliveryByWashee ? "delivery-active" : "")}> Washer comes to you +5€</div>
+                        </Row>
+                    </Col>
+                    <Row className="pt-4">
                         <Col className="pl-0">
                             <Card>
                                 <Card.Header className="py-1 my-0">
@@ -146,10 +149,8 @@ class OrderSchedule extends Component {
                     <Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button>
                 </Col>
             </Container >
-
         )
     }
-
 }
 OrderSchedule.contextType = SessionContext;
 export default OrderSchedule;
