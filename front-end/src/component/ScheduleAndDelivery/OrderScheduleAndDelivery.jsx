@@ -102,7 +102,7 @@ class OrderScheduleAndDelivery extends Component {
                     <Col md={{ span: 8, offset: 3 }}>
                         <Row>
                             <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-left " + (this.state.deliveryByWashee ? "delivery-active" : "")}>You go to Washer</div>
-                            <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-right " + (!this.state.deliveryByWashee ? "delivery-active" : "")}> Washer comes to you + {this.state.deliveryPrice}€</div>
+                            <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-right " + (!this.state.deliveryByWashee ? "delivery-active" : "")}> Washer comes to you +{this.state.deliveryPrice}€</div>
                         </Row>
                     </Col>
                     <Row className="pt-4">
@@ -112,7 +112,7 @@ class OrderScheduleAndDelivery extends Component {
                                     <Row>
                                         <Col md="auto" className="p-1"><h4 className="font-weight-bold">Drop off time</h4></Col>
                                         {/* "PPp formats time as "05/29/1453, 12:00 AM" */}
-                                        <Col className="p-1 m-1"><p className="float-right m-0">{this.state.dropOffDate ? format(this.state.pickUpDate, "PPp") : "Select slot from the calendar"}</p></Col>
+                                        <Col className="p-1 m-1"><p className="float-right m-0">{this.state.dropOffDate ? format(this.state.dropOffDate, "PPp") : "Select slot from the calendar"}</p></Col>
                                     </Row>
                                 </Card.Header>
                                 <Card.Body className="p-2">
