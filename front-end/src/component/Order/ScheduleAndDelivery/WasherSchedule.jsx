@@ -1,8 +1,8 @@
 import ScheduleSelector from 'react-schedule-selector';
 import React, { Component } from "react";
 import { Container, Col, Card, Button } from "react-bootstrap";
-import WasherDataService from "../../service/WasherDataService";
-import { SessionContext } from "../../Session";
+import WasherDataService from "../../../service/WasherDataService";
+import { SessionContext } from "../../../Session";
 
 class WasherSchedule extends Component {
     constructor(props) {
