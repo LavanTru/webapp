@@ -151,8 +151,11 @@ class OrderScheduleAndDelivery extends Component {
                             </Card>
                         </Col>
                     </Row>
-
-                    <Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button>
+                    <Row >
+                        <Col sm={{ span: 2, offset: 10 }}>
+                            <Button className="button-green m-3" onClick={this.handleOnClick}>Confirm</Button>
+                        </Col>
+                    </Row>
                 </Col>
             </Container >
         )
