@@ -23,6 +23,7 @@ import WasherSchedule from "./component/Schedule/WasherSchedule";
 import OrderSchedule from "./component/Schedule/OrderSchedule";
 import Dashboard from "./component/Dashboard/Dashboard"
 import FavoritesList from './component/FavoritesList';
+import Footer from './component/Footer.jsx/Footer';
 
 /**React Component representing the high-level structure of the application.
  * Routing is defined in this file.**/
@@ -48,6 +49,7 @@ class App extends Component {
     };
 
     return (
+      <>
       <div className="App">
         <SessionContext.Provider value={session}>
           <Router>
@@ -77,6 +79,8 @@ class App extends Component {
         </SessionContext.Provider>
 
       </div>
+      <Footer />
+      </>
     );
   }
 }
