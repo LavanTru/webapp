@@ -7,6 +7,8 @@ import { SessionContext } from "../../Session";
 import WashCycle from '../WashCycle';
 import WashCycleService from '../../service/WashCycleService';
 import TemperatureIcons from '../TemperatureIcons';
+import CustomStepper from "./CustomStepper";
+
 
 class OrderComponent extends Component {
   constructor(props) {
@@ -133,6 +135,7 @@ class OrderComponent extends Component {
     return (
       <Container fluid>
         <Col className="pt-4" md={{ span: 8, offset: 2 }}>
+        <CustomStepper activeStep={0}/>
           <Row>
             <Col className='orderHeader'>
               <h3>{this.state.washer.firstName}</h3>

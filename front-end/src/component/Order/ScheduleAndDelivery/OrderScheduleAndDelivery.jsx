@@ -1,9 +1,10 @@
 import CustomScheduler from './CustomScheduler';
 import React, { Component } from "react";
 import { Container, Col, Row, Card, Button, Alert } from "react-bootstrap";
-import WasherDataService from "../../service/WasherDataService";
-import { SessionContext } from "../../Session";
+import WasherDataService from "../../../service/WasherDataService";
+import { SessionContext } from "../../../Session";
 import { format } from "date-fns";
+import CustomStepper from "../CustomStepper";
 
 class OrderScheduleAndDelivery extends Component {
     constructor(props) {
@@ -96,6 +97,7 @@ class OrderScheduleAndDelivery extends Component {
         return (
             <Container fluid className="lavantruGreen">
                 <Col md={{ span: 8, offset: 2 }} className="pt-4">
+                    <CustomStepper activeStep={1} />
                     <h2>Schedule and delivery</h2>
                     <p >Please select how and when you want your order to be completed. The times when Washer is available are highlighted in green.</p>
                     {this.state.alertMessage && <Alert variant="danger" >{this.state.alertMessage}</Alert>}

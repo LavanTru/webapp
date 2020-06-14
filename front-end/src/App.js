@@ -21,7 +21,7 @@ import LandingPage from './component/LandingPage/LandingPage';
 import WasherSelectionContainer from './component/WasherSelection/WasherSelectionContainer';
 import WasherListContainer from './component/WasherSelection/WasherList/WasherListContainer';
 import WasherSchedule from "./component/ScheduleAndDelivery/WasherSchedule";
-import OrderScheduleAndDelivery from "./component/ScheduleAndDelivery/OrderScheduleAndDelivery";
+import OrderScheduleAndDelivery from "./component/Order/ScheduleAndDelivery/OrderScheduleAndDelivery";
 import Dashboard from "./component/Dashboard/Dashboard"
 import FavoritesList from './component/FavoritesList';
 
