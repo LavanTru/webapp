@@ -7,19 +7,17 @@ import com.lavantru.Register.model.Item;
 import com.lavantru.Register.model.Order;
 import com.lavantru.Register.model.Washee;
 import com.lavantru.Register.model.Washer;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.ListIterator;
+
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class OrderService implements IOrderService {
@@ -77,13 +75,18 @@ public class OrderService implements IOrderService {
   public List<WasherOrderListDto> getOrdersByWasherId(String id) {
     List<Order> orderList = orderDao.getOrdersByWasherId(id);
     List<WasherOrderListDto> washerOrderList = new ArrayList<>();
+    SimpleDateFormat formatter = new SimpleDateFormat("HH:mm, MMM dd");
 
     for (Order order : orderList) {
       WasherOrderListDto washerOrderListDto = new WasherOrderListDto(order);
       Washee washee = washeeService.getWasheeById(new ObjectId(order.getWasheeId()));
       washerOrderListDto.setWasheeFirstName(washee.getFirstName());
       washerOrderListDto.setWasheeImage(washee.getImage());
-      washerOrderList.add(washerOrderListDto);
+
+      //Format dates
+      String pickUp = formatter.format(order.getPickUpDate());
+      String dropOff = formatter.format(order.getDropOffDate());
+      washerOrderList.add(setDtoValues(order, washerOrderListDto,pickUp, dropOff));
     }
     return washerOrderList;
   }
@@ -93,15 +96,36 @@ public class OrderService implements IOrderService {
   public List<WasheeOrderListDto> getOrdersByWasheeId(String id) {
     List<Order> orderList = orderDao.getOrdersByWasheeId(id);
     List<WasheeOrderListDto> washeeOrderList = new ArrayList<>();
+    SimpleDateFormat formatter = new SimpleDateFormat("HH:mm, MMM dd");
 
     for (Order order : orderList) {
       WasheeOrderListDto washeeOrderListDto = new WasheeOrderListDto(order);
       Washer washer = washerService.getWasherById(new ObjectId(order.getWasherId()));
       washeeOrderListDto.setWasherFirstName(washer.getFirstName());
       washeeOrderListDto.setWasherImage(washer.getImage());
-      washeeOrderList.add(washeeOrderListDto);
+
+      //Format dates
+      String pickUp = formatter.format(order.getPickUpDate());
+      String dropOff = formatter.format(order.getDropOffDate());
+      washeeOrderList.add(setDtoValues(order, washeeOrderListDto, pickUp, dropOff));
     }
     return washeeOrderList;
+  }
+
+  private WasherOrderListDto setDtoValues(Order order, WasherOrderListDto washerOrderListDto, String pickUp, String dropOff) {
+    washerOrderListDto.setOrderTotal(order.getOrderTotal());
+    washerOrderListDto.setDeliveryByWashee(order.isDeliveryByWashee());
+    washerOrderListDto.setPickup(pickUp);
+    washerOrderListDto.setDropoff(dropOff);
+    return washerOrderListDto;
+  }
+
+  private WasheeOrderListDto setDtoValues(Order order, WasheeOrderListDto washeeOrderListDto, String pickUp, String dropOff) {
+    washeeOrderListDto.setOrderTotal(order.getOrderTotal());
+    washeeOrderListDto.setDeliveryByWashee(order.isDeliveryByWashee());
+    washeeOrderListDto.setPickup(pickUp);
+    washeeOrderListDto.setDropoff(dropOff);
+    return washeeOrderListDto;
   }
 
   @Override

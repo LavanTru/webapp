@@ -18,6 +18,10 @@ public class WasherOrderListDto {
   private LocalDateTime dateCompleted;
   private LocalDateTime dateRejected;
   private LocalDateTime dateConfirmed;
+  private String pickup;
+  private String dropoff;
+  private double orderTotal;
+  private boolean deliveryByWashee;
   @NotNull
   @NotEmpty
   private String washeeId;
@@ -157,5 +161,37 @@ public class WasherOrderListDto {
 
   public void setItems(List<Item> items) {
     this.items = items;
+  }
+
+  public String getPickup() {
+    return pickup;
+  }
+
+  public void setPickup(String pickup) {
+    this.pickup = pickup;
+  }
+
+  public String getDropoff() {
+    return dropoff;
+  }
+
+  public void setDropoff(String dropoff) {
+    this.dropoff = dropoff;
+  }
+
+  public double getOrderTotal() {
+    return orderTotal;
+  }
+
+  public void setOrderTotal(double orderTotal) {
+    this.orderTotal = orderTotal;
+  }
+
+  public boolean isDeliveryByWashee() {
+    return deliveryByWashee;
+  }
+
+  public void setDeliveryByWashee(boolean deliveryByWashee) {
+    this.deliveryByWashee = deliveryByWashee;
   }
 }

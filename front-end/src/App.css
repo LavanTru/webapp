@@ -239,6 +239,31 @@ span.googleButtonText {
   margin-right: 1rem;
 }
 
+.order {
+  color: var(--lavantru-green);
+}
+
+.order .header{
+  font-size: larger;
+  background-color: var(--lavantru-green);
+  color: var(--lavantru-pink);
+}
+
+.order .footer{
+  background-color: white;
+  color: var(--lavantru-pink);
+}
+
+.order .unitImage{
+  margin-left: 30px;
+  height: 100px;
+  width: 100px;
+}
+
+.order .btn{
+  float: right;
+}
+
 .priceCol{
   text-align: right;
   font-size: 1.3em;
