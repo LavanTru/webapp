@@ -378,7 +378,7 @@ span.iconExtraNotes{
   padding: 15px;
   border: 10px solid white;
 }
-.border{
+.activeCell{
   background-color: #15b1b7;
 }
 
@@ -416,7 +416,6 @@ span.iconExtraNotes{
   line-height: 18px;
   margin:0px -3px;
 }
-
 .washeeOrderList{
   text-align: left;
 }
@@ -434,7 +433,31 @@ span.iconExtraNotes{
   object-fit: cover;
   margin: 12px;
  }
-
+ .delivery-left{
+   width: 210px;
+  border: 1px solid;
+  border-color: var(--lavantru-red);
+  border-radius: 10px 0px 0px 10px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 28px;
+  padding: 4px 8px;
+  margin-left: 30px;
+}
+.delivery-right{
+  width: 210px;
+  border: 1px solid;
+  border-color: var(--lavantru-red);
+  border-radius: 0px 10px 10px 0px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 28px;
+  padding: 4px 8px;
+}
+.delivery-active{
+  background-color: var(--lavantru-red);
+  color: var(--lavantru-pink);
+}
 .iw-content{
   color: var(--lavantru-green);
 }
