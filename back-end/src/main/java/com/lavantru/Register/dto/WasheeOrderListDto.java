@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 //This DTO is used to retrieve order together with Washer details in order to reduce front-end calls to back-end for each washer.
 public class WasheeOrderListDto {
+
   private UUID id;
   private String status;
   private String notes;
@@ -35,14 +36,16 @@ public class WasheeOrderListDto {
   @NotEmpty
   private List<Item> items;
   private Address address;
+  private String washCycle;
+  private String temperature;
 
   public WasheeOrderListDto(UUID id, String status, String notes, LocalDateTime dateCreated,
       LocalDateTime dateCompleted, LocalDateTime dateRejected, LocalDateTime dateConfirmed,
-      @NotNull @NotEmpty String washerId,
-      String washerFirstName,
-      String washerImage,
+      String pickup, String dropoff, double orderTotal, boolean deliveryByWashee,
+      @NotNull @NotEmpty String washerId, String washerFirstName, String washerImage,
       @NotNull @NotEmpty String washeeId,
-      @NotNull @NotEmpty List<Item> items) {
+      @NotNull @NotEmpty List<Item> items, Address address, String washCycle,
+      String temperature) {
     this.id = id;
     this.status = status;
     this.notes = notes;
@@ -50,13 +53,21 @@ public class WasheeOrderListDto {
     this.dateCompleted = dateCompleted;
     this.dateRejected = dateRejected;
     this.dateConfirmed = dateConfirmed;
+    this.pickup = pickup;
+    this.dropoff = dropoff;
+    this.orderTotal = orderTotal;
+    this.deliveryByWashee = deliveryByWashee;
     this.washerId = washerId;
     this.washerFirstName = washerFirstName;
     this.washerImage = washerImage;
     this.washeeId = washeeId;
     this.items = items;
+    this.address = address;
+    this.washCycle = washCycle;
+    this.temperature = temperature;
   }
-  public WasheeOrderListDto(Order order){
+
+  public WasheeOrderListDto(Order order) {
     this.id = order.getId();
     this.status = order.getStatus();
     this.notes = order.getNotes();
@@ -67,6 +78,8 @@ public class WasheeOrderListDto {
     this.washerId = order.getWasherId();
     this.washeeId = order.getWasheeId();
     this.items = order.getItems();
+    this.washCycle = order.getWashCycle();
+    this.temperature = order.getTemperature();
   }
 
   public UUID getId() {
@@ -203,5 +216,21 @@ public class WasheeOrderListDto {
 
   public void setAddress(Address address) {
     this.address = address;
+  }
+
+  public String getWashCycle() {
+    return washCycle;
+  }
+
+  public void setWashCycle(String washCycle) {
+    this.washCycle = washCycle;
+  }
+
+  public String getTemperature() {
+    return temperature;
+  }
+
+  public void setTemperature(String temperature) {
+    this.temperature = temperature;
   }
 }

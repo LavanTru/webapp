@@ -35,14 +35,16 @@ public class WasherOrderListDto {
   @NotEmpty
   private List<Item> items;
   private Address address;
+  private String washCycle;
+  private String temperature;
 
   public WasherOrderListDto(UUID id, String status, String notes, LocalDateTime dateCreated,
       LocalDateTime dateCompleted, LocalDateTime dateRejected, LocalDateTime dateConfirmed,
-      @NotNull @NotEmpty String washeeId,
-      String washeeFirstName,
-      String washeeImage,
+      String pickup, String dropoff, double orderTotal, boolean deliveryByWashee,
+      @NotNull @NotEmpty String washeeId, String washeeFirstName, String washeeImage,
       @NotNull @NotEmpty String washerId,
-      @NotNull @NotEmpty List<Item> items) {
+      @NotNull @NotEmpty List<Item> items, Address address, String washCycle,
+      String temperature) {
     this.id = id;
     this.status = status;
     this.notes = notes;
@@ -50,11 +52,18 @@ public class WasherOrderListDto {
     this.dateCompleted = dateCompleted;
     this.dateRejected = dateRejected;
     this.dateConfirmed = dateConfirmed;
+    this.pickup = pickup;
+    this.dropoff = dropoff;
+    this.orderTotal = orderTotal;
+    this.deliveryByWashee = deliveryByWashee;
     this.washeeId = washeeId;
     this.washeeFirstName = washeeFirstName;
     this.washeeImage = washeeImage;
     this.washerId = washerId;
     this.items = items;
+    this.address = address;
+    this.washCycle = washCycle;
+    this.temperature = temperature;
   }
 
   public WasherOrderListDto(Order order) {
@@ -68,6 +77,8 @@ public class WasherOrderListDto {
     this.washeeId = order.getWasheeId();
     this.washerId = order.getWasherId();
     this.items = order.getItems();
+    this.washCycle = order.getWashCycle();
+    this.temperature = order.getTemperature();
   }
 
   public UUID getId() {
@@ -204,5 +215,21 @@ public class WasherOrderListDto {
 
   public void setAddress(Address address) {
     this.address = address;
+  }
+
+  public String getWashCycle() {
+    return washCycle;
+  }
+
+  public void setWashCycle(String washCycle) {
+    this.washCycle = washCycle;
+  }
+
+  public String getTemperature() {
+    return temperature;
+  }
+
+  public void setTemperature(String temperature) {
+    this.temperature = temperature;
   }
 }
