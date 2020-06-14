@@ -102,7 +102,7 @@ class OrderScheduleAndDelivery extends Component {
                     <Col md={{ span: 8, offset: 3 }}>
                         <Row>
                             <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-left " + (this.state.deliveryByWashee ? "delivery-active" : "")}>You go to Washer</div>
-                            <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-right " + (!this.state.deliveryByWashee ? "delivery-active" : "")}> Washer comes to you +5€</div>
+                            <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-right " + (!this.state.deliveryByWashee ? "delivery-active" : "")}> Washer comes to you + {this.state.deliveryPrice}€</div>
                         </Row>
                     </Col>
                     <Row className="pt-4">
