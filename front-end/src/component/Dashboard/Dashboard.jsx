@@ -7,7 +7,7 @@ const Dashboard = (props) => {
     const session = getSessionCookie();
     
     if (session.userType === "WASHER") {
-        return <WasherDashboard />
+        return <WasherDashboard history={props.history} washerId={session.id}/>
     } else if (session.userType === "WASHEE") {
         return <WasheeDashboard />
     }
