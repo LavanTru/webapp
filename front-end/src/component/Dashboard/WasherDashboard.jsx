@@ -6,8 +6,10 @@ import Fashion from "../../asset/icon/fashion.svg";
 import Star from "../../asset/icon/star.svg";
 import Washer from "../../asset/icon/washer.svg";
 import User from "../../asset/icon/user.svg";
+import Schedule from "../../asset/icon/schedule.svg";
 import BadgeCompletedWash from "../../asset/icon/badge_completed_wash.svg";
 import BadgeTopWasher from "../../asset/icon/badge_top_washer.svg";
+import BadgeFasterResppnse from "../../asset/icon/badge_faster_response.svg"
 
 class WasherDashboard extends Component {
 
@@ -61,13 +63,16 @@ class WasherDashboard extends Component {
             }
         }
 
+        let washerId = this.props.washerId;
+        console.log("washerid: ", this.props.washerId);
+
         return (
             // Cards data should be taken from actual data
             <Container className="dashboard" fluid>
                 <Col md={{ span: 8, offset: 2 }} className="pt-5">
                     <Row >
                         <Col >
-                            <Row className="justify-content-md-center">
+                            <Row className="justify-content-md-end">
                                 <Card className="card">
                                     <Card.Header className="header">This week earnings</Card.Header>
                                     <Card.Body>
@@ -78,7 +83,7 @@ class WasherDashboard extends Component {
                             </Row>
                         </Col>
                         <Col >
-                            <Row className="justify-content-md-center">
+                            <Row className="justify-content-md-end">
                                 <Card className="card">
                                     <Card.Header className="header">Completed washes</Card.Header>
                                     <Card.Body>
@@ -89,7 +94,7 @@ class WasherDashboard extends Component {
                             </Row>
                         </Col>
                         <Col>
-                            <Row className="justify-content-md-center">
+                            <Row className="justify-content-md-end">
                                 <Card className="card">
                                     <Card.Header className="header">Customer satisfaction</Card.Header>
                                     <Card.Body>
@@ -99,9 +104,20 @@ class WasherDashboard extends Component {
                                 </Card>
                             </Row>
                         </Col>
+                        <Col>
+                            <Row className="justify-content-md-end">
+                                <Card className="card clickable" 
+                                        onClick={event =>{this.props.history.push(`/washerSchedule`)}}>
+                                    <Card.Header className="header">Schedule</Card.Header>
+                                    <Card.Body>
+                                        <img className="image float-center" src={Schedule} alt="service_settings" />
+                                    </Card.Body>
+                                </Card>
+                            </Row>
+                        </Col>
                     </Row>
                     <Row className="mt-5">
-                        <Col>
+                        <Col md={8}>
                             <h4>Monthly earnings</h4>
                             <Bar
                                 height={150}
@@ -110,16 +126,23 @@ class WasherDashboard extends Component {
                             />
                         </Col>
                         <Col md={4}>
-                            <Row className="justify-content-md-center">
-                                <Card className="card clickable">
+                            <Row className="justify-content-md-end">
+                                <Card className="card clickable" 
+                                        onClick={event =>{
+                                            this.props.history.push({
+                                            pathname: "/washerjobs",
+                                            state: { washerId }
+                                            })
+                                        }}>
+                                         {/* state={console.log("state washer",this.props.washer)}> */}
                                     <Card.Header className="header">Service settings</Card.Header>
                                     <Card.Body>
                                         <img className="image float-center" src={Washer} alt="service_settings" />
                                     </Card.Body>
                                 </Card>
                             </Row>
-                            <Row className="mt-3 justify-content-md-center">
-                                <Card className="card clickable">
+                            <Row className="mt-3 justify-content-md-end">
+                                <Card className="card clickable mt-4">
                                     <Card.Header className="header">Profile info</Card.Header>
                                     <Card.Body>
                                         <img className="image float-center" src={User} alt="profile_info" />
@@ -128,7 +151,7 @@ class WasherDashboard extends Component {
                             </Row>
                         </Col>
                     </Row>
-                    <Row className="mt-3"><h4>Badges</h4></Row>
+                    <Row className="my-4 justify-content-md-center"><h4>Badges</h4></Row>
                     <Row>
                         <Col>
                             <img src={BadgeCompletedWash} alt="Completed wash badge" />
@@ -137,6 +160,10 @@ class WasherDashboard extends Component {
                         <Col>
                             <img src={BadgeTopWasher} alt="Top washer badge" />
                             <h6>Best rated washer</h6>
+                        </Col>
+                        <Col>
+                            <img src={BadgeFasterResppnse} alt="Fast response" />
+                            <h6>Fast response</h6>
                         </Col>
                     </Row>
                 </Col>
