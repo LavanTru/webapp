@@ -26,4 +26,8 @@ public interface IOrderService {
   public List<WasheeOrderListDto> getOrdersByWasheeId(String id);
 
   public Order updateOrder(Order order);
+
+  public WasherOrderListDto getWasherOrderListDtoBy(UUID id);
+
+  public WasheeOrderListDto getWasheeOrderListDtoBy(UUID id);
 }

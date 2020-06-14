@@ -1,5 +1,6 @@
 package com.lavantru.Register.dto;
 
+import com.lavantru.Register.model.Address;
 import com.lavantru.Register.model.Item;
 import com.lavantru.Register.model.Order;
 import java.time.LocalDateTime;
@@ -33,6 +34,7 @@ public class WasheeOrderListDto {
   @NotNull
   @NotEmpty
   private List<Item> items;
+  private Address address;
 
   public WasheeOrderListDto(UUID id, String status, String notes, LocalDateTime dateCreated,
       LocalDateTime dateCompleted, LocalDateTime dateRejected, LocalDateTime dateConfirmed,
@@ -193,5 +195,13 @@ public class WasheeOrderListDto {
 
   public void setDeliveryByWashee(boolean deliveryByWashee) {
     this.deliveryByWashee = deliveryByWashee;
+  }
+
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
   }
 }

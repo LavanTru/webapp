@@ -132,4 +132,38 @@ public class OrderService implements IOrderService {
   public Order updateOrder(Order order) {
     return orderDao.updateOrder(order);
   }
+
+  @Override
+  public WasherOrderListDto getWasherOrderListDtoBy(UUID id) {
+    Order order = orderDao.getOrderById(id).orElse(null);
+    SimpleDateFormat formatter = new SimpleDateFormat("HH:mm, MMM dd");
+
+    WasherOrderListDto washerOrderListDto = new WasherOrderListDto(order);
+    Washee washee = washeeService.getWasheeById(new ObjectId(order.getWasheeId()));
+    washerOrderListDto.setWasheeFirstName(washee.getFirstName());
+    washerOrderListDto.setWasheeImage(washee.getImage());
+    washerOrderListDto.setAddress(washee.getAddresses().get(0));
+
+    //Format dates
+    String pickUp = formatter.format(order.getPickUpDate());
+    String dropOff = formatter.format(order.getDropOffDate());
+    return setDtoValues(order, washerOrderListDto,pickUp, dropOff);
+  }
+
+  @Override
+  public WasheeOrderListDto getWasheeOrderListDtoBy(UUID id) {
+    Order order = orderDao.getOrderById(id).orElse(null);
+    SimpleDateFormat formatter = new SimpleDateFormat("HH:mm, MMM dd");
+
+    WasheeOrderListDto washeeOrderListDto = new WasheeOrderListDto(order);
+    Washer washer = washerService.getWasherById(new ObjectId(order.getWasherId()));
+    washeeOrderListDto.setWasherFirstName(washer.getFirstName());
+    washeeOrderListDto.setWasherImage(washer.getImage());
+    washeeOrderListDto.setAddress(washer.getAddresses().get(0));
+
+    //Format dates
+    String pickUp = formatter.format(order.getPickUpDate());
+    String dropOff = formatter.format(order.getDropOffDate());
+    return setDtoValues(order, washeeOrderListDto,pickUp, dropOff);
+  }
 }
