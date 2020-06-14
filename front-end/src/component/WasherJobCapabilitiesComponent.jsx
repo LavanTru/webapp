@@ -25,7 +25,7 @@ class WasherJobCapabilitiesComponent extends Component {
     }
 
     refreshWasherJobCapabilities() {
-        WasherDataService.retrieveWasher(this.props.location.state.user.id)
+        WasherDataService.retrieveWasher(this.props.location.state.washerId)
             .then(
                 response => {
                     this.setState({ washerCapabilities: response.data.jobCapabilities })
@@ -58,7 +58,7 @@ class WasherJobCapabilitiesComponent extends Component {
     };
 
     updateWasherJobCapabilitiesClicked() {
-        WasherDataService.updateWasherJobCapabilities(this.context.id, this.state.washerCapabilities)
+        WasherDataService.updateWasherJobCapabilities(this.props.location.state.washerId, this.state.washerCapabilities)
             .then(
                 response => {
                     if (response.status === 200) {

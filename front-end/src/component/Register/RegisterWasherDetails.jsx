@@ -58,9 +58,10 @@ class RegisterWasher extends Component {
             .then((response) => {
                 if (response.status === 200) {
                     console.log("Registration successful");
+                    let washerId = response.data.id;
                     const user = {
                         // Add here more attributes to be stored in the cookies if needed
-                        "id": response.data.id,
+                        "washerId": response.data.id,
                         "firstName": response.data.firstName,
                         "lastName": response.data.lastName,
                         "email": response.data.email,
@@ -72,7 +73,7 @@ class RegisterWasher extends Component {
                     // Here you can change what happens after successful registration  
                     this.props.history.push({
                         pathname: "/washerjobs",
-                        state: { user }
+                        state: { washerId }
                       })
                       window.location.reload(false);
                 }
