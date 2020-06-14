@@ -132,23 +132,18 @@ class OrderComponent extends Component {
       </Row>
     ))
     return (
-      <Container fluid>
+      <Container fluid className="order">
         <Col className="pt-4" md={{ span: 8, offset: 2 }}>
         <CustomStepper activeStep={0}/>
           <Row>
-            <Col className='orderHeader'>
-              <h3>{this.state.washer.firstName}</h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col className='orderHeader'><p>{this.state.washer.aboutMe}</p>
-            </Col>
+              <img className="unitImage" src={this.state.washer.image} alt="profile_picture" />
+              <h3 class="mt-5">{this.state.washer.firstName}</h3>
           </Row>
           <Col>
             <Row className="mt-2">
               <Col md={6}>
                 <Card className="card w-100">
-                  <Card.Header>
+                  <Card.Header className="header">
                     Select from {this.state.washer.firstName}'s services
                   </Card.Header>
                   <ListGroup variant="flush">
@@ -177,7 +172,7 @@ class OrderComponent extends Component {
               </Col>
               <Col>
                 <Card className="card w-100" >
-                  <Card.Header className="card-header">
+                  <Card.Header className="card-header header">
                     Your bag summary
                   </Card.Header>
                   <Card.Body>
@@ -198,7 +193,7 @@ class OrderComponent extends Component {
                         onChange={this.handleChange}></Form.Control>
                     </Form.Group>
                   </Card.Body>
-                  <Card.Footer className="text-muted">
+                  <Card.Footer className="text-muted footer">
                     <Button className="button-pink" onClick={this.handleClick}>Checkout
                       your bag</Button>
                   </Card.Footer>
