@@ -325,7 +325,7 @@ width: 100% !important ;
   background-color: #15b1b7;
 }
 span.iconExtraNotes{
-  background: url("./asset/extra_notes.svg") transparent no-repeat;
+  background: url("./asset/icon/extra_notes.svg") transparent no-repeat;
   display: inline-block;
   vertical-align: middle;
   width: 42px;
@@ -496,4 +496,13 @@ span.iconExtraNotes{
 }
 .iw-content{
   color: var(--lavantru-green);
+}
+.washerOrderDetails .icon{
+  height: 30px;
+  width: 30px;
+  margin: 7px 10px;
+}
+.washerOrderDetails .rowText{
+  padding: 8px 0px;
+margin: 0px
 }

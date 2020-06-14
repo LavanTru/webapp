@@ -1,69 +1,29 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Card, Button } from "react-bootstrap";
 import OrderDataService from "../../service/OrderDataService"
-import iconExtraNotes from "../../asset/extra_notes.svg";
+import { format } from "date-fns";
+import ExtraNotes from "../../asset/icon/extra_notes.svg";
+import Fashion from "../../asset/icon/fashion.svg";
+import Location from "../../asset/icon/location.svg"
+import Delivery from "../../asset/icon/delivery.svg"
+import CreditCard from "../../asset/icon/credit_card.svg"
+
 
 class WasherOrderConfirm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             orderId: this.props.match.params.id,
-            status: "",
-            notes: "",
-            // having empty date field crashes the render
-            dateCreated: new Date(),
-            washeeId: "",
-            items: [],
-            totalAmount: 0,
-            orderTotal: 0
+            order: {
+                items: []
+            }
         }
         this.handleConfirmButton = this.handleConfirmButton.bind(this);
         this.handleRejectButton = this.handleRejectButton.bind(this);
     }
 
-
     componentDidMount() {
         this.refreshOrderDetails();
-    }
-
-    render() {
-        const bag = this.state.items.map(item => (
-            < Row key={item.job + item.id} >
-                <Col>{item.job}</Col>
-                <Col>{item.amount}</Col>
-                <Col>€{item.totalPrice}</Col>
-            </Row >
-        ));
-
-        return (
-            <Container>
-                <Col className="mt-5" md={{ span: 6, offset: 3 }} >
-                    <Card>
-                        {/* <Card.Header> Request from {this.state.washeeId}</Card.Header> */}
-                        <Card.Header> Request details</Card.Header>
-                        <Card.Body>
-                            {bag}
-                            <Row className="mt-2">
-                                <Col><b>Total</b></Col>
-                                <Col><b>{this.state.totalAmount}</b></Col>
-                                <Col><b>€{this.state.orderTotal}</b></Col>
-                            </Row>
-                            <Card.Text className="mt-3">
-                                <img className="mr-2" src={iconExtraNotes} alt="extra notes" height="30px" width="30px" />
-                                "{this.state.notes}"
-                            </Card.Text>
-                            <Card.Text>
-                                <i> Request created {new Intl.DateTimeFormat("en-GB", { year: "numeric", month: "long", day: "2-digit", hour: 'numeric', minute: 'numeric' }).format(new Date(this.state.dateCreated))}</i>
-                            </Card.Text>
-
-                        </Card.Body>
-                        <Card.Footer>
-                            {this.renderFooter()}
-                        </Card.Footer>
-                    </Card>
-                </Col>
-            </Container>
-        );
     }
     renderFooter() {
         if (this.state.status !== "NEW") {
@@ -78,40 +38,107 @@ class WasherOrderConfirm extends Component {
             )
         }
     }
-
     refreshOrderDetails() {
         OrderDataService.getOrderById(this.state.orderId)
             .then(
                 response => {
                     this.setState({
-                        status: response.data.status,
-                        notes: response.data.notes,
-                        dateCreated: response.data.dateCreated,
-                        washeeId: response.data.washeeId,
-                        items: response.data.items
+                        order: response.data
                     })
                 }
-            ).then(
-                () => { this.calculateTotals() }
             )
     }
-
     handleConfirmButton() {
         OrderDataService.confirmOrder(this.state.orderId);
-        this.setState({status:"CONFIRMED"});
+        this.setState({ status: "CONFIRMED" });
     }
-
     handleRejectButton() {
         OrderDataService.rejectOrder(this.state.orderId);
-        this.setState({status:"REJECTED"});
+        this.setState({ status: "REJECTED" });
     }
-    calculateTotals() {
-        this.state.items.map(item => (
-            this.setState({
-                orderTotal: (this.state.orderTotal + item.totalPrice),
-                totalAmount: (this.state.totalAmount + item.amount)
-            })
-        ));
+    renderTemperatureAndWashCycle(job) {
+        if (job.job === "Ironing")
+            return (
+                <>
+                    <Row className="ml-5">{this.state.order.washCycle}</Row>
+                    <Row className="ml-5">{this.state.order.temperature}</Row>
+                </>
+            )
+    }
+    renderDelivery() {
+        let deliveryText;
+        if (this.state.order.deliveryByWashee) {
+            deliveryText = "Washee comes to you"
+            
+        } else {
+            deliveryText = "You go to Washee"
+        }
+        return (
+            <>
+                <Row>
+                    <img className="icon float-left" src={Delivery} alt="Delivery details" />
+                    <h6 className="rowText">{deliveryText}</h6>
+                </Row>
+                <Row className="ml-3">
+                    <p>Receive laundry at {format(new Date(this.state.order.dropOffDate), "kk:mm, MMM d")}</p>
+                </Row>
+                <Row className="ml-3">
+                    <p>Give laundry at {format(new Date(this.state.order.pickUpDate), "kk:mm, MMM d")}</p>
+                </Row>
+            </>
+        )
+    }
+
+    render() {
+        return (
+            <Container className="washerOrderDetails" fluid>
+                <Col md={{ span: 8, offset: 2 }} className="pt-4">
+                    <h4 className="text-center">Order summary</h4>
+                    <Card>
+                        <Card.Header>
+                            <Col>
+                                <img className="profileImage" src={this.state.order.washeeImage} alt="Washee profile" />
+                            </Col>
+                            <Col>
+                                <Row><h6>{this.state.order.washeeFirstName}</h6></Row>
+                                <Row><h4>{this.state.order.orderTotal}</h4></Row>
+                            </Col>
+                        </Card.Header>
+
+                        <Card.Body>
+                            <Row>
+                                <img className="icon float-left" src={Fashion} alt="Order details" />
+                                <h6 className="rowText">Order details</h6>
+                            </Row>
+                            {this.state.order.items.map(item => (
+                                <>
+                                    <Row>
+                                        <p className="ml-3">- {item.job}</p>
+                                    </Row>
+                                    {this.renderTemperatureAndWashCycle(item)}
+                                </>
+                            ))}
+                            {this.renderDelivery()}
+                            <Row>
+                                <img className="icon float-left" src={Location} alt="Location details" />
+                                <h6 className="rowText">Address data</h6>
+                            </Row>
+                            <Row>
+                                <img className="icon float-left" src={CreditCard} alt="Payment option details" />
+                                <h6 className="rowText">MC **** 1234</h6>
+                            </Row>
+                            <Row>
+                                <img className="icon float-left" src={ExtraNotes} alt="Extra notes" />
+                                <p className="rowText">{this.state.order.notes}</p>
+                            </Row>
+                        </Card.Body>
+                        <Card.Footer>
+                            {this.renderFooter()}
+                        </Card.Footer>
+                    </Card>
+                </Col>
+            </Container>
+        );
     }
 }
 
