@@ -7,6 +7,7 @@ class OrderConfirmation extends Component {
         super(props)
         this.state = {
         }
+        this.createOrder = this.createOrder.bind(this);
     }
     createOrder() {
         OrderDataService.createOrder(this.props.location.state.order)
@@ -15,9 +16,9 @@ class OrderConfirmation extends Component {
                 console.log("Order creation successful");
 
                 // Here you can change what happens after successful order creation  
-                this.props.history.push({
-                    pathname: "/washerjobs"
-                  })
+                // this.props.history.push({
+                //     pathname: "/washerjobs"
+                //   })
             }
         })
         .catch((error) => {
