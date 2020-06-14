@@ -6,9 +6,8 @@ import { Alert } from 'reactstrap';
 import { SessionContext } from "../../Session";
 import WashCycle from '../WashCycle';
 import WashCycleService from '../../service/WashCycleService';
-import TemperatureIcons from '../TemperatureIcons';
 import CustomStepper from "./CustomStepper";
-
+import TemperatureIcons from './IconsComponents/TemperatureIcons';
 
 class OrderComponent extends Component {
   constructor(props) {

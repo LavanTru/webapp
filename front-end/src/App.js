@@ -14,7 +14,7 @@ import RegisterWasheeDetails from './component/Register/RegisterWasheeDetails';
 import { SessionContext, getSessionCookie } from "./Session";
 import OrderComponent from './component/Order/OrderComponent';
 import OrderConfirmation from './component/Order/OrderConfirmation';
-import WasherProfile from './component/WasherProfile';
+import WasherProfile from './component/Profile/WasherProfile'
 import WasherOrderList from "./component/Order/WasherOrderList";
 import WasherOrderConfirm from "./component/Order/WasherOrderConfirm";
 import LandingPage from './component/LandingPage/LandingPage';
@@ -24,6 +24,7 @@ import WasherSchedule from "./component/ScheduleAndDelivery/WasherSchedule";
 import OrderScheduleAndDelivery from "./component/Order/ScheduleAndDelivery/OrderScheduleAndDelivery";
 import Dashboard from "./component/Dashboard/Dashboard"
 import FavoritesList from './component/FavoritesList';
+import Footer from './component/Footer.jsx/Footer';
 
 /**React Component representing the high-level structure of the application.
  * Routing is defined in this file.**/
@@ -49,6 +50,7 @@ class App extends Component {
     };
 
     return (
+      <>
       <div className="App">
         <SessionContext.Provider value={session}>
           <Router>
@@ -79,6 +81,8 @@ class App extends Component {
         </SessionContext.Provider>
 
       </div>
+      <Footer />
+      </>
     );
   }
 }

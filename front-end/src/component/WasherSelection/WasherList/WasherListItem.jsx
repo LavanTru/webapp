@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row, Button } from "react-bootstrap";
 import WasherListJobs from './WasherListJobs';
 import { Link } from "react-router-dom";
-import FavoriteIcon from '../../FavoriteIcon';
+import FavoriteIcon from '../../IconsComponents/FavoriteIcon';
 
 const WasherListItem = (props) => {
     return (
