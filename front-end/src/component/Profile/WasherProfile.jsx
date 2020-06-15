@@ -7,7 +7,7 @@ import starIcon from '../../asset/icon/star.svg'
 import BadgeTopWasher from '../../asset/icon/badge_top_washer.svg'
 import BadgeCompletedWash from '../../asset/icon/badge_completed_wash.svg'
 
-
+// Washer's profile shown to Washee
 class WasherProfile extends Component {
     constructor(props) {
         super(props);
@@ -31,7 +31,6 @@ class WasherProfile extends Component {
         this.refreshWasherJobCapabilities();
         this.refreshWasherDetails();
     }
-
     refreshWasherJobCapabilities() {
         WasherDataService.retrieveWasher(this.state.washerId)
             .then(
@@ -54,7 +53,6 @@ class WasherProfile extends Component {
                 }
             )
     }
-
     getJobIcon(job){
         return(
             <Row>

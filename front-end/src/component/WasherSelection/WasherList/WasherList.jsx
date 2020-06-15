@@ -4,7 +4,6 @@ import GeoLibService from "../../../service/GeoLibService";
 import { OverlayTrigger, Popover, Form, Col, Row } from "react-bootstrap";
 import { SessionContext } from '../../../Session';
 
-
 class WasherList extends Component {
     constructor(props) {
         super(props)

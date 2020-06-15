@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "../style/QuantityControl.css";
+import "../../../style/QuantityControl.css";
 
+// Class to handle the changes of quantities in OrderComponent
 class QuantityControl extends Component {
     constructor(props) {
         super(props);

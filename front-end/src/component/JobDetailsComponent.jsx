@@ -1,40 +1,35 @@
-import React, { Component }  from 'react';
+import React, { Component } from 'react';
 import JobDataService from '../service/JobDataService';
 import { Alert } from 'reactstrap';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+// Internal class to control the details of a job that Washers can choose
 class JobDetailsComponent extends Component {
-
     constructor(props) {
         super(props)
-
         this.state = {
             id: this.props.match.params.id,
             job: '',
             price: 0,
             message: null,
-            visible : false
+            visible: false
         }
-
         this.onSubmit = this.onSubmit.bind(this)
         this.validate = this.validate.bind(this)
     }
 
     componentDidMount() {
-
         if (this.state.id === -1) {
             return
         }
-
         JobDataService.retrieveJob(this.state.id)
             .then(response => this.setState({
                 job: response.data.job,
                 price: response.data.price
             }))
     }
-
     onSubmit(values) {
-        console.log("values ",values)
+        console.log("values ", values)
         let jobJson = {
             id: this.state.id,
             job: values.job,
@@ -42,10 +37,9 @@ class JobDetailsComponent extends Component {
         }
 
         let jobJsonWithoutId = {
-            job : values.job,
-            price : values.price
+            job: values.job,
+            price: values.price
         }
-
         if (this.state.id === "-1") {
             JobDataService.createJob(jobJsonWithoutId)
                 .then(() => this.props.history.push())
@@ -64,10 +58,8 @@ class JobDetailsComponent extends Component {
                     }
                 )
         }
-
         this.onShowAlert()
     }
-
     validate(values) {
         let errors = {}
         if (!values.job) {
@@ -75,23 +67,20 @@ class JobDetailsComponent extends Component {
         } else if (values.job.length < 3) {
             errors.job = 'Enter atleast 3 Characters in Laundry Job'
         }
-    
         return errors
     }
-
-    onShowAlert = ()=>{
-        this.setState({visible:true},()=>{
-            window.setTimeout(()=>{
-            this.setState({visible:false})
-            },3000)
+    onShowAlert = () => {
+        this.setState({ visible: true }, () => {
+            window.setTimeout(() => {
+                this.setState({ visible: false })
+            }, 3000)
         });
     }
 
     render() {
-
         let { job, id, price } = this.state
         return (
-                <div>
+            <div>
                 <h3>Laundry Job</h3>
                 {this.state.message && <Alert color="success" isOpen={this.state.visible} >{this.state.message}</Alert>}
                 <div className="container">
@@ -124,11 +113,11 @@ class JobDetailsComponent extends Component {
                             )
                         }
                     </Formik>
-    
+
                 </div>
             </div>
         )
-  }
+    }
 
 }
 

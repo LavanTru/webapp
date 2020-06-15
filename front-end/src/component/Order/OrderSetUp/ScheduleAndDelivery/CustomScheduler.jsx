@@ -57,10 +57,8 @@ const CustomScheduler = (props) => {
             <tbody>
                 {rows}
             </tbody>
-
         </table>
     );
-
 };
 export default CustomScheduler;
 

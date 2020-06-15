@@ -3,6 +3,7 @@ import { getSessionCookie } from "../../Session";
 import WasherDashboard from "./WasherDashboard";
 import WasheeDashboard from "./WasheeDashboard";
 
+// Dashboard container for both Washers and Washees
 const Dashboard = (props) => {
     const session = getSessionCookie();
     

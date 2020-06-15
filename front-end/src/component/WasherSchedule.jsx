@@ -4,6 +4,7 @@ import { Container, Col, Card, Button } from "react-bootstrap";
 import WasherDataService from "../../../service/WasherDataService";
 import { SessionContext } from "../../../Session";
 
+// Page that Washer can access to control their schedule options
 class WasherSchedule extends Component {
     constructor(props) {
         super(props);
@@ -33,25 +34,21 @@ class WasherSchedule extends Component {
                 }
             )
     }
-
     handleOnClick() {
         // console.log("availableHours", this.state.schedule);
         // WasherDataService.updateWasherSchedule(this.context.id,this.state.schedule)
         // TODO: add redirecting to a new page
     }
-
     changeToNextWeek() {
         this.setState({
             startDate: this.addDays(this.state.startDate, 7)
         })
     }
-
     changeToPreviousWeek() {
         this.setState({
             startDate: this.addDays(this.state.startDate, -7)
         })
     }
-
     addDays(date, days) {
         let newDate = new Date(date);
         newDate.setDate(date.getDate() + days);
@@ -83,7 +80,6 @@ class WasherSchedule extends Component {
 
         )
     }
-
 }
 WasherSchedule.contextType = SessionContext;
 export default WasherSchedule;

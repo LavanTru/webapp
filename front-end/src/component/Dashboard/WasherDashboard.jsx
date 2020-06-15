@@ -12,8 +12,6 @@ import BadgeTopWasher from "../../asset/icon/badge_top_washer.svg";
 import BadgeFasterResppnse from "../../asset/icon/badge_faster_response.svg"
 
 class WasherDashboard extends Component {
-
-
     render() {
         // Dataset for the graph. This should be pulled from actual data
         const data = {

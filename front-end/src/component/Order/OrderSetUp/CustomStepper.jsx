@@ -8,6 +8,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Check from '@material-ui/icons/Check';
 import StepConnector from '@material-ui/core/StepConnector';
 
+// Stepper is the progress bar shown on top of OrderComponent, OrderScheduleAndDelivery and OrderConfirmation
+
 // Style for the line between the steps
 const QontoConnector = withStyles({
   alternativeLabel: {
