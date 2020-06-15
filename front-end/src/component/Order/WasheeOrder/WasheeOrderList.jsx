@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import OrderDataService from "../../service/OrderDataService";
-import { SessionContext } from "../../Session";
+import OrderDataService from "../../../service/OrderDataService";
+import { SessionContext } from "../../../Session";
 import WasheeOrderListItem from "./WasheeOrderListItem"
 
 

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Card, Button } from "react-bootstrap";
-import OrderDataService from "../../service/OrderDataService"
-import { format } from "date-fns";
-import ExtraNotes from "../../asset/icon/extra_notes.svg";
-import Fashion from "../../asset/icon/fashion.svg";
-import Location from "../../asset/icon/location.svg"
-import Delivery from "../../asset/icon/delivery.svg"
-import CreditCard from "../../asset/icon/credit_card.svg"
-
+import OrderDataService from "../../../service/OrderDataService"
+import ExtraNotes from "../../../asset/icon/extra_notes.svg";
+import Fashion from "../../../asset/icon/fashion.svg";
+import Location from "../../../asset/icon/location.svg"
+import Delivery from "../../../asset/icon/delivery.svg"
+import CreditCard from "../../../asset/icon/credit_card.svg"
 
 class WasherOrderConfirm extends Component {
     constructor(props) {
@@ -116,7 +114,7 @@ class WasherOrderConfirm extends Component {
 
     render() {
         return (
-            <Container className="washerOrderDetails" fluid>
+            <Container className="orderDetails" fluid>
                 <Col md={{ span: 8, offset: 2 }} className="py-4">
                     <Card>
                         <Card.Header>

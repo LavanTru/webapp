@@ -12,16 +12,15 @@ import RegisterWasherOrWashee from './component/Register/RegisterWasherOrWashee'
 import RegisterWasherDetails from './component/Register/RegisterWasherDetails';
 import RegisterWasheeDetails from './component/Register/RegisterWasheeDetails';
 import { SessionContext, getSessionCookie } from "./Session";
-import OrderComponent from './component/Order/OrderComponent';
-import OrderConfirmation from './component/Order/OrderConfirmation';
+import OrderComponent from './component/Order/OrderSetUp/OrderComponent';
+import OrderConfirmation from './component/Order/OrderSetUp/OrderConfirmation';
 import WasherProfile from './component/Profile/WasherProfile'
-import WasherOrderList from "./component/Order/WasherOrderList";
-import WasherOrderConfirm from "./component/Order/WasherOrderConfirm";
+import WasherOrderList from "./component/Order/WasherOrder/WasherOrderList";
+import WasherOrderConfirm from "./component/Order/WasherOrder/WasherOrderConfirm";
 import LandingPage from './component/LandingPage/LandingPage';
 import WasherSelectionContainer from './component/WasherSelection/WasherSelectionContainer';
-import WasherListContainer from './component/WasherSelection/WasherList/WasherListContainer';
 import WasherSchedule from "./component/Order/ScheduleAndDelivery/WasherSchedule";
-import OrderScheduleAndDelivery from "./component/Order/ScheduleAndDelivery/OrderScheduleAndDelivery";
+import OrderScheduleAndDelivery from "./component/Order/OrderSetUp/ScheduleAndDelivery/OrderScheduleAndDelivery";
 import Dashboard from "./component/Dashboard/Dashboard"
 import FavoritesList from './component/FavoritesList';
 import Footer from './component/Footer.jsx/Footer';
@@ -69,7 +68,6 @@ class App extends Component {
                 <Route exact path="/orderConfirmation" component={OrderConfirmation} />
                 <Route exact path="/washerOrderList" component={WasherOrderList} />
                 <Route path="/washerOrder/:id" component={WasherOrderConfirm} />
-                <Route exact path="/washerlist" component={WasherListContainer} />
                 <Route exact path="/washers" component={WasherSelectionContainer} />
                 <Route exact path="/washerSchedule" component={WasherSchedule} />
                 <Route exact path="/orderSchedule" component={OrderScheduleAndDelivery} />
