@@ -5,6 +5,13 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+/**
+ * <h1>WashCycle</h1>
+ * This object contains the attributes of landry wash cycles
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Data
 public class WashCycle {
     @NotEmpty @NotNull

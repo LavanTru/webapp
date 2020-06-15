@@ -2,6 +2,13 @@ package com.lavantru.Register.model;
 
 import lombok.Data;
 
+/**
+ * <h1>Item</h1>
+ * This object contains the attributes of an order item
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Data
 public class Item {
 

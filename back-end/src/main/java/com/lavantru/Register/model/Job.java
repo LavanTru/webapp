@@ -7,6 +7,13 @@ import org.springframework.data.annotation.Id;
 import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
+/**
+ * <h1>Job</h1>
+ * This object contains the attributes of laundry jobs
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Data
 public class Job {
     @Id

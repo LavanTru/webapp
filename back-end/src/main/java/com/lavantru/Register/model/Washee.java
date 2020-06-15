@@ -4,6 +4,13 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * <h1>Washee</h1>
+ * This object contains the attributes of washee users
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Data
 public class Washee extends Users {
 
