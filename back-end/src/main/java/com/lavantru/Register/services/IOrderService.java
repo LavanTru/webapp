@@ -3,31 +3,37 @@ package com.lavantru.Register.services;
 import com.lavantru.Register.dto.WasheeOrderListDto;
 import com.lavantru.Register.dto.WasherOrderListDto;
 import com.lavantru.Register.model.Order;
-import org.bson.types.ObjectId;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * <h1>IOrderService</h1>
+ * Interface that defines OrderService behavior
+ *
+ * @version 1.0
+ * @since 2020
+ */
 public interface IOrderService {
 
-  public Order createOrder(Order order);
+  Order createOrder(Order order);
 
-  public Optional<Order> getOrderBy(UUID id);
+  Optional<Order> getOrderBy(UUID id);
 
-  public List<Order> getAllOrders();
+  List<Order> getAllOrders();
 
-  public Order confirmOrder(UUID id);
+  Order confirmOrder(UUID id);
 
-  public Order rejectOrder(UUID id);
+  Order rejectOrder(UUID id);
 
-  public List<WasherOrderListDto> getOrdersByWasherId(String id);
+  List<WasherOrderListDto> getOrdersByWasherId(String id);
 
-  public List<WasheeOrderListDto> getOrdersByWasheeId(String id);
+  List<WasheeOrderListDto> getOrdersByWasheeId(String id);
 
-  public Order updateOrder(Order order);
+  Order updateOrder(Order order);
 
-  public WasherOrderListDto getWasherOrderListDtoBy(UUID id);
+  WasherOrderListDto getWasherOrderListDtoBy(UUID id);
 
-  public WasheeOrderListDto getWasheeOrderListDtoBy(UUID id);
+  WasheeOrderListDto getWasheeOrderListDtoBy(UUID id);
 }

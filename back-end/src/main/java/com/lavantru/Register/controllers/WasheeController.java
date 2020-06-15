@@ -17,6 +17,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * <h1>WasheeController</h1>
+ * REST API endpoint for washee users.
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/washee")

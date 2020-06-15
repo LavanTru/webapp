@@ -10,6 +10,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * <h1>Order</h1>
+ * This object contains the attributes of orders created
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Data
 public class Order {
 

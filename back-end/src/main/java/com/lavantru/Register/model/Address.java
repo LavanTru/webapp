@@ -1,6 +1,13 @@
 
 package com.lavantru.Register.model;
 
+/**
+ * <h1>Address</h1>
+ * This object contains the attributes of user's address
+ *
+ * @version 1.0
+ * @since 2020
+ */
 public class Address {
 
   private String streetName;

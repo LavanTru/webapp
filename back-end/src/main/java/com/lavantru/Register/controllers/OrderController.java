@@ -14,6 +14,13 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * <h1>OrderController</h1>
+ * REST API endpoint for orders.
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/order")
@@ -31,10 +38,12 @@ public class OrderController {
     public Order createOrder(@Valid @NonNull @RequestBody Order order){
         return orderService.createOrder(order);
     }
+
     @PutMapping(path = "/confirm/{id}")
     public Order confirmOrder(@PathVariable("id") UUID id){
         return orderService.confirmOrder(id);
     }
+
     @PutMapping(path = "/reject/{id}")
     public Order rejectOrder(@PathVariable("id") UUID id){
         return orderService.rejectOrder(id);
@@ -54,10 +63,12 @@ public class OrderController {
     public List<WasherOrderListDto> getOrdersByWasherId(@PathVariable("id") String id){
         return orderService.getOrdersByWasherId(id);
     }
+
     @GetMapping(path = "/washee/{id}")
     public List<WasheeOrderListDto> getOrdersByWasheeId(@PathVariable("id") String id){
         return orderService.getOrdersByWasheeId(id);
     }
+
     @PutMapping()
     public Order updateOrder(@Valid @NonNull @RequestBody Order order){
         return orderService.updateOrder(order);
