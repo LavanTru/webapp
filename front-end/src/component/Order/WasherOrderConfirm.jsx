@@ -15,7 +15,8 @@ class WasherOrderConfirm extends Component {
         this.state = {
             orderId: this.props.match.params.id,
             order: {
-                items: []
+                items: [],
+                address: {}
             }
         }
         this.handleConfirmButton = this.handleConfirmButton.bind(this);
@@ -25,21 +26,8 @@ class WasherOrderConfirm extends Component {
     componentDidMount() {
         this.refreshOrderDetails();
     }
-    renderFooter() {
-        if (this.state.status !== "NEW") {
-            return <div>Status: <b>{this.state.status}</b></div>;
-        }
-        else {
-            return (
-                <div>
-                    <Button className="button-green" onClick={this.handleConfirmButton}>Confirm</Button>
-                    <Button className="button-pink float-right" onClick={this.handleRejectButton} >Reject</Button>
-                </div>
-            )
-        }
-    }
     refreshOrderDetails() {
-        OrderDataService.getOrderById(this.state.orderId)
+        OrderDataService.getWasherOrderListDtoById(this.state.orderId)
             .then(
                 response => {
                     this.setState({
@@ -50,28 +38,51 @@ class WasherOrderConfirm extends Component {
     }
     handleConfirmButton() {
         OrderDataService.confirmOrder(this.state.orderId);
-        this.setState({ status: "CONFIRMED" });
+        this.setState({
+            order: {
+                ...this.state.order,
+                status: "CONFIRMED"
+            }
+        });
     }
     handleRejectButton() {
         OrderDataService.rejectOrder(this.state.orderId);
-        this.setState({ status: "REJECTED" });
+        this.setState({
+            order: {
+                ...this.state.order,
+                status: "REJECTED"
+            }
+        });
     }
-    renderTemperatureAndWashCycle(job) {
-        if (job.job === "Ironing")
-            return (
-                <>
-                    <Row className="ml-5">{this.state.order.washCycle}</Row>
-                    <Row className="ml-5">{this.state.order.temperature}</Row>
-                </>
-            )
+    renderTemperatureAndWashCycle(item) {
+        if (item.job === "Laundry" || item.job === "Washing") {
+            if (this.state.order.washCycle === "Let your washer choose") {
+                return (
+                    <>
+                        <Row className="rowTextChildLevel2">Washing instructions: You choose</Row>
+                    </>
+                )
+            } else {
+                return (
+                    <>
+                        <Row className="rowTextChildLevel2">Washing instructions: {this.state.order.washCycle}, {this.state.order.temperature}°</Row>
+                    </>
+                )
+            }
+        }
     }
     renderDelivery() {
         let deliveryText;
+        let address;
         if (this.state.order.deliveryByWashee) {
             deliveryText = "Washee comes to you"
-            
+
         } else {
-            deliveryText = "You go to Washee"
+            deliveryText = "You go to Washee";
+            address = <Row>
+                <img className="icon float-left" src={Location} alt="Location details" />
+                <h6 className="rowText">{this.state.order.address.streetName}, {this.state.order.address.buildingNo} {this.state.order.address.apartmentNo}</h6>
+            </Row>
         }
         return (
             <>
@@ -79,30 +90,45 @@ class WasherOrderConfirm extends Component {
                     <img className="icon float-left" src={Delivery} alt="Delivery details" />
                     <h6 className="rowText">{deliveryText}</h6>
                 </Row>
-                <Row className="ml-3">
-                    <p>Receive laundry at {format(new Date(this.state.order.dropOffDate), "kk:mm, MMM d")}</p>
+                <Row>
+                    <p className="rowTextChildLevel1">Receive laundry: {this.state.order.dropoff}</p>
                 </Row>
-                <Row className="ml-3">
-                    <p>Give laundry at {format(new Date(this.state.order.pickUpDate), "kk:mm, MMM d")}</p>
+                <Row>
+                    <p className="rowTextChildLevel1">Give laundry: {this.state.order.pickup}</p>
                 </Row>
+                {address}
             </>
         )
+    }
+    renderFooter() {
+        if (this.state.order.status !== "NEW") {
+            return <p >Status: <b>{this.state.order.status}</b></p>;
+        }
+        else {
+            return (
+                <>
+                    <Button className="button-pink" onClick={this.handleRejectButton} >Reject</Button>
+                    <Button className="button-green float-right" onClick={this.handleConfirmButton}>Confirm</Button>
+                </>
+            )
+        }
     }
 
     render() {
         return (
             <Container className="washerOrderDetails" fluid>
-                <Col md={{ span: 8, offset: 2 }} className="pt-4">
-                    <h4 className="text-center">Order summary</h4>
+                <Col md={{ span: 8, offset: 2 }} className="py-4">
                     <Card>
                         <Card.Header>
-                            <Col>
-                                <img className="profileImage" src={this.state.order.washeeImage} alt="Washee profile" />
-                            </Col>
-                            <Col>
-                                <Row><h6>{this.state.order.washeeFirstName}</h6></Row>
-                                <Row><h4>{this.state.order.orderTotal}</h4></Row>
-                            </Col>
+                            <Row>
+                                <Col md="auto">
+                                    <img className="profileImage" src={this.state.order.washeeImage} alt="Washee profile" />
+                                </Col>
+                                <Col>
+                                    <Row><h4 className="text-center w-100">Order from {this.state.order.washeeFirstName}</h4></Row>
+                                    <Row><h2 className="text-center w-100">€ {this.state.order.orderTotal}</h2></Row>
+                                </Col>
+                            </Row>
                         </Card.Header>
 
                         <Card.Body>
@@ -113,16 +139,12 @@ class WasherOrderConfirm extends Component {
                             {this.state.order.items.map(item => (
                                 <>
                                     <Row>
-                                        <p className="ml-3">- {item.job}</p>
+                                        <p className="rowTextChildLevel1">{item.amount} x {item.job}</p>
                                     </Row>
                                     {this.renderTemperatureAndWashCycle(item)}
                                 </>
                             ))}
                             {this.renderDelivery()}
-                            <Row>
-                                <img className="icon float-left" src={Location} alt="Location details" />
-                                <h6 className="rowText">Address data</h6>
-                            </Row>
                             <Row>
                                 <img className="icon float-left" src={CreditCard} alt="Payment option details" />
                                 <h6 className="rowText">MC **** 1234</h6>
