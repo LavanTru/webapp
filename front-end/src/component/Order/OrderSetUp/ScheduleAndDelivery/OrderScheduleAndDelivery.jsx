@@ -128,7 +128,7 @@ class OrderScheduleAndDelivery extends Component {
                             <Card>
                                 <Card.Header className="py-1 my-0">
                                     <Row>
-                                        <Col md="auto" className="p-1"><h4 className="font-weight-bold">Drop off time</h4></Col>
+                                        <Col md="auto" className="p-1"><h4 className="font-weight-bold">Give clothes</h4></Col>
                                         {/* "kk:mm, MMM d" formats time as "24:00, Jun 14" */}
                                         <Col className="p-1 m-1"><p className="float-right m-0">{this.state.dropOffDate ? format(this.state.dropOffDate, "kk:mm, MMM d") : "Select slot from the calendar"}</p></Col>
                                     </Row>
@@ -149,7 +149,7 @@ class OrderScheduleAndDelivery extends Component {
                             <Card>
                                 <Card.Header className="py-1 my-0">
                                     <Row>
-                                        <Col md="auto" className="p-1"><h4 className="font-weight-bold">Pick up time</h4></Col>
+                                        <Col md="auto" className="p-1"><h4 className="font-weight-bold">Receive clothes</h4></Col>
                                         {/* "kk:mm, MMM d" formats time as "24:00, Jun 14" */}
                                         <Col className="p-1 m-1"><p className="float-right m-0">{this.state.pickUpDate ? format(this.state.pickUpDate, "kk:mm, MMM d") : "Select slot from the calendar"}</p></Col>
                                     </Row>

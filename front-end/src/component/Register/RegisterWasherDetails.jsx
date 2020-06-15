@@ -62,7 +62,7 @@ class RegisterWasher extends Component {
                     let washerId = response.data.id;
                     const user = {
                         // Add here more attributes to be stored in the cookies if needed
-                        "washerId": response.data.id,
+                        "id": response.data.id,
                         "firstName": response.data.firstName,
                         "lastName": response.data.lastName,
                         "email": response.data.email,
@@ -159,7 +159,7 @@ class RegisterWasher extends Component {
                             {this.state.errorMessage}
                         </p>
                         <Col sm={{ span: 4, offset: 4 }} >
-                            <Button className="button-green mt-5" size="lg" block onClick={this.handleSignUp} >
+                            <Button className="button-green my-5" size="lg" block onClick={this.handleSignUp} >
                                 Sign up
                             </Button>
                         </Col>

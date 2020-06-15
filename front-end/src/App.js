@@ -19,7 +19,7 @@ import WasherSchedule from "./component/WasherSchedule";
 import OrderScheduleAndDelivery from "./component/Order/OrderSetUp/ScheduleAndDelivery/OrderScheduleAndDelivery";
 import Dashboard from "./component/Dashboard/Dashboard"
 import FavoritesList from './component/FavoritesList';
-import Footer from './component/Footer.jsx/Footer';
+import Footer from './component/Footer/Footer';
 
 /**React Component representing the high-level structure of the application.
  * Routing is defined in this file.**/
