@@ -10,6 +10,13 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * <h1>JobController</h1>
+ * REST API endpoint for laundry jobs.
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @RequestMapping("api/job")
 @CrossOrigin(origins = { "http://localhost:3000" })
 @RestController

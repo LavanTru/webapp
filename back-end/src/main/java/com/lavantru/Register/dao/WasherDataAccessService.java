@@ -1,6 +1,5 @@
 package com.lavantru.Register.dao;
 
-import com.lavantru.Register.model.Job;
 import com.lavantru.Register.model.Washer;
 import com.lavantru.Register.repositories.WasherRepository;
 import org.bson.types.ObjectId;
@@ -9,6 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * <h1>WasherDataAccessService</h1>
+ * Washer data access service connected with mongo db repository.
+ *
+ * @see com.lavantru.Register.dao.WasherDao
+ * @version 1.0
+ * @since 2020
+ */
 @Repository("WasherDao")
 public class WasherDataAccessService implements WasherDao {
 

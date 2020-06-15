@@ -4,6 +4,13 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 import java.util.Date;
 
+/**
+ * <h1>PaymentMethod</h1>
+ * This object contains the attributes of washee's payment method
+ *
+ * @version 1.0
+ * @since 2020
+ */
 public class PaymentMethod {
     private String cardNo;
     private Date expirationDate;

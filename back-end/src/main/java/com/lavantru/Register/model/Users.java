@@ -6,7 +6,13 @@ import java.util.List;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
 
-
+/**
+ * <h1>Users</h1>
+ * This object contains the attributes of LavanTru users
+ *
+ * @version 1.0
+ * @since 2020
+ */
 public class Users {
 
     @Id

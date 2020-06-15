@@ -6,6 +6,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * <h1>LndryJobDao</h1>
+ * Interface specifies the behavior of laundry Job Data Access Object.
+ *
+ * @version 1.0
+ * @since 2020
+ */
 public interface LndryJobDao {
 
     int insertJob(UUID id, Job job);

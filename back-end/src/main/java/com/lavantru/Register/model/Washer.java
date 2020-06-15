@@ -5,6 +5,13 @@ import java.util.List;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.bson.types.ObjectId;
 
+/**
+ * <h1>Washer</h1>
+ * This object contains the attributes of washer users
+ *
+ * @version 1.0
+ * @since 2020
+ */
 public class Washer extends Users {
 
     private List<Job> jobCapabilities = null;

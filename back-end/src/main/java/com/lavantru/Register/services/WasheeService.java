@@ -13,6 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+/**
+ * <h1>WasheeService</h1>
+ * Service that handles the business logic for washees users
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Service
 public class WasheeService {
 

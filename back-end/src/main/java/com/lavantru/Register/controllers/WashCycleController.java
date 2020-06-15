@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * <h1>WashCycleController</h1>
+ * REST API endpoint returns all the wash cycles available.
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/washcycle")

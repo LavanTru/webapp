@@ -6,6 +6,9 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
+/**
+ * @deprecated UserRepository interface
+ */
 public interface UsersRepository extends MongoRepository<Users, String> {
 //  declaration of custom find
     Users findById(ObjectId _id);
