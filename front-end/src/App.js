@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import NavBar from './component/NavBar/NavBar';
 import ListJobsComponent from './component/ListJobsComponent';
 import JobDetailsComponent from './component/JobDetailsComponent';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import WasherJobCapabilitiesComponent from './component/WasherJobCapabilitiesComponent';
 import RegisterWasherOrWashee from './component/Register/RegisterWasherOrWashee';
 import RegisterWasherDetails from './component/Register/RegisterWasherDetails';
@@ -31,14 +27,6 @@ import Footer from './component/Footer.jsx/Footer';
 class App extends Component {
 
   render() {
-    // Hooks to track changes to the session
-    // const [session, setSession] = useState(getSessionCookie());
-    // useEffect(
-    //   () => {
-    //     setSession(getSessionCookie());
-    //   },
-    //   [session]
-    // );
     const session = getSessionCookie();
 
     // display landing page if session is undefined and URL is in root path
