@@ -1,8 +1,8 @@
 import ScheduleSelector from 'react-schedule-selector';
 import React, { Component } from "react";
-import { Container, Col, Card, Button } from "react-bootstrap";
-import WasherDataService from "../../../service/WasherDataService";
-import { SessionContext } from "../../../Session";
+import { Container, Col, Card, Button, Row } from "react-bootstrap";
+import WasherDataService from "../service/WasherDataService";
+import { SessionContext } from "../Session";
 
 // Page that Washer can access to control their schedule options
 class WasherSchedule extends Component {
@@ -35,9 +35,7 @@ class WasherSchedule extends Component {
             )
     }
     handleOnClick() {
-        // console.log("availableHours", this.state.schedule);
-        // WasherDataService.updateWasherSchedule(this.context.id,this.state.schedule)
-        // TODO: add redirecting to a new page
+        this.props.history.push("/dashboard");
     }
     changeToNextWeek() {
         this.setState({
@@ -74,7 +72,9 @@ class WasherSchedule extends Component {
                             hoveredColor="#15b1b7"
                         />
                     </Card>
-                    <Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button>
+                    <Row>
+                        <Col><Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button></Col>
+                    </Row>
                 </Col>
             </Container>
 
