@@ -574,30 +574,30 @@ span.iconExtraNotes {
   color: var(--lavantru-green);
 }
 
-.washerOrderDetails {
+.orderDetails {
   color: var(--lavantru-green);
 }
 
-.washerOrderDetails .icon {
+.orderDetails .icon {
   height: 30px;
   width: 30px;
   margin: 7px 10px;
 }
 
-.washerOrderDetails .rowText {
+.orderDetails .rowText {
   padding: 8px 0px;
   margin: 0px
 }
-.washerOrderDetails .rowTextChildLevel1 {
+.orderDetails .rowTextChildLevel1 {
   padding: 0px 0px;
   margin: 0px 66px;
 }
-.washerOrderDetails .rowTextChildLevel2 {
+.orderDetails .rowTextChildLevel2 {
   padding: 0px 0px;
   margin: 0px 82px;
 }
 
-.washerOrderDetails .profileImage {
+.orderDetails .profileImage {
   border-radius: 50%;
   height: 100px;
   width: 100px;
