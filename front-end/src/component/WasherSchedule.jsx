@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Container, Col, Card, Button, Row } from "react-bootstrap";
 import WasherDataService from "../service/WasherDataService";
 import { SessionContext } from "../Session";
+import { Alert } from 'reactstrap';
 
 // Page that Washer can access to control their schedule options
 class WasherSchedule extends Component {
@@ -10,7 +11,8 @@ class WasherSchedule extends Component {
         super(props);
         this.state = {
             schedule: [],
-            startDate: new Date() //Calendar loads with today's date by default
+            startDate: new Date(), //Calendar loads with today's date by default
+            message:""
         }
         this.handleOnClick = this.handleOnClick.bind(this);
         this.getWasherSchedule = this.getWasherSchedule.bind(this);
@@ -35,7 +37,9 @@ class WasherSchedule extends Component {
             )
     }
     handleOnClick() {
-        this.props.history.push("/dashboard");
+        // this.props.history.push("/dashboard");
+        this.setState({ message: "Your schedule is saved successfully!" })
+
     }
     changeToNextWeek() {
         this.setState({
@@ -73,7 +77,8 @@ class WasherSchedule extends Component {
                         />
                     </Card>
                     <Row>
-                        <Col><Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button></Col>
+                        <Col>{this.state.message && <Alert color="success"><h6>{this.state.message}</h6></Alert>}</Col>
+                        <Col md="auto"><Button className="button-green m-3 float-right" onClick={this.handleOnClick}>Confirm</Button></Col>
                     </Row>
                 </Col>
             </Container>
