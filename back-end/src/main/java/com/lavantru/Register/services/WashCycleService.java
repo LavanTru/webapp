@@ -7,6 +7,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <h1>WashCycleService</h1>
+ * Service that handles the business logic for laundry wash cycles
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Service
 public class WashCycleService implements IWashCycleService{
 

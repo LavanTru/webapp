@@ -1,25 +1,19 @@
 package com.lavantru.Register.services;
 
+import com.lavantru.Register.dto.UsersDto;
 import com.lavantru.Register.errors.PasswordNotMatchingException;
 import com.lavantru.Register.errors.UserNotFoundException;
-import com.lavantru.Register.model.Users;
-import com.lavantru.Register.dto.UsersDto;
-import com.lavantru.Register.errors.UserAlreadyExistException;
-import com.lavantru.Register.model.Washee;
-import com.lavantru.Register.model.Washer;
-import com.lavantru.Register.repositories.UsersRepository;
-
-import java.util.List;
-
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * <h1>UsersService</h1>
+ * Service that handles the business logic for LavanTru user login
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Service
 public class UsersService implements IUsersService {
 

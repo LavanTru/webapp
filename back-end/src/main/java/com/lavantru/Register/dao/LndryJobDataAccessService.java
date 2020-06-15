@@ -17,7 +17,7 @@ import java.util.UUID;
  * @version 1.0
  * @since 2020
  */
-@Repository("fakeDao")
+@Repository("jobDao")
 public class LndryJobDataAccessService implements LndryJobDao {
 
     @Autowired

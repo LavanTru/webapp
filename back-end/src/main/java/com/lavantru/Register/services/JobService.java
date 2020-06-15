@@ -10,12 +10,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * <h1>JobService</h1>
+ * Service that handles the business logic for laundry job
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Service
 public class JobService {
     private LndryJobDao lndryJobDao;
 
     @Autowired
-    public JobService(@Qualifier("fakeDao") LndryJobDao lndryJobDao){
+    public JobService(@Qualifier("jobDao") LndryJobDao lndryJobDao){
         this.lndryJobDao = lndryJobDao;
     }
 

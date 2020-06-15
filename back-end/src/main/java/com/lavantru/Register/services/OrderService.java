@@ -3,13 +3,11 @@ package com.lavantru.Register.services;
 import com.lavantru.Register.dao.OrderDao;
 import com.lavantru.Register.dto.WasheeOrderListDto;
 import com.lavantru.Register.dto.WasherOrderListDto;
-import com.lavantru.Register.model.Item;
 import com.lavantru.Register.model.Order;
 import com.lavantru.Register.model.Washee;
 import com.lavantru.Register.model.Washer;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import org.bson.types.ObjectId;
@@ -19,6 +17,13 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+/**
+ * <h1>OrderService</h1>
+ * Service that handles the business logic for order requests
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @Service
 public class OrderService implements IOrderService {
 
