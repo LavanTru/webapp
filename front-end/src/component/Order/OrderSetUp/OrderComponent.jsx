@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import WasherDataService from '../../../service/WasherDataService';
 import { Container, Col, Row, Card, Button, ListGroup, Form } from "react-bootstrap";
-import QuantityControl from '../../QuantityControl';
+import QuantityControl from './QuantityControl';
 import { SessionContext } from "../../../Session";
-import WashCycle from '../../WashCycle';
+import WashCycle from './WashCycle';
 import WashCycleService from '../../../service/WashCycleService';
 import CustomStepper from "./CustomStepper";
 import TemperatureIcons from '../../IconsComponents/TemperatureIcons';
 
+// First step of setting up a new order. User select the service details they want
 class OrderComponent extends Component {
   constructor(props) {
     super(props)
@@ -87,7 +88,7 @@ class OrderComponent extends Component {
     }
     this.props.history.push({
       pathname: "/orderSchedule",
-      state: { order:order,washer:this.state.washer }
+      state: { order: order, washer: this.state.washer }
     });
   }
 
@@ -133,10 +134,10 @@ class OrderComponent extends Component {
     return (
       <Container fluid className="order">
         <Col className="pt-4" md={{ span: 8, offset: 2 }}>
-        <CustomStepper activeStep={0}/>
+          <CustomStepper activeStep={0} />
           <Row>
-              <img className="unitImage" src={this.state.washer.image} alt="profile_picture" />
-              <h3 class="mt-5">{this.state.washer.firstName}</h3>
+            <img className="unitImage" src={this.state.washer.image} alt="profile_picture" />
+            <h3 class="mt-5">{this.state.washer.firstName}</h3>
           </Row>
           <Col>
             <Row className="mt-2">
@@ -204,7 +205,6 @@ class OrderComponent extends Component {
       </Container>
     );
   }
-
 }
 OrderComponent.contextType = SessionContext;
 export default OrderComponent;

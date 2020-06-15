@@ -10,8 +10,7 @@ import CreditCard from "../../../asset/icon/credit_card.svg";
 import { format } from "date-fns";
 import { Alert } from 'reactstrap';
 
-
-
+// Last part of the order setup flow where user confirms their selection
 class OrderConfirmation extends Component {
     constructor(props) {
         super(props)
@@ -51,7 +50,6 @@ class OrderConfirmation extends Component {
                         <Row className="rowTextChildLevel2">Washing instructions: {this.state.order.washCycle}, {this.state.order.temperature}°</Row>
                     </>
                 )
-
             }
         }
     }
@@ -134,9 +132,7 @@ class OrderConfirmation extends Component {
                                 color="success">{this.state.message}</Alert>}
                         </Card.Footer>
                     </Card>
-
                 </Col>
-
             </Container>
         );
     }

@@ -4,6 +4,7 @@ import WasherDataService from "../../service/WasherDataService";
 import { setSessionCookie } from "../../Session.js";
 import GeoCodeService from "../../service/GeoCodeService";
 
+// Ask user details and register them as Washer
 class RegisterWasher extends Component {
     constructor(props) {
         super(props);

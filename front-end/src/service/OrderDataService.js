@@ -3,6 +3,8 @@ import axios from 'axios'
 const LAVANTRU_API_URL = 'http://localhost:8080'
 const ORDER_API_URL = `${LAVANTRU_API_URL}/api/order`
 
+// Class to hold methods related to interacting with OrderController API in the back-end
+
 class OrderDataService {
 
     getAllOrders() {

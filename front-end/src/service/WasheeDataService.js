@@ -4,6 +4,8 @@ const LAVANTRU_API_URL = 'http://localhost:8080'
 
 const WASHEE_API_URL = `${LAVANTRU_API_URL}/api/washee`
 
+// Class to hold methods related to interacting with WasheeController API in the back-end
+
 class WasheeDataService {
     
     getWasheeById(id) {

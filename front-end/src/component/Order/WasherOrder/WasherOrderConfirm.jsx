@@ -7,6 +7,7 @@ import Location from "../../../asset/icon/location.svg"
 import Delivery from "../../../asset/icon/delivery.svg"
 import CreditCard from "../../../asset/icon/credit_card.svg"
 
+// This page shows the details of the Order to the Washer where they can also either confirm or reject the order
 class WasherOrderConfirm extends Component {
     constructor(props) {
         super(props);

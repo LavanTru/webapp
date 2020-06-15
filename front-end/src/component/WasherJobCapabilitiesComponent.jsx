@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Alert } from 'reactstrap';
 import WasherDataService from '../service/WasherDataService';
 import SwitchComponent from './SwitchComponent';
-// import { SessionContext } from "../Session";
 import { Container, Button, Col } from "react-bootstrap";
 
+// Class shown to Washer to control their JobCapabilities
 class WasherJobCapabilitiesComponent extends Component {
-
     constructor(props) {
         super(props)
         this.state = {

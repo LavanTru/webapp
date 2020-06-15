@@ -4,6 +4,7 @@ import WasherListJobs from './WasherListJobs';
 import { Link } from "react-router-dom";
 import FavoriteIcon from '../../IconsComponents/FavoriteIcon';
 
+// Single Washer in a WasherList
 const WasherListItem = (props) => {
     return (
         // If the Washer is selected in the WasherSelectionContainer view then pink background is used

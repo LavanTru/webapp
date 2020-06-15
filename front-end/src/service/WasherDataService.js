@@ -5,6 +5,8 @@ const LAVANTRU_API_URL = 'http://localhost:8080'
 
 const WASHER_API_URL = `${LAVANTRU_API_URL}/api/washer`
 
+// Class to hold methods related to interacting with WasherController API in the back-end
+
 class WasherDataService {
     
     retrieveWasher(id) {

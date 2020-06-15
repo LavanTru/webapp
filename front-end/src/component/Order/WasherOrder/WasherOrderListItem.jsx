@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Row } from "react-bootstrap";
 
+// Single order in WasherOrderList
 const WasherOrderListItem = (props) => {
     return (
         <Row className="clickable header m-3" onClick={props.onClick}>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+// Part of WasherProfile that shows the Washer's contact details to Washee
 // Address is stored as an array because we assume users can have many addresses in the future, but currently we allow only one so we are taking the first item in the array by default.
 class ContactCard extends Component {
     render() {

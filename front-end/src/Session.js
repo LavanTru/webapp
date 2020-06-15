@@ -1,6 +1,8 @@
 import React from "react";
 import Cookies from "js-cookie";
 
+// Session.js holds methods that are related to saving and retrieving the login data to cookies
+
 export const setSessionCookie = (session) => {
     Cookies.remove("session");
     Cookies.set("session", session, { expires: 14 });

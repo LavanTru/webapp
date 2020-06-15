@@ -6,6 +6,7 @@ import { SessionContext } from "../../../../Session";
 import { format } from "date-fns";
 import CustomStepper from "../CustomStepper";
 
+// Second step of the order flow. User selects schedule and delivery options
 class OrderScheduleAndDelivery extends Component {
     constructor(props) {
         super(props);
@@ -105,7 +106,7 @@ class OrderScheduleAndDelivery extends Component {
                     <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-right " + (!this.state.deliveryByWashee ? "delivery-active" : "")}> Washer comes to you +{this.state.deliveryPrice}€</div>
                 </Row>
             )
-        } else{
+        } else {
             return (
                 <h6>This Washer does not offer delivery so it will be on you</h6>
             )
