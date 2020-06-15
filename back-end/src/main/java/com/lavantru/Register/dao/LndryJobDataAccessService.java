@@ -9,6 +9,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * <h1>LndryJobDataAccessService</h1>
+ * Laundry jobs data access service connected with mongo db repository.
+ *
+ * @see com.lavantru.Register.dao.LndryJobDao
+ * @version 1.0
+ * @since 2020
+ */
 @Repository("fakeDao")
 public class LndryJobDataAccessService implements LndryJobDao {
 

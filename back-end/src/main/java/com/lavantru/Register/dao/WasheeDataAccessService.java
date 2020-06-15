@@ -8,6 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * <h1>WasheeDataAccessService</h1>
+ * Washee data access service connected with mongo db repository.
+ *
+ * @see com.lavantru.Register.dao.WasheeDao
+ * @version 1.0
+ * @since 2020
+ */
 @Repository("WasheeDao")
 public class WasheeDataAccessService implements WasheeDao {
 

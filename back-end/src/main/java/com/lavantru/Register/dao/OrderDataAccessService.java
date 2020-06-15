@@ -2,7 +2,6 @@ package com.lavantru.Register.dao;
 
 import com.lavantru.Register.model.Order;
 import com.lavantru.Register.repositories.OrderRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +9,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * <h1>OrderDataAccessService</h1>
+ * Order data access service connected with mongo db repository.
+ *
+ * @see com.lavantru.Register.dao.OrderDao
+ * @version 1.0
+ * @since 2020
+ */
 @Repository("OrderDao")
 public class OrderDataAccessService implements OrderDao {
 
