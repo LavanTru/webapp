@@ -46,7 +46,11 @@ class OrderScheduleAndDelivery extends Component {
             .then(
                 response => {
                     // Find the price of delivery from Washer data
-                    const deliveryPrice = response.data.jobCapabilities.find((job) => job.job === "Pickup and delivery").price;
+                    const deliveryJob = response.data.jobCapabilities.find((job) => job.job === "Pickup and delivery");
+                    let deliveryPrice = 0;
+                    if (deliveryJob) {
+                        deliveryPrice = deliveryJob.price;
+                    }
                     this.setState({
                         schedule: response.data.availableHours,
                         deliveryPrice: deliveryPrice
@@ -67,7 +71,7 @@ class OrderScheduleAndDelivery extends Component {
             }
             this.props.history.push({
                 pathname: "/orderConfirmation",
-                state: { order:order, washer:this.props.location.state.washer }
+                state: { order: order, washer: this.props.location.state.washer }
             });
         } else {
             this.setState({ alertMessage: "You need to select drop off and pick up times before you can continue" })
@@ -93,6 +97,20 @@ class OrderScheduleAndDelivery extends Component {
             deliveryByWashee: !this.state.deliveryByWashee
         })
     }
+    renderDelivery() {
+        if (this.state.deliveryPrice) {
+            return (
+                <Row>
+                    <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-left " + (this.state.deliveryByWashee ? "delivery-active" : "")}>You go to Washer</div>
+                    <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-right " + (!this.state.deliveryByWashee ? "delivery-active" : "")}> Washer comes to you +{this.state.deliveryPrice}€</div>
+                </Row>
+            )
+        } else{
+            return (
+                <h6>This Washer does not offer delivery so it will be on you</h6>
+            )
+        }
+    }
     render() {
         return (
             <Container fluid className="lavantruGreen">
@@ -102,10 +120,7 @@ class OrderScheduleAndDelivery extends Component {
                     <p >Please select how and when you want your order to be completed. The times when Washer is available are highlighted in green.</p>
                     {this.state.alertMessage && <Alert variant="danger" >{this.state.alertMessage}</Alert>}
                     <Col md={{ span: 8, offset: 3 }}>
-                        <Row>
-                            <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-left " + (this.state.deliveryByWashee ? "delivery-active" : "")}>You go to Washer</div>
-                            <div onClick={this.handleDropOffByWasheeClick} className={"clickable delivery-right " + (!this.state.deliveryByWashee ? "delivery-active" : "")}> Washer comes to you +{this.state.deliveryPrice}€</div>
-                        </Row>
+                        {this.renderDelivery()}
                     </Col>
                     <Row className="pt-4">
                         <Col className="pl-0">
