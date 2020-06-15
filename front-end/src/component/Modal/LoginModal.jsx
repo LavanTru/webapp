@@ -14,43 +14,12 @@ class LoginModal extends Component {
     }
     this.handleClick = this.handleClick.bind(this);
   }
-  render() {
-    return (
-      <Form className="m-4" >
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.handleChange} />
-        </Form.Group>
-
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control name="password" type="password" placeholder="Password" onChange={this.handleChange} />
-        </Form.Group>
-
-        <p className="redError">
-          {this.state.errorMessage}
-
-        </p>
-
-        <Button
-          className="button-green"
-          onClick={this.handleClick}
-          block
-        >
-          Log in
-        </Button>
-
-      </Form>
-    );
-  }
   // Method to record the changes in the form in a component state variable
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
-
-
   handleClick() {
     UserDataService.login(this.state.email, this.state.password)
       .then((response) => {
@@ -63,8 +32,8 @@ class LoginModal extends Component {
             "lastName": response.data.lastName,
             "email": response.data.email,
             "userType": response.data.userType,
-            "addresses":[response.data.addresses[0]],
-            "image":response.data.image
+            "addresses": [response.data.addresses[0]],
+            "image": response.data.image
           };
           setSessionCookie(user);
           this.props.onHide();
@@ -101,6 +70,33 @@ class LoginModal extends Component {
           })
         }
       });
+  }
+  render() {
+    return (
+      <Form className="m-4" >
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.handleChange} />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control name="password" type="password" placeholder="Password" onChange={this.handleChange} />
+        </Form.Group>
+
+        <p className="redError">
+          {this.state.errorMessage}
+        </p>
+
+        <Button
+          className="button-green"
+          onClick={this.handleClick}
+          block>
+          Log in
+        </Button>
+
+      </Form>
+    );
   }
 }
 export default withRouter(LoginModal);

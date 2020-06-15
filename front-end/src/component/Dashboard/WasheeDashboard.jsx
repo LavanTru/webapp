@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Card } from "react-bootstrap";
-import WasheeOrderList from "../Order/WasheeOrderList";
+import WasheeOrderList from "../Order/WasheeOrder/WasheeOrderList";
 import Fashion from "../../asset/icon/fashion.svg";
 import Star from "../../asset/icon/star.svg";
 import Washer from "../../asset/icon/washer.svg";

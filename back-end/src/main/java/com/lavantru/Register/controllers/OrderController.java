@@ -73,4 +73,12 @@ public class OrderController {
     public Order updateOrder(@Valid @NonNull @RequestBody Order order){
         return orderService.updateOrder(order);
     }
+    @GetMapping(path = "/washerOrderListDto/{id}")
+    public WasherOrderListDto getWasherOrderListDtoById(@PathVariable("id") UUID id){
+        return orderService.getWasherOrderListDtoBy(id);
+    }
+    @GetMapping(path = "/washeeOrderListDto/{id}")
+    public WasheeOrderListDto getWasheeOrderListDtoById(@PathVariable("id") UUID id){
+        return orderService.getWasheeOrderListDtoBy(id);
+    }
 }

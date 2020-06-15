@@ -6,7 +6,6 @@ const mapStyles = {
 };
 
 export class WasherMapContainer extends Component {
-
     render() {
         return (
             <Map
@@ -45,7 +44,7 @@ export class WasherMapContainer extends Component {
                     onClose={this.props.onInfoWindowClose}
                 >
                     {/* <div className="iw-content"> */}
-                        <h5 className="iw-content">{(this.props.activeMarker) ? this.props.activeMarker.name : ""}</h5>
+                    <h5 className="iw-content">{(this.props.activeMarker) ? this.props.activeMarker.name : ""}</h5>
                     {/* </div>   */}
                 </InfoWindow>
             </Map>

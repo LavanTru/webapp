@@ -37,8 +37,8 @@ const CustomScheduler = (props) => {
 
         rows.push(
             <tr key={time}>
-                {/* //"h a"formats as "8 AM" */}
-                <td className="time">{format(time, "h a")}</td>
+                {/* //"kk:mm" formats as "24:00" */}
+                <td className="time">{format(time, "kk:mm")}</td>
                 {column}
             </tr>
         )
@@ -57,10 +57,8 @@ const CustomScheduler = (props) => {
             <tbody>
                 {rows}
             </tbody>
-
         </table>
     );
-
 };
 export default CustomScheduler;
 

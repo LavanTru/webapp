@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import OrderDataService from "../../service/OrderDataService";
-import { SessionContext } from "../../Session";
+import OrderDataService from "../../../service/OrderDataService";
+import { SessionContext } from "../../../Session";
 import WasheeOrderListItem from "./WasheeOrderListItem"
 
-
+// Present orders in a list for the Washee
 class WasheeOrderList extends Component {
     constructor(props) {
         super(props);
@@ -12,11 +12,9 @@ class WasheeOrderList extends Component {
         }
         this.refreshOrderList = this.refreshOrderList.bind(this);
     }
-
     componentDidMount() {
         this.refreshOrderList();
     }
-    
     refreshOrderList() {
         OrderDataService.getOrdersByWasheeId(this.context.id)
             .then(
@@ -33,22 +31,21 @@ class WasheeOrderList extends Component {
         const orderListStatusOther = this.state.orderList.filter(order => order.status !== "NEW");
         return (
             <div className="washeeOrderList">
-                        <h4>Active orders:</h4>
-                        {
-                            orderListStatusNew.map(
-                                order =>
-                                // Need to add onClick methods in order to have clickable orders
-                                    <WasheeOrderListItem order={order} />
-                            )
-                        }
-                        <h4>Past orders:</h4>
-                        {
-                            orderListStatusOther.map(
-                                order =>
-                                    <WasheeOrderListItem order={order} />
-                            )
-                        }
-
+                <h4>Active orders:</h4>
+                {
+                    orderListStatusNew.map(
+                        order =>
+                            // Need to add onClick methods in order to have clickable orders
+                            <WasheeOrderListItem order={order} />
+                    )
+                }
+                <h4>Past orders:</h4>
+                {
+                    orderListStatusOther.map(
+                        order =>
+                            <WasheeOrderListItem order={order} />
+                    )
+                }
             </div>
         );
     }

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
 
-// TODO add error messages for field validations
-
 class RegisterModal extends Component {
     constructor(props) {
         super(props);

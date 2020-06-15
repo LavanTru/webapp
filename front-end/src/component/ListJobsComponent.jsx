@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
 import JobDataService from '../service/JobDataService'
 
+// Internal page for us to control which jobs exist and Washers can select
 class ListJobsComponent extends Component {
-
     constructor(props) {
         super(props)
         this.state = {

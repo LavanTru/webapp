@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Section from "../LandingPage/Section";
 
+// Page shown to a new user where they select how they want to register if the have not done so on the Landing page
 class RegisterWasherOrWashee extends Component {
     render() {
         return (

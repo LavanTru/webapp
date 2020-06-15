@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import OrderDataService from "../../service/OrderDataService";
-import { SessionContext } from "../../Session";
+import OrderDataService from "../../../service/OrderDataService";
+import { SessionContext } from "../../../Session";
 import { Container, Col } from "react-bootstrap";
 import WasherOrderListItem from "./WasherOrderListItem"
 
-
+// Present orders in a list for the Washer
 class WasherOrderList extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -14,40 +13,9 @@ class WasherOrderList extends Component {
         }
         this.refreshOrderList = this.refreshOrderList.bind(this);
     }
-
     componentDidMount() {
         this.refreshOrderList();
     }
-
-
-    render() {
-        const orderListStatusNew = this.state.orderList.filter(order => order.status === "NEW");
-        const orderListStatusOther = this.state.orderList.filter(order => order.status !== "NEW");
-        return (
-            <div>
-                <Container className="profile" fluid >
-                    <Col md={{ span: 8, offset: 2 }}>
-                        <h1>New orders:</h1>
-                        {
-                            orderListStatusNew.map(
-                                order =>
-                                    <WasherOrderListItem order={order} onClick={()=>this.props.history.push(`/washerOrder/${order.id}`)}/>
-                            )
-                        }
-                        <h1>Past orders:</h1>
-                        {
-                            orderListStatusOther.map(
-                                order =>
-                                    <WasherOrderListItem order={order} onClick={()=>this.props.history.push(`/washerOrder/${order.id}`)} />
-                            )
-                        }
-                    </Col>
-                </Container>
-
-            </div>
-        );
-    }
-
     refreshOrderList() {
         OrderDataService.getOrdersByWasherId(this.context.id)
             .then(
@@ -58,7 +26,33 @@ class WasherOrderList extends Component {
                 }
             )
     }
+    render() {
+        const orderListStatusNew = this.state.orderList.filter(order => order.status === "NEW");
+        const orderListStatusOther = this.state.orderList.filter(order => order.status !== "NEW");
+        return (
+            <div>
+                <Container className="profile" fluid >
+                    <Col md={{ span: 8, offset: 2 }} className="pt-4">
+                        <h3>New orders:</h3>
+                        {
+                            orderListStatusNew.map(
+                                order =>
+                                    <WasherOrderListItem order={order} onClick={() => this.props.history.push(`/washerOrder/${order.id}`)} />
+                            )
+                        }
+                        <h3>Past orders:</h3>
+                        {
+                            orderListStatusOther.map(
+                                order =>
+                                    <WasherOrderListItem order={order} onClick={() => this.props.history.push(`/washerOrder/${order.id}`)} />
+                            )
+                        }
+                    </Col>
+                </Container>
 
+            </div>
+        );
+    }
 }
 WasherOrderList.contextType = SessionContext;
 

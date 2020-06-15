@@ -5,6 +5,7 @@ import WasherListItem from './WasherSelection/WasherList/WasherListItem';
 import WasheeDataService from '../service/WasheeDataService';
 import GeoLibService from "../service/GeoLibService";
 
+// Not used in Current production version. Class to render Washee favourite Washers
 class FavoritesList extends Component {
 
     constructor(props){

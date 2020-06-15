@@ -1,63 +1,70 @@
 @import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
 
 /* We use own font and custom h1-h6 to have standardized styles across the web*/
-*{
+* {
   font-family: 'Quicksand', sans-serif;
   --lavantru-pink: #ffe6de;
   --lavantru-green: #0f7d80;
   --lavantru-red: #b8627d;
 }
-h1{
+
+h1 {
   font-style: normal;
   font-weight: 500;
   font-size: 48px;
   line-height: 64px;
   /* or 133% */
 }
-h2{
+
+h2 {
   font-style: normal;
   font-weight: normal;
   font-size: 40px;
   line-height: 56px;
   /* or 140% */
 }
-h3{
+
+h3 {
   font-style: normal;
   font-weight: 500;
   font-size: 32px;
   line-height: 48px;
   /* or 150% */
 }
-h4{
+
+h4 {
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
   /* or 133% */
 }
-h5{
+
+h5 {
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 28px;
   /* or 140% */
 }
-h6{
+
+h6 {
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 28px;
   /* or 175% */
 }
-p{
+
+p {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 28px;
-/* identical to box height, or 175% */
+  /* identical to box height, or 175% */
 }
 
-.App{
+.App {
   position: relative;
   min-height: 100vh;
 }
@@ -69,18 +76,17 @@ footer {
   position: relative;
   bottom: 0;
   width: 100%;
-  height: 7rem; 
+  height: 7rem;
 }
 
-footer a{
+footer a {
   margin: 0 1rem 0 1rem;
   font-size: large;
   text-decoration: none;
   color: var(--lavantru-red)
-  
 }
 
-footer a:hover{
+footer a:hover {
   text-decoration: none;
   color: var(--lavantru-green);
 }
@@ -88,21 +94,26 @@ footer a:hover{
 .lavantruPink {
   color: var(--lavantru-red)
 }
+
 .lavantruGreen {
   color: var(--lavantru-green)
 }
+
 /* NavBar */
 .navbar {
   background-color: var(--lavantru-pink);
   padding: 10px;
 }
-.navbar .title{
-    color: var(--lavantru-green);
+
+.navbar .title {
+  color: var(--lavantru-green);
 }
-.navbar .title:hover{
-text-shadow:0px 0px 1px black;
+
+.navbar .title:hover {
+  text-shadow: 0px 0px 1px black;
 }
-.navbar .image{
+
+.navbar .image {
   border-radius: 50%;
   height: 55px;
   width: 55px;
@@ -110,8 +121,9 @@ text-shadow:0px 0px 1px black;
   border-color: var(--lavantru-green);
   object-fit: cover;
 }
+
 /* bootstrap div container */
-.container{
+.container {
   text-align: left;
 }
 
@@ -126,9 +138,11 @@ text-shadow:0px 0px 1px black;
   box-shadow: 1px 1px 1px grey;
   white-space: nowrap;
 }
+
 #customGoogleBtn:hover {
   cursor: pointer;
 }
+
 span.googleIcon {
   background: url('./asset/btn_google_light_normal_ios.svg') transparent no-repeat;
   /* background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat; */
@@ -137,6 +151,7 @@ span.googleIcon {
   width: 42px;
   height: 42px;
 }
+
 span.googleButtonText {
   display: inline-block;
   vertical-align: middle;
@@ -147,18 +162,22 @@ span.googleButtonText {
   /* Use the Roboto font that is loaded in the <head> */
   font-family: 'Roboto', sans-serif;
 }
+
 /* Google button END */
 
-.loginLink{
+.loginLink {
   text-decoration: underline;
   font-weight: bold;
 }
-.loginLink:hover{
+
+.loginLink:hover {
   cursor: pointer;
 }
-.redError{
+
+.redError {
   color: red;
 }
+
 /* Generic button used at all pages */
 .button-green,
 .button-green:hover,
@@ -171,6 +190,7 @@ span.googleButtonText {
   padding: 8px 20px;
   text-transform: none !important;
 }
+
 /* Generic button used at all pages */
 .button-pink,
 .button-pink:hover,
@@ -195,9 +215,11 @@ span.googleButtonText {
   box-shadow: 1px 1px 1px grey;
   white-space: nowrap;
 }
+
 #customGoogleBtn:hover {
   cursor: pointer;
 }
+
 span.googleIcon {
   background: url('./asset/btn_google_light_normal_ios.svg') transparent no-repeat;
   /* background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat; */
@@ -206,6 +228,7 @@ span.googleIcon {
   width: 42px;
   height: 42px;
 }
+
 span.googleButtonText {
   display: inline-block;
   vertical-align: middle;
@@ -215,10 +238,12 @@ span.googleButtonText {
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
 }
+
 /* Google button END */
 .profile {
   color: var(--lavantru-green);
 }
+
 .profile .image {
   border-radius: 50%;
   height: 150px;
@@ -228,13 +253,14 @@ span.googleButtonText {
   object-fit: cover;
   margin: 16px;
 }
-.profile .header{
+
+.profile .header {
   border-bottom: 1px solid;
   border-bottom-color: var(--lavantru-red);
   background: var(--lavantru-pink);
 }
 
-.orderHeader{
+.orderHeader {
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -243,33 +269,33 @@ span.googleButtonText {
   color: var(--lavantru-green);
 }
 
-.order .header{
+.order .header {
   font-size: larger;
   background-color: var(--lavantru-green);
   color: var(--lavantru-pink);
 }
 
-.order .footer{
+.order .footer {
   background-color: white;
   color: var(--lavantru-pink);
 }
 
-.order .unitImage{
+.order .unitImage {
   margin-left: 30px;
   height: 100px;
   width: 100px;
 }
 
-.order .btn{
+.order .btn {
   float: right;
 }
 
-.priceCol{
+.priceCol {
   text-align: right;
   font-size: 1.3em;
 }
 
-.washerList .washerListItem{
+.washerList .washerListItem {
   border-bottom: 1px solid;
   border-bottom-color: var(--lavantru-red);
   color: var(--lavantru-green);
@@ -283,7 +309,7 @@ span.googleButtonText {
   border-radius: 50%;
   height: 150px;
   width: 150px;
-  border: 5px solid ;
+  border: 5px solid;
   border-color: var(--lavantru-green);
   object-fit: cover;
   margin: 16px;
@@ -295,11 +321,12 @@ span.googleButtonText {
   color: var(--lavantru-pink);
   white-space: nowrap;
   width: fit-content;
-  padding:4px 8px;
+  padding: 4px 8px;
 }
+
 .washerListItem .content {
-width: 100% !important ;
- }
+  width: 100% !important;
+}
 
 .washerList .filter {
   border: 1px solid;
@@ -311,10 +338,12 @@ width: 100% !important ;
   font-size: 16px;
   line-height: 28px;
 }
-.washerList .border-bottom{
+
+.washerList .border-bottom {
   border-bottom: 1px solid #b8627d !important;
 }
- .sort-left{
+
+.sort-left {
   border: 1px solid;
   border-color: var(--lavantru-red);
   border-radius: 10px 0px 0px 10px;
@@ -322,7 +351,8 @@ width: 100% !important ;
   line-height: 28px;
   padding: 4px 8px;
 }
-.sort-right{
+
+.sort-right {
   border: 1px solid;
   border-color: var(--lavantru-red);
   border-radius: 0px 10px 10px 0px;
@@ -330,7 +360,8 @@ width: 100% !important ;
   line-height: 28px;
   padding: 4px 8px;
 }
-.sort-active{
+
+.sort-active {
   background-color: var(--lavantru-red);
   color: var(--lavantru-pink);
 }
@@ -346,21 +377,24 @@ width: 100% !important ;
 .greenBackground {
   background-color: var(--lavantru-green);
 }
-.schedule .greenBackground:hover{
+
+.schedule .greenBackground:hover {
   background-color: #15b1b7;
 }
-span.iconExtraNotes{
-  background: url("./asset/extra_notes.svg") transparent no-repeat;
+
+span.iconExtraNotes {
+  background: url("./asset/icon/extra_notes.svg") transparent no-repeat;
   display: inline-block;
   vertical-align: middle;
   width: 42px;
   height: 42px;
 }
-.clickable{
+
+.clickable {
   cursor: pointer;
 }
 
-.fpriceCol{
+.fpriceCol {
   border: none;
   color: white;
   padding: 16px 32px;
@@ -369,7 +403,7 @@ span.iconExtraNotes{
   cursor: pointer;
 }
 
-.wash-cycle-tooltip > .tooltip-inner {
+.wash-cycle-tooltip>.tooltip-inner {
   background-color: #ffe6de;
   color: #0f7d80;
   border: 1px solid #0f7d80;
@@ -389,17 +423,19 @@ span.iconExtraNotes{
   padding: 6px 12px;
   text-align: right;
 }
-.washerMap{
-  height:60vh;
+
+.washerMap {
+  height: 60vh;
 }
-.washerOrWashee{
+
+.washerOrWashee {
   text-align: center;
   width: 50%;
   /* align-self: center; */
   margin: auto;
 }
 
-.wash-icon{
+.wash-icon {
   /* cursor: pointer; */
   float: right;
   margin-left: 20px;
@@ -409,7 +445,7 @@ span.iconExtraNotes{
   overflow: hidden;
 }
 
-.favorite-icon{
+.favorite-icon {
   background-color: filter();
   cursor: pointer;
   float: left;
@@ -418,73 +454,84 @@ span.iconExtraNotes{
   overflow: hidden;
 }
 
-.rating-icon{
+.rating-icon {
   background-color: filter();
   float: left;
   width: 30px;
   overflow: hidden;
 }
 
-.icon-text{
+.icon-text {
   font-size: 200px;
 }
-.schedule{
+
+.schedule {
   text-align: center;
   width: 100%;
 }
-.schedule .box{
+
+.schedule .box {
   /* margin:10px !important; */
   /* border-spacing: 10px !important; */
   /* min-height:; */
   padding: 15px;
   border: 10px solid white;
 }
-.activeCell{
+
+.activeCell {
   background-color: #15b1b7;
 }
 
-.schedule .time{
+.schedule .time {
   text-align: center;
   width: 70px;
 }
-.dashboard{
+
+.dashboard {
   text-align: center;
   color: var(--lavantru-green);
 }
-.dashboard .image{
+
+.dashboard .image {
   height: 50px;
   width: 50px;
   margin: 0 10px;
 }
-.dashboard .card{
+
+.dashboard .card {
   width: 230px;
   height: 145px;
 }
+
 .dashboard .header {
   background-color: var(--lavantru-green);
   color: var(--lavantru-pink);
 }
+
 .notifications {
   background-color: var(--lavantru-red);
   border-radius: 50%;
   color: var(--lavantru-pink);
   text-align: center;
   position: absolute;
-  min-width:22px;
+  min-width: 22px;
   padding: 3px;
   height: 22px;
   font-weight: bold;
   line-height: 18px;
-  margin:0px -3px;
+  margin: 0px -3px;
 }
-.washeeOrderList{
+
+.washeeOrderList {
   text-align: left;
 }
-.washeeOrderList .item{
+
+.washeeOrderList .item {
   border-bottom: 1px solid;
   border-bottom-color: var(--lavantru-red);
   background: var(--lavantru-pink);
 }
+
 .washeeOrderList .image {
   border-radius: 50%;
   height: 100px;
@@ -493,9 +540,10 @@ span.iconExtraNotes{
   border-color: var(--lavantru-green);
   object-fit: cover;
   margin: 12px;
- }
- .delivery-left{
-   width: 210px;
+}
+
+.delivery-left {
+  width: 210px;
   border: 1px solid;
   border-color: var(--lavantru-red);
   border-radius: 10px 0px 0px 10px;
@@ -505,7 +553,8 @@ span.iconExtraNotes{
   padding: 4px 8px;
   margin-left: 30px;
 }
-.delivery-right{
+
+.delivery-right {
   width: 210px;
   border: 1px solid;
   border-color: var(--lavantru-red);
@@ -515,10 +564,44 @@ span.iconExtraNotes{
   line-height: 28px;
   padding: 4px 8px;
 }
-.delivery-active{
+
+.delivery-active {
   background-color: var(--lavantru-red);
   color: var(--lavantru-pink);
 }
-.iw-content{
+
+.iw-content {
   color: var(--lavantru-green);
+}
+
+.orderDetails {
+  color: var(--lavantru-green);
+}
+
+.orderDetails .icon {
+  height: 30px;
+  width: 30px;
+  margin: 7px 10px;
+}
+
+.orderDetails .rowText {
+  padding: 8px 0px;
+  margin: 0px
+}
+.orderDetails .rowTextChildLevel1 {
+  padding: 0px 0px;
+  margin: 0px 66px;
+}
+.orderDetails .rowTextChildLevel2 {
+  padding: 0px 0px;
+  margin: 0px 82px;
+}
+
+.orderDetails .profileImage {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: 3px solid;
+  border-color: var(--lavantru-green);
+  object-fit: cover;
 }

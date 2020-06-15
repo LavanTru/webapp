@@ -4,6 +4,7 @@ import WasheeDataService from "../../service/WasheeDataService";
 import { setSessionCookie } from "../../Session.js";
 import GeoCodeService from "../../service/GeoCodeService";
 
+// Ask user details and register them as Washee
 class RegisterWashee extends Component {
     constructor(props) {
         super(props);

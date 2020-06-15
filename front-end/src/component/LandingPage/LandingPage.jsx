@@ -4,6 +4,7 @@ import Header from './Header';
 import Section from './Section';
 import "../../style/LandingPage.css";
 
+// LandingPage consists of Header, Section and ModalContainer for login/registration modal
 function LandingPage(){
     const [show, setShow] = useState(false);
     const [isRegistered, setRegisteredFlag] = useState(false);

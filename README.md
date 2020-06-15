@@ -1,10 +1,14 @@
 # LavanTru
 
+## Problem
+Doing laundry is a chore as old as clothes. Some people just want to get on with their lives and hate the time and effort it takes, wishing for laundry to do itself; clothes clean, smelling fresh and folded neatly. In this fast-paced world, their time has become increasingly valuable and this deviation from what’s important will no longer do. Luckily, there are others that enjoy the process, accept it as part of daily life or seek to perfect it. This group of people are looking for an entrepreneurial outlet, to secure financial security and live comfortably by providing comfort.
+
+## Solution
 LavanTru is a P2P laundry platform to help those that hate doing laundry by connecting them with those that are happy to wash their clothes at home for a fee. Here are described the VCS and branching model used, the technologies used to build the digital solution, as well some examples of SOLID principles and Clean Code best practices applied during development.   
 
 
 ## Version Control System  
-LavanTru uses **Git** as version control system to track changes during development and the source code is hosted in **GitHub**. **GitFlow** workflow is used in the internal development process to have defined branches for the release.
+LavanTru uses the **Git** version control system to track changes during development and the source code is hosted in **GitHub**. **GitFlow** workflow is used in the internal development process to have defined branches for the release.
 
 With the purpose to have a better control of the source code and since this is a relatively small project as of now, this repository contains both front-end and back-end code sources.
 
@@ -13,7 +17,7 @@ With the purpose to have a better control of the source code and since this is a
 * **develop**: this is the current default branch where the agile product increments are hosted. 
 * **feature**: these branches are created to work in specific product increments developed by each team member. 
 * **hotfix**: these branches will be created to quickly patch production fixes. 
-* **release**: these branches will be used once develop branch has enough features to be released to production.
+* **release**: these branches will be used once the develop branch has enough features to be released to production.
 
 This README does not list each contributor and their impact. Different branches, their owners and their impact to the repository can be seen in Git.
 

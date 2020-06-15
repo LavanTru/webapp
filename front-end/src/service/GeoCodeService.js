@@ -1,5 +1,7 @@
 import Geocode from "react-geocode";
 
+// Class to hold methods related to interacting with Google GeoCode API
+
 class GeoCodeService {
 
     getAddressWithLocation(address) {

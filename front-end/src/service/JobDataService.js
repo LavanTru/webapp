@@ -3,6 +3,8 @@ import axios from 'axios'
 const LAVANTRU_API_URL = 'http://localhost:8080'
 const JOBS_API_URL = `${LAVANTRU_API_URL}/api/job`
 
+// Class to hold methods related to interacting with JobController API in the back-end
+
 class JobDataService {
 
     retrieveAllJobs() {
