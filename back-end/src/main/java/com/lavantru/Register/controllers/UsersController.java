@@ -1,10 +1,7 @@
 package com.lavantru.Register.controllers;
 
-import com.lavantru.Register.model.Users;
 import com.lavantru.Register.dto.UsersDto;
-import com.lavantru.Register.repositories.UsersRepository;
 import com.lavantru.Register.services.IUsersService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +9,16 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-//CrossOrigin allows front-end to make the call to back-end as they are running separately.
+/**
+ * <h1>UserController</h1>
+ * REST API endpoint for users' login requests.
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/users")

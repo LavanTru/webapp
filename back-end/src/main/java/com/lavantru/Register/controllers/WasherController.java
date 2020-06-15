@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * <h1>WasherController</h1>
+ * REST API endpoint for washer users.
+ *
+ * @version 1.0
+ * @since 2020
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/washer")
