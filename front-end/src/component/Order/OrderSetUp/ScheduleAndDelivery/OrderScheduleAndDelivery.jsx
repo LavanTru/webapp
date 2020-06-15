@@ -1,8 +1,8 @@
 import CustomScheduler from './CustomScheduler';
 import React, { Component } from "react";
 import { Container, Col, Row, Card, Button, Alert } from "react-bootstrap";
-import WasherDataService from "../../../service/WasherDataService";
-import { SessionContext } from "../../../Session";
+import WasherDataService from "../../../../service/WasherDataService";
+import { SessionContext } from "../../../../Session";
 import { format } from "date-fns";
 import CustomStepper from "../CustomStepper";
 
@@ -67,7 +67,7 @@ class OrderScheduleAndDelivery extends Component {
             }
             this.props.history.push({
                 pathname: "/orderConfirmation",
-                state: { order }
+                state: { order:order, washer:this.props.location.state.washer }
             });
         } else {
             this.setState({ alertMessage: "You need to select drop off and pick up times before you can continue" })
@@ -113,8 +113,8 @@ class OrderScheduleAndDelivery extends Component {
                                 <Card.Header className="py-1 my-0">
                                     <Row>
                                         <Col md="auto" className="p-1"><h4 className="font-weight-bold">Drop off time</h4></Col>
-                                        {/* "PPp formats time as "05/29/1453, 12:00 AM" */}
-                                        <Col className="p-1 m-1"><p className="float-right m-0">{this.state.dropOffDate ? format(this.state.dropOffDate, "PPp") : "Select slot from the calendar"}</p></Col>
+                                        {/* "kk:mm, MMM d" formats time as "24:00, Jun 14" */}
+                                        <Col className="p-1 m-1"><p className="float-right m-0">{this.state.dropOffDate ? format(this.state.dropOffDate, "kk:mm, MMM d") : "Select slot from the calendar"}</p></Col>
                                     </Row>
                                 </Card.Header>
                                 <Card.Body className="p-2">
@@ -134,8 +134,8 @@ class OrderScheduleAndDelivery extends Component {
                                 <Card.Header className="py-1 my-0">
                                     <Row>
                                         <Col md="auto" className="p-1"><h4 className="font-weight-bold">Pick up time</h4></Col>
-                                        {/* "PPp formats time as "05/29/1453, 12:00 AM" */}
-                                        <Col className="p-1 m-1"><p className="float-right m-0">{this.state.pickUpDate ? format(this.state.pickUpDate, "PPp") : "Select slot from the calendar"}</p></Col>
+                                        {/* "kk:mm, MMM d" formats time as "24:00, Jun 14" */}
+                                        <Col className="p-1 m-1"><p className="float-right m-0">{this.state.pickUpDate ? format(this.state.pickUpDate, "kk:mm, MMM d") : "Select slot from the calendar"}</p></Col>
                                     </Row>
                                 </Card.Header>
                                 <Card.Body className="p-2">

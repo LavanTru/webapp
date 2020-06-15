@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import WasherDataService from '../../service/WasherDataService';
+import WasherDataService from '../../../service/WasherDataService';
 import { Container, Col, Row, Card, Button, ListGroup, Form } from "react-bootstrap";
-import QuantityControl from '../QuantityControl';
-import { Alert } from 'reactstrap';
-import { SessionContext } from "../../Session";
-import WashCycle from '../WashCycle';
-import WashCycleService from '../../service/WashCycleService';
+import QuantityControl from '../../QuantityControl';
+import { SessionContext } from "../../../Session";
+import WashCycle from '../../WashCycle';
+import WashCycleService from '../../../service/WashCycleService';
 import CustomStepper from "./CustomStepper";
-import TemperatureIcons from '../IconsComponents/TemperatureIcons';
+import TemperatureIcons from '../../IconsComponents/TemperatureIcons';
 
 class OrderComponent extends Component {
   constructor(props) {
@@ -88,7 +87,7 @@ class OrderComponent extends Component {
     }
     this.props.history.push({
       pathname: "/orderSchedule",
-      state: { order }
+      state: { order:order,washer:this.state.washer }
     });
   }
 
@@ -198,8 +197,6 @@ class OrderComponent extends Component {
                       your bag</Button>
                   </Card.Footer>
                 </Card>
-                {this.state.message && <Alert
-                  color="success">{this.state.message}</Alert>}
               </Col>
             </Row>
           </Col>
