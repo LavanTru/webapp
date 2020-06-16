@@ -1,13 +1,12 @@
 package com.lavantru.Register.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lavantru.Register.utilities.TestHelper;
 import com.lavantru.Register.model.Job;
 import com.lavantru.Register.services.JobService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -25,8 +24,8 @@ import java.util.UUID;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(JobController.class)
@@ -75,7 +74,7 @@ public class JobControllerTest {
     {
         mockMvc.perform(MockMvcRequestBuilders
                 .post(jobApiURL)
-                .content(asJsonString(job))
+                .content(TestHelper.asJsonString(job))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -88,7 +87,7 @@ public class JobControllerTest {
                 MockMvcRequestBuilders.put(jobApiURL + "{id}", id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
-                        .content((asJsonString(job)));
+                        .content((TestHelper.asJsonString(job)));
 
         mockMvc.perform(builder)
                 .andExpect(status().isOk());
@@ -102,11 +101,4 @@ public class JobControllerTest {
                 .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
     }
 
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

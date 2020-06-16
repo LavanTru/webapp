@@ -1,6 +1,6 @@
 package com.lavantru.Register.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lavantru.Register.utilities.TestHelper;
 import com.lavantru.Register.model.Item;
 import com.lavantru.Register.model.Order;
 import com.lavantru.Register.services.IOrderService;
@@ -47,10 +47,10 @@ public class OrderControllerTest {
 
     @Test
     public void createOrderTest() throws Exception {
-        System.out.println(asJsonString(order));
+        System.out.println(TestHelper.asJsonString(order));
         mockMvc.perform(MockMvcRequestBuilders
                 .post(orderApiURL+"create")
-                .content(asJsonString(order))
+                .content(TestHelper.asJsonString(order))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -85,11 +85,5 @@ public class OrderControllerTest {
                 .andExpect(jsonPath("$[*].id").isNotEmpty());
     }
 
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 }
