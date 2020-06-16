@@ -61,7 +61,8 @@ class WasherJobCapabilitiesComponent extends Component {
             .then(
                 response => {
                     if (response.status === 200) {
-                        this.setState({ message: `Your jobs are saved successfully` })
+                        this.setState({ message: `Your jobs are saved successfully` });
+                        this.props.history.push("/washerschedule");
                     } else {
                         this.setState({ message: `Unable to save your jobs. Try again later.` })
                     }
@@ -80,7 +81,7 @@ class WasherJobCapabilitiesComponent extends Component {
 
     render() {
         return (
-            <Container>
+            <Container className = "lavantruGreen">
                 <Col className="pt-4" md={{ span: 8, offset: 2 }}>
                     <h3>My jobs</h3>
                     {
@@ -129,7 +130,7 @@ class WasherJobCapabilitiesComponent extends Component {
                         )
                     }
                     <div className="row">
-                        <Button className="button-green" onClick={this.updateWasherJobCapabilitiesClicked}>Save</Button>
+                        <div className="col"><Button className="button-green float-right" onClick={this.updateWasherJobCapabilitiesClicked}>Confirm</Button></div>
                     </div>
                 </Col>
             </Container>

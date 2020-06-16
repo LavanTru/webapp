@@ -18,8 +18,8 @@ const WasherOrderListItem = (props) => {
                     
                     </Col>
                     <Col>
-                    <p>Give laundry: {props.order.pickup}</p>
                     <p>Receive laundry: {props.order.dropoff}</p>
+                    <p>Give laundry: {props.order.pickup}</p>
                     </Col>
                 </Row>
                 

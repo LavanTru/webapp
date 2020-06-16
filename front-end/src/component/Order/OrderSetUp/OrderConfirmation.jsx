@@ -28,7 +28,7 @@ class OrderConfirmation extends Component {
                     console.log("Order creation successful");
 
                     this.setState({
-                        message: "Request sent to the Washer!"
+                        message: "Request sent to the Washer! Please wait for the Washer to confirm the order."
                     })
                 }
             })

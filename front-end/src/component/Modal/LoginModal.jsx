@@ -42,7 +42,7 @@ class LoginModal extends Component {
 
           if (response.data.userType === "WASHEE") {
             this.props.history.push({
-              pathname: "/washerlist",
+              pathname: "/washers",
               state: { ...this.props.location.state }
             })
           } else {
