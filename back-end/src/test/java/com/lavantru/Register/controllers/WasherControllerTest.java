@@ -1,9 +1,8 @@
 package com.lavantru.Register.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lavantru.Register.model.Job;
-import com.lavantru.Register.model.Washee;
-import com.lavantru.Register.services.WasheeService;
+import com.lavantru.Register.utilities.TestHelper;
+import com.lavantru.Register.model.Washer;
+import com.lavantru.Register.services.WasherService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,47 +23,41 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(WasheeController.class)
-public class WasheeControllerTest {
+@WebMvcTest(WasherController.class)
+public class WasherControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private WasheeService washeeService;
+    private WasherService washerService;
 
-    private Washee washee = new Washee();
-    private String washeeApiURL = "http://localhost:8080/api/washee/";
+    private Washer washer = new Washer();
+    private String washerApiURL = "http://localhost:8080/api/washer/";
 
     @Test
-    public void registerWasheeTest() throws Exception
+    public void registerWasherTest() throws Exception
     {
         mockMvc.perform(MockMvcRequestBuilders
-                .post(washeeApiURL+"/register")
-                .content(asJsonString(washee))
+                .post(washerApiURL+"/register")
+                .content(TestHelper.asJsonString(washer))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
+
     }
 
     @Test
-    public void getAllWasheesTest() throws Exception {
-        List<Washee> washees = Arrays.asList(washee);
+    public void getAllWashersTest() throws Exception {
+        List<Washer> washers = Arrays.asList(washer);
 
-        given(washeeService.getAllWashees()).willReturn(washees);
+        given(washerService.getAllWashers()).willReturn(washers);
 
-        mockMvc.perform(get(washeeApiURL)
+        mockMvc.perform(get(washerApiURL)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[*].id").isNotEmpty());
     }
 
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

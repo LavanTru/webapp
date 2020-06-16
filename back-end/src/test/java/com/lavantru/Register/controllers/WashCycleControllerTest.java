@@ -1,8 +1,8 @@
 package com.lavantru.Register.controllers;
 
-import com.lavantru.Register.Utilities.TestHelper;
-import com.lavantru.Register.model.Washer;
-import com.lavantru.Register.services.WasherService;
+import com.lavantru.Register.model.Temperature;
+import com.lavantru.Register.model.WashCycle;
+import com.lavantru.Register.services.WashCycleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,41 +22,31 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(WasherController.class)
-public class WasherControllerTest {
+@WebMvcTest(WashCycleController.class)
+public class WashCycleControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private WasherService washerService;
+    private WashCycleService washCycleService;
 
-    private Washer washer = new Washer();
-    private String washerApiURL = "http://localhost:8080/api/washer/";
+    private Temperature temperature = new Temperature(30);
+    private WashCycle washCycle = new WashCycle("Delicates", "Delicate clothes", temperature);
+    private String washCycleApiURL = "http://localhost:8080/api/washcycle/";
 
-    @Test
-    public void registerWasheeTest() throws Exception
-    {
-        mockMvc.perform(MockMvcRequestBuilders
-                .post(washerApiURL+"/register")
-                .content(TestHelper.asJsonString(washer))
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
-    }
 
     @Test
-    public void getAllWasheesTest() throws Exception {
-        List<Washer> washers = Arrays.asList(washer);
+    public void getWashCyclesTest() throws Exception {
+        List<WashCycle> washCycles = Arrays.asList(washCycle);
 
-        given(washerService.getAllWashers()).willReturn(washers);
+        given(washCycleService.getAllWashCycles()).willReturn(washCycles);
 
-        mockMvc.perform(get(washerApiURL)
+        mockMvc.perform(get(washCycleApiURL)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[*].id").isNotEmpty());
+                .andExpect(jsonPath("$[*].cycle").isNotEmpty());
     }
 
 }
